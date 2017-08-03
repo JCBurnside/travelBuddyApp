@@ -12,7 +12,7 @@ export class FirebaseService{
 	signup(user: User){
 		this.af.auth.createUserWithEmailAndPassword(user.email,user.password)
 		.then(() => {
-			this.router.navigateByUrl('/myprofile');
+			this.router.navigateByUrl('/');
 		})
 		.catch((e) => {
 			console.log(e);
@@ -22,7 +22,7 @@ export class FirebaseService{
 	signin(user: User){
 		this.af.auth.signInWithEmailAndPassword(user.email, user.password)
 		.then(() => {
-			this.router.navigateByUrl('/myprofile');
+			this.router.navigateByUrl('/');
 		})
 		.catch((e) => {
 			console.log(e);
