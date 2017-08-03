@@ -11,6 +11,7 @@ import { AppComponent } from './app.component';
 import { CoreModule } from './core/core.module';
 import { SigninComponent } from './signin/signin.component';
 import { SignupComponent } from './signup/signup.component';
+import { ProfileViewComponent } from "./profile-view/profile-view.component";
 import { FirebaseService } from './services/auth.service';
 import { routes } from './services/routes';
 
@@ -18,7 +19,8 @@ import { routes } from './services/routes';
   declarations: [
     AppComponent,
     SigninComponent,
-    SignupComponent
+    SignupComponent,
+    ProfileViewComponent
   ],
   imports: [
     BrowserModule,

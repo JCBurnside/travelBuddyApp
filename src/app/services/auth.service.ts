@@ -34,6 +34,6 @@ export class FirebaseService{
 	constructor(private af: AngularFireAuth, private router: Router){
 		this.af.authState.subscribe((authState) => {
 			this.authState = authState
-		})
+		});
 	}
 }
