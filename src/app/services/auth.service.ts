@@ -6,7 +6,6 @@ import { AngularFireAuth } from 'angularfire2/auth';
 
 @Injectable()
 export class FirebaseService{
-	fbs = this;
 	authState;
 
 	signup(user: User){
@@ -30,6 +29,9 @@ export class FirebaseService{
 	}
 	isAuthed(){
 		return !!this.authState;
+	}
+	currentUser(){
+		return this.af.auth.currentUser;
 	}
 	constructor(private af: AngularFireAuth, private router: Router){
 		this.af.authState.subscribe((authState) => {

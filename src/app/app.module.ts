@@ -6,7 +6,7 @@ import { AngularFireModule } from 'angularfire2';
 import { AngularFireAuth } from 'angularfire2/auth'
 
 import { firebaseConfig } from '../environments/firebase.config';
-
+import ProfileService from "./services/profile.service";
 import { AppComponent } from './app.component';
 import { CoreModule } from './core/core.module';
 import { SigninComponent } from './signin/signin.component';
@@ -30,7 +30,7 @@ import { routes } from './services/routes';
     AngularFireModule.initializeApp(firebaseConfig)
 
   ],
-  providers: [FirebaseService, AngularFireAuth],
+  providers: [FirebaseService, AngularFireAuth,ProfileService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
