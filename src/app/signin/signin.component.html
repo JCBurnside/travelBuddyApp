@@ -1,5 +1,5 @@
-<div class="col-sm-4 col-sm-offset-4">
-	<h1>Sign In</h1>
+<div class="col-sm-4 col-sm-offset-0 signin">
+	<h1>LOGIN</h1>
 	<form (ngSubmit)="onSubmit()" #signinForm="ngForm">
 		<div class="form-group">
 			<label for="email">Email</label>
@@ -12,6 +12,6 @@
 			<p *ngIf="errors.pass" class="validation">{{errors.pass}}</p>
 		</div>
 		
-		<button type="submit" class="btn btn-success">Sign In</button>
+		<button type="submit" class="btn btn-success">Login</button>
 	</form>
 </div>

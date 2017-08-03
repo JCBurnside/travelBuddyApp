@@ -1,0 +1,20 @@
+@import url('https://fonts.googleapis.com/css?family=Open+Sans');
+
+.navbar{
+	font-family: Open Sans;
+	background-color: #fff;
+	font-weight: 700;
+	color: #000; 
+	border: none;
+}
+.navbar a {
+    color: #000;
+}
+
+.navbar a:hover {
+    color: #000;
+}
+
+.navbar-right{
+	margin-right: 0;
+}
