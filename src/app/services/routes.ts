@@ -4,15 +4,15 @@ import { ProfileViewComponent } from '../profile-view/profile-view.component';
 
 export const routes = [
 	{
-        path: 'signin',
+        path     : 'signin',
         component: SigninComponent
       },
       {
-      	path: 'signup',
+      	path     : 'signup',
       	component: SignupComponent
       },
       {
-        path:'profile',
+        path     : 'profile',
         component: ProfileViewComponent
       }
 ]
