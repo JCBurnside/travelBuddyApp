@@ -1,0 +1,70 @@
+body{
+  width: 100%;
+  height: 100%;
+  background-image: url('../img/mountains.jpg');
+}
+/*===============================================================================================*/
+/*text box*/
+.box{
+padding: 20px;
+background: rgb(255,255,255); /* for IE */
+background: rgba(255,255,255,0.75);
+border-radius: 20px;
+width: 700px;
+margin:auto;
+position:relative;
+}
+
+h1{
+text-align: center;
+color: Black;
+font-weight: bold;
+font-variant: small-caps;
+}
+
+p{
+font-size: 25px;
+text-align: center;
+}
+/*===============================================================================================*/
+/* button div */
+ #buttons {
+  padding-top: 50px;
+  text-align: center;
+}
+
+/* start css for buttons */
+ .btn {
+  border-radius: 5px;
+  font-size: 22px;
+  text-decoration: none;
+  margin: 20px;
+  color: #fff;
+  position: relative;
+  display: inline-block;
+}
+
+.btn:active {
+  transform: translate(0px, 5px);
+  -webkit-transform: translate(0px, 5px);
+  box-shadow: 0px 1px 0px 0px;
+}
+
+.blue {
+  background-color: #55acee;
+  box-shadow: 0px 5px 0px 0px #3C93D5;
+}
+
+.blue:hover {
+  background-color: #6FC6FF;
+}
+
+.green {
+  background-color: #2ecc71;
+  box-shadow: 0px 5px 0px 0px #15B358;
+}
+
+.green:hover {
+  background-color: #48E68B;
+}
+
