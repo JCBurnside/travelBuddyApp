@@ -1,10 +1,10 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { RouterModule }   from '@angular/router';
+import { RouterModule } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 import { AngularFireModule } from 'angularfire2';
-import { AngularFireAuth } from 'angularfire2/auth'
-
+import { AngularFireAuth } from 'angularfire2/auth';
+import { SplashPageComponent } from './splash/splash.component';
 import { firebaseConfig } from '../environments/firebase.config';
 import ProfileService from "./services/profile.service";
 import { AppComponent } from './app.component';
@@ -20,7 +20,8 @@ import { routes } from './services/routes';
     AppComponent,
     SigninComponent,
     SignupComponent,
-    ProfileViewComponent
+    ProfileViewComponent,
+    SplashPageComponent
   ],
   imports: [
     BrowserModule,
