@@ -10,6 +10,7 @@ import { firebaseConfig } from '../environments/firebase.config';
 import ProfileService from "./services/profile.service";
 import { FirebaseService } from './services/auth.service';
 import { TripsService } from "./services/trips.service";
+import { AngularFireDatabase } from "angularfire2/database";
 
 import { routes } from './services/routes';
 
@@ -22,6 +23,7 @@ import { ProfileEditComponent } from './profile-edit/profile-edit.component';
 import { HomepageComponent } from './homepage/homepage.component';
 import { TripEditComponent } from './trip-edit/trip-edit.component';
 import { TripViewComponent } from './trip-view/trip-view.component';
+import { SearchComponent } from './search/search.component';
 
 @NgModule({
   declarations: [
@@ -33,7 +35,8 @@ import { TripViewComponent } from './trip-view/trip-view.component';
     ProfileEditComponent,
     HomepageComponent,
     TripEditComponent,
-    TripViewComponent
+    TripViewComponent,
+    SearchComponent
   ],
   imports: [
     BrowserModule,
@@ -47,6 +50,7 @@ import { TripViewComponent } from './trip-view/trip-view.component';
     {provide:FirebaseService,useClass:FirebaseService},
     {provide:AngularFireAuth,useClass:AngularFireAuth},
     ProfileService,
+    AngularFireDatabase,
     TripsService
   ],
   bootstrap: [AppComponent]
