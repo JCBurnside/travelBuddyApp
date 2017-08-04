@@ -31,7 +31,11 @@ import { routes } from './services/routes';
     AngularFireModule.initializeApp(firebaseConfig)
 
   ],
-  providers: [FirebaseService, AngularFireAuth,ProfileService],
+  providers: [
+    {provide:FirebaseService,useClass:FirebaseService},
+    {provide:AngularFireAuth,useClass:AngularFireAuth},
+    ProfileService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
