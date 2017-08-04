@@ -1,19 +1,29 @@
+import { CoreModule } from './core/core.module';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 import { AngularFireModule } from 'angularfire2';
 import { AngularFireAuth } from 'angularfire2/auth';
-import { SplashPageComponent } from './splash/splash.component';
 import { firebaseConfig } from '../environments/firebase.config';
+
 import ProfileService from "./services/profile.service";
+import { FirebaseService } from './services/auth.service';
+import { TripsService } from "./services/trips.service";
+import { AngularFireDatabase } from "angularfire2/database";
+
+import { routes } from './services/routes';
+
+import { SplashPageComponent } from './splash/splash.component';
 import { AppComponent } from './app.component';
-import { CoreModule } from './core/core.module';
 import { SigninComponent } from './signin/signin.component';
 import { SignupComponent } from './signup/signup.component';
 import { ProfileViewComponent } from "./profile-view/profile-view.component";
-import { FirebaseService } from './services/auth.service';
-import { routes } from './services/routes';
+import { ProfileEditComponent } from './profile-edit/profile-edit.component';
+import { HomepageComponent } from './homepage/homepage.component';
+import { TripEditComponent } from './trip-edit/trip-edit.component';
+import { TripViewComponent } from './trip-view/trip-view.component';
+import { SearchComponent } from './search/search.component';
 
 @NgModule({
   declarations: [
@@ -21,7 +31,12 @@ import { routes } from './services/routes';
     SigninComponent,
     SignupComponent,
     ProfileViewComponent,
-    SplashPageComponent
+    SplashPageComponent,
+    ProfileEditComponent,
+    HomepageComponent,
+    TripEditComponent,
+    TripViewComponent,
+    SearchComponent
   ],
   imports: [
     BrowserModule,
@@ -31,8 +46,13 @@ import { routes } from './services/routes';
     AngularFireModule.initializeApp(firebaseConfig)
 
   ],
-  providers: [{provide:FirebaseService,useClass:FirebaseService},
-    {provide:AngularFireAuth,useClass:AngularFireAuth},ProfileService],
+  providers: [
+    {provide:FirebaseService,useClass:FirebaseService},
+    {provide:AngularFireAuth,useClass:AngularFireAuth},
+    ProfileService,
+    AngularFireDatabase,
+    TripsService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
