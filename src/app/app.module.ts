@@ -49,9 +49,9 @@ import { SearchComponent } from './search/search.component';
   providers: [
     {provide:FirebaseService,useClass:FirebaseService},
     {provide:AngularFireAuth,useClass:AngularFireAuth},
-    ProfileService,
-    AngularFireDatabase,
-    TripsService
+    {provide:ProfileService,useClass:ProfileService},
+    {provide:AngularFireDatabase,useClass:AngularFireDatabase},
+    {provide:TripsService,useClass:TripsService}
   ],
   bootstrap: [AppComponent]
 })
