@@ -20,7 +20,7 @@ export default class ProfileService {
         this.items.forEach(item=>{
             item.forEach(_=>out.push(_));
         })
-        return out;
+         return out;
     }
 
 }
