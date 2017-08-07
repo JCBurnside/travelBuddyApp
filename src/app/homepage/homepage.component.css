@@ -1,0 +1,40 @@
+@import url('https://fonts.googleapis.com/css?family=Lora');
+@import url('https://fonts.googleapis.com/css?family=Open+Sans');
+
+h1{
+  color: white;
+}
+
+.tile{
+
+}
+
+label{
+  color: white !important;
+}
+
+#image-upload{
+  color:white;
+}
+
+body {
+  text-align: center;
+  text-transform: uppercase;
+  padding: 50px 0;
+}
+
+.box {
+  display: flex;
+  font-family: lora;
+  align-items: center;
+  justify-content: center;
+  background: #aaa;
+  margin: 20px 0;
+  padding: 10px;
+  width: 100%;
+  min-height: 200px;
+  border: 2px #ccc solid;
+  color: #fff;
+   opacity: 0.9;
+  filter: alpha(opacity=60);
+}
