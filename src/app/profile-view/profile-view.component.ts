@@ -1,6 +1,6 @@
 import { Component } from "@angular/core";
 import Profile from "../models/profile";
-import ProfileService from "../services/profile.service"
+import { ProfileService } from "../services/profile.service"
 import {FirebaseService} from "../services/auth.service"
 
 @Component({
