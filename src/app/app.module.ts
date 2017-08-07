@@ -50,8 +50,9 @@ import { ProfileSearchResultsComponent } from './profile-search-results/profile-
     {provide:FirebaseService,useClass:FirebaseService},
     {provide:AngularFireAuth,useClass:AngularFireAuth},
     {provide:ProfileService,useClass:ProfileService},
-    AngularFireDatabase,
-    TripsService
+    {provide:AngularFireDatabase,useClass:AngularFireDatabase},
+    {provide:TripsService,useClass:TripsService}
+
   ],
   bootstrap: [AppComponent]
 })
