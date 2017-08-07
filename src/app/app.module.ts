@@ -10,6 +10,7 @@ import { firebaseConfig } from '../environments/firebase.config';
 import { ProfileService } from "./services/profile.service";
 import { FirebaseService } from './services/auth.service';
 import { TripsService } from "./services/trips.service";
+import { AngularFireDatabase } from "angularfire2/database";
 
 import { routes } from './services/routes';
 
@@ -22,6 +23,8 @@ import { ProfileEditComponent } from './profile-edit/profile-edit.component';
 import { HomepageComponent } from './homepage/homepage.component';
 import { TripEditComponent } from './trip-edit/trip-edit.component';
 import { TripViewComponent } from './trip-view/trip-view.component';
+import { SearchComponent } from './search/search.component';
+import { ProfileSearchResultsComponent } from './profile-search-results/profile-search-results.component';
 
 @NgModule({
   declarations: [
@@ -33,7 +36,9 @@ import { TripViewComponent } from './trip-view/trip-view.component';
     ProfileEditComponent,
     HomepageComponent,
     TripEditComponent,
-    TripViewComponent
+    TripViewComponent,
+    SearchComponent,
+    ProfileSearchResultsComponent
   ],
   imports: [
     BrowserModule,
@@ -46,7 +51,12 @@ import { TripViewComponent } from './trip-view/trip-view.component';
   providers: [
     {provide:FirebaseService,useClass:FirebaseService},
     {provide:AngularFireAuth,useClass:AngularFireAuth},
+<<<<<<< HEAD
     ProfileService,
+=======
+    {provide:ProfileService,useClass:ProfileService},
+    AngularFireDatabase,
+>>>>>>> 899cd9d68a96202ac681a11588f88fdf5b41c91f
     TripsService
   ],
   bootstrap: [AppComponent]
