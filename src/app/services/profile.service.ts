@@ -16,18 +16,18 @@ export default class ProfileService {
         this.items = db.list('profiles');
 >>>>>>> 899cd9d68a96202ac681a11588f88fdf5b41c91f
     }
-    getProfileById(id: string,cb:Function): void {
+    getProfileById(id: string, cb: Function): void {
         let profile;
         this.items.forEach(_ => {
             cb(_.find((value, index, obj) => { return value.ownerID === id; }));
         });
     }
-    getAllProfiles():Profile[]{
-        let out:Profile[]=new Array<Profile>();
-        this.items.forEach(item=>{
-            item.forEach(_=>out.push(_));
+    getAllProfiles(): Profile[] {
+        let out: Profile[] = new Array<Profile>();
+        this.items.forEach(item => {
+            item.forEach(_ => out.push(_));
         })
-         return out;
+        return out;
     }
 
 }
