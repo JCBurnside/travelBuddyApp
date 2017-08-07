@@ -1,57 +1,101 @@
-<p>
-  homepage works!
-</p>
-<!-- <section ng-controller="ArticlesController"> -->
-  <div class="page-header">
-      <h1>Add Trips</h1>
-  </div>
+<!-- <section ng-controller="ArticlesController">
+<div class="header">
+  <h1>Add Trips</h1>
+</div>
 
-  <!-- <div class="col-md-5"> -->
-    <div class="add-trip">
-      <!-- <form name="add-trip-form" class="form-horizontal" ng-submit="create(articleForm.$valid)" novalidate> -->
+<!-- 3 columns -->
+<div class="container">
+  <div class="row">
+
+    <div class="col-xs-12 col-sm-6 col-md-3">
+      <div class="box">
         <fieldset>
           <div class="form-group" show-errors>
             <label for="title">Upload Image</label>
-              <input name="image-upload" type="text" ng-model="image-upload" id="image-upload" class="form-control" placeholder="Upload Image of Destination"required>
-                <div ng-messages="image-uploadForm.title.$error" role="alert">
-                    <p class="help-block error-text" ng-message="required">Image is required..</p>
-                </div>
+            <input name="image-upload" type="file" id="image-upload">
           </div>
 
-           <div class="form-group">
+          <div class="form-group">
             <label for="title">Destination</label>
-              <input name="destination" type="text" ng-model="destination" id="destination" class="form-control" placeholder="City, State, Country">
+            <input name="destination" type="text" id="destination" class="form-control" placeholder="City, State, Country">
           </div>
 
           <div class="form-group">
             <label for="title">Transportation</label>
-              <input name="transportation" type="text" ng-model="transportation" id="transportation" class="form-control" placeholder="Select">
+            <input name="transportation" type="text" id="transportation" class="form-control" placeholder="Select">
           </div>
 
           <div class="form-group">
             <label for="title">Start Date</label>
-              <input name="start-date" type="date" ng-model="start-date" id="date" class="form-control" placeholder="MM/DD/YYYY">
+            <input name="start-date" type="date" id="date" class="form-control" placeholder="MM/DD/YYYY">
           </div>
 
           <div class="form-group">
             <label for="title">End Date</label>
-              <input name="end-date" type="date" ng-model="end-date" id="date" class="form-control" placeholder="MM/DD/YYYY">
+            <input name="end-date" type="date" id="date" class="form-control" placeholder="MM/DD/YYYY">
           </div>
 
           <div class="form-group">
             <label for="content">Description</label>
-              <textarea name="content" ng-model="content" id="content" class="form-control" cols="30" rows="10" placeholder="Please write a brief summary about the boat you are listing.">
+            <textarea name="content" id="content" class="form-control" cols="30" rows="8" placeholder="">
               </textarea><br>
           </div>
 
           <div class="sumbit">
             <button type="submit">Add</button>
           </div>
-
-        </div>
+        </fieldset>
       </div>
-    </form>
-  </fieldset>
-</selection>
+    </div>
+
+    <div class="col-xs-12 col-sm-6 col-md-3">
+      <div class="box">
+        <fieldset>
+          <div class="form-group" show-errors>
+            <label for="title">Upload Image</label>
+            <input name="image-upload" type="file" id="image-upload">
+          </div>
+
+          <div class="form-group">
+            <label for="title">Destination</label>
+            <input name="destination" type="text" id="destination" class="form-control" placeholder="City, State, Country">
+          </div>
+
+          <div class="form-group">
+            <label for="title">Transportation</label>
+            <input name="transportation" type="text" id="transportation" class="form-control" placeholder="Select">
+          </div>
+
+          <div class="form-group">
+            <label for="title">Start Date</label>
+            <input name="start-date" type="date" id="date" class="form-control" placeholder="MM/DD/YYYY">
+          </div>
+
+          <div class="form-group">
+            <label for="title">End Date</label>
+            <input name="end-date" type="date" id="date" class="form-control" placeholder="MM/DD/YYYY">
+          </div>
+
+          <div class="form-group">
+            <label for="content">Description</label>
+            <textarea name="content" id="content" class="form-control" cols="30" rows="8" placeholder="">
+              </textarea><br>
+          </div>
+
+          <div class="sumbit">
+            <button type="submit">Add</button>
+          </div>
+        </fieldset>
+      </div>
+    </div>
+
+    <div class="col-xs-12 col-sm-12 col-md-6">
+      <div class="box">
+      </div>
+    </div>
+
+  </div>
+</div>
+
 
 
