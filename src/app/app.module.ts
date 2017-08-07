@@ -24,6 +24,7 @@ import { HomepageComponent } from './homepage/homepage.component';
 import { TripEditComponent } from './trip-edit/trip-edit.component';
 import { TripViewComponent } from './trip-view/trip-view.component';
 import { SearchComponent } from './search/search.component';
+import { ProfileSearchResultsComponent } from './profile-search-results/profile-search-results.component';
 
 @NgModule({
   declarations: [
@@ -36,7 +37,8 @@ import { SearchComponent } from './search/search.component';
     HomepageComponent,
     TripEditComponent,
     TripViewComponent,
-    SearchComponent
+    SearchComponent,
+    ProfileSearchResultsComponent
   ],
   imports: [
     BrowserModule,
@@ -49,7 +51,7 @@ import { SearchComponent } from './search/search.component';
   providers: [
     {provide:FirebaseService,useClass:FirebaseService},
     {provide:AngularFireAuth,useClass:AngularFireAuth},
-    ProfileService,
+    {provide:ProfileService,useClass:ProfileService},
     AngularFireDatabase,
     TripsService
   ],
