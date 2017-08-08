@@ -2,7 +2,7 @@
 import { Component } from '@angular/core';
 import { FirebaseService } from '../services/auth.service';
 
-import { User } from '../models/user'
+import { User } from '../models/user';
 
 @Component({
   selector   : 'app-signup',

@@ -6,7 +6,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./trip-edit.component.css']
 })
 export class TripEditComponent implements OnInit {
-
+  tripedit;
   constructor() { }
 
   ngOnInit() {
