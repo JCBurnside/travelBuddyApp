@@ -10,8 +10,12 @@ import { FirebaseService } from "../services/auth.service";
 })
 export class HomepageComponent implements OnInit {
   private newTrip = new Trip(null, null);
-  constructor(private ts: TripsService,private as:FirebaseService) {
-
+  public trips;
+  public items;
+  constructor(public ts: TripsService,public as:FirebaseService) {
+    this.id=as.getId();
+    this.items = [{Owner: this.id}];
+    this.trips=ts.getTripsByOwner(this.id);
   }
   onChange() {
     console.log(this.newTrip.Destinations);
@@ -30,8 +34,15 @@ export class HomepageComponent implements OnInit {
       this.newTrip.Owner=this.as.getId();
       this.ts.addNewTrip(this.newTrip);
     }
+    this.updateTrips();
   }
+  updateTrips(){
+    this.trips=this.ts.getTripsByOwner(this.id);
+  }
+  id:string;
+
   ngOnInit() {
+    this.updateTrips();
   }
 
 }
