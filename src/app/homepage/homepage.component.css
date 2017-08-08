@@ -4,7 +4,10 @@
 h1{
   color: white;
 }
-
+h2{
+  font-family: Open Sans;
+  color: #000;
+}
 .tile{
 
 }
@@ -18,7 +21,6 @@ label{
 }
 
 body {
-  text-align: center;
   text-transform: uppercase;
   padding: 50px 0;
 }
@@ -26,8 +28,7 @@ body {
 .box {
   display: flex;
   font-family: lora;
-  align-items: center;
-  justify-content: center;
+
   background: #aaa;
   margin: 20px 0;
   padding: 10px;

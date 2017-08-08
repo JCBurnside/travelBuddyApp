@@ -23,10 +23,31 @@ export class TripsService {
     this.trips.push(trip).then(a=>console.log(a),err=>console.log(err));
   }
   getAllTrips(): Trip[] {
-    let out: Trip[] = new Array<Trip>();
+   let out: Trip[] = new Array<Trip>();
     this.trips.forEach(item => {
-      item.forEach(_ => out.push(_));
+   
+      item.forEach(trip => out.push(trip));
     })
+    
     return out;
+    /*return this.trips.subscribe().then(function(snapshot){
+      return snapshot.val();
+    })*/
+  }
+
+  getTripsByOwner(owner: string){
+   /* let out: Trip[] = new Array<Trip>();
+    console.log("Get fucked");
+    console.log(this.getAllTrips())
+    this.getAllTrips().forEach(trip => {
+        console.log(trip.Owner, owner);
+        if(trip.Owner==owner){  
+        out.push(trip);
+      }
+      console.log(trip);
+      });*/
+    
+    return this.trips;
   }
 }
+
