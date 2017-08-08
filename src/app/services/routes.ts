@@ -35,5 +35,9 @@ export const routes = [
   {
     path     : 'homepage',
     component: HomepageComponent
+  },
+  {
+    path      : 'trip-edit',
+    component : TripEditComponent
   }
 ]

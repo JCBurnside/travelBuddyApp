@@ -4,12 +4,10 @@ import Profile from "../models/profile";
 import { AngularFireDatabase, FirebaseListObservable } from "angularfire2/database";
 
 @Injectable()
-
 export class ProfileService{
     items:FirebaseListObservable<Profile[]>;
     constructor(db:AngularFireDatabase){
         this.items=db.list('profiles');
-
     }
     getProfileById(id: string, cb: Function): void {
         let profile;
