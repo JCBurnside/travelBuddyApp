@@ -23,7 +23,6 @@ import { ProfileEditComponent } from './profile-edit/profile-edit.component';
 import { HomepageComponent } from './homepage/homepage.component';
 import { TripEditComponent } from './trip-edit/trip-edit.component';
 import { TripViewComponent } from './trip-view/trip-view.component';
-import { SearchComponent } from './search/search.component';
 import { ProfileSearchResultsComponent } from './profile-search-results/profile-search-results.component';
 
 @NgModule({
@@ -37,7 +36,6 @@ import { ProfileSearchResultsComponent } from './profile-search-results/profile-
     HomepageComponent,
     TripEditComponent,
     TripViewComponent,
-    SearchComponent,
     ProfileSearchResultsComponent
   ],
   imports: [
