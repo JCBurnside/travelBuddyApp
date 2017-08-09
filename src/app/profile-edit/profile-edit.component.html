@@ -1,3 +1,9 @@
-<p>
-  profile-edit works!
-</p>
+<form>
+  <!-- <img *ngIf='img'[src]='img'/> -->
+  <input type="file" (ngModelChange)='updateImg($event)' accept=".jpg,.jpeg,.png"/>
+  <input type="text" name="email" [(ngModel)]='email' />
+  <input type="password" name="currPass" [(ngModel)]='currentPass'/>
+  <input type="password" name="newPass" [(ngModel)]='newPassword'/>
+  <input type="password" name="confPass" [(ngModel)]='confirmPassword'/>
+  <button type="submit" class="btn">Update</button>
+</form>
