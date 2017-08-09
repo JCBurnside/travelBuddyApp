@@ -12,4 +12,7 @@ export class NavbarComponent {
     goToPE(){
         this.router.navigate(['/profile-edit',this.as.getId()])
     }
+    authed(){
+        return this.as.isAuthed();
+    }
  }

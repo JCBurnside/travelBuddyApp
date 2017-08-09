@@ -5,10 +5,10 @@ import { AngularFireDatabase, FirebaseListObservable } from "angularfire2/databa
 
 @Injectable()
 
-export default class ProfileService {
-    items;
+export class ProfileService {
+    profiles;
     constructor(db: AngularFireDatabase) {
-        this.items = db.database.ref('profiles');
+        this.profiles = db.database.ref('profiles');
     }
 
     /*
@@ -17,24 +17,26 @@ export default class ProfileService {
     */
     getProfileById(id: string, cb: Function): void {
         let profile;
-        this.items.orderByChild("ownerID")
+        this.profiles.orderByChild("ownerID")
             .equalTo(id)
             .on("value", (snapshot) => {
                 Object.keys(snapshot.val()).forEach(key => {
                     cb({ ...snapshot.val()[key], $key: key })
                 });
-            });
+            }).catch(err=>cb(null,err));
     }
     /*
     * cb is a callback function that takes a Profile[] as an argument
     */
     getAllProfiles(cb: Function) {
-        this.items.on("value", snapshot => {
+        this.profiles.on("value", snapshot => {
             let arr: Profile[] = [];
             Object.keys(snapshot).forEach(key => {
                 arr.push({ ...snapshot.val()[key], $key: key });
             });
             cb(arr);
+        }).catch(err=>{
+            cb(null,err);
         })
     }
 
