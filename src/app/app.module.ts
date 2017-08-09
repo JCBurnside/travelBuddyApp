@@ -1,4 +1,3 @@
-import { CoreModule } from './core/core.module';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
@@ -9,7 +8,7 @@ import { AngularFireModule } from 'angularfire2';
 import { AngularFireAuth } from 'angularfire2/auth';
 import { firebaseConfig } from '../environments/firebase.config';
 
-import ProfileService from './services/profile.service';
+import { ProfileService } from './services/profile.service';
 import { FirebaseService } from './services/auth.service';
 import { TripsService } from "./services/trips.service";
 import { AngularFireDatabase } from "angularfire2/database";
@@ -26,10 +25,12 @@ import { HomepageComponent } from './homepage/homepage.component';
 import { TripEditComponent } from './trip-edit/trip-edit.component';
 import { TripViewComponent } from './trip-view/trip-view.component';
 import { ProfileSearchResultsComponent } from './profile-search-results/profile-search-results.component';
+import { NavbarComponent } from "./nav/navbar.component";
 
 @NgModule({
   declarations: [
     AppComponent,
+    NavbarComponent,
     SigninComponent,
     SignupComponent,
     ProfileViewComponent,
@@ -42,12 +43,9 @@ import { ProfileSearchResultsComponent } from './profile-search-results/profile-
   ],
   imports: [
     BrowserModule,
-    CoreModule,
     RouterModule.forRoot(routes),
     FormsModule,
-    AngularFireModule.initializeApp(firebaseConfig),
-    
-
+    AngularFireModule.initializeApp(firebaseConfig)
   ],
   providers: [
     {provide:FirebaseService,useClass:FirebaseService},
