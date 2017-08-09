@@ -15,4 +15,8 @@ export class NavbarComponent {
     authed(){
         return this.as.isAuthed();
     }
+    signOut(){
+        this.as.signout();
+        this.router.navigateByUrl('/signin');
+    }
  }
