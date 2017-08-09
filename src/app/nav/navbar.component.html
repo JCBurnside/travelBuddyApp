@@ -11,14 +11,16 @@
       <a class="navbar-brand" href="/">TRAVEL BUDDY APP</a>
     </div>
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-      <ul class="nav navbar-nav navbar-right">
-        <li><a href="/signup">Sign Up</a></li>
-        <li><a href="/signin">Sign In</a></li>
-        <li><a href="/profile">Profile</a></li>
-        <li><a href="/trip-view">trip-view </a></li>
-        <li><a href="/trip-edit">trip-edit</a></li>
+      <ul *ngIf='!authed()' class="nav navbar-nav navbar-right">
+        <li><a routerLink="/signup">Sign Up</a></li>
+        <li><a routerLink="/signin">Sign In</a></li>
+      </ul>
+      <ul *ngIf='authed()' class="nav navbar-nav navbar-right">
+        <li><a routerLink="/profile">Profile</a></li>
+        <li><a routerLink="/trip-view">trip-view </a></li>
+        <li><a routerLink="/trip-edit">trip-edit</a></li>
         <li><a (click)='goToPE()'>Profile-edit</a></li>
-        <li><a href="/homepage">homepage</a></li>
+        <li><a routerLink="/homepage">homepage</a></li>
       </ul>
     </div>
   </div>
