@@ -7,6 +7,7 @@ import { AngularFireAuth } from 'angularfire2/auth';
 @Injectable()
 export class FirebaseService{
 	authState;
+	user;
 	getId():string{
 		return this.af.auth.currentUser.uid;
 	}
@@ -14,6 +15,7 @@ export class FirebaseService{
 		this.af.auth.createUserWithEmailAndPassword(user.email,user.password)
 		.then(() => {
 			this.router.navigateByUrl('/homepage');
+			
 		})
 		.catch((e) => {
 			console.log(e);
@@ -24,6 +26,7 @@ export class FirebaseService{
 		this.af.auth.signInWithEmailAndPassword(user.email, user.password)
 		.then(() => {
 			this.router.navigateByUrl('/homepage');
+			
 		})
 		.catch((e) => {
 			console.log(e);
