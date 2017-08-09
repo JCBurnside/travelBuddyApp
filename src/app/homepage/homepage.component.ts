@@ -15,7 +15,9 @@ export class HomepageComponent implements OnInit {
   public trips:FirebaseListObservable<any[]>;
   private id:string;
   constructor(public ts: TripsService,public as:FirebaseService) {
-    this.id=as.getId();
+
+    this.items = [{Owner: this.id}];
+
     this.trips=ts.getTripsByOwner(this.id);
   }
   onChange() {
@@ -47,6 +49,7 @@ export class HomepageComponent implements OnInit {
 
   ngOnInit() {
     this.updateTrips();
+    this.id=this.as.getId();
   }
 
 }

@@ -6,9 +6,12 @@ import { AngularFireDatabase, FirebaseListObservable } from "angularfire2/databa
 @Injectable()
 
 export class ProfileService {
-    profiles:FirebaseListObservable<Profile[]>;
-    constructor(private db: AngularFireDatabase) {
-        this.profiles = db.list('profiles') as FirebaseListObservable<Profile[]>;
+
+    profiles;
+
+    constructor(db: AngularFireDatabase) {
+        this.profiles = db.database.ref('profiles');
+
     }
 
     /*
