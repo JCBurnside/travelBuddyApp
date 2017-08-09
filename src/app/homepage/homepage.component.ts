@@ -13,7 +13,6 @@ export class HomepageComponent implements OnInit {
   public trips;
   public items;
   constructor(public ts: TripsService,public as:FirebaseService) {
-    this.id=as.getId();
     this.items = [{Owner: this.id}];
     this.trips=ts.getTripsByOwner(this.id);
   }
@@ -42,6 +41,7 @@ export class HomepageComponent implements OnInit {
 
   ngOnInit() {
     this.updateTrips();
+    this.id=this.as.getId();
   }
 
 }
