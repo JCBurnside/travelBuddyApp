@@ -29,11 +29,15 @@ export const routes = [
     component: TripViewComponent
   },
   {
-    path     : 'profile-edit',
+    path     : 'profile-edit/:id',
     component: ProfileEditComponent
   },
   {
     path     : 'homepage',
     component: HomepageComponent
+  },
+  {
+    path      : 'trip-edit',
+    component : TripEditComponent
   }
 ]
