@@ -1,4 +1,9 @@
+
+import Profile from "../models/profile";
+import { ProfileService } from "../services/profile.service"
+import {FirebaseService} from "../services/auth.service"
 import { Component, OnInit } from '@angular/core';
+
 
 @Component({
   selector: 'app-profile-view',

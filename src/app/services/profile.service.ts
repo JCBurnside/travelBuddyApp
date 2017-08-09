@@ -4,6 +4,7 @@ import Profile from "../models/profile";
 import { AngularFireDatabase, FirebaseListObservable } from "angularfire2/database";
 
 @Injectable()
+
 export default class ProfileService {
     items;
     constructor(db: AngularFireDatabase) {
@@ -38,3 +39,4 @@ export default class ProfileService {
     }
 
 }
+
