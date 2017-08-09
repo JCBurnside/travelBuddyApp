@@ -13,7 +13,7 @@ h2{
 }
 
 label{
-  color: white !important;
+  color: #000 !important;
 }
 
 #image-upload{
@@ -29,13 +29,12 @@ body {
   display: flex;
   font-family: lora;
 
-  background: #aaa;
+ 
   margin: 20px 0;
-  padding: 10px;
+  padding: 20px;
   width: 100%;
   min-height: 200px;
-  border: 2px #ccc solid;
-  color: #fff;
-   opacity: 0.9;
-  filter: alpha(opacity=60);
+  
+  background: rgb(255,255,255); /* for IE */
+  background: rgba(225,225,225,0.85);
 }

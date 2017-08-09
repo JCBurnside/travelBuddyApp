@@ -7,10 +7,11 @@
 <div class="container">
   <div class="row">
 
-    <div class="col-xs-12 col-sm-6 col-md-3">
+    <div class="col-xs-12 col-sm-6 col-md-4">
       <div class="box">
         <fieldset>
         <h2>Add a trip</h2>
+        <hr>
           <div class="form-group" show-errors>
             <label for="title">Upload Image</label>
             <input name="image-upload" type="file" id="image-upload">
@@ -55,10 +56,11 @@
       </div>
     </div>
 
-    <div class="col-xs-12 col-sm-6 col-md-9">
+    <div class="col-xs-12 col-sm-6 col-md-8">
       <div class="box">
         <fieldset>
           <h2>My trips</h2>
+          <hr>
             <div>
               <ul *ngFor="let trip of trips | async">
                 <li *ngIf="trip.Owner == id">Name:  {{trip.Name}}</li>
@@ -72,10 +74,11 @@
       </div>
     </div>
 
-    <div class="col-xs-12 col-sm-12 col-md-9">
+    <div class="col-xs-12 col-sm-12 col-md-12">
       <div class="box" style="text-align:left">
         <fieldset>
           <h2>Trips</h2>
+          <hr>
             <div>
               <ul *ngFor="let trip of trips | async">
                 <li>Name:   {{trip.Name}}</li>
