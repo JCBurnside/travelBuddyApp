@@ -9,7 +9,7 @@ import { AngularFireModule } from 'angularfire2';
 import { AngularFireAuth } from 'angularfire2/auth';
 import { firebaseConfig } from '../environments/firebase.config';
 
-import ProfileService from './services/profile.service';
+import {ProfileService} from './services/profile.service';
 import { FirebaseService } from './services/auth.service';
 import { TripsService } from "./services/trips.service";
 import { AngularFireDatabase } from "angularfire2/database";
@@ -46,7 +46,7 @@ import { ProfileSearchResultsComponent } from './profile-search-results/profile-
     RouterModule.forRoot(routes),
     FormsModule,
     AngularFireModule.initializeApp(firebaseConfig),
-    
+
 
   ],
   providers: [

@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from "@angular/router";
 import Profile from "../models/profile";
-import ProfileService from "../services/profile.service";
+import {ProfileService} from "../services/profile.service";
 import { FirebaseService } from "../services/auth.service";
 import { TripsService } from "../services/trips.service";
 
@@ -23,7 +23,7 @@ export class ProfileEditComponent implements OnInit {
         this.profile = profile;
       });
     });
-    
+
     this.img = this.AS.currentUser().photoURL;
     this.email=this.AS.currentUser().email;
   }

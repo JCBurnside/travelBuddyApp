@@ -5,7 +5,7 @@ import { AngularFireDatabase, FirebaseListObservable } from "angularfire2/databa
 
 @Injectable()
 
-export default class ProfileService {
+export class ProfileService {
     items;
     constructor(db: AngularFireDatabase) {
         this.items = db.database.ref('profiles');

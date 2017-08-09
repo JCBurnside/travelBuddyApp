@@ -3,15 +3,15 @@
     <h1>TRIPS</h1>
     <div class="form-group">
       <label for="name">Name</label>
-      <input type="text" class="form-control" id="name" name="name" placeholder="First & Last Name" [(ngModel)]="tripedit.name">
+      <input name="name" [(ngModel)]="tripedit.name" type="text" id="name" class="form-control"  placeholder="First & Last Name">
     </div>
     <div class="form-group">
       <label for="destination">Destination</label>
-      <input type="text" class="form-control" id="destination" name="destination" placeholder="City, State, Country" [(ngModel)]="tripedit.destination">
+      <input name="destination" [(ngModel)]="tripedit.destination" type="text" id="destination" class="form-control" placeholder="City, State, Country">
     </div>
     <div class="form-group">
       <label for="transportation">Transportation</label>
-      <select type="dropdown" class="form-control" id="transportation" name="transportation" placeholder="Select" [(ngModel)]="tripedit.transportation">
+      <select name="transportation" [(ngModel)]="tripedit.transportation" type="dropdown" id="transportation" class="form-control"  placeholder="Select">
             <option value="">-- Select --</option>
             <option value="air">Air</option>
             <option value="land">Land</option>
@@ -20,15 +20,15 @@
     </div>
     <div class="form-group">
       <label for="start-date">Start Date</label>
-      <input type="date" class="form-control" id="start-date" name="start-date" [(ngModel)]="tripedit.transportation">
+      <input name="start-date"  [(ngModel)]="tripedit.transportation" type="date" id="start-date" class="form-control">
     </div>
     <div class="form-group">
       <label for="end-date">End Date</label>
-      <input type="date" class="form-control" id="end-date" name="end-date" [(ngModel)]="tripedit.start-date">
+      <input name="end-date" [(ngModel)]="tripedit.start-date" type="date" id="end-date"  class="form-control">
     </div>
     <div class="form-group">
       <label for="name">Price</label>
-      <input type="text" class="form-control" id="price" name="price" placeholder="Average Cost" [(ngModel)]="tripedit.end-date">
+      <input name="price" type="text" [(ngModel)]="tripedit.end-date" id="price" class="form-control" placeholder="Average Cost">
     </div>
     <button type="submit" class="btn btn-success">Sumbit</button>
   </form>
