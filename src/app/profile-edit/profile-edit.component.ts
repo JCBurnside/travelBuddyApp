@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from "@angular/router";
-import { Profile } from "../models/profile";
+import Profile from "../models/profile";
 import { ProfileService } from "../services/profile.service";
 import { FirebaseService } from "../services/auth.service";
 import { TripsService } from "../services/trips.service";
