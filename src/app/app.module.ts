@@ -8,6 +8,7 @@ import { AngularFireModule } from 'angularfire2';
 import { AngularFireAuth } from 'angularfire2/auth';
 import { firebaseConfig } from '../environments/firebase.config';
 
+
 import { ProfileService } from './services/profile.service';
 import { FirebaseService } from './services/auth.service';
 import { TripsService } from "./services/trips.service";
