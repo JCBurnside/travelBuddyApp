@@ -34,6 +34,7 @@ export class HomepageComponent implements OnInit {
     else if (!this.newTrip.StartDate || !this.newTrip.EndDate)
       alert("You need a" + !this.newTrip.StartDate ? ' Start Date' : 'n End Date');
     else {
+      this.newTrip.Owner=this.as.getId();
       this.ts.addNewTrip(this.newTrip);
     }
     this.updateTrips();
