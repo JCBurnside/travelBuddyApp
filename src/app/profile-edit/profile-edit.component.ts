@@ -16,7 +16,7 @@ export class ProfileEditComponent implements OnInit {
   constructor(private route: ActivatedRoute, private PS: ProfileService, private AS: FirebaseService) { }
   img: any;
   email:string;
-  PID: string;
+  PID: string;//profile ID
   private sub: any;
   ngOnInit() {
     this.sub = this.route.params.subscribe(params => {

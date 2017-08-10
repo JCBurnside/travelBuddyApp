@@ -13,9 +13,9 @@ import { FirebaseService } from "../services/auth.service";
 export class HomepageComponent implements OnInit {
   private newTrip = new Trip(null, null);
   public trips:FirebaseListObservable<any[]>;
+
   private id:string;
   constructor(public ts: TripsService,public as:FirebaseService) {
-
 
 
     this.trips=ts.getTripsByOwner(this.id);
@@ -34,6 +34,7 @@ export class HomepageComponent implements OnInit {
     else if (!this.newTrip.StartDate || !this.newTrip.EndDate)
       alert("You need a" + !this.newTrip.StartDate ? ' Start Date' : 'n End Date');
     else {
+      this.newTrip.Owner=this.as.getId();
       this.ts.addNewTrip(this.newTrip);
     }
     this.updateTrips();
