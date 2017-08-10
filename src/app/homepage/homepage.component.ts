@@ -13,10 +13,10 @@ import { FirebaseService } from "../services/auth.service";
 export class HomepageComponent implements OnInit {
   private newTrip = new Trip(null, null);
   public trips:FirebaseListObservable<any[]>;
+
   private id:string;
   constructor(public ts: TripsService,public as:FirebaseService) {
 
-    this.items = [{Owner: this.id}];
 
     this.trips=ts.getTripsByOwner(this.id);
   }
