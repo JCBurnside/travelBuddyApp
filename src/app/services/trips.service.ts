@@ -19,6 +19,7 @@ export class TripsService {
       }));
     });
   }
+
   addNewTrip(trip: Trip,cb:(key:String,err?:Error)=>void): void {
     delete trip.$key
     this.trips.push(trip)
@@ -26,6 +27,7 @@ export class TripsService {
       let s:String=new String(something);
       cb(s.substr(s.lastIndexOf('/')+1));
     }).catch( err =>{console.log(err);cb(null,err)});
+
   }
   getAllTrips(): Trip[] {
     let out: Trip[] = new Array<Trip>();

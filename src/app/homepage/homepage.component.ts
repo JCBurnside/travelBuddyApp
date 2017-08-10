@@ -5,6 +5,7 @@ import Trip from "../models/trip";
 import { TripsService } from "../services/trips.service";
 import { FirebaseService } from "../services/auth.service";
 import { ImageService } from "../services/image.service";
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-homepage',
@@ -17,8 +18,7 @@ export class HomepageComponent implements OnInit {
   private img:String;
   private id:string;
   @ViewChild('imgInput') el:ElementRef;
-  constructor(public ts: TripsService,public as:FirebaseService,private is:ImageService) {
-
+  constructor(public router: Router,public ts: TripsService,public as:FirebaseService,private is:ImageService) {
 
     this.trips=ts.getTripsByOwner(this.id);
   }
@@ -55,6 +55,11 @@ export class HomepageComponent implements OnInit {
       });
     })
   }
+
+  onClick($key){
+    this.router.navigate(["/trip-edit", $key]);
+  }
+
   ngOnInit() {
     this.updateTrips();
     this.id=this.as.getId();

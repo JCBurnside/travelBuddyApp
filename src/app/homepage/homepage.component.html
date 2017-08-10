@@ -68,7 +68,8 @@
                 <li *ngIf="trip.Owner == id">Destination:   {{trip.Destinations}}</li>
                 <li *ngIf="trip.Owner == id">Price:   {{trip.Price}}</li>
                 <li *ngIf="trip.Owner == id">Start date:  {{trip.StartDate}}</li>
-                <li *ngIf="trip.Owner == id">End date:  {{trip.EndDate}}</li>  
+                <li *ngIf="trip.Owner == id">End date:  {{trip.EndDate}}</li>
+                <li *ngIf="trip.Owner == id"><button (click)="onClick(trip.$key)">Edit trip</button></li>  
               </ul>
             </div>  
         </fieldset>
