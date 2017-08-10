@@ -14,7 +14,8 @@
         <hr>
           <div class="form-group" show-errors>
             <label for="title">Upload Image</label>
-            <input name="image-upload" type="file" id="image-upload">
+            <img *ngIf='img' [src]='img'/>
+            <input #imgInput name="image-upload" (change)='imgChange($event)' type="file" accept="image/png, image/jpeg, image/jpg" id="image-upload">
           </div>
 
           <div class="form-group">

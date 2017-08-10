@@ -8,6 +8,7 @@ export default class Trip{
         public ModeOfTransit:String="air",
         public StartDate?:Date,
         public EndDate?:Date,
+        public ImageURL:String="../img/placeholder.png",
         public Description:String="",
         public $key?:String,
         public Travellers:String[]=new Array<string>(),
