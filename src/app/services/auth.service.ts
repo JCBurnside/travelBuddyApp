@@ -43,5 +43,7 @@ export class FirebaseService{
 			this.authState = authState
 		});
 	}
-	
+	signout(){
+		this.af.auth.signOut();
+	}
 }

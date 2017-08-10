@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { FirebaseListObservable } from "angularfire2/database";
+
 import Trip from "../models/trip";
 import { TripsService } from "../services/trips.service";
 import { FirebaseService } from "../services/auth.service";
@@ -10,10 +12,12 @@ import { FirebaseService } from "../services/auth.service";
 })
 export class HomepageComponent implements OnInit {
   private newTrip = new Trip(null, null);
-  public trips;
-  public items;
+  public trips:FirebaseListObservable<any[]>;
+
+  private id:string;
   constructor(public ts: TripsService,public as:FirebaseService) {
-    this.items = [{Owner: this.id}];
+
+
     this.trips=ts.getTripsByOwner(this.id);
   }
   onChange() {
@@ -35,9 +39,13 @@ export class HomepageComponent implements OnInit {
     this.updateTrips();
   }
   updateTrips(){
-    this.trips=this.ts.getTripsByOwner(this.id);
+    this.trips.subscribe(trips=>{
+      trips.forEach(trip=>{
+        if(trip.ownerID==this.id)
+          console.log(trip)
+      });
+    })
   }
-  id:string;
 
   ngOnInit() {
     this.updateTrips();
