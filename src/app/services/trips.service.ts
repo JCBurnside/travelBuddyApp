@@ -7,7 +7,7 @@ import { FirebaseService } from "./auth.service";
 @Injectable()
 export class TripsService {
   trips: FirebaseListObservable<any[]>;
-  constructor(db: AngularFireDatabase,private at:FirebaseService) {
+  constructor(private db: AngularFireDatabase,private at:FirebaseService) {
     this.trips = db.list('trips');
   }
   getTripById(id: string, cb: Function): void {
@@ -20,6 +20,11 @@ export class TripsService {
     });
   }
   addNewTrip(trip:Trip):void{
+    let trip_;
+    delete trip.$key
+      trip_= trip
+      console.log(trip_);  
+    
     this.trips.push(trip).then(a=>console.log(a),err=>console.log(err));
   }
   getAllTrips(): Trip[] {
@@ -48,6 +53,9 @@ export class TripsService {
       });*/
     
     return this.trips;
+  }
+  saveTrip(profile:Trip,id:String, cb: Function) {
+      this.db.object('/trips/' + id).update(profile).then(() => cb(true)).catch(err => cb(false, err));
   }
 }
 

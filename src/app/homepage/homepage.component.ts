@@ -4,6 +4,8 @@ import { FirebaseListObservable } from "angularfire2/database";
 import Trip from "../models/trip";
 import { TripsService } from "../services/trips.service";
 import { FirebaseService } from "../services/auth.service";
+import { Router } from '@angular/router';
+
 
 @Component({
   selector: 'app-homepage',
@@ -15,7 +17,7 @@ export class HomepageComponent implements OnInit {
   public trips:FirebaseListObservable<any[]>;
 
   private id:string;
-  constructor(public ts: TripsService,public as:FirebaseService) {
+  constructor(public router: Router, public ts: TripsService,public as:FirebaseService) {
 
 
     this.trips=ts.getTripsByOwner(this.id);
@@ -34,6 +36,7 @@ export class HomepageComponent implements OnInit {
     else if (!this.newTrip.StartDate || !this.newTrip.EndDate)
       alert("You need a" + !this.newTrip.StartDate ? ' Start Date' : 'n End Date');
     else {
+      this.newTrip.Owner=this.as.getId();
       this.ts.addNewTrip(this.newTrip);
     }
     this.updateTrips();
@@ -46,7 +49,9 @@ export class HomepageComponent implements OnInit {
       });
     })
   }
-
+  onClick($key){
+    this.router.navigate(["/trip-edit", $key]);
+  }
   ngOnInit() {
     this.updateTrips();
     this.id=this.as.getId();
