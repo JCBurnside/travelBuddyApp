@@ -9,7 +9,7 @@ export class ProfileService {
 
     profiles;
 
-    constructor(db: AngularFireDatabase) {
+    constructor(public db: AngularFireDatabase) {
         this.profiles = db.database.ref('profiles');
 
     }

@@ -16,7 +16,7 @@ export class HomepageComponent implements OnInit {
   private id:string;
   constructor(public ts: TripsService,public as:FirebaseService) {
 
-    this.items = [{Owner: this.id}];
+
 
     this.trips=ts.getTripsByOwner(this.id);
   }
