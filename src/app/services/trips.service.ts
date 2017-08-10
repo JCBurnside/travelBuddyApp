@@ -7,7 +7,7 @@ import { FirebaseService } from "./auth.service";
 @Injectable()
 export class TripsService {
   trips: FirebaseListObservable<any[]>;
-  constructor(db: AngularFireDatabase,private at:FirebaseService) {
+  constructor(private db: AngularFireDatabase, private at: FirebaseService) {
     this.trips = db.list('trips');
   }
   getTripById(id: string, cb: Function): void {
@@ -19,35 +19,43 @@ export class TripsService {
       }));
     });
   }
-  addNewTrip(trip:Trip):void{
-    this.trips.push(trip).then(a=>console.log(a),err=>console.log(err));
+  addNewTrip(trip: Trip,cb:(key:String,err?:Error)=>void): void {
+    delete trip.$key
+    this.trips.push(trip)
+    .then(something =>{ 
+      let s:String=new String(something);
+      cb(s.substr(s.lastIndexOf('/')+1));
+    }).catch( err =>{console.log(err);cb(null,err)});
   }
   getAllTrips(): Trip[] {
-   let out: Trip[] = new Array<Trip>();
+    let out: Trip[] = new Array<Trip>();
     this.trips.forEach(item => {
-   
+
       item.forEach(trip => out.push(trip));
     })
-    
+
     return out;
     /*return this.trips.subscribe().then(function(snapshot){
       return snapshot.val();
     })*/
   }
 
-  getTripsByOwner(owner: string){
-   /* let out: Trip[] = new Array<Trip>();
-    console.log("Get fucked");
-    console.log(this.getAllTrips())
-    this.getAllTrips().forEach(trip => {
-        console.log(trip.Owner, owner);
-        if(trip.Owner==owner){  
-        out.push(trip);
-      }
-      console.log(trip);
-      });*/
-    
+  getTripsByOwner(owner: string) {
+    /* let out: Trip[] = new Array<Trip>();
+     console.log("Get fucked");
+     console.log(this.getAllTrips())
+     this.getAllTrips().forEach(trip => {
+         console.log(trip.Owner, owner);
+         if(trip.Owner==owner){  
+         out.push(trip);
+       }
+       console.log(trip);
+       });*/
+
     return this.trips;
+  }
+  saveTrip(profile:Trip,id:String, cb: Function) {
+      this.db.object('/trips/' + id).update(profile).then(() => cb(true)).catch(err => cb(false, err));
   }
 }
 
