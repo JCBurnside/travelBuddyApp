@@ -25,7 +25,7 @@ export const routes = [
     component: ProfileViewComponent
   },
   {
-    path     : 'trip-view',
+    path     : 'trip-view/:id',
     component: TripViewComponent
   },
   {

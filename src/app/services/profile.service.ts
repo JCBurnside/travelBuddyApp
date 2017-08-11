@@ -37,5 +37,8 @@ export class ProfileService {
         else
             this.profiles.push(profile);
     }
+    getProfileByOwner(id:string,cb:(profile:Profile,err:Error)=>void){
+        this.profiles.orderByChild("ownerID").equalTo(id).on("value",cb);
+    }
 }
 
