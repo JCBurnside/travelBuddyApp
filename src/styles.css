@@ -6,3 +6,7 @@ body{
 	background-attachment: fixed;
 	background-size:  cover;
 }
+  .box img{
+    width:250px;
+    height:250px;
+  }
