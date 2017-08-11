@@ -5,8 +5,8 @@ export default class Profile{
         public Gender:String='female',
         public Interests:String[]=[],
         public Headline?:String,
-        public HomeTown?:String,
         public Occupation?:String,
-        public ImgURL?:String,
+        public ImgURL?:string,
+        public HomeTown?:String,
         public $key?:string){}
 }

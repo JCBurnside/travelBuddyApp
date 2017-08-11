@@ -1,7 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import Profile from '../models/profile';
 
+import { ImageService } from '../services/image.service';
 import { ProfileService } from '../services/profile.service';
 import { FirebaseService } from '../services/auth.service';
 import { TripsService } from '../services/trips.service';
@@ -14,8 +15,9 @@ import { TripsService } from '../services/trips.service';
 export class ProfileEditComponent implements OnInit {
   public profileedit: Profile;
   genderSign: string;
-  constructor(private route: ActivatedRoute, private PS: ProfileService, private AS: FirebaseService) { }
-  img: any;
+  constructor(private route: ActivatedRoute, private PS: ProfileService, private AS: FirebaseService,private IS:ImageService) { }
+  img: string;
+  @ViewChild('imgUp') imgUp: ElementRef;
   email: string;
   PID: string; // profile ID
   private sub: any;
@@ -30,13 +32,24 @@ export class ProfileEditComponent implements OnInit {
     });
 
   }
-  updateImg(img) { }
   onSubmit() {
-    this.PS.saveProfile(this.profileedit, (profile, err) => {
-      if (err) {
-        console.log(err);
-      }
-    });
+    if (!this.imgUp.nativeElement.files[0]) {
+      this.PS.saveProfile(this.profileedit, (profile, err) => {
+        if (err) {
+          console.log(err);
+        }
+      });
+    }else{
+      this.IS.uploadProfile(this.imgUp.nativeElement.files[0],this.profileedit,(snap,err)=>{
+        if(err){
+          return console.log(err);
+        }
+        this.profileedit.ImgURL=snap.downloadURL;
+        this.PS.saveProfile(this.profileedit,(success,err)=>{
+          console.log(success||err);
+        })
+      })
+    }
   }
 
 }
