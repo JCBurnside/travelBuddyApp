@@ -1,45 +1,199 @@
 <!-- <form> -->
-  <!-- <img *ngIf='img'[src]='img'/> -->
-  <!-- <input type="file" (ngModelChange)='updateImg($event)' accept=".jpg,.jpeg,.png"/>
+<!-- <img *ngIf='img'[src]='img'/> -->
+<!-- <input type="file" (ngModelChange)='updateImg($event)' accept=".jpg,.jpeg,.png"/>
   <input type="text" name="email" [(ngModel)]='email' />
   <input type="password" name="currPass" [(ngModel)]='currentPass'/>
   <input type="password" name="newPass" [(ngModel)]='newPassword'/>
   <input type="password" name="confPass" [(ngModel)]='confirmPassword'/>
   <button type="submit" class="btn">Update</button>
 </form> -->
+<div class="container">
+  <div class="col-sm-12 col-sm-12">
+    <form (ngSubmit)="onSubmit()" #tripsForm="ngForm">
+      <h1>EDIT PROFILE</h1>
+        <hr><br>
+      <div class="form-group" show-errors>
+        <label for="imageupload">Upload Image</label>
+        <input name="image-upload" type="file" id="image-upload">
+      </div>
+      <div class="form-group">
+        <label for="headline">Headline</label>
+        <input name="headline" [(ngModel)]="profileedit.headline" type="text" id="headline" class="form-control" placeholder="&nbsp; Statement | Quote">
+      </div>
+      <div class="form-group">
+        <label for="name">Name</label>
+        <input name="name" [(ngModel)]="profileedit.name" type="text" id="name" class="form-control" placeholder="&nbsp; First & Last Name">
+      </div>
+      <div class="form-group">
 
-<div class="col-sm-2 col-sm-3">
-  <form (ngSubmit)="onSubmit()" #tripsForm="ngForm">
-    <h1>EDIT PROFILE</h1>
-    <div class="form-group">
-      <label for="name">Name</label>
-      <input name="name" [(ngModel)]="tripedit.name" type="text" id="name" class="form-control"  placeholder="First & Last Name">
-    </div>
-    <div class="form-group">
-      <label for="destination">Destination</label>
-      <input name="destination" [(ngModel)]="tripedit.destination" type="text" id="destination" class="form-control" placeholder="City, State, Country">
-    </div>
-    <div class="form-group">
-      <label for="transportation">Transportation</label>
-      <select name="transportation" [(ngModel)]="tripedit.transportation" type="dropdown" id="transportation" class="form-control"  placeholder="Select">
-            <option value="">-- Select --</option>
-            <option value="air">Air</option>
-            <option value="land">Land</option>
-            <option value="water">Water</option>
-        </select>
-    </div>
-    <div class="form-group">
-      <label for="start-date">Start Date</label>
-      <input name="start-date"  [(ngModel)]="tripedit.transportation" type="date" id="start-date" class="form-control">
-    </div>
-    <div class="form-group">
-      <label for="end-date">End Date</label>
-      <input name="end-date" [(ngModel)]="tripedit.start-date" type="date" id="end-date"  class="form-control">
-    </div>
-    <div class="form-group">
-      <label for="name">Price</label>
-      <input name="price" type="text" [(ngModel)]="tripedit.end-date" id="price" class="form-control" placeholder="Average Cost">
-    </div>
-    <button type="submit" class="btn btn-success">Sumbit</button>
-  </form>
-</div>
+        <label for="gender">Gender</label>
+        <img [src]='genderSign'/>
+      <select name="gender" [(ngModel)]="profileedit.gender" type="dropdown" id="gender" class="form-control">
+        <option value="">-- Select --</option>
+        <option value="male">Male</option>
+        <option value="female">Female</option>
+        <option value="other">Other</option>
+      </select>
+      </div>
+      <div class="form-group">
+        <label for="hometown">Where are you from?</label>
+        <input name="hometown" [(ngModel)]="profileedit.hometown" type="text" id="hometown" class="form-control" placeholder="&nbsp; City, State, Country">
+      </div>
+      <div class="form-group">
+        <label for="occupation">Occupation</label>
+        <input name="occupation" [(ngModel)]="profileedit.occupation" type="text" id="occupation" class="form-control" placeholder="&nbsp; Ex: Lawyer">
+      </div>
+      <div class="form-group">
+        <label for="interests">Interests</label>
+      </div>
+
+<!-- INTEREST BUTTONS -->
+      <div class="inputs">
+        <div class="area">
+          <div class="row">
+            <div class="col-3">
+              <span class="input">
+                <label for="beaches">Beaches</label>
+                <input type="checkbox" name="beaches" id="beaches">
+              </span>
+            </div>
+            <div class="col-3">
+              <span class="input">
+                <label for="camping">Camping</label>
+                <input type="checkbox" name="camping" id="camping">
+              </span>
+            </div>
+            <div class="col-3">
+              <span class="input">
+                <label for="culture">Culture</label>
+                <input type="checkbox" name="culture" id="culture">
+              </span>
+            </div>
+            <div class="col-3">
+              <span class="input">
+                <label for="dance clubs | raves">Dance Clubs | Raves</label>
+                <input type="checkbox" name="dance clubs | raves" id="dance clubs | raves">
+              </span>
+            </div>
+          </div>
+        </div>
+
+        <div class="area">
+          <div class="row">
+            <div class="col-3">
+              <span class="input">
+                <label for="food | culture">Food | Culture</label>
+                <input type="checkbox" name="food | culture" id="food | culture">
+              </span>
+            </div>
+            <div class="col-3">
+              <span class="input">
+                <label for="health | fitness">Health | Fitness</label>
+                <input type="checkbox" name="health | fitness" id="health | fitness">
+              </span>
+            </div>
+            <div class="col-3">
+              <span class="input">
+                <label for="history">History</label>
+                <input type="checkbox" name="history" id="history">
+              </span>
+            </div>
+            <div class="col-3">
+              <span class="input">
+                <label for="hiking">Hiking</label>
+                <input type="checkbox" name="hiking" id="hiking">
+              </span>
+            </div>
+          </div>
+        </div>
+
+        <div class="area">
+          <div class="row">
+            <div class="col-3">
+              <span class="input">
+                <label for="movies">Movies</label>
+                <input type="checkbox" name="movies" id="movies">
+              </span>
+            </div>
+            <div class="col-3">
+              <span class="input">
+                <label for="music">Music</label>
+                <input type="checkbox" name="music" id="music">
+              </span>
+            </div>
+            <div class="col-3">
+              <span class="input">
+                <label for="nature">Nature</label>
+                <input type="checkbox" name="nature" id="nature">
+              </span>
+            </div>
+            <div class="col-3">
+              <span class="input">
+                <label for="photography">Photography</label>
+                <input type="checkbox" name="photography" id="photography">
+              </span>
+            </div>
+          </div>
+        </div>
+
+        <div class="area">
+          <div class="row">
+            <div class="col-3">
+              <span class="input">
+                <label for="politics">Politics</label>
+                <input type="checkbox" name="politics" id="politics">
+              </span>
+            </div>
+            <div class="col-3">
+              <span class="input">
+                <label for="reading">Reading</label>
+                <input type="checkbox" name="reading" id="reading">
+              </span>
+            </div>
+            <div class="col-3">
+              <span class="input">
+                <label for="religion">Religion</label>
+                <input type="checkbox" name="religion" id="religion">
+              </span>
+            </div>
+            <div class="col-3">
+              <span class="input">
+                <label for="road trips">Road Trips</label>
+                <input type="checkbox" name="road trips" id="road trips">
+              </span>
+            </div>
+          </div>
+        </div>
+
+        <div class="area">
+          <div class="row">
+            <div class="col-3">
+              <span class="input">
+                <label for="sports">Sports</label>
+                <input type="checkbox" name="sports" id="sports">
+              </span>
+            </div>
+            <div class="col-3">
+              <span class="input">
+                <label for="water sports">Water Sports</label>
+                <input type="checkbox" name="water sports" id="water sports">
+              </span>
+            </div>
+            <div class="col-3">
+              <span class="input">
+                <label for="wine connoisseur">Wine Connoisseur</label>
+                <input type="checkbox" name="wine connoisseur" id="wine connoisseur">
+              </span>
+            </div>
+            <div class="col-3">
+              <span class="input">
+                <label for="yoga">Yoga</label>
+                <input type="checkbox" name="yoga" id="yoga-4">
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <button type="submit" class="btn btn-secondary btn-lg" style="margin-top:2%">&nbsp; Submit &nbsp;</button>
+    </form>
+  </div>
