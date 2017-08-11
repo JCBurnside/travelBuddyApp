@@ -47,7 +47,7 @@ import { NavbarComponent } from "./nav/navbar.component";
     BrowserModule,
     RouterModule.forRoot(routes),
     FormsModule,
-    AngularFireModule.initializeApp(firebaseConfig)
+    AngularFireModule.initializeApp(firebaseConfig),
   ],
   providers: [
     {provide:FirebaseService,useClass:FirebaseService},

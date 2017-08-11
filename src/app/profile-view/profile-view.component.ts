@@ -11,8 +11,11 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./profile-view.component.css']
 })
 export class ProfileViewComponent implements OnInit {
-
-  constructor() { }
+  // private profile:Profile;
+  constructor() {
+    // this.profile.Headline="Lets Go";
+    // this.profile.FirstName="BOB";
+  }
 
   ngOnInit() {
   }
