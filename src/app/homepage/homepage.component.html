@@ -57,7 +57,26 @@
       </div>
     </div>
 
-    <div class="col-xs-12 col-sm-6 col-md-8">
+    <div class="col-xs-12 col-sm-12 col-md-8">
+      <div class="box" style="text-align:left">
+        <fieldset>
+          <h2>Trips</h2>
+          <hr>
+            <div>
+              <ul *ngFor="let trip of trips | async">
+                <li>Name:   {{trip.Name}}</li>
+                <li>Destination:  {{trip.Destinations}}</li>
+                <li>Price:  {{trip.Price}}</li>
+                <li>Start date:   {{trip.StartDate}}</li>
+                <li>End date:   {{trip.EndDate}}</li> 
+                <li><button (click)="onClickView(trip.$key)">View trip</button></li> 
+              </ul>              
+            </div>
+        </fieldset>
+      </div>
+    </div>
+    
+    <div class="col-xs-12 col-sm-6 col-md-12">
       <div class="box">
         <fieldset>
           <h2>My trips</h2>
@@ -69,30 +88,11 @@
                 <li *ngIf="trip.Owner == id">Price:   {{trip.Price}}</li>
                 <li *ngIf="trip.Owner == id">Start date:  {{trip.StartDate}}</li>
                 <li *ngIf="trip.Owner == id">End date:  {{trip.EndDate}}</li>
-                <li *ngIf="trip.Owner == id"><button (click)="onClick(trip.$key)">Edit trip</button></li>  
+                <li *ngIf="trip.Owner == id"><button (click)="onClickEdit(trip.$key)">Edit trip</button><button (click)="onClickView(trip.$key)">View trip</button></li>    
               </ul>
             </div>  
         </fieldset>
       </div>
     </div>
-
-    <div class="col-xs-12 col-sm-12 col-md-12">
-      <div class="box" style="text-align:left">
-        <fieldset>
-          <h2>Trips</h2>
-          <hr>
-            <div>
-              <ul *ngFor="let trip of trips | async">
-                <li>Name:   {{trip.Name}}</li>
-                <li>Destination:  {{trip.Destinations}}</li>
-                <li>Price:  {{trip.Price}}</li>
-                <li>Start date:   {{trip.StartDate}}</li>
-                <li>End date:   {{trip.EndDate}}</li>  
-              </ul>              
-            </div>
-        </fieldset>
-      </div>
-    </div>
-
   </div>
 </div>

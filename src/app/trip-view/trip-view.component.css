@@ -2,39 +2,16 @@
 @import url('https://fonts.googleapis.com/css?family=Open+Sans');
 
 h1{
-  color: white;
-}
-h2{
   font-family: Open Sans;
   color: #000;
 }
-.tile{
-
+p{
+  font-family: Lora;
+  color: #000;
 }
-
-label{
-  color: #000 !important;
-}
-
-#image-upload{
-  color:white;
-}
-
-body {
-  text-transform: uppercase;
-  padding: 50px 0;
-}
-
-.box {
-  display: flex;
-  font-family: lora;
-
-
-  margin: 20px 0;
+.box{
   padding: 20px;
-  width: 100%;
-  min-height: 200px;
-
   background: rgb(255,255,255); /* for IE */
   background: rgba(225,225,225,0.85);
+  font-size: 16px;
 }

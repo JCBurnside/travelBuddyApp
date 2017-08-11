@@ -56,8 +56,12 @@ export class HomepageComponent implements OnInit {
     })
   }
 
-  onClick($key){
+  onClickEdit($key){
     this.router.navigate(["/trip-edit", $key]);
+  }
+
+    onClickView($key){
+    this.router.navigate(["/trip-view", $key]);
   }
 
   ngOnInit() {
