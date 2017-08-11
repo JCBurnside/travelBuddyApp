@@ -7,7 +7,7 @@ import { FirebaseService } from "./auth.service";
 @Injectable()
 export class TripsService {
   trips: FirebaseListObservable<any[]>;
-  constructor(public db: AngularFireDatabase, private at: FirebaseService) {
+  constructor(private db: AngularFireDatabase, private at: FirebaseService) {
     this.trips = db.list('trips');
     console.log(this.getAllTrips());
   }
