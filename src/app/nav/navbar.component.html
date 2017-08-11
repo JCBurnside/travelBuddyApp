@@ -16,7 +16,7 @@
         <li><a routerLink="/signin">Sign In</a></li>
       </ul>
       <ul *ngIf='authed()' class="nav navbar-nav navbar-right">
-        <li><a routerLink="/profile">Profile</a></li>
+        <li><a (click)='userprofile()'>Profile</a></li>
         <li><a routerLink="/trip-view">trip-view </a></li>
         <li><a (click)='goToPE()'>Profile-edit</a></li>
         <li><a routerLink="/homepage">homepage</a></li>

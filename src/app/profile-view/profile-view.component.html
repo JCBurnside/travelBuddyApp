@@ -9,7 +9,7 @@
 </form> -->
 
 <div class="container">
-  <div id="profile" class="col-sm-12 col-sm-12">
+  <div id="profile" class="col-sm-12 col-sm-12" *ngIf='profileview'>
     <h2>PROFILE</h2>
     <hr><br>
     <div class="col-sm-6 col-sm-5" id="profileimage">
@@ -194,7 +194,9 @@
       </div>
     </div>
 
-    <div class="col-xs-12 col-sm-12 col-md-12">
+
+    </div>
+  <div class="col-xs-12 col-sm-12 col-md-12">
       <div class="box" style="text-align:left">
         <fieldset>
           <h2>TRIPS</h2>
@@ -211,5 +213,4 @@
         </fieldset>
         </div>
       </div>
-    </div>
   </div>
