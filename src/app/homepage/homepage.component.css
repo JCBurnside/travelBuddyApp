@@ -2,14 +2,12 @@
 @import url('https://fonts.googleapis.com/css?family=Open+Sans');
 
 h1{
-  color: white;
+  color: #000;
 }
+
 h2{
   font-family: Open Sans;
   color: #000;
-}
-.tile{
-
 }
 
 label{
@@ -27,14 +25,56 @@ body {
 
 .box {
   display: flex;
-  font-family: lora;
-
- 
   margin: 20px 0;
   padding: 20px;
   width: 100%;
   min-height: 200px;
-  
   background: rgb(255,255,255); /* for IE */
   background: rgba(225,225,225,0.85);
 }
+
+/*====================== TRIPS SECTION ======================*/
+li{
+  list-style-type: none;
+  font-size: 20px;
+   /* .btn{
+    margin-left:100px !important;
+  } */
+}
+
+.btn-default{
+  border: 5px solid #26a69a;
+  background-color: #26a69a;
+  font-size: 20px;
+  color: #fff;
+  margin-top:3%;
+}
+
+.btn-default:hover{
+  opacity: 0.6;
+  filter: alpha(opacity=50); /* For IE8 and earlier */
+}
+
+.btn-success{
+  border:5px solid #1549A7;
+  background-color: #1549A7;
+  font-size: 20px;
+  color: #fff;
+  margin-top:3%;
+}
+
+.btn-success:hover{
+  opacity: 0.5;
+  filter: alpha(opacity=50); /* For IE8 and earlier */
+}
+
+/* button{
+	background-color: #26a69a;
+	color: #fff;
+	border: 1px solid #26a69a;
+} */
+/* /* button:hover{
+	background-color: #26a69a;
+	color: #fff;
+  border: 1px solid #26a69a;
+} */

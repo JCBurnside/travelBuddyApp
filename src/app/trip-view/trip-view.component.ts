@@ -1,11 +1,11 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from "@angular/router";
-import { FirebaseListObservable } from "angularfire2/database";
+import { ActivatedRoute } from '@angular/router';
+import { FirebaseListObservable } from 'angularfire2/database';
 
-import Trip from "../models/trip";
-import { TripsService } from "../services/trips.service";
-import {ProfileService} from "../services/profile.service";
-import { FirebaseService } from "../services/auth.service";
+import Trip from '../models/trip';
+import { TripsService } from '../services/trips.service';
+import { ProfileService } from '../services/profile.service';
+import { FirebaseService } from '../services/auth.service';
 import { Router } from '@angular/router';
 
 @Component({
@@ -15,27 +15,30 @@ import { Router } from '@angular/router';
 })
 export class TripViewComponent implements OnInit {
 
-  constructor(private router: Router, private route:ActivatedRoute, public ts: TripsService, public ps:ProfileService, public as:FirebaseService) { }
+  constructor(private router: Router,
+    private route: ActivatedRoute,
+    public ts: TripsService,
+    public ps: ProfileService,
+    public as: FirebaseService) { }
   private _;
   private id;
   private sub: any;
-  public tripview:Trip=new Trip("","");
+  public tripview: Trip = new Trip("", "");
 
   ngOnInit() {
     this.sub = this.route.params.subscribe(params => {
-      this.ts.getTripById(params['id'], (tripview:Trip) => {
+      this.ts.getTripById(params['id'], (tripview: Trip) => {
         this.tripview = tripview;
       });
-      this.id= params['id'];
-    }); 
-    this.ps.getProfileByOwner(this.tripview.Owner,(profile,err) =>{
-    	if(err){
-    		console.log(err);
-    	}
-    	else{
-    		this._=profile.FirstName;
-    	}
-    })  	
+      this.id = params['id'];
+    });
+    this.ps.getProfileByOwner(this.tripview.Owner, (profile, err) => {
+      if (err) {
+        console.log(err);
+      } else {
+        this._ = profile.Name;
+      }
+    });
   }
 
 }
