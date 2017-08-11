@@ -1,4 +1,4 @@
-<div class="col-sm-2 col-sm-3">
+<div>
   <form (ngSubmit)="onSubmit()" #tripsForm="ngForm">
     <h1>TRIPS</h1>
     <div class="form-group">
@@ -30,6 +30,6 @@
       <label for="name">Price</label>
       <input name="price" type="text" [(ngModel)]="tripedit.end-date" id="price" class="form-control" placeholder="Average Cost">
     </div>
-    <button type="submit" class="btn btn-success">Sumbit</button>
+    <button type="submit" class="btn btn-success">Submit</button>
   </form>
 </div>
