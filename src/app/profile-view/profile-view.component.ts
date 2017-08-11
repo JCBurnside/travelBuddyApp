@@ -1,9 +1,8 @@
-
-import Profile from "../models/profile";
-import { ProfileService } from "../services/profile.service"
-import {FirebaseService} from "../services/auth.service"
+import Profile from '../models/profile';
+import { ActivatedRoute } from '@angular/router';
+import { ProfileService } from '../services/profile.service';
+import {FirebaseService} from '../services/auth.service';
 import { Component, OnInit } from '@angular/core';
-
 
 @Component({
   selector: 'app-profile-view',
@@ -11,10 +10,13 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./profile-view.component.css']
 })
 export class ProfileViewComponent implements OnInit {
-  // private profile:Profile;
-  constructor() {
-    // this.profile.Headline="Lets Go";
-    // this.profile.FirstName="BOB";
+  private profileview: Profile;
+  constructor(private route: ActivatedRoute, private PS: ProfileService) {
+    this.route.params.subscribe(params => {
+      this.PS.getProfileById(params['id'], (profile: Profile) => {
+        this.profileview = profile;
+      });
+    });
   }
 
   ngOnInit() {

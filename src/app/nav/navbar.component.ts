@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { FirebaseService } from "../services/auth.service";
+import { FirebaseService } from '../services/auth.service';
 import { Router } from '@angular/router';
 
 @Component({
@@ -8,15 +8,18 @@ import { Router } from '@angular/router';
     styleUrls: ['./navbar.component.css']
 })
 export class NavbarComponent {
-    constructor(private as:FirebaseService,private router:Router){}
-    goToPE(){
-        this.router.navigate(['/profile-edit',this.as.getId()])
+    constructor(private as: FirebaseService, private router: Router) {}
+    goToPE() {
+        this.router.navigate(['/profile-edit', this.as.getId()]);
     }
-    authed(){
+    authed() {
         return this.as.isAuthed();
     }
-    signOut(){
+    signOut() {
         this.as.signout();
         this.router.navigateByUrl('/signin');
+    }
+    userprofile() {
+        this.router.navigate(['/profile', this.as.getId()]);
     }
  }

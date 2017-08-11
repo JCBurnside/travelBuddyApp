@@ -9,7 +9,7 @@
 </form> -->
 <div class="container">
   <div class="col-sm-12 col-sm-12">
-    <form (ngSubmit)="onSubmit()" #tripsForm="ngForm">
+    <form (ngSubmit)="onSubmit()" *ngIf='profileedit'>
       <h1>EDIT PROFILE</h1>
         <hr><br>
       <div class="form-group" show-errors>
@@ -27,12 +27,13 @@
       <div class="form-group">
 
         <label for="gender">Gender</label>
-        <img [src]='genderSign'/>
+        <img *ngIf='genderSign' [src]='genderSign'/>
       <select name="gender" [(ngModel)]="profileedit.gender" type="dropdown" id="gender" class="form-control">
         <option value="">-- Select --</option>
         <option value="male">Male</option>
         <option value="female">Female</option>
         <option value="other">Other</option>
+        <option value="unspecified">Unspecified</option>
       </select>
       </div>
       <div class="form-group">
