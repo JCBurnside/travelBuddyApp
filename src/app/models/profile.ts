@@ -1,9 +1,12 @@
 export default class Profile{
     constructor(
         public ownerID:string,
-        public username:string,
-        public FirstName:String,
-        public LastName:String,
+        public Name:String,
         public Gender:String='female',
+        public Interests:String[]=[],
+        public Headline?:String,
+        public HomeTown?:String,
+        public Occupation?:String,
+        public ImgURL?:String,
         public $key?:string){}
 }
