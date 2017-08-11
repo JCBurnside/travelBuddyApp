@@ -1,3 +1,4 @@
+import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from "@angular/router";
 import { FirebaseListObservable } from "angularfire2/database";
 
@@ -15,8 +16,16 @@ export class TripViewComponent implements OnInit {
 
   constructor(private router: Router, private route:ActivatedRoute, public ts: TripsService, public as:FirebaseService) { }
   private id;
+  private sub: any;
+  public tripview:Trip=new Trip("","");
 
   ngOnInit() {
+    this.sub = this.route.params.subscribe(params => {
+      this.ts.getTripById(params['id'], (tripview:Trip) => {
+        this.tripview = tripview;
+      });
+      this.id= params['id'];
+    });   	
   }
 
 }
