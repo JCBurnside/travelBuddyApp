@@ -13,6 +13,7 @@ import { ProfileService } from './services/profile.service';
 import { FirebaseService } from './services/auth.service';
 import { TripsService } from "./services/trips.service";
 import { AngularFireDatabase } from "angularfire2/database";
+import { ImageService } from "./services/image.service";
 
 import { routes } from './services/routes';
 
@@ -46,14 +47,15 @@ import { NavbarComponent } from "./nav/navbar.component";
     BrowserModule,
     RouterModule.forRoot(routes),
     FormsModule,
-    AngularFireModule.initializeApp(firebaseConfig)
+    AngularFireModule.initializeApp(firebaseConfig),
   ],
   providers: [
     {provide:FirebaseService,useClass:FirebaseService},
     {provide:AngularFireAuth,useClass:AngularFireAuth},
     {provide:ProfileService,useClass:ProfileService},
     {provide:AngularFireDatabase,useClass:AngularFireDatabase},
-    {provide:TripsService,useClass:TripsService}
+    {provide:TripsService,useClass:TripsService},
+    {provide:ImageService,useClass:ImageService}
   ],
   bootstrap: [AppComponent]
 })

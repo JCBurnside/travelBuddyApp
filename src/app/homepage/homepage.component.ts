@@ -1,11 +1,11 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { FirebaseListObservable } from "angularfire2/database";
 
 import Trip from "../models/trip";
 import { TripsService } from "../services/trips.service";
 import { FirebaseService } from "../services/auth.service";
+import { ImageService } from "../services/image.service";
 import { Router } from '@angular/router';
-
 
 @Component({
   selector: 'app-homepage',
@@ -15,10 +15,10 @@ import { Router } from '@angular/router';
 export class HomepageComponent implements OnInit {
   private newTrip = new Trip(null, null);
   public trips:FirebaseListObservable<any[]>;
-
+  private img:String;
   private id:string;
-  constructor(public router: Router, public ts: TripsService,public as:FirebaseService) {
-
+  @ViewChild('imgInput') el:ElementRef;
+  constructor(public router: Router,public ts: TripsService,public as:FirebaseService,private is:ImageService) {
 
     this.trips=ts.getTripsByOwner(this.id);
   }
@@ -37,7 +37,13 @@ export class HomepageComponent implements OnInit {
       alert("You need a" + !this.newTrip.StartDate ? ' Start Date' : 'n End Date');
     else {
       this.newTrip.Owner=this.as.getId();
-      this.ts.addNewTrip(this.newTrip);
+      this.ts.addNewTrip(this.newTrip,(key)=>{
+        this.is.uploadTrip(this.el.nativeElement.files[0],key,(snap,err)=>{
+          if(err)
+            return console.log(err);
+          this.ts.saveTrip({...this.newTrip,ImageURL:snap.downloadURL},key,(s,e)=>{})
+        })
+      });
     }
     this.updateTrips();
   }
@@ -49,9 +55,11 @@ export class HomepageComponent implements OnInit {
       });
     })
   }
+
   onClick($key){
     this.router.navigate(["/trip-edit", $key]);
   }
+
   ngOnInit() {
     this.updateTrips();
     this.id=this.as.getId();

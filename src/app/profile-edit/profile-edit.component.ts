@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from "@angular/router";
 import Profile from "../models/profile";
-import { ProfileService } from "../services/profile.service";
+
+import {ProfileService} from "../services/profile.service";
 import { FirebaseService } from "../services/auth.service";
 import { TripsService } from "../services/trips.service";
 
@@ -12,6 +13,7 @@ import { TripsService } from "../services/trips.service";
 })
 export class ProfileEditComponent implements OnInit {
   public profile: Profile;
+  genderSign: string;
   constructor(private route: ActivatedRoute, private PS: ProfileService, private AS: FirebaseService) { }
   img: any;
   email:string;
@@ -23,9 +25,12 @@ export class ProfileEditComponent implements OnInit {
         this.profile = profile;
       });
     });
-    
+
     this.img = this.AS.currentUser().photoURL;
     this.email=this.AS.currentUser().email;
+    if(this.profile.Gender=="female"){
+      this.genderSign="./img/female.png";
+    }
   }
   updateImg(img){}
 

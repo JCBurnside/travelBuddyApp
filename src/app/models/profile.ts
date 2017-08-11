@@ -4,5 +4,6 @@ export default class Profile{
         public username:string,
         public FirstName:String,
         public LastName:String,
+        public Gender:String='female',
         public $key?:string){}
 }
