@@ -9,6 +9,7 @@ export class TripsService {
   trips: FirebaseListObservable<any[]>;
   constructor(private db: AngularFireDatabase,private at:FirebaseService) {
     this.trips = db.list('trips');
+    console.log(this.getAllTrips());
   }
   getTripById(id: string, cb: Function): void {
     let trip: Trip;
