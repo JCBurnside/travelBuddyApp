@@ -28,6 +28,7 @@ import { TripEditComponent } from './trip-edit/trip-edit.component';
 import { TripViewComponent } from './trip-view/trip-view.component';
 import { ProfileSearchResultsComponent } from './profile-search-results/profile-search-results.component';
 import { NavbarComponent } from "./nav/navbar.component";
+import { ReversePipe } from './reverse.pipe';
 
 @NgModule({
   declarations: [
@@ -41,7 +42,8 @@ import { NavbarComponent } from "./nav/navbar.component";
     HomepageComponent,
     TripEditComponent,
     TripViewComponent,
-    ProfileSearchResultsComponent
+    ProfileSearchResultsComponent,
+    ReversePipe
   ],
   imports: [
     BrowserModule,

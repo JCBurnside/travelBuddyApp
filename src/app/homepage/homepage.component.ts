@@ -8,19 +8,20 @@ import { ImageService } from "../services/image.service";
 import { Router } from '@angular/router';
 
 @Component({
-  selector: 'app-homepage',
+  selector   : 'app-homepage',
   templateUrl: './homepage.component.html',
-  styleUrls: ['./homepage.component.css']
+  styleUrls  : ['./homepage.component.css']
 })
 export class HomepageComponent implements OnInit {
   private newTrip = new Trip(null, null);
-  public trips:FirebaseListObservable<any[]>;
-  private img:String;
-  private id:string;
-  @ViewChild('imgInput') el:ElementRef;
-  constructor(public router: Router,public ts: TripsService,public as:FirebaseService,private is:ImageService) {
+  public     trips         : FirebaseListObservable<any[]>;
+  private    img           : String;
+  private    id            : string;
+  @ViewChild('imgInput') el: ElementRef;
+  constructor(public router: Router, public ts: TripsService, public as: FirebaseService, private is: ImageService) {
 
-    this.trips=ts.getTripsByOwner(this.id);
+    this.trips = ts.getTripsByOwner(this.id);
+    
   }
   onChange() {
     console.log(this.newTrip.Destinations);
@@ -36,33 +37,24 @@ export class HomepageComponent implements OnInit {
     else if (!this.newTrip.StartDate || !this.newTrip.EndDate)
       alert("You need a" + !this.newTrip.StartDate ? ' Start Date' : 'n End Date');
     else {
-      this.newTrip.Owner=this.as.getId();
-      this.ts.addNewTrip(this.newTrip,(key)=>{
-        this.is.uploadTrip(this.el.nativeElement.files[0],key,(snap,err)=>{
-          if(err)
-            return console.log(err);
-          this.ts.saveTrip({...this.newTrip,ImageURL:snap.downloadURL},key,(s,e)=>{})
-        })
+      this.newTrip.Owner = this.as.getId();
+      this.ts.addNewTrip(this.newTrip, (key) => {
+        if (this.el.nativeElement.files[0])
+          this.is.uploadTrip(this.el.nativeElement.files[0], key, (snap, err) => {
+            if (err)
+              return console.log(err);
+            this.ts.saveTrip({ ...this.newTrip, ImageURL: snap.downloadURL }, key, (s, e) => { })
+          })
       });
     }
-    this.updateTrips();
-  }
-  updateTrips(){
-    this.trips.subscribe(trips=>{
-      trips.forEach(trip=>{
-        if(trip.ownerID==this.id)
-          console.log(trip)
-      });
-    })
   }
 
-  onClick($key){
+  onClick($key) {
     this.router.navigate(["/trip-edit", $key]);
   }
 
   ngOnInit() {
-    this.updateTrips();
-    this.id=this.as.getId();
+    this.id = this.as.getId();
   }
 
 }

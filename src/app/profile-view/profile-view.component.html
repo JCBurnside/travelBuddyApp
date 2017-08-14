@@ -15,8 +15,7 @@
     <div class="col-sm-6 col-sm-5" id="profileimage">
       <div class="profileplaceholder">
         <!-- <img [src]='profileImage' /> -->
-        <img src="http://placehold.it/250x250">
-        <span class="feedback" name="profile-image" type="file" id="profile-image">{{profileview.ProfileImage}}</span>
+        <img [src]="profileview.ImgURL||'http://placehold.it/250x250'">
       </div>
     </div>
     <div class="col-sm-6 col-sm-6" id="profileimage">
@@ -27,11 +26,11 @@
         <span class="feedback" name="name" type="text" id="name">Name:  {{profileview.Name}}</span>
       </div><br>
       <div class="form-group">
-        <img [src]='genderSign' />
+        <!-- <img [src]='genderSign' /> -->
         <span class="feedback" name="gender" type="dropdown" id="gender">Gender: {{profileview.Gender}}</span>
       </div><br>
       <div class="form-group">
-        <img [src]='locationPin' />
+        <!-- <img [src]='locationPin' /> -->
         <span class="feedback" name="hometown" type="text" id="hometown">Hometown:  {{profileview.Hometown}}</span>
       </div><br>
       <div class="form-group">
@@ -41,7 +40,7 @@
       <!-- INTEREST BUTTONS -->
     <div id="interests" class="col-sm-12 col-sm-12">
       <div class="form-group">
-        <img [src]='interestsIcon' />
+        <!-- <img [src]='interestsIcon' /> -->
         <span class="feedback" name="interests" type="text" id="interests"><strong>Interests</strong>{{profileview.Interests}}</span>
         <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Choose 8 of the following:</p>
       </div>

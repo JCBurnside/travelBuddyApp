@@ -18,17 +18,17 @@
       </div>
       <div class="form-group">
         <label for="headline">Headline</label>
-        <input name="headline" [(ngModel)]="profileedit.headline" type="text" id="headline" class="form-control" placeholder="&nbsp; Statement | Quote">
+        <input name="headline" [(ngModel)]="profileedit.Headline" type="text" id="headline" class="form-control" placeholder="&nbsp; Statement | Quote">
       </div>
       <div class="form-group">
         <label for="name">Name</label>
-        <input name="name" [(ngModel)]="profileedit.name" type="text" id="name" class="form-control" placeholder="&nbsp; First & Last Name">
+        <input name="name" [(ngModel)]="profileedit.Name" type="text" id="name" class="form-control" placeholder="&nbsp; First & Last Name">
       </div>
       <div class="form-group">
 
         <label for="gender">Gender</label>
         <img *ngIf='genderSign' [src]='genderSign'/>
-      <select name="gender" [(ngModel)]="profileedit.gender" type="dropdown" id="gender" class="form-control">
+      <select name="gender" [(ngModel)]="profileedit.Gender" type="dropdown" id="gender" class="form-control">
         <option value="">-- Select --</option>
         <option value="male">Male</option>
         <option value="female">Female</option>
@@ -38,11 +38,11 @@
       </div>
       <div class="form-group">
         <label for="hometown">Where are you from?</label>
-        <input name="hometown" [(ngModel)]="profileedit.hometown" type="text" id="hometown" class="form-control" placeholder="&nbsp; City, State, Country">
+        <input name="hometown" [(ngModel)]="profileedit.Hometown" type="text" id="hometown" class="form-control" placeholder="&nbsp; City, State, Country">
       </div>
       <div class="form-group">
         <label for="occupation">Occupation</label>
-        <input name="occupation" [(ngModel)]="profileedit.occupation" type="text" id="occupation" class="form-control" placeholder="&nbsp; Ex: Lawyer">
+        <input name="occupation" [(ngModel)]="profileedit.Occupation" type="text" id="occupation" class="form-control" placeholder="&nbsp; Ex: Lawyer">
       </div>
       <div class="form-group">
         <label for="interests">Interests</label>
