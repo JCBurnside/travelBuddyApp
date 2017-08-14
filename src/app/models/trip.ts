@@ -8,7 +8,7 @@ export default class Trip{
         public ModeOfTransit:string="air",
         public StartDate?:Date,
         public EndDate?:Date,
-        public ImageURL:string="../img/placeholder.png",
+        public ImageURL:string='http://placehold.it/250x250',
         public Description:string="",
         public $key?:string,
         public Travellers:string[]=new Array<string>(),
