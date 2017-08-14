@@ -1,28 +1,32 @@
 import Profile from '../models/profile';
 import { ActivatedRoute } from '@angular/router';
 import { ProfileService } from '../services/profile.service';
-import {FirebaseService} from '../services/auth.service';
+import { TripsService } from "../services/trips.service";
+import { FirebaseService } from '../services/auth.service';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'app-profile-view',
+  selector   : 'app-profile-view',
   templateUrl: './profile-view.component.html',
-  styleUrls: ['./profile-view.component.css']
+  styleUrls  : ['./profile-view.component.css']
 })
 export class ProfileViewComponent implements OnInit {
   private profileview: Profile;
-  constructor(private route: ActivatedRoute, private PS: ProfileService) {
+  private trips      : any;
+  private id         : string;
+  constructor(private route: ActivatedRoute, private PS: ProfileService, private TS: TripsService) {
     this.route.params.subscribe(params => {
       this.PS.getProfileById(params['id'], (profile: Profile) => {
-        console.log(profile)
+        this.id          = params['id'];
         this.profileview = profile;
+        this.trips = this.TS.getTripsByOwner(this.id);
       });
     });
-    this.PS.getAllProfiles((a,err)=>{
-      if(a)
-        console.log("GOOD"+a);
-      if(err)
-        console.log("BAD"+err);
+    this.PS.getAllProfiles((a, err) => {
+      if (a)
+        console.log("GOOD" + a);
+      if (err)
+        console.log("BAD" + err);
     })
   }
 

@@ -1,5 +1,5 @@
 import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import Profile from '../models/profile';
 
 import { ImageService } from '../services/image.service';
@@ -15,7 +15,11 @@ import { TripsService } from '../services/trips.service';
 export class ProfileEditComponent implements OnInit {
   public profileedit: Profile;
   genderSign: string;
-  constructor(private route: ActivatedRoute, private PS: ProfileService, private AS: FirebaseService,private IS:ImageService) { }
+  constructor(private route: ActivatedRoute,
+              private PS: ProfileService,
+              private AS: FirebaseService,
+              private IS:ImageService,
+              private router: Router) { }
   img: string;
   @ViewChild('imgUp') imgUp: ElementRef;
   email: string;
@@ -25,6 +29,7 @@ export class ProfileEditComponent implements OnInit {
     this.sub = this.route.params.subscribe(params => {
       this.PS.getProfileById(params['id'], (profile: Profile) => {
         this.profileedit = profile;
+        this.PID=params['id'];
         // if (this.profileedit.Gender == 'female') {
         //   this.genderSign = './img/female.png';
         // }
@@ -37,8 +42,10 @@ export class ProfileEditComponent implements OnInit {
       this.PS.saveProfile(this.profileedit, (profile, err) => {
         if (err) {
           console.log(err);
-        }else
+        }else{
           console.log(profile);
+        }
+        this.router.navigate(['/profile/',this.PID])
       });
     }else{
       this.IS.uploadProfile(this.imgUp.nativeElement.files[0],this.profileedit,(snap,err)=>{
