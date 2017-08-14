@@ -1,13 +1,3 @@
-<!-- <form> -->
-<!-- <img *ngIf='img'[src]='img'/> -->
-<!-- <input type="file" (ngModelChange)='updateImg($event)' accept=".jpg,.jpeg,.png"/>
-  <input type="text" name="email" [(ngModel)]='email' />
-  <input type="password" name="currPass" [(ngModel)]='currentPass'/>
-  <input type="password" name="newPass" [(ngModel)]='newPassword'/>
-  <input type="password" name="confPass" [(ngModel)]='confirmPassword'/>
-  <button type="submit" class="btn">Update</button>
-</form> -->
-
 <div class="container">
   <div id="profile" class="col-sm-12 col-sm-12" *ngIf='profileview'>
     <h2>PROFILE</h2>
@@ -37,7 +27,8 @@
         <span class="feedback" name="occupation" type="text" id="occupation"><b>Occupation:</b>  {{profileview.Occupation}}</span>
       </div>
     </div>
-      <!-- INTEREST BUTTONS -->
+
+<!-- INTEREST BUTTONS -->
     <div id="interests" class="col-sm-12 col-sm-12">
       <div class="form-group">
         <!-- <img [src]='interestsIcon' /> --><br>
@@ -191,28 +182,29 @@
         </div>
       </div>
     </div>
+  </div>
 
-
-    </div>
-  <div class="col-xs-12 col-sm-12 col-md-12">
-      <div class="box" style="text-align:left">
-        <fieldset>
-          <h2>TRIPS</h2>
-          <hr><br>
-          <div>
-            <ul *ngFor="let trip of trips | async">
-              <span *ngIf='trip.Owner==id'>
+  <div class=class="col-sm-12 col-sm-12">
+    <div class="box" style="text-align:left">
+      <fieldset>
+        <h2>TRIPS</h2>
+        <hr><br>
+        <div>
+          <ul *ngFor="let trip of trips | async">
+            <span *ngIf='trip.Owner==id'>
+            <div class="col-sm-6 col-sm-5">
               <img [src]="trip.ImageURL"/>
-              <li>Name:         {{trip.Name}}</li>
-              <li>Destination:  {{trip.Destinations}}</li>
-              <li>Price:        {{trip.Price|currency:'USD':true:'.2-2'}}</li>
-              <li>Start date:   {{trip.StartDate}}</li>
-              <li>End date:     {{trip.EndDate}}</li>
-              </span>
-
-            </ul>
-          </div>
-        </fieldset>
+            </div>
+            <div class="col-sm-6 col-sm-6">
+              <li><b>Name:</b>          {{trip.Name}}</li>
+              <li><b>Destination:</b>   {{trip.Destinations}}</li>
+              <li><b>Price:</b>         {{trip.Price|currency:'USD':true:'.2-2'}}</li>
+              <li><b>Start date:</b>    {{trip.StartDate}}</li>
+              <li><b>End date:</b>      {{trip.EndDate}}</li>
+            </div>
+            </span>
+          </ul>
         </div>
-      </div>
+      </fieldset>
+    </div>
   </div>
