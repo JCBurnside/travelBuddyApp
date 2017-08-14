@@ -151,7 +151,7 @@ body {
 }
 
 /* =======================TRIPS======================= */
- label{
+label{
   color: #fff !important;
 }
 
@@ -166,9 +166,6 @@ body {
 
 .box {
   display: flex;
-
-
-
   margin: 20px 0;
   padding: 20px;
   width: 100%;

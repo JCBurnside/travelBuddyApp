@@ -10,13 +10,27 @@
 	font-size: 12px;
 	font-family: Open Sans;
 }
-button{
+
+.btn-default{
+  border: 5px solid #26a69a;
+  background-color: #26a69a;
+  font-size: 20px;
+  color: #fff;
+}
+
+.btn-default:hover{
+  opacity: 0.6;
+  filter: alpha(opacity=50); /* For IE8 and earlier */
+}
+
+/*---------------Previous Button Preference---------------*/
+/* button{
 	background-color: #fff;
 	color: #000;
 	border: 1px solid #000;
 }
 button:hover{
-	background-color: #000;
+	background-color: #000 ;
 	color: #fff;
-	border: 1px solid #000;
-}
+  border: 1px solid #000;
+} */
