@@ -17,7 +17,7 @@ export class NavbarComponent {
     }
     signOut() {
         this.as.signout();
-        this.router.navigateByUrl('/signin');
+        this.router.navigateByUrl('/');
     }
     userprofile() {
         this.router.navigate(['/profile', this.as.getId()]);

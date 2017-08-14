@@ -202,11 +202,14 @@
           <hr>
           <div>
             <ul *ngFor="let trip of trips | async">
+              <span *ngIf='trip.Owner==id'>
               <li>Name: {{trip.Name}}</li>
               <li>Destination: {{trip.Destinations}}</li>
               <li>Price: {{trip.Price}}</li>
               <li>Start date: {{trip.StartDate}}</li>
               <li>End date: {{trip.EndDate}}</li>
+              </span>
+            
             </ul>
           </div>
         </fieldset>
