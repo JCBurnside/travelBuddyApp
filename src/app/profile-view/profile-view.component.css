@@ -1,6 +1,10 @@
 @import url('https://fonts.googleapis.com/css?family=Lora');
 @import url('https://fonts.googleapis.com/css?family=Open+Sans');
 
+#profile{
+  font-size: 20px;
+}
+
 h1{
   color: #000;
 }
@@ -173,4 +177,9 @@ body {
 
   background: rgb(255,255,255); /* for IE */
   background: rgba(225,225,225,0.85);
+}
+
+li{
+  list-style-type: none;
+  font-size: 20px;
 }
