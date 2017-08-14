@@ -20,29 +20,28 @@
     </div>
     <div class="col-sm-6 col-sm-6" id="profileimage">
       <div class="form-group">
-        <span class="feedback" name="headline" type="text" id="headline"> Headline:  {{profileview.Headline}}</span>
+        <span class="feedback" name="headline" type="text" id="headline"><b>Headline:</b>  {{profileview.Headline}}</span>
       </div><br>
       <div class="form-group">
-        <span class="feedback" name="name" type="text" id="name">Name:  {{profileview.Name}}</span>
+        <span class="feedback" name="name" type="text" id="name"><b>Name:</b>  {{profileview.Name}}</span>
       </div><br>
       <div class="form-group">
         <!-- <img [src]='genderSign' /> -->
-        <span class="feedback" name="gender" type="dropdown" id="gender">Gender: {{profileview.Gender}}</span>
+        <span class="feedback" name="gender" type="dropdown" id="gender"><b>Gender:</b> {{profileview.Gender}}</span>
       </div><br>
       <div class="form-group">
         <!-- <img [src]='locationPin' /> -->
-        <span class="feedback" name="hometown" type="text" id="hometown">Hometown:  {{profileview.Hometown}}</span>
+        <span class="feedback" name="hometown" type="text" id="hometown"><b>Hometown:</b>  {{profileview.Hometown}}</span>
       </div><br>
       <div class="form-group">
-        <span class="feedback" name="occupation" type="text" id="occupation">Occupation:  {{profileview.Occupation}}</span>
-      </div><br>
+        <span class="feedback" name="occupation" type="text" id="occupation"><b>Occupation:</b>  {{profileview.Occupation}}</span>
+      </div>
     </div>
       <!-- INTEREST BUTTONS -->
     <div id="interests" class="col-sm-12 col-sm-12">
       <div class="form-group">
-        <!-- <img [src]='interestsIcon' /> -->
-        <span class="feedback" name="interests" type="text" id="interests"><strong>Interests</strong>{{profileview.Interests}}</span>
-        <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Choose 8 of the following:</p>
+        <!-- <img [src]='interestsIcon' /> --><br>
+        <span class="feedback" name="interests" type="text" id="interests"><b>Interests</b>     {{profileview.Interests}}</span>
       </div>
 
       <div class="inputs">
@@ -199,15 +198,16 @@
       <div class="box" style="text-align:left">
         <fieldset>
           <h2>TRIPS</h2>
-          <hr>
+          <hr><br>
           <div>
             <ul *ngFor="let trip of trips | async">
               <span *ngIf='trip.Owner==id'>
-              <li>Name: {{trip.Name}}</li>
-              <li>Destination: {{trip.Destinations}}</li>
-              <li>Price: {{trip.Price|currency:'USD':true:'.2-2'}}</li>
-              <li>Start date: {{trip.StartDate}}</li>
-              <li>End date: {{trip.EndDate}}</li>
+              <img [src]="trip.ImageURL"/>
+              <li>Name:         {{trip.Name}}</li>
+              <li>Destination:  {{trip.Destinations}}</li>
+              <li>Price:        {{trip.Price|currency:'USD':true:'.2-2'}}</li>
+              <li>Start date:   {{trip.StartDate}}</li>
+              <li>End date:     {{trip.EndDate}}</li>
               </span>
 
             </ul>

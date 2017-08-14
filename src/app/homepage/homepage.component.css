@@ -47,7 +47,6 @@ li{
   border: 2px solid #26a69a;
   background-color: #26a69a;
   color: #fff;
-  /* margin-top:3%; */
 }
 
 .btn-default:hover,
@@ -58,6 +57,7 @@ li{
     border-color: #089586;
 }
 
-.btn-default, .btn-success, .btn-danger{
+.btn-default, .btn-primary, .btn-danger{
   margin-top: 3%;
+  font-size: 16px;
 }
