@@ -55,6 +55,7 @@ export class ProfileEditComponent implements OnInit {
         this.profileedit.ImgURL=snap.downloadURL;
         this.PS.saveProfile(this.profileedit,(success,err)=>{
           console.log(success||err);
+        this.router.navigate(['/profile/',this.PID]);
         })
       })
     }
