@@ -1,0 +1,215 @@
+<!-- <form> -->
+<!-- <img *ngIf='img'[src]='img'/> -->
+<!-- <input type="file" (ngModelChange)='updateImg($event)' accept=".jpg,.jpeg,.png"/>
+  <input type="text" name="email" [(ngModel)]='email' />
+  <input type="password" name="currPass" [(ngModel)]='currentPass'/>
+  <input type="password" name="newPass" [(ngModel)]='newPassword'/>
+  <input type="password" name="confPass" [(ngModel)]='confirmPassword'/>
+  <button type="submit" class="btn">Update</button>
+</form> -->
+
+<div class="container">
+  <div id="profile" class="col-sm-12 col-sm-12" *ngIf='profileview'>
+    <h2>PROFILE</h2>
+    <hr><br>
+    <div class="col-sm-6 col-sm-5" id="profileimage">
+      <div class="profileplaceholder">
+        <!-- <img [src]='profileImage' /> -->
+        <img [src]="profileview.ImgURL||'http://placehold.it/250x250'">
+      </div>
+    </div>
+    <div class="col-sm-6 col-sm-6" id="profileimage">
+      <div class="form-group">
+        <span class="feedback" name="headline" type="text" id="headline"> Headline:  {{profileview.Headline}}</span>
+      </div><br>
+      <div class="form-group">
+        <span class="feedback" name="name" type="text" id="name">Name:  {{profileview.Name}}</span>
+      </div><br>
+      <div class="form-group">
+        <!-- <img [src]='genderSign' /> -->
+        <span class="feedback" name="gender" type="dropdown" id="gender">Gender: {{profileview.Gender}}</span>
+      </div><br>
+      <div class="form-group">
+        <!-- <img [src]='locationPin' /> -->
+        <span class="feedback" name="hometown" type="text" id="hometown">Hometown:  {{profileview.Hometown}}</span>
+      </div><br>
+      <div class="form-group">
+        <span class="feedback" name="occupation" type="text" id="occupation">Occupation:  {{profileview.Occupation}}</span>
+      </div><br>
+    </div>
+      <!-- INTEREST BUTTONS -->
+    <div id="interests" class="col-sm-12 col-sm-12">
+      <div class="form-group">
+        <!-- <img [src]='interestsIcon' /> -->
+        <span class="feedback" name="interests" type="text" id="interests"><strong>Interests</strong>{{profileview.Interests}}</span>
+        <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Choose 8 of the following:</p>
+      </div>
+
+      <div class="inputs">
+        <div class="area">
+          <div class="row">
+            <div class="col-3">
+              <span class="input">
+                  <label for="beaches">Beaches</label>
+                  <input type="checkbox" name="beaches" id="beaches">
+                </span>
+            </div>
+            <div class="col-3">
+              <span class="input">
+                  <label for="camping">Camping</label>
+                  <input type="checkbox" name="camping" id="camping">
+                </span>
+            </div>
+            <div class="col-3">
+              <span class="input">
+                  <label for="culture">Culture</label>
+                  <input type="checkbox" name="culture" id="culture">
+                </span>
+            </div>
+            <div class="col-3">
+              <span class="input">
+                  <label for="dance clubs | raves">Dancing | Raves</label>
+                  <input type="checkbox" name="dance clubs | raves" id="dance clubs | raves">
+                </span>
+            </div>
+          </div>
+        </div>
+
+        <div class="area">
+          <div class="row">
+            <div class="col-3">
+              <span class="input">
+                  <label for="food | culture">Food | Culture</label>
+                  <input type="checkbox" name="food | culture" id="food | culture">
+                </span>
+            </div>
+            <div class="col-3">
+              <span class="input">
+                  <label for="health | fitness">Health | Fitness</label>
+                  <input type="checkbox" name="health | fitness" id="health | fitness">
+                </span>
+            </div>
+            <div class="col-3">
+              <span class="input">
+                  <label for="history">History</label>
+                  <input type="checkbox" name="history" id="history">
+                </span>
+            </div>
+            <div class="col-3">
+              <span class="input">
+                  <label for="hiking">Hiking</label>
+                  <input type="checkbox" name="hiking" id="hiking">
+                </span>
+            </div>
+          </div>
+        </div>
+
+        <div class="area">
+          <div class="row">
+            <div class="col-3">
+              <span class="input">
+                  <label for="movies">Movies</label>
+                  <input type="checkbox" name="movies" id="movies">
+                </span>
+            </div>
+            <div class="col-3">
+              <span class="input">
+                  <label for="music">Music</label>
+                  <input type="checkbox" name="music" id="music">
+                </span>
+            </div>
+            <div class="col-3">
+              <span class="input">
+                  <label for="nature">Nature</label>
+                  <input type="checkbox" name="nature" id="nature">
+                </span>
+            </div>
+            <div class="col-3">
+              <span class="input">
+                  <label for="photography">Photography</label>
+                  <input type="checkbox" name="photography" id="photography">
+                </span>
+            </div>
+          </div>
+        </div>
+
+        <div class="area">
+          <div class="row">
+            <div class="col-3">
+              <span class="input">
+                  <label for="politics">Politics</label>
+                  <input type="checkbox" name="politics" id="politics">
+                </span>
+            </div>
+            <div class="col-3">
+              <span class="input">
+                  <label for="reading">Reading</label>
+                  <input type="checkbox" name="reading" id="reading">
+                </span>
+            </div>
+            <div class="col-3">
+              <span class="input">
+                  <label for="religion">Religion</label>
+                  <input type="checkbox" name="religion" id="religion">
+                </span>
+            </div>
+            <div class="col-3">
+              <span class="input">
+                  <label for="road trips">Road Trips</label>
+                  <input type="checkbox" name="road trips" id="road trips">
+                </span>
+            </div>
+          </div>
+        </div>
+
+        <div class="area">
+          <div class="row">
+            <div class="col-3">
+              <span class="input">
+                  <label for="sports">Sports</label>
+                  <input type="checkbox" name="sports" id="sports">
+                </span>
+            </div>
+            <div class="col-3">
+              <span class="input">
+                  <label for="water sports">Water Sports</label>
+                  <input type="checkbox" name="water sports" id="water sports">
+                </span>
+            </div>
+            <div class="col-3">
+              <span class="input">
+                  <label for="wine connoisseur">Wine Connoisseur</label>
+                  <input type="checkbox" name="wine connoisseur" id="wine connoisseur">
+                </span>
+            </div>
+            <div class="col-3">
+              <span class="input">
+                  <label for="yoga">Yoga</label>
+                  <input type="checkbox" name="yoga" id="yoga-4">
+                </span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+    </div>
+  <div class="col-xs-12 col-sm-12 col-md-12">
+      <div class="box" style="text-align:left">
+        <fieldset>
+          <h2>TRIPS</h2>
+          <hr>
+          <div>
+            <ul *ngFor="let trip of trips | async">
+              <li>Name: {{trip.Name}}</li>
+              <li>Destination: {{trip.Destinations}}</li>
+              <li>Price: {{trip.Price}}</li>
+              <li>Start date: {{trip.StartDate}}</li>
+              <li>End date: {{trip.EndDate}}</li>
+            </ul>
+          </div>
+        </fieldset>
+        </div>
+      </div>
+  </div>
