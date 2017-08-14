@@ -8,9 +8,12 @@ import { Router } from '@angular/router';
     styleUrls: ['./navbar.component.css']
 })
 export class NavbarComponent {
-    constructor(private as: FirebaseService, private router: Router) {}
+    id:string
+    constructor(private as: FirebaseService, private router: Router) {
+        this.as.getId(id=>this.id=id);
+    }
     goToPE() {
-        this.router.navigate(['/profile-edit', this.as.getId()]);
+        this.router.navigate(['/profile-edit', this.id]);
     }
     authed() {
         return this.as.isAuthed();
@@ -20,6 +23,6 @@ export class NavbarComponent {
         this.router.navigateByUrl('/');
     }
     userprofile() {
-        this.router.navigate(['/profile', this.as.getId()]);
+        this.router.navigate(['/profile', this.id]);
     }
  }

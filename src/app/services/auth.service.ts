@@ -8,8 +8,10 @@ import { AngularFireAuth } from 'angularfire2/auth';
 export class FirebaseService{
 	authState;
 	user;
-	getId():string{
-		return this.af.auth.currentUser.uid;
+	getId(cb){
+		this.canActivate().then(()=>{
+			cb(this.af.auth.currentUser.uid);
+		});
 	}
 	signup(user: User){
 		this.af.auth.createUserWithEmailAndPassword(user.email,user.password)
@@ -46,4 +48,12 @@ export class FirebaseService{
 	signout(){
 		this.af.auth.signOut();
 	}
+	canActivate() {
+	return new Promise((resolve, reject) => {
+		this.af.authState.subscribe((authState) => {
+			console.warn(!!authState);
+			resolve(!!authState);
+		})
+	})
+}
 }

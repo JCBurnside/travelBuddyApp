@@ -20,7 +20,7 @@ export class HomepageComponent implements OnInit {
   private    id            : string;
   @ViewChild('imgInput') el: ElementRef;
   constructor(public router: Router, public ts: TripsService, public as: FirebaseService, private is: ImageService) {
-
+    as.getId(id=>this.id=id);
     this.trips = ts.getTripsByOwner(this.id);
   }
   onChange() {
@@ -29,6 +29,7 @@ export class HomepageComponent implements OnInit {
   destChanged(test: any) {
     this.newTrip.Destinations = [test];
   }
+  min=Math.min;
   submit() {
     if (this.newTrip.Name == null)
       alert("The trip needs a name");
@@ -37,7 +38,7 @@ export class HomepageComponent implements OnInit {
     else if (!this.newTrip.StartDate || !this.newTrip.EndDate)
       alert("You need a" + !this.newTrip.StartDate ? ' Start Date' : 'n End Date');
     else {
-      this.newTrip.Owner = this.as.getId();
+      this.newTrip.Owner =this.id;
       this.ts.addNewTrip(this.newTrip, (key) => {
         if (this.el.nativeElement.files[0])
           this.is.uploadTrip(this.el.nativeElement.files[0], key, (snap, err) => {
@@ -75,7 +76,6 @@ export class HomepageComponent implements OnInit {
   }
   ngOnInit() {
     this.updateTrips();
-    this.id = this.as.getId();
   }
 
 }

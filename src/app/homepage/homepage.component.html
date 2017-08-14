@@ -46,7 +46,7 @@
 
           <div class="form-group">
             <label for="title">Estimated Cost</label>
-            <input name="price" type="number" [(ngModel)]='newTrip.Price' id="price" class="form-control" placeholder=$0.00>
+            <input name="price" type="number" [(ngModel)]='newTrip.Price' (ngModelChange)='newTrip.Price=min(0,newTrip.Price)' id="price" class="form-control" placeholder=$0.00 min=0.01>
           </div>
 
           <div class="form-group">
@@ -74,7 +74,7 @@
               <li><b>Transportation:</b> {{trip.ModeOfTransit}}</li>
               <li><b>Start date:</b> {{trip.StartDate|date: shortDate}}</li>
               <li><b>End date:</b> {{trip.EndDate|date: shortDate}}</li>
-              <li><b>Price:</b> {{trip.Price|currency:'USD':true:'4.2-2'}}</li>
+              <li><b>Price:</b> {{trip.Price|currency:'USD':true:'.2-2'}}</li>
               <li><button (click)="onClickView(trip.$key)" class="btn btn-default">View trip</button></li>
               <hr>
             </ul>
@@ -90,13 +90,15 @@
           <hr>
           <div>
             <ul *ngFor="let trip of trips | async ">
-                <li *ngIf="trip.Owner == id">Name:  {{trip.Name}}</li>
-                <li *ngIf="trip.Owner == id">Destination:   {{trip.Destinations}}</li>
-                <li *ngIf="trip.Owner == id">Price:   {{trip.Price}}</li>
-                <li *ngIf="trip.Owner == id">Start date:  {{trip.StartDate|date: shortDate}}</li>
-                <li *ngIf="trip.Owner == id">End date:  {{trip.EndDate|date: shortDate}}</li>
-                <li *ngIf="trip.Owner == id"><button (click)="onClickEdit(trip.$key)" class="btn btn-success">Edit trip</button>&nbsp;<button (click)="onClickView(trip.$key)" class="btn btn-default">View trip</button>&nbsp;<button (click)="onClickDelete(trip.$key)" class="btn btn-danger">Edit trip</button></li>
-                <hr *ngIf="trip.Owner == id">
+                <span *ngIf="trip.Owner == id"> 
+                <li>Name:  {{trip.Name}}</li>
+                <li>Destination:   {{trip.Destinations}}</li>
+                <li>Price:   {{trip.Price|currency:'USD':true:'.2-2'}}</li>
+                <li>Start date:  {{trip.StartDate|date: shortDate}}</li>
+                <li>End date:  {{trip.EndDate|date: shortDate}}</li>
+                <li><button (click)="onClickEdit(trip.$key)" class="btn btn-success">Edit trip</button>&nbsp;<button (click)="onClickView(trip.$key)" class="btn btn-default">View trip</button>&nbsp;<button (click)="onClickDelete(trip.$key)" class="btn btn-danger">Edit trip</button></li>
+                <hr>
+                </span>
             </ul>
           </div>
         </fieldset>
