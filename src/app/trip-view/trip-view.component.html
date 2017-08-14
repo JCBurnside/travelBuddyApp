@@ -6,8 +6,8 @@
 			<img [src]="tripview.ImageURL"/>
 			<p><b>Name:</b>               {{tripview.Name}}</p>
 			<p><b>Destinations:</b>       {{tripview.Destinations}}</p>
-			<p><b>Start Date:</b>         {{tripview.StartDate}}</p>
-			<p><b>StartDate:</b>          {{tripview.EndDate}}</p>
+			<p><b>Start Date:</b>         {{tripview.StartDate|date: shortDate}}</p>
+			<p><b>StartDate:</b>          {{tripview.EndDate|date: shortDate}}</p>
 			<p><b>Transportation:</b>     {{tripview.ModeOfTransit}}</p>
 			<p><b>Price:</b>              {{tripview.Price}}</p>
 			<p><b>Description:</b>        {{tripview.Description}}</p>
