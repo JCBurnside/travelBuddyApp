@@ -14,9 +14,16 @@ export class ProfileViewComponent implements OnInit {
   constructor(private route: ActivatedRoute, private PS: ProfileService) {
     this.route.params.subscribe(params => {
       this.PS.getProfileById(params['id'], (profile: Profile) => {
+        console.log(profile)
         this.profileview = profile;
       });
     });
+    this.PS.getAllProfiles((a,err)=>{
+      if(a)
+        console.log("GOOD"+a);
+      if(err)
+        console.log("BAD"+err);
+    })
   }
 
   ngOnInit() {

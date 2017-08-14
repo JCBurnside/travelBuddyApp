@@ -37,7 +37,8 @@ export class ProfileEditComponent implements OnInit {
       this.PS.saveProfile(this.profileedit, (profile, err) => {
         if (err) {
           console.log(err);
-        }
+        }else
+          console.log(profile);
       });
     }else{
       this.IS.uploadProfile(this.imgUp.nativeElement.files[0],this.profileedit,(snap,err)=>{
