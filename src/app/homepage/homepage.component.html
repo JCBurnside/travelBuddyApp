@@ -10,11 +10,11 @@
     <div class="col-xs-12 col-sm-6 col-md-4">
       <div class="box">
         <fieldset>
-        <h1>ADD A TRIP</h1>
-        <hr>
+          <h1>ADD A TRIP</h1>
+          <hr>
           <div class="form-group" show-errors>
             <label for="title">Upload Image</label>
-            <img *ngIf='img' [src]='img'/>
+            <img *ngIf='img' [src]='img' />
             <input #imgInput name="image-upload" type="file" accept="image/png, image/jpeg, image/jpg" id="image-upload">
           </div>
 
@@ -67,18 +67,18 @@
         <fieldset>
           <h1>OPPORTUNITIES TO TRAVEL</h1>
           <hr>
-            <div>
-              <ul *ngFor="let trip of trips | async">
-                <li><b>Destination:</b>  {{trip.Destinations}}</li>
-                <li><b>Name:</b>   {{trip.Name}}</li>
-                <li><b>Transportation:</b>     {{trip.ModeOfTransit}}</li>
-                <li><b>Start date:</b>   {{trip.StartDate|date: shortDate}}</li>
-                <li><b>End date:</b>   {{trip.EndDate|date: shortDate}}</li>
-                <li><b>Price:</b>  {{trip.Price|currency:'USD':true:'4.2-2'}}</li>
-                <li><button (click)="onClickView(trip.$key)" class="btn btn-default">View trip</button></li>
-                <hr>
-              </ul>
-            </div>
+          <div>
+            <ul *ngFor="let trip of trips | async">
+              <li><b>Destination:</b> {{trip.Destinations}}</li>
+              <li><b>Name:</b> {{trip.Name}}</li>
+              <li><b>Transportation:</b> {{trip.ModeOfTransit}}</li>
+              <li><b>Start date:</b> {{trip.StartDate|date: shortDate}}</li>
+              <li><b>End date:</b> {{trip.EndDate|date: shortDate}}</li>
+              <li><b>Price:</b> {{trip.Price|currency:'USD':true:'4.2-2'}}</li>
+              <li><button (click)="onClickView(trip.$key)" class="btn btn-default">View trip</button></li>
+              <hr>
+            </ul>
+          </div>
         </fieldset>
       </div>
     </div>
@@ -88,17 +88,17 @@
         <fieldset>
           <h1>MY TRIPS</h1>
           <hr>
-            <div>
-              <ul *ngFor="let trip of trips | async | reverse">
+          <div>
+            <ul *ngFor="let trip of trips | async ">
                 <li *ngIf="trip.Owner == id">Name:  {{trip.Name}}</li>
                 <li *ngIf="trip.Owner == id">Destination:   {{trip.Destinations}}</li>
                 <li *ngIf="trip.Owner == id">Price:   {{trip.Price}}</li>
                 <li *ngIf="trip.Owner == id">Start date:  {{trip.StartDate|date: shortDate}}</li>
                 <li *ngIf="trip.Owner == id">End date:  {{trip.EndDate|date: shortDate}}</li>
-                <li *ngIf="trip.Owner == id"><button (click)="onClickEdit(trip.$key)" class="btn btn-success">Edit trip</button>&nbsp;<button (click)="onClickView(trip.$key)" class="btn btn-default">View trip</button></li>
-                <hr>
-              </ul>
-            </div>
+                <li *ngIf="trip.Owner == id"><button (click)="onClickEdit(trip.$key)" class="btn btn-success">Edit trip</button>&nbsp;<button (click)="onClickView(trip.$key)" class="btn btn-default">View trip</button>&nbsp;<button (click)="onClickDelete(trip.$key)" class="btn btn-danger">Edit trip</button></li>
+                <hr *ngIf="trip.Owner == id">
+            </ul>
+          </div>
         </fieldset>
       </div>
     </div>

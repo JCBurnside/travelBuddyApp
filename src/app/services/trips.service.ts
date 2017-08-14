@@ -15,7 +15,6 @@ export class TripsService {
     let trip: Trip;
     this.trips.forEach(_ => {
       cb(_.find(value => {
-        console.log(value.$key == id);
         return value.$key == id;
       }));
     });
@@ -59,6 +58,9 @@ export class TripsService {
   }
   saveTrip(trip:Trip,id:String, cb: Function) {
       this.db.object('/trips/' + id).update(trip).then(() => cb(true)).catch(err => cb(false, err));
+  }
+  deleteTrip(trip:Trip,id:string,cb:Function){
+    this.db.object('/trips/'+id).remove().then(success=>cb(success,null)).catch(err=>cb(false,err));
   }
 }
 

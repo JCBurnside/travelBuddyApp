@@ -67,7 +67,12 @@ export class HomepageComponent implements OnInit {
   onClickView($key) {
     this.router.navigate(['/trip-view', $key]);
   }
-
+  onClickDelete(trip){
+    this.ts.deleteTrip(trip,trip.$key,(success,err)=>{
+      console.log(success||err);
+      this.trips.remove(trip);
+    })
+  }
   ngOnInit() {
     this.updateTrips();
     this.id = this.as.getId();
