@@ -31,7 +31,13 @@
 
           <div class="form-group">
             <label for="title">Transportation</label>
-            <input name="transportation" [(ngModel)]='newTrip.ModeOfTransit' type="text" id="transportation" class="form-control" placeholder="Select">
+            <select name="transportation" [(ngModel)]='newTrip.ModelOfTransit' type="dropdown" id="transportation" class="form-control"
+              placeholder="--Select--">
+              <option value="">-- Select --</option>
+              <option value="Air">Air</option>
+              <option value="Land">Land</option>
+              <option value="Sea">Sea</option>
+            </select>
           </div>
 
           <div class="form-group">
@@ -46,7 +52,8 @@
 
           <div class="form-group">
             <label for="title">Estimated Cost</label>
-            <input name="price" type="number" [(ngModel)]='newTrip.Price' (ngModelChange)='newTrip.Price=min(0,newTrip.Price)' id="price" class="form-control" placeholder=$0.00 min=0.01>
+            <input name="price" type="number" [(ngModel)]='newTrip.Price' (ngModelChange)='newTrip.Price=min(0,newTrip.Price)' id="price"
+              class="form-control" placeholder=$0.00 min=0.01>
           </div>
 
           <div class="form-group">
@@ -69,13 +76,14 @@
           <hr>
           <div>
             <ul *ngFor="let trip of trips | async">
-              <li><b>Name:</b>            {{trip.Name}}</li>
-              <li><b>Destination:</b>     {{trip.Destinations}}</li>
-              <li><b>Transportation:</b>  {{trip.ModeOfTransit}}</li>
-              <li><b>Start date:</b>      {{trip.StartDate|date: shortDate}}</li>
-              <li><b>End date:</b>        {{trip.EndDate|date: shortDate}}</li>
-              <li><b>Price:</b>           {{trip.Price|currency:'USD':true:'.2-2'}}</li>
-              <li><button (click)="onClickView(trip.$key)" class="btn btn-default">View Trip</button></li>
+			        <img [src]="trip.ImageURL"/>
+              <li><b>Name:</b> {{trip.Name}}</li>
+              <li><b>Destination:</b> {{trip.Destinations}}</li>
+              <li><b>Transportation:</b> {{trip.ModeOfTransit}}</li>
+              <li><b>Start date:</b> {{trip.StartDate|date: shortDate}}</li>
+              <li><b>End date:</b> {{trip.EndDate|date: shortDate}}</li>
+              <li><b>Price:</b> {{trip.Price|currency:'USD':true:'.2-2'}}</li>
+              <li><button (click)="onClickView(trip.$key)" class="btn btn-default">View</button></li>
               <hr>
             </ul>
           </div>
@@ -90,13 +98,14 @@
           <hr>
           <div>
             <ul *ngFor="let trip of trips | async ">
-                <span *ngIf="trip.Owner == id">
+              <span *ngIf="trip.Owner == id">
+			          <img [src]="trip.ImageURL"/>
                 <li><b>Name:</b>          {{trip.Name}}</li>
                 <li><b>Destination:</b>   {{trip.Destinations}}</li>
                 <li><b>Price:</b>         {{trip.Price|currency:'USD':true:'.2-2'}}</li>
                 <li><b>Start date:</b>    {{trip.StartDate|date: shortDate}}</li>
                 <li><b>End date:</b>      {{trip.EndDate|date: shortDate}}</li>
-                <li><button (click)="onClickView(trip.$key)" class="btn btn-default">View trip</button>&nbsp;<button (click)="onClickEdit(trip.$key)" class="btn btn-success">Edit trip</button>&nbsp;<button (click)="onClickDelete(trip.$key)" class="btn btn-danger">Edit trip</button></li>
+                <li><button (click)="onClickView(trip.$key)" class="btn btn-default">View</button>&nbsp;<button (click)="onClickEdit(trip.$key)" class="btn btn-primary">Edit</button>&nbsp;<button (click)="onClickDelete(trip.$key)" class="btn btn-danger">Delete</button></li>
                 <hr>
                 </span>
             </ul>
