@@ -1,11 +1,12 @@
 import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
-import { FirebaseListObservable } from "angularfire2/database";
+import { FirebaseListObservable } from 'angularfire2/database';
 
-import Trip from "../models/trip";
-import { TripsService } from "../services/trips.service";
-import { FirebaseService } from "../services/auth.service";
-import { ImageService } from "../services/image.service";
+import Trip from '../models/trip';
+import { TripsService } from '../services/trips.service';
+import { FirebaseService } from '../services/auth.service';
+import { ImageService } from '../services/image.service';
 import { Router } from '@angular/router';
+import { ReversePipe } from '../reverse.pipe';
 
 @Component({
   selector   : 'app-homepage',
@@ -21,7 +22,6 @@ export class HomepageComponent implements OnInit {
   constructor(public router: Router, public ts: TripsService, public as: FirebaseService, private is: ImageService) {
 
     this.trips = ts.getTripsByOwner(this.id);
-    
   }
   onChange() {
     console.log(this.newTrip.Destinations);
@@ -49,11 +49,27 @@ export class HomepageComponent implements OnInit {
     }
   }
 
-  onClick($key) {
-    this.router.navigate(["/trip-edit", $key]);
+
+  updateTrips() {
+    this.trips.subscribe(trips => {
+      trips.forEach(trip => {
+        if (trip.ownerID == this.id) {
+          console.log(trip);
+        }
+      });
+    });
+  }
+
+  onClickEdit($key) {
+    this.router.navigate(['/trip-edit', $key]);
+  }
+
+  onClickView($key) {
+    this.router.navigate(['/trip-view', $key]);
   }
 
   ngOnInit() {
+    this.updateTrips();
     this.id = this.as.getId();
   }
 
