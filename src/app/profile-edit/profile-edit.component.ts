@@ -53,8 +53,8 @@ export class ProfileEditComponent implements OnInit {
         this.profileedit = profile;
 
         this.PID = params['id'];
-        this.id          = params['id'];
-
+        this.id = params['id'];
+        console.log(profile);
         if(!this.profileedit.Interest)
           this.profileedit.Interest=new Interests();
         this.PID = params['id'];
