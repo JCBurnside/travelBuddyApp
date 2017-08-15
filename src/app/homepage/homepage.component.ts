@@ -71,9 +71,9 @@ export class HomepageComponent implements OnInit {
   //   this.router.navigate(['/trip-edit', $key]);
   // }
 
-  // onClickView($key) {
-  //   this.router.navigate(['/trip-view', $key]);
-  // }
+  onClickView($key) {
+    this.router.navigate(['/trip-view', $key]);
+  }
   // onClickDelete(trip) {
   //   this.ts.deleteTrip(trip, trip.$key, (success, err) => {
   //     console.log(success || err);
