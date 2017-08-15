@@ -1,11 +1,12 @@
 <div class="container">
   <div class="col-sm-6">
+    <h3 *ngIf='!profileedit'>STILL LOADING</h3>
     <form (ngSubmit)="onSubmit()" *ngIf='profileedit'>
       <h1>EDIT PROFILE</h1>
       <hr><br>
       <div class="form-group" show-errors>
         <label for="imageupload">Upload Image</label>
-            <img *ngIf='tripedit.ImageURL' [src]='tripedit.ImageURL'/>
+            <img *ngIf='profileedit.ImageURL' [src]='profileedit.ImageURL'/>
         <input #imgUp name="image-upload" type="file" id="image-upload">
       </div>
 
