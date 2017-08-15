@@ -1,38 +1,8 @@
-
-<div class="container" style="align-content: center; margin-left:15%">
-  <div class="page-header">
-    <h1></h1>
-  </div>
-  <div class="trip-search">
-    <figure class="tripprofile" *ngFor="let trip of trips|async">
-      <div class="image"><img [src]="trip.ImageURL"/>
-        <p>
-          {{trip.Description}}
-        </p>
-      </div>
-      <figcaption>
-        <h3>City, State &nbsp;<span>Country</span></h3>
-        <h5></h5>
-        <div class="icons"><a (click)='onClickProfile(trip.Owner)'><i class="ion-android-person"></i></a><a (click)='onClickView(trip.$key)'><i class="ion-location"></i></a><a href="https://www.facebook.com/mackenzie.elaine" target="_blank"><i class="ion-social-facebook"></i></a></div>
-      </figcaption>
-    </figure>
-
-  </div>
-</div>
-
-
-
-
-
-
-
-
-
 <!-- 3 columns -->
-<!-- <div class="container">
-  <div class="row"> -->
+<div class="container">
+  <div class="row">
     <!-- <div class="col-xs-12 col-sm-5 col-md-4"> -->
-    <!-- <div class="col-sm-4 col-sm-8">
+    <div class="col-sm-4 col-sm-8">
       <div class="box">
         <fieldset>
           <h1>ADD A TRIP</h1>
@@ -143,7 +113,4 @@
       </div>
     </div>
   </div>
-</div> -->
-
-
-
+</div>

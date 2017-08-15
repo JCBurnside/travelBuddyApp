@@ -17,7 +17,7 @@ label{
 form{
   padding: 20px;
   background: rgb(255,255,255); /* for IE */
-  background: rgba(225,225,225,0.85);
+  background: rgba(225,225,225,0.89);
   font-size: 16px;
 }
 
@@ -36,3 +36,22 @@ button:hover{
 	color: #fff;
 	border: 1px solid #000;
 }  */
+
+.btn-default{
+  border: 2px solid #26a69a;
+  background-color: #26a69a;
+  color: #fff;
+}
+
+.btn-default:hover,
+.btn-default:active,
+.btn-default:visited,
+.btn-default:focus {
+    background-color: #089586;
+    border-color: #089586;
+}
+
+.btn-default, .btn-primary, .btn-danger{
+  margin-top: 3%;
+  font-size: 16px;
+}

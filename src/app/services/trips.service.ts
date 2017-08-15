@@ -9,7 +9,7 @@ export class TripsService {
   trips: FirebaseListObservable<any[]>;
   constructor(private db: AngularFireDatabase, private at: FirebaseService) {
     this.trips = db.list('trips');
-    
+    console.log(this.trips);
   }
   getTripById(id: string, cb: Function): void {
     let trip: Trip;
@@ -23,7 +23,7 @@ export class TripsService {
   addNewTrip(trip: Trip,cb:(key:String,err?:Error)=>void): void {
     delete trip.$key
     this.trips.push(trip)
-    .then(something =>{ 
+    .then(something =>{
       let s:String=new String(something);
       cb(s.substr(s.lastIndexOf('/')+1));
     }).catch( err =>{console.log(err);cb(null,err)});
@@ -48,7 +48,7 @@ export class TripsService {
      console.log(this.getAllTrips())
      this.getAllTrips().forEach(trip => {
          console.log(trip.Owner, owner);
-         if(trip.Owner==owner){  
+         if(trip.Owner==owner){
          out.push(trip);
        }
        console.log(trip);

@@ -1,3 +1,4 @@
+/*====================== EDIT PROFILE ======================*/
 @import url('https://fonts.googleapis.com/css?family=Lora');
 @import url('https://fonts.googleapis.com/css?family=Open+Sans');
 
@@ -16,25 +17,18 @@ label{
 
 form{
   padding:15px 15px 15px 15px;
-  background: rgb(255,255,255); /* for IE */
-  background: rgba(225,225,225,0.85);
+  background: rgb(255,255,255);
+  background: rgba(225,225,225,0.89);
   font-size: 16px;
 }
 
 button{
-	background-color: #fff;
-	color: #000;
-  border: 1px solid #808080;
   padding: 4px 3px 4px 3px;
-}
-button:hover{
-	background-color: #26a69a;
-	color: #fff;
-	border: 2px solid #26a69a;
+  color: #fff;
 }
 
-/*------------------------INTERESTS--------------------------------------------------------------*/
-  .text {
+/*====================== INTERESTS ======================*/
+.text {
    width: 100%;
    text-align: center;
    margin-top: 20px;
@@ -45,6 +39,14 @@ button:hover{
    width: 100%;
    float: left;
    margin-top: 15px;
+}
+  .addForm{
+    margin-left: 20px;
+    padding: 10px;
+    width:30%;
+  }
+.addFormBox{
+  padding:20px;
 }
 
 .area .input,
@@ -101,15 +103,14 @@ button:hover{
 }
 
 .container {
-   width: 100%;
-   max-width: 800px;
+   width: 75;
+   /* max-width: 800px; */
     position: absolute;
    top:50%;
    left:50%;
    transform:translate(-50%,-50%);
    -webkit-transform:translate(-50%,-50%);
    -ms-transform:translate(-50%,-50%);
-
 }
 
 .col-3 {
@@ -136,4 +137,100 @@ button:hover{
 
 body {
    font-family: 'Roboto', sans-serif;
+}
+
+@import url('https://fonts.googleapis.com/css?family=Lora');
+@import url('https://fonts.googleapis.com/css?family=Open+Sans');
+
+/*h1{
+  color: #000;
+} */
+/*
+h2{
+  font-family: Open Sans;
+  color: #000;
+} */
+
+/* label{
+  color: #000 !important;
+} */
+
+/* #image-upload{
+  color:white;
+}
+
+body {
+  text-transform: uppercase;
+  padding: 50px 0;
+}
+
+.box {
+  display: flex;
+  font-size: 20px;
+  margin: 20px 0;
+  padding: 20px;
+  width: 100%;
+  min-height: 200px;
+  background: rgb(255,255,255);
+  background: rgba(225,225,225,0.89);
+} */
+
+/*====================== MY TRIPS ======================*/
+ li{
+  list-style-type: none;
+  font-size: 20px;
+
+ }
+
+.btn-default{
+  border: 2px solid #26a69a;
+  background-color: #26a69a;
+  color: #fff;
+}
+
+.btn-default:hover,
+.btn-default:active,
+.btn-default:visited,
+.btn-default:focus {
+    background-color: #089586;
+    border-color: #089586;
+}
+
+.btn-default, .btn-primary, .btn-danger{
+  margin-top: 3%;
+  font-size: 16px;
+}
+
+/*====================== ADD A TRIP ======================*/
+textarea{
+  resize: vertical;
+  max-height: 100px;
+}
+
+
+
+
+
+
+
+@import url('https://fonts.googleapis.com/css?family=Lora');
+@import url('https://fonts.googleapis.com/css?family=Open+Sans');
+
+h1{
+  font-family: Open Sans;
+  color: #000;
+}
+p{
+  font-family: Lora;
+  color: #000;
+}
+
+.mytrips{
+  width: 100%;
+}
+
+
+
+.box.addformbox{
+  width:75%;
 }

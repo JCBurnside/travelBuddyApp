@@ -37,12 +37,12 @@ button:hover{
 	color           : #fff;
 	border          : 2px solid #26a69a;
 }
+
 /* =======================INFO======================= */
 .info{
   margin-left: 200px
-
-
 }
+
 /*=======================INTERESTS=======================*/
   .text {
    width     : 100%;
@@ -128,9 +128,9 @@ button:hover{
    padding: 0 15px;
 } */
 
-.row {
+/* .row {
    margin: 0 -15px;
-}
+} */
 
 @import url(https://fonts.googleapis.com/css?family=Roboto:400,300,700&subset=latin,latin-ext);
 *,
@@ -174,12 +174,14 @@ body {
   padding   : 20px;
   width     : 100%;
   min-height: 200px;
+  background: rgb(255,255,255); /* for IE */
+  background: rgba(225,225,225,0.89);
 
-  background: rgb(255,255,255);        /* for IE */
-  background: rgba(225,225,225,0.85);
 }
 
 li{
   list-style-type: none;
   font-size      : 20px;
 }
+
+
