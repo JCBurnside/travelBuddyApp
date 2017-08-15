@@ -3,6 +3,7 @@ import { trigger, state, animate, transition, style } from "@angular/animations"
 import { ActivatedRoute, Router } from '@angular/router';
 import Profile from '../models/profile';
 import Trip from '../models/trip';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { Interests } from "../models/interests";
 
@@ -69,13 +70,6 @@ export class ProfileEditComponent implements OnInit {
   test(){
     this.profileedit.Interest.Yoga = !this.profileedit.Interest.Yoga;
   }
-showId(){
-  console.log(this.id);
-  console.log(this.trips);
-  this.trips.forEach(function(fuck){
-    console.log(fuck);
-  })
-}
 
   destChanged(test: any) {
     this.newTrip.Destinations = [test];
@@ -119,6 +113,7 @@ showId(){
 
   onSubmit() {
     console.log(this.profileedit.Interest)
+  
     if (!this.imgUp.nativeElement.files[0]) {
       this.PS.saveProfile(this.profileedit, (profile, err) => {
         if (err) {
