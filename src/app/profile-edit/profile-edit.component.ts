@@ -1,9 +1,11 @@
 import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
+import { trigger, state, animate, transition, style } from "@angular/animations";
 import { ActivatedRoute, Router } from '@angular/router';
 import Profile from '../models/profile';
-import { FirebaseListObservable } from 'angularfire2/database';
-
 import Trip from '../models/trip';
+
+import { Interests } from "../models/interests";
+
 
 import { ImageService } from '../services/image.service';
 import { ProfileService } from '../services/profile.service';
@@ -13,7 +15,15 @@ import { TripsService } from '../services/trips.service';
 @Component({
   selector: 'app-profile-edit',
   templateUrl: './profile-edit.component.html',
-  styleUrls: ['./profile-edit.component.css']
+  styleUrls: ['./profile-edit.component.css'],
+  animations: [
+    trigger('toggleState', [
+      state('false', style({ backgroundColor: "#26a69a" })),
+      state('true', style({ background: 'rgba(0, 0, 0, 0.2)' })),
+      transition('true=>false', animate('300ms ease-out')),
+      transition('flase=>true', animate('300ms ease-in'))
+    ])
+  ]
 })
 export class ProfileEditComponent implements OnInit {
   public profileedit: Profile;
@@ -32,6 +42,7 @@ export class ProfileEditComponent implements OnInit {
     AS.getId(id => this.id = id);
      this.ts.getTripsByOwner(this.id).subscribe(trips=>this.trips=trips);
    }
+
   img: string;
   @ViewChild('imgUp') imgUp: ElementRef;
   email: string;
@@ -41,15 +52,23 @@ export class ProfileEditComponent implements OnInit {
     this.sub = this.route.params.subscribe(params => {
       this.PS.getProfileById(params['id'], (profile: Profile) => {
         this.profileedit = profile;
+
         this.PID = params['id'];
         this.id          = params['id'];
+
+        if(!this.profileedit.Interest)
+          this.profileedit.Interest=new Interests();
+        this.PID = params['id'];
+        console.log(this.profileedit.Interest);
 
         // if (this.profileedit.Gender == 'female') {
         //   this.genderSign = './img/female.png';
         // }
       });
     });
-
+  }
+  test(){
+    this.profileedit.Interest.Yoga = !this.profileedit.Interest.Yoga;
   }
 showId(){
   console.log(this.id);
@@ -101,6 +120,7 @@ showId(){
   }
 
   onSubmit() {
+    console.log(this.profileedit.Interest)
     if (!this.imgUp.nativeElement.files[0]) {
       this.PS.saveProfile(this.profileedit, (profile, err) => {
         if (err) {

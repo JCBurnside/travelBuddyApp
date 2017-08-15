@@ -2,7 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { FormsModule } from '@angular/forms';
-
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { AngularFireModule } from 'angularfire2';
 import { AngularFireAuth } from 'angularfire2/auth';
@@ -46,6 +46,7 @@ import { ReversePipe } from './reverse.pipe';
     ReversePipe
   ],
   imports: [
+    BrowserAnimationsModule,
     BrowserModule,
     RouterModule.forRoot(routes),
     FormsModule,

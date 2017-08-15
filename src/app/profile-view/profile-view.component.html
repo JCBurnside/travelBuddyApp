@@ -16,11 +16,11 @@
         <span class="feedback" name="name" type="text" id="name"><b>Name:</b>  {{profileview.Name}}</span>
       </div><br>
       <div class="form-group">
-        <!-- <img [src]='genderSign' /> -->
+        <!--  <img [src] = 'genderSign' /> -->
         <span class="feedback" name="gender" type="dropdown" id="gender"><b>Gender:</b> {{profileview.Gender}}</span>
       </div><br>
       <div class="form-group">
-        <!-- <img [src]='locationPin' /> -->
+        <!--  <img [src] = 'locationPin' /> -->
         <span class="feedback" name="hometown" type="text" id="hometown"><b>Hometown:</b>  {{profileview.Hometown}}</span>
       </div><br>
       <div class="form-group">
@@ -29,162 +29,24 @@
     </div>
 
 <!-- INTEREST BUTTONS -->
+
     <div id="interests" class="col-sm-12 col-sm-12">
       <div class="form-group">
-        <!-- <img [src]='interestsIcon' /> --><br>
-        <span class="feedback" name="interests" type="text" id="interests"><b>Interests</b>     {{profileview.Interests}}</span>
-      </div>
-
-      <div class="inputs">
-        <div class="area">
-          <div class="row">
-            <div class="col-3">
-              <span class="input">
-                  <label for="beaches">Beaches</label>
-                  <input type="checkbox" name="beaches" id="beaches">
-                </span>
-            </div>
-            <div class="col-3">
-              <span class="input">
-                  <label for="camping">Camping</label>
-                  <input type="checkbox" name="camping" id="camping">
-                </span>
-            </div>
-            <div class="col-3">
-              <span class="input">
-                  <label for="culture">Culture</label>
-                  <input type="checkbox" name="culture" id="culture">
-                </span>
-            </div>
-            <div class="col-3">
-              <span class="input">
-                  <label for="dance clubs | raves">Dancing | Raves</label>
-                  <input type="checkbox" name="dance clubs | raves" id="dance clubs | raves">
-                </span>
-            </div>
-          </div>
-        </div>
-
-        <div class="area">
-          <div class="row">
-            <div class="col-3">
-              <span class="input">
-                  <label for="food | culture">Food | Culture</label>
-                  <input type="checkbox" name="food | culture" id="food | culture">
-                </span>
-            </div>
-            <div class="col-3">
-              <span class="input">
-                  <label for="health | fitness">Health | Fitness</label>
-                  <input type="checkbox" name="health | fitness" id="health | fitness">
-                </span>
-            </div>
-            <div class="col-3">
-              <span class="input">
-                  <label for="history">History</label>
-                  <input type="checkbox" name="history" id="history">
-                </span>
-            </div>
-            <div class="col-3">
-              <span class="input">
-                  <label for="hiking">Hiking</label>
-                  <input type="checkbox" name="hiking" id="hiking">
-                </span>
-            </div>
-          </div>
-        </div>
-
-        <div class="area">
-          <div class="row">
-            <div class="col-3">
-              <span class="input">
-                  <label for="movies">Movies</label>
-                  <input type="checkbox" name="movies" id="movies">
-                </span>
-            </div>
-            <div class="col-3">
-              <span class="input">
-                  <label for="music">Music</label>
-                  <input type="checkbox" name="music" id="music">
-                </span>
-            </div>
-            <div class="col-3">
-              <span class="input">
-                  <label for="nature">Nature</label>
-                  <input type="checkbox" name="nature" id="nature">
-                </span>
-            </div>
-            <div class="col-3">
-              <span class="input">
-                  <label for="photography">Photography</label>
-                  <input type="checkbox" name="photography" id="photography">
-                </span>
-            </div>
-          </div>
-        </div>
-
-        <div class="area">
-          <div class="row">
-            <div class="col-3">
-              <span class="input">
-                  <label for="politics">Politics</label>
-                  <input type="checkbox" name="politics" id="politics">
-                </span>
-            </div>
-            <div class="col-3">
-              <span class="input">
-                  <label for="reading">Reading</label>
-                  <input type="checkbox" name="reading" id="reading">
-                </span>
-            </div>
-            <div class="col-3">
-              <span class="input">
-                  <label for="religion">Religion</label>
-                  <input type="checkbox" name="religion" id="religion">
-                </span>
-            </div>
-            <div class="col-3">
-              <span class="input">
-                  <label for="road trips">Road Trips</label>
-                  <input type="checkbox" name="road trips" id="road trips">
-                </span>
-            </div>
-          </div>
-        </div>
-
-        <div class="area">
-          <div class="row">
-            <div class="col-3">
-              <span class="input">
-                  <label for="sports">Sports</label>
-                  <input type="checkbox" name="sports" id="sports">
-                </span>
-            </div>
-            <div class="col-3">
-              <span class="input">
-                  <label for="water sports">Water Sports</label>
-                  <input type="checkbox" name="water sports" id="water sports">
-                </span>
-            </div>
-            <div class="col-3">
-              <span class="input">
-                  <label for="wine connoisseur">Wine Connoisseur</label>
-                  <input type="checkbox" name="wine connoisseur" id="wine connoisseur">
-                </span>
-            </div>
-            <div class="col-3">
-              <span class="input">
-                  <label for="yoga">Yoga</label>
-                  <input type="checkbox" name="yoga" id="yoga-4">
-                </span>
-            </div>
-          </div>
-        </div>
+        <!--  <img [src] = 'interestsIcon' /> --><br>
+        <span class="feedback" name="interests" type="text" id="interests"><b>Interests</b>     </span>
+    </div>
+      <div class="container-fluid">
+    <div class="area" *ngFor='let interest of interests'>
+      <div class="col-sm-3">
+        <span class="input">
+        <label>{{interest}}</label>
+      </span>
       </div>
     </div>
   </div>
 
   <div class="col-sm-12 col-sm-12">
+
     <div class="box" style="text-align:left">
       <fieldset>
         <h2>TRIPS</h2>
@@ -192,6 +54,7 @@
         <div>
           <ul *ngFor="let trip of trips | async">
             <span *ngIf='trip.Owner==id'>
+
             <div class="col-sm-12 col-sm-7">
               <img [src]="trip.ImageURL"/>
             </div>
@@ -203,6 +66,7 @@
               <li><b>End date:</b>      {{trip.EndDate|date: shortDate}}</li>
             </div>
             </span>
+
           </ul>
         </div>
       </fieldset>
