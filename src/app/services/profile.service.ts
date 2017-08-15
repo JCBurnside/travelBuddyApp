@@ -18,7 +18,12 @@ export class ProfileService {
     }
     getProfileByOwner(id:string,cb:(profile:Profile,err:Error|string)=>void){
         this.profiles.orderByChild("ownerID").equalTo(id).on("value",(snap,err)=>{
-            cb(snap.exportVal(),err);
+            if(snap.val()){
+                let interests:Interests=Interests.convertToInterest(snap.val().Interest||new Interests());
+            
+                cb({...snap.exportVal(),Interest:interests},null);
+            }else
+                cb(new Profile(id,""),err);
         });
     }
     /*
@@ -63,6 +68,7 @@ export class ProfileService {
             delete profile.$key;
             this.db.object('/profiles/'+id).update(profile).then(()=>cb(true)).catch(err=>cb(false,err));
         }else{
+            delete profile.$key;
             this.profiles.push(profile);
         }
     }

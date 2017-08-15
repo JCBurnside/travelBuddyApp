@@ -7,8 +7,8 @@ export default class Profile{
         public Gender     : String='female',
         public Headline?  : String,
         public Occupation?: String,
-        public ImgURL?    : string,
-        public HomeTown?  : String,
+        public ImgURL    : string='',
+        public Hometown?  : String,
         public $key?      : string
     ){}
 }

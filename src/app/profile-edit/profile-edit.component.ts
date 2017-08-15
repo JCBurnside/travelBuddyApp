@@ -32,7 +32,6 @@ export class ProfileEditComponent implements OnInit {
   public trips: any;
   @ViewChild('imgInput') el: ElementRef;
   id:string;
-  test = false;
   constructor(private route: ActivatedRoute,
     private PS: ProfileService,
     private AS: FirebaseService,
@@ -50,7 +49,7 @@ export class ProfileEditComponent implements OnInit {
   private sub: any;
   ngOnInit() {
     this.sub = this.route.params.subscribe(params => {
-      this.PS.getProfileById(params['id'], (profile: Profile) => {
+      this.PS.getProfileByOwner(params['id'], (profile: Profile) => {
         this.profileedit = profile;
 
         this.PID = params['id'];
@@ -76,7 +75,6 @@ showId(){
   this.trips.forEach(function(fuck){
     console.log(fuck);
   })
-  this.test = true;
 }
 
   destChanged(test: any) {
