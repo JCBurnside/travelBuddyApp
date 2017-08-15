@@ -24,12 +24,13 @@ export class ProfileService {
     * id is a string of the id of the user profile you trying to get
     * cb is a subscribe function that takes a Profile as an argument
     */
-    getProfileById(id: string, cb: Function): void {
+    getProfileById(id: string, cb:(profile:Profile)=>void): void {
         this.db.object('/profiles/'+id).subscribe(profile=>{
             delete profile.$value;
             cb(profile)
         });
     }
+    
     /*
     * cb is a callback function that takes a Profile[] as an argument
     */

@@ -11,7 +11,7 @@
   <div class="col-sm-12 col-sm-12">
     <form (ngSubmit)="onSubmit()" *ngIf='profileedit'>
       <h1>EDIT PROFILE</h1>
-        <hr><br>
+      <hr><br>
       <div class="form-group" show-errors>
         <label for="imageupload">Upload Image</label>
         <input #imgUp name="image-upload" type="file" id="image-upload">
@@ -27,8 +27,8 @@
       <div class="form-group">
 
         <label for="gender">Gender</label>
-        <img *ngIf='genderSign' [src]='genderSign'/>
-      <select name="gender" [(ngModel)]="profileedit.Gender" type="dropdown" id="gender" class="form-control">
+        <img *ngIf='genderSign' [src]='genderSign' />
+        <select name="gender" [(ngModel)]="profileedit.Gender" type="dropdown" id="gender" class="form-control">
         <option value="">-- Select --</option>
         <option value="Male">Male</option>
         <option value="Female">Female</option>
@@ -48,20 +48,20 @@
         <label for="interests">Interests</label>
       </div>
 
-<!-- INTEREST BUTTONS -->
+      <!-- INTEREST BUTTONS -->
       <div class="inputs">
         <div class="area">
           <div class="row">
             <div class="col-3">
               <span class="input">
-                <label for="beaches">Beaches</label>
-                <input type="checkbox" name="beaches" id="beaches">
+                <label [@toggleState]='States.Beaches' for="beaches">Beaches</label>
+                <input [(ngModel)]='States.Beaches' type="checkbox" name="beaches" id="beaches">
               </span>
             </div>
             <div class="col-3">
               <span class="input">
                 <label for="camping">Camping</label>
-                <input type="checkbox" name="camping" id="camping">
+                <input  type="checkbox" name="camping" id="camping">
               </span>
             </div>
             <div class="col-3">
@@ -197,4 +197,4 @@
       </div>
       <button type="submit" class="btn btn-secondary btn-lg" style="margin-top:2%">&nbsp; Submit &nbsp;</button>
     </form>
-  </div>
+</div>
