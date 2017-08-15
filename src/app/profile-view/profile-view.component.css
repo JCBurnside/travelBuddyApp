@@ -38,12 +38,12 @@ button:hover{
 	border          : 2px solid #26a69a;
 }
 
-/* =======================INFO======================= */
+/*================================ INFO ==========================================*/
 .info{
   margin-left: 200px
 }
 
-/*=======================INTERESTS=======================*/
+/*================================ INTERESTS ==========================================*/
   .text {
    width     : 100%;
    text-align: center;
@@ -102,14 +102,6 @@ button:hover{
 
 }
 
-.click-efect {
-   position     : absolute;
-   top          : 0;
-   left         : 0;
-   background   : rgba(0, 0, 0, 0.2);
-   border-radius: 50%;
-}
-
 .container {
    width            : 100%;
    max-width        : 800px;
@@ -121,6 +113,7 @@ button:hover{
    -ms-transform    : translate(-50%,-50%);
 
 }
+/*===============================================================================*/
 
 /* .col-3 {
    width  : 25%;
@@ -144,17 +137,14 @@ button:hover{
    text-decoration   : none;
 }
 
-body {
-   font-family: 'Roboto', sans-serif;
-}
-
 #profile{
   background-color: rgba(225,225,225,0.85);
   padding         : 2% 2% 2% 2%;
   margin-top      : 10%;
 }
 
-/* =======================TRIPS======================= */
+/*================================ INFO ==========================================*/
+
 label{
   color: #fff !important;
 }
