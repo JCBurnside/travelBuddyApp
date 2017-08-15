@@ -1,33 +1,54 @@
-/*====================== EDIT PROFILE ======================*/
+/*================================ GOOGLE FONT ===================================*/
 @import url('https://fonts.googleapis.com/css?family=Lora');
 @import url('https://fonts.googleapis.com/css?family=Open+Sans');
-
+/*================================ HTML ==========================================*/
 h1{
   color: #000;
 }
 
 label{
   color:#000;
-  font-size: 12px;
+  font-size: 16px;
 }
 
-*{
+ /* *{
   box-sizing: border-box;
-}
+} */
 
-form{
-  padding:15px 15px 15px 15px;
+ form{
+   padding: 4% 4% 4% 4%;
   background: rgb(255,255,255);
   background: rgba(225,225,225,0.89);
   font-size: 16px;
 }
 
 button{
-  padding: 4px 3px 4px 3px;
+  padding: 1% 1% 1% 1%;
   color: #fff;
 }
 
-/*====================== INTERESTS ======================*/
+*,
+*:after,
+*::before {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  text-decoration: none;
+}
+
+.container {
+  width: 100%;
+  max-width: 100%;
+  position: absolute;
+  top:40%;
+  left:60%;
+  transform:translate(-50%,-50%);
+  -webkit-transform:translate(-50%,-50%);
+  -ms-transform:translate(-50%,-50%);
+}
+/*================================ INTERESTS ==========================================*/
 .text {
    width: 100%;
    text-align: center;
@@ -45,6 +66,7 @@ button{
     padding: 10px;
     width:30%;
   }
+
 .addFormBox{
   padding:20px;
 }
@@ -87,99 +109,36 @@ button{
 }
 
 .area .input:hover{
-   box-shadow:0 5px 11px 0 rgba(0, 0, 0, 0.18), 0 4px 15px 0 rgba(0, 0, 0, 0.15)
+  box-shadow:0 5px 11px 0 rgba(0, 0, 0, 0.18), 0 4px 15px 0 rgba(0, 0, 0, 0.15)
 }
+
 .area .input label:hover {
-   letter-spacing: .8px;
-
+  letter-spacing: .8px;
 }
 
-.click-efect {
-   position: absolute;
-   top: 0;
-   left: 0;
-   background: rgba(0, 0, 0, 0.2);
-   border-radius: 50%;
-}
-
-.container {
-   width: 75;
-   /* max-width: 800px; */
-    position: absolute;
-   top:50%;
-   left:50%;
-   transform:translate(-50%,-50%);
-   -webkit-transform:translate(-50%,-50%);
-   -ms-transform:translate(-50%,-50%);
-}
-
-.col-3 {
+ .col-3 {
    width: 25%;
    float: left;
    padding: 0 15px;
 }
-
-.row {
-   margin: 0 -15px;
-}
-
-@import url(https://fonts.googleapis.com/css?family=Roboto:400,300,700&subset=latin,latin-ext);
-*,
-*:after,
-*::before {
-   -webkit-box-sizing: border-box;
-   -moz-box-sizing: border-box;
-   box-sizing: border-box;
-   margin: 0;
-   padding: 0;
-   text-decoration: none;
-}
-
-body {
-   font-family: 'Roboto', sans-serif;
-}
-
-@import url('https://fonts.googleapis.com/css?family=Lora');
-@import url('https://fonts.googleapis.com/css?family=Open+Sans');
-
-/*h1{
-  color: #000;
-} */
-/*
-h2{
-  font-family: Open Sans;
-  color: #000;
-} */
-
-/* label{
-  color: #000 !important;
-} */
-
+/*================================ ADD A TRIP ==========================================*/
 /* #image-upload{
   color:white;
-}
-
-body {
-  text-transform: uppercase;
-  padding: 50px 0;
-}
-
-.box {
-  display: flex;
-  font-size: 20px;
-  margin: 20px 0;
-  padding: 20px;
-  width: 100%;
-  min-height: 200px;
-  background: rgb(255,255,255);
-  background: rgba(225,225,225,0.89);
 } */
 
-/*====================== MY TRIPS ======================*/
- li{
+textarea{
+  resize: vertical;
+  max-height: 100px;
+}
+/*================================= MY TRIPS ==========================================*/
+/* .mytrips{
+  width: 100%;
+  padding: 1% 1% 1% 1%;
+} */
+
+li{
   list-style-type: none;
   font-size: 20px;
-
  }
 
 .btn-default{
@@ -192,8 +151,8 @@ body {
 .btn-default:active,
 .btn-default:visited,
 .btn-default:focus {
-    background-color: #089586;
-    border-color: #089586;
+  background-color: #089586;
+  border-color: #089586;
 }
 
 .btn-default, .btn-primary, .btn-danger{
@@ -201,36 +160,11 @@ body {
   font-size: 16px;
 }
 
-/*====================== ADD A TRIP ======================*/
-textarea{
-  resize: vertical;
-  max-height: 100px;
+ .box{
+  width:100%;
 }
 
-
-
-
-
-
-
-@import url('https://fonts.googleapis.com/css?family=Lora');
-@import url('https://fonts.googleapis.com/css?family=Open+Sans');
-
-h1{
-  font-family: Open Sans;
-  color: #000;
+ #triplist{
+  margin-left: 1%;
 }
-p{
-  font-family: Lora;
-  color: #000;
-}
-
-.mytrips{
-  width: 100%;
-}
-
-
-
-.box.addformbox{
-  width:75%;
-}
+/*====================================================================================*/

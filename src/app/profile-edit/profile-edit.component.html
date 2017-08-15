@@ -1,21 +1,14 @@
 <div class="container">
-  <div class="col-sm-6">
+  <div class="col-sm-5">
     <h3 *ngIf='!profileedit'>STILL LOADING</h3>
     <form (ngSubmit)="onSubmit()" *ngIf='profileedit'>
       <h1>EDIT PROFILE</h1>
       <hr><br>
       <div class="form-group" show-errors>
         <label for="imageupload">Upload Image</label>
-            <img *ngIf='profileedit.ImageURL' [src]='profileedit.ImageURL'/>
+        <img *ngIf='profileedit.ImageURL' [src]='profileedit.ImageURL' />
         <input #imgUp name="image-upload" type="file" id="image-upload">
       </div>
-
-    <!-- <div class="form-group" show-errors>
-        <label for="imageupload">Upload Image</label>
-        <img *ngIf='tripedit.ImageURL' [src]='tripedit.ImageURL'/>
-        <input #imgUp name="image-upload" type="file" id="image-upload">
-      </div> -->
-
       <div class="form-group">
         <label for="headline">Headline</label>
         <input name="headline" [(ngModel)]="profileedit.Headline" type="text" id="headline" class="form-control" placeholder="&nbsp; Statement | Quote">
@@ -25,10 +18,9 @@
         <input name="name" [(ngModel)]="profileedit.Name" type="text" id="name" class="form-control" placeholder="&nbsp; First & Last Name">
       </div>
       <div class="form-group">
-
         <label for="gender">Gender</label>
         <img *ngIf='genderSign' [src]='genderSign' />
-        <select name="gender" [(ngModel)]="profileedit.Gender" type="dropdown" id="gender" class="form-control">
+      <select name="gender" [(ngModel)]="profileedit.Gender" type="dropdown" id="gender" class="form-control">
         <option value="">-- Select --</option>
         <option value="Male">Male</option>
         <option value="Female">Female</option>
@@ -47,248 +39,238 @@
       <div class="form-group">
         <label for="interests">Interests</label>
       </div>
-
-      <!-- INTEREST BUTTONS -->
+<!-- INTERESTS -->
       <div class="inputs">
         <div class="area">
-            <div class="col-3">
-              <span class="input">
+          <div class="col-3">
+            <span class="input">
                 <label [@toggleState]='this.profileedit.Interest.Beaches' for="beaches">Beaches</label>
                 <input [(ngModel)]='profileedit.Interest.Beaches' type="checkbox" name="beaches" id="beaches">
               </span>
-            </div>
-            <div class="col-3">
-              <span class="input">
+          </div>
+          <div class="col-3">
+            <span class="input">
                 <label [@toggleState]='this.profileedit.Interest.Camping' for="camping">Camping</label>
                 <input [(ngModel)]='profileedit.Interest.Camping' type="checkbox" name="camping" id="camping">
               </span>
-            </div>
-            <div class="col-3">
-              <span class="input">
+          </div>
+          <div class="col-3">
+            <span class="input">
                 <label [@toggleState]='this.profileedit.Interest.Culture' for="culture">Culture</label>
                 <input [(ngModel)]='profileedit.Interest.Culture' type="checkbox" name="culture" id="culture">
               </span>
-            </div>
-            <div class="col-3">
-              <span class="input">
+          </div>
+          <div class="col-3">
+            <span class="input">
                 <label [@toggleState]='this.profileedit.Interest.Clubbing' for="dance clubs | raves">Dance Clubs | Raves</label>
                 <input [(ngModel)]='profileedit.Interest.Clubbing' type="checkbox" name="dance clubs | raves" id="dance clubs | raves">
               </span>
-            </div>
           </div>
         </div>
-        <div class="area">
-          <div class="row">
-            <div class="col-3">
-              <span class="input">
+      </div>
+      <div class="area">
+        <div class="row">
+          <div class="col-3">
+            <span class="input">
                 <label [@toggleState]='this.profileedit.Interest.Food' for="food | culture">Food | Culture</label>
                 <input [(ngModel)]='profileedit.Interest.Food' type="checkbox" name="food | culture" id="food | culture">
               </span>
-            </div>
-            <div class="col-3">
-              <span class="input">
+          </div>
+          <div class="col-3">
+            <span class="input">
                 <label [@toggleState]='this.profileedit.Interest.Health' for="health | fitness">Health | Fitness</label>
                 <input [(ngModel)]='profileedit.Interest.Health' type="checkbox" name="health | fitness" id="health | fitness">
               </span>
-            </div>
-            <div class="col-3">
-              <span class="input">
+          </div>
+          <div class="col-3">
+            <span class="input">
                 <label [@toggleState]='this.profileedit.Interest.History' for="history">History</label>
                 <input [(ngModel)]='profileedit.Interest.History' type="checkbox" name="history" id="history">
               </span>
-            </div>
-            <div class="col-3">
-              <span class="input">
+          </div>
+          <div class="col-3">
+            <span class="input">
                 <label [@toggleState]='this.profileedit.Interest.Hiking' for="hiking">Hiking</label>
                 <input [(ngModel)]='profileedit.Interest.Hiking' type="checkbox" name="hiking" id="hiking">
               </span>
-            </div>
           </div>
         </div>
-        <div class="area">
-          <div class="row">
-            <div class="col-3">
-              <span class="input">
+      </div>
+      <div class="area">
+        <div class="row">
+          <div class="col-3">
+            <span class="input">
                 <label [@toggleState]='this.profileedit.Interest.Movies' for="movies">Movies</label>
                 <input [(ngModel)]='profileedit.Interest.Movies' type="checkbox" name="movies" id="movies">
               </span>
-            </div>
-            <div class="col-3">
-              <span class="input">
+          </div>
+          <div class="col-3">
+            <span class="input">
                 <label [@toggleState]='this.profileedit.Interest.Music' for="music">Music</label>
                 <input [(ngModel)]='profileedit.Interest.Music' type="checkbox" name="music" id="music">
               </span>
-            </div>
-            <div class="col-3">
-              <span class="input">
+          </div>
+          <div class="col-3">
+            <span class="input">
                 <label [@toggleState]='this.profileedit.Interest.Nature' for="nature">Nature</label>
                 <input [(ngModel)]='profileedit.Interest.Nature' type="checkbox" name="nature" id="nature">
               </span>
-            </div>
-            <div class="col-3">
-              <span class="input">
+          </div>
+          <div class="col-3">
+            <span class="input">
                 <label [@toggleState]='this.profileedit.Interest.Photography' for="photography">Photography</label>
                 <input [(ngModel)]='profileedit.Interest.Photography' type="checkbox" name="photography" id="photography">
               </span>
-            </div>
           </div>
         </div>
-        <div class="area">
-          <div class="row">
-            <div class="col-3">
-              <span class="input">
+      </div>
+      <div class="area">
+        <div class="row">
+          <div class="col-3">
+            <span class="input">
                 <label [@toggleState]='this.profileedit.Interest.Politics' for="politics">Politics</label>
                 <input [(ngModel)]='profileedit.Interest.Politics' type="checkbox" name="politics" id="politics">
               </span>
-            </div>
-            <div class="col-3">
-              <span class="input">
+          </div>
+          <div class="col-3">
+            <span class="input">
                 <label [@toggleState]='this.profileedit.Interest.Reading' for="reading">Reading</label>
                 <input [(ngModel)]='profileedit.Interest.Reading' type="checkbox" name="reading" id="reading">
               </span>
-            </div>
-            <div class="col-3">
-              <span class="input">
+          </div>
+          <div class="col-3">
+            <span class="input">
                 <label [@toggleState]='this.profileedit.Interest.Religion' for="religion">Religion</label>
                 <input [(ngModel)]='profileedit.Interest.Religion' type="checkbox" name="religion" id="religion">
               </span>
-            </div>
-            <div class="col-3">
-              <span class="input">
+          </div>
+          <div class="col-3">
+            <span class="input">
                 <label [@toggleState]='this.profileedit.Interest.RoadTrips' for="road trips">Road Trips</label>
                 <input [(ngModel)]='profileedit.Interest.RoadTrips' type="checkbox" name="road trips" id="road trips">
               </span>
-            </div>
           </div>
         </div>
-        <div class="area">
-          <div class="row">
-            <div class="col-3">
-              <span class="input">
+      </div>
+      <div class="area">
+        <div class="row">
+          <div class="col-3">
+            <span class="input">
                 <label [@toggleState]='this.profileedit.Interest.Sports' for="sports">Sports</label>
                 <input [(ngModel)]='profileedit.Interest.Sports' type="checkbox" name="sports" id="sports">
               </span>
-            </div>
-            <div class="col-3">
-              <span class="input">
+          </div>
+          <div class="col-3">
+            <span class="input">
                 <label [@toggleState]='this.profileedit.Interest.WaterSports' for="water sports">Water Sports</label>
                 <input [(ngModel)]='profileedit.Interest.WaterSports' type="checkbox" name="water sports" id="water sports">
               </span>
-            </div>
-            <div class="col-3">
-              <span class="input">
+          </div>
+          <div class="col-3">
+            <span class="input">
                 <label [@toggleState]='this.profileedit.Interest.Wine' for="wine connoisseur">Wine Connoisseur</label>
                 <input [(ngModel)]='profileedit.Interest.Wine' type="checkbox" name="wine connoisseur" id="wine connoisseur">
               </span>
-            </div>
-            <div class="col-3">
-              <span class="input">
+          </div>
+          <div class="col-3">
+            <span class="input">
                 <label (click)="test()" [@toggleState]='this.profileedit.Interest.Yoga' for="Yoga">Yoga</label>
                 <input [(ngModel)]='profileedit.Interest.Yoga' type="checkbox" name="Yoga" id="yoga-4">
               </span>
-            </div>
-            <!-- <div class="col-3">
-              <span class="input">
-                <label [@toggleState]='this.profileedit.Interest.Yoga' for="yoga">Yoga</label>
-                <input [(ngModel)]='profileedit.Interest.Yoga' type="checkbox" name="yoga" id="yoga-4">
-              </span>
-            </div> -->
           </div>
         </div>
+      </div>
       <button type="submit" class="btn btn-primary btn-lg" style="margin-top:2%">&nbsp; Submit &nbsp;</button>
     </form>
   </div>
 
-
-
-
-
 <!-- ADD A TRIP -->
-     <div class="col-sm-3 addForm">
-      <div class="box addFormBox" >
-        <fieldset>
-          <h1>ADD A TRIP</h1>
-          <hr>
-          <div class="form-group" show-errors>
-            <label for="title">Upload Image</label>
-            <img *ngIf='img' [src]='img' />
-            <input #imgInput name="image-upload" type="file" accept="image/png, image/jpeg, image/jpg" id="image-upload">
-          </div>
-
-          <!-- <div class="form-group">
+  <div class="col-sm-7 addForm">
+    <div class="box addFormBox">
+      <fieldset>
+        <h1>ADD A TRIP</h1>
+        <hr>
+        <div class="form-group" show-errors>
+          <label for="title">Upload Image</label>
+          <img *ngIf='img' [src]='img' />
+          <input #imgInput name="image-upload" type="file" accept="image/png, image/jpeg, image/jpg" id="image-upload">
+        </div>
+        <!-- <div class="form-group">
              <label for="title">Name</label>
             <input name="transportation" [(ngModel)]='newTrip.Name' type="text" id="name" class="form-control" placeholder="&nbsp;Enter a name">
           </div>
-
           <div class="form-group">
             <label for="title">Destination</label>
             <input name="destination" type="text" name="destination" [ngModel]='newTrip.Destinations' (ngModelChange)='destChanged($event)'
               class="form-control" placeholder="&nbsp; City, State, Country">
           </div> -->
-          <div class="form-group">
-            <div class="col-sm-6 col-md-6"><label for="title">Name</label></div>
-            <div class="col-sm-5 col-md-6"><label for="title">Destination</label></div>
-            <div class="col-sm-5 col-md-6"><input name="transportation" [(ngModel)]='newTrip.Name' type="text" id="name" class="form-control" placeholder="&nbsp;Enter a name"></div>
-            <div class="col-sm-5 col-md-6"><input name="destination" type="text" name="destination" [ngModel]='newTrip.Destinations' (ngModelChange)='destChanged($event)'
+        <div class="form-group">
+          <div class="col-sm-6 col-md-6"><label for="title">Name</label></div>
+          <div class="col-sm-5 col-md-6"><label for="title">Destination</label></div>
+          <div class="col-sm-5 col-md-6"><input name="transportation" [(ngModel)]='newTrip.Name' type="text" id="name" class="form-control" placeholder="&nbsp;Enter a name"></div>
+          <div class="col-sm-5 col-md-6"><input name="destination" type="text" name="destination" [ngModel]='newTrip.Destinations' (ngModelChange)='destChanged($event)'
               class="form-control" placeholder="&nbsp; City, State, Country"></div>
-          </div>
-
-          <div class="form-group">
-            <div class="col-sm-6 col-md-6"><label for="title">Transportation</label></div>
-            <div class="col-sm-6 col-md-6"><label for="title">Estimated Cost</label></div>
-            <div class="col-sm-6 col-md-6"><select name="transportation" [(ngModel)]='newTrip.ModelOfTransit' type="dropdown" id="transportation" class="form-control"
+        </div>
+        <div class="form-group">
+          <div class="col-sm-6 col-md-6"><label for="title">Transportation</label></div>
+          <div class="col-sm-6 col-md-6"><label for="title">Estimated Cost</label></div>
+          <div class="col-sm-6 col-md-6"><select name="transportation" [(ngModel)]='newTrip.ModelOfTransit' type="dropdown" id="transportation" class="form-control"
               placeholder="--Select--">
               <option value="">-- Select --</option>
               <option value="Air">Air</option>
               <option value="Land">Land</option>
               <option value="Sea">Sea</option>
             </select></div>
-            <div class="col-sm-6 col-md-6"><input name="price" type="number" [(ngModel)]='newTrip.Price' (ngModelChange)='newTrip.Price=min(0,newTrip.Price)' id="price"
-              class="form-control" placeholder=$0.00 min=0.01></div>
-          </div>
-          <div class="form-group">
-            <div class="col-sm-6 col-md-6"><label for="title">Start Date</label></div>
-            <div class="col-sm-6 col-md-6"><label for="title">End Date</label></div>
-            <div class="col-sm-6 col-md-6"><input name="start-date" type="date" [(ngModel)]='newTrip.StartDate' id="date" class="form-control" placeholder="&nbsp;MM/DD/YYYY"></div>
-            <div class="col-sm-6 col-md-6"><input name="end-date" type="date" [(ngModel)]='newTrip.EndDate' id="date" class="form-control" placeholder="&nbsp;MM/DD/YYYY"></div>
-          </div>
-          <div class="form-group">
-            <label for="content">Description</label>
-            <textarea maxlength="500" name="content" [(ngModel)]='newTrip.Description' id="content" class="form-control" cols="30" rows="8" placeholder="">
+          <div class="col-sm-6 col-md-6"><input name="price" type="number" [(ngModel)]='newTrip.Price' (ngModelChange)='newTrip.Price=min(0,newTrip.Price)'
+              id="price" class="form-control" placeholder=$0.00 min=0.01></div>
+        </div>
+        <div class="form-group">
+          <div class="col-sm-6 col-md-6"><label for="title">Start Date</label></div>
+          <div class="col-sm-6 col-md-6"><label for="title">End Date</label></div>
+          <div class="col-sm-6 col-md-6"><input name="start-date" type="date" [(ngModel)]='newTrip.StartDate' id="date" class="form-control" placeholder="&nbsp;MM/DD/YYYY"></div>
+          <div class="col-sm-6 col-md-6"><input name="end-date" type="date" [(ngModel)]='newTrip.EndDate' id="date" class="form-control" placeholder="&nbsp;MM/DD/YYYY"></div>
+        </div>
+        <div class="form-group">
+          <label for="content">Description</label>
+          <textarea maxlength="500" name="content" [(ngModel)]='newTrip.Description' id="content" class="form-control" cols="30" rows="8"
+            placeholder="">
               </textarea>
-          </div>
-          <div class="sumbit">
-            <button type="submit" (click)='submit()' class="btn btn-primary">Add</button>
-          </div>
-        </fieldset>
-      </div>
-
-       <div class="col-sm-4 addForm">
+        </div>
+        <div class="sumbit">
+          <button type="submit" (click)='submit()' class="btn btn-primary">Add</button>
+        </div>
+      </fieldset>
+    </div>
+    </div>
+<!-- MY TRIPS -->
+    <!-- <div class="col-sm-4 addForm">
+      <div class="box"> -->
+    <div class="col-sm-7 addForm" >
       <div class="box addFormBox" >
         <fieldset>
+          <div class="form-group">
           <h1>MY TRIPS</h1>
           <hr>
           <div>
             <ul *ngFor="let trip of trips ">
-            <span *ngIf='trip.Owner==id'>
-            <div class="col-sm-12 col-sm-7">
+              <span *ngIf='trip.Owner==id'>
+            <div class="col-sm-4">
               <img [src]="trip.ImageURL"/>
             </div>
-            <div class="col-sm-5 col-sm-9">
+            <div class="col-sm-8" id="triplist">
               <li><b>Name:</b>          {{trip.Name}}</li>
               <li><b>Destination:</b>   {{trip.Destinations}}</li>
               <li><b>Price:</b>         {{trip.Price|currency:'USD':true:'.2-2'}}</li>
               <li><b>Start date:</b>    {{trip.StartDate|date: shortDate}}</li>
               <li><b>End date:</b>      {{trip.EndDate|date: shortDate}}</li>
+              <li><button (click)="onClickView(trip.$key)" class="btn btn-default">View</button>&nbsp;<button (click)="onClickEdit(trip.$key)" class="btn btn-primary">Edit</button>&nbsp;<button (click)="onClickDelete(trip.$key)" class="btn btn-danger">Delete</button></li>
+
             </div>
             </span>
-          </ul>
+            </ul>
+          </div>
           </div>
         </fieldset>
       </div>
     </div>
-    </div>
   </div>
-
-
-
