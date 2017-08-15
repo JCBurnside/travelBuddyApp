@@ -1,18 +1,23 @@
-<div class="container">
-	<div class="row">
-		<div class="box">
-			<h1>{{_}}'s trip to {{tripview.Destinations}}</h1>
-			<hr>
-			<img [src]="tripview.ImageURL"/>
-			<p><b>Name:</b>               {{tripview.Name}}</p>
-			<p><b>Destinations:</b>       {{tripview.Destinations}}</p>
-			<p><b>Start Date:</b>         {{tripview.StartDate|date: shortDate}}</p>
-			<p><b>StartDate:</b>          {{tripview.EndDate|date: shortDate}}</p>
-			<p><b>Transportation:</b>     {{tripview.ModeOfTransit}}</p>
-			<p><b>Price:</b>              {{tripview.Price}}</p>
-			<p><b>Description:</b>        {{tripview.Description}}</p>
-			<p><b>Travellers:</b>         {{tripview.Travellers}}</p>
-			<p><b>Interests:</b>          {{tripview.Intrests}}</p>
-		</div>
-	</div>
+  <div class="container">
+  <div class="row">
+    <div>
+      <h1>{{_}}'s trip to {{tripview.Destinations}}</h1>
+      <hr>
+      <div class="col-sm-9 col-sm-3">
+        <img [src]="tripview.ImageURL" />
+      </div>
+      <div class="col-sm-4 col-sm-5">
+        <div class="mytrips">
+          <p><b>Headline:</b> {{tripview.Name}}</p>
+          <p><b>Destination:</b> {{tripview.Destinations}}</p>
+          <p><b>Transportation:</b> {{tripview.ModeOfTransit}}</p>
+          <p><b>Start Date:</b> {{tripview.StartDate|date: shortDate}}</p>
+          <p><b>End Date:</b> {{tripview.EndDate|date: shortDate}}</p>
+          <p><b>Estimated Cost:</b> {{tripview.Price}}</p>
+          <p><b>Description:</b> {{tripview.Description}}</p>
+           <p><b>Travellers:</b> {{tripview.Travellers}}</p>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>

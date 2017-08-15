@@ -3,7 +3,7 @@
     <h2>PROFILE</h2>
     <hr><br>
     <div class="col-sm-6 col-sm-5" id="profileimage">
-      <div class="profileplaceholder">
+      <div>
         <!-- <img [src]='profileImage' /> -->
         <img [src]="profileview.ImgURL||'http://placehold.it/250x250'">
       </div>
@@ -184,7 +184,7 @@
     </div>
   </div>
 
-  <div class=class="col-sm-12 col-sm-12">
+  <div class="col-sm-12 col-sm-12">
     <div class="box" style="text-align:left">
       <fieldset>
         <h2>TRIPS</h2>
@@ -192,15 +192,15 @@
         <div>
           <ul *ngFor="let trip of trips | async">
             <span *ngIf='trip.Owner==id'>
-            <div class="col-sm-6 col-sm-5">
+            <div class="col-sm-12 col-sm-7">
               <img [src]="trip.ImageURL"/>
             </div>
-            <div class="col-sm-6 col-sm-6">
+            <div class="col-sm-5 col-sm-9">
               <li><b>Name:</b>          {{trip.Name}}</li>
               <li><b>Destination:</b>   {{trip.Destinations}}</li>
               <li><b>Price:</b>         {{trip.Price|currency:'USD':true:'.2-2'}}</li>
-              <li><b>Start date:</b>    {{trip.StartDate}}</li>
-              <li><b>End date:</b>      {{trip.EndDate}}</li>
+              <li><b>Start date:</b>    {{trip.StartDate|date: shortDate}}</li>
+              <li><b>End date:</b>      {{trip.EndDate|date: shortDate}}</li>
             </div>
             </span>
           </ul>
@@ -208,3 +208,19 @@
       </fieldset>
     </div>
   </div>
+<!--
+   <div class="container">
+  <div class="row">
+    <div>
+      <h1>{{_}}'s trip to {{tripview.Destinations}}</h1>
+      <hr>
+      <div class="col-sm-9 col-sm-3">
+        <img [src]="tripview.ImageURL" />
+      </div>
+      <div class="col-sm-9 col-sm-3">
+        <div class="mytrips">
+        </div>
+      </div>
+    </div>
+  </div>
+</div> -->

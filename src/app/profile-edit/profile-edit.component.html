@@ -1,21 +1,20 @@
-<!-- <form> -->
-<!-- <img *ngIf='img'[src]='img'/> -->
-<!-- <input type="file" (ngModelChange)='updateImg($event)' accept=".jpg,.jpeg,.png"/>
-  <input type="text" name="email" [(ngModel)]='email' />
-  <input type="password" name="currPass" [(ngModel)]='currentPass'/>
-  <input type="password" name="newPass" [(ngModel)]='newPassword'/>
-  <input type="password" name="confPass" [(ngModel)]='confirmPassword'/>
-  <button type="submit" class="btn">Update</button>
-</form> -->
 <div class="container">
-  <div class="col-sm-12 col-sm-12">
+  <div class="col-sm-6">
     <form (ngSubmit)="onSubmit()" *ngIf='profileedit'>
       <h1>EDIT PROFILE</h1>
         <hr><br>
       <div class="form-group" show-errors>
         <label for="imageupload">Upload Image</label>
+            <img *ngIf='tripedit.ImageURL' [src]='tripedit.ImageURL'/>
         <input #imgUp name="image-upload" type="file" id="image-upload">
       </div>
+
+    <!-- <div class="form-group" show-errors>
+        <label for="imageupload">Upload Image</label>
+        <img *ngIf='tripedit.ImageURL' [src]='tripedit.ImageURL'/>
+        <input #imgUp name="image-upload" type="file" id="image-upload">
+      </div> -->
+
       <div class="form-group">
         <label for="headline">Headline</label>
         <input name="headline" [(ngModel)]="profileedit.Headline" type="text" id="headline" class="form-control" placeholder="&nbsp; Statement | Quote">
@@ -51,7 +50,6 @@
 <!-- INTEREST BUTTONS -->
       <div class="inputs">
         <div class="area">
-          <div class="row">
             <div class="col-3">
               <span class="input">
                 <label for="beaches">Beaches</label>
@@ -78,7 +76,6 @@
             </div>
           </div>
         </div>
-
         <div class="area">
           <div class="row">
             <div class="col-3">
@@ -107,7 +104,6 @@
             </div>
           </div>
         </div>
-
         <div class="area">
           <div class="row">
             <div class="col-3">
@@ -136,7 +132,6 @@
             </div>
           </div>
         </div>
-
         <div class="area">
           <div class="row">
             <div class="col-3">
@@ -165,7 +160,6 @@
             </div>
           </div>
         </div>
-
         <div class="area">
           <div class="row">
             <div class="col-3">
@@ -194,7 +188,149 @@
             </div>
           </div>
         </div>
-      </div>
-      <button type="submit" class="btn btn-secondary btn-lg" style="margin-top:2%">&nbsp; Submit &nbsp;</button>
+      <button type="submit" class="btn btn-primary btn-lg" style="margin-top:2%">&nbsp; Submit &nbsp;</button>
     </form>
   </div>
+
+
+
+
+
+<!-- ADD A TRIP -->
+     <div class="col-sm-3 addForm">
+      <div class="box addFormBox" >
+        <fieldset>
+          <h1>ADD A TRIP</h1>
+          <hr>
+          <div class="form-group" show-errors>
+            <label for="title">Upload Image</label>
+            <img *ngIf='img' [src]='img' />
+            <input #imgInput name="image-upload" type="file" accept="image/png, image/jpeg, image/jpg" id="image-upload">
+          </div>
+
+          <!-- <div class="form-group">
+             <label for="title">Name</label>
+            <input name="transportation" [(ngModel)]='newTrip.Name' type="text" id="name" class="form-control" placeholder="&nbsp;Enter a name">
+          </div>
+
+          <div class="form-group">
+            <label for="title">Destination</label>
+            <input name="destination" type="text" name="destination" [ngModel]='newTrip.Destinations' (ngModelChange)='destChanged($event)'
+              class="form-control" placeholder="&nbsp; City, State, Country">
+          </div> -->
+          <div class="form-group">
+            <div class="col-sm-6 col-md-6"><label for="title">Name</label></div>
+            <div class="col-sm-5 col-md-6"><label for="title">Destination</label></div>
+            <div class="col-sm-5 col-md-6"><input name="transportation" [(ngModel)]='newTrip.Name' type="text" id="name" class="form-control" placeholder="&nbsp;Enter a name"></div>
+            <div class="col-sm-5 col-md-6"><input name="destination" type="text" name="destination" [ngModel]='newTrip.Destinations' (ngModelChange)='destChanged($event)'
+              class="form-control" placeholder="&nbsp; City, State, Country"></div>
+          </div>
+
+          <div class="form-group">
+            <div class="col-sm-6 col-md-6"><label for="title">Transportation</label></div>
+            <div class="col-sm-6 col-md-6"><label for="title">Estimated Cost</label></div>
+            <div class="col-sm-6 col-md-6"><select name="transportation" [(ngModel)]='newTrip.ModelOfTransit' type="dropdown" id="transportation" class="form-control"
+              placeholder="--Select--">
+              <option value="">-- Select --</option>
+              <option value="Air">Air</option>
+              <option value="Land">Land</option>
+              <option value="Sea">Sea</option>
+            </select></div>
+            <div class="col-sm-6 col-md-6"><input name="price" type="number" [(ngModel)]='newTrip.Price' (ngModelChange)='newTrip.Price=min(0,newTrip.Price)' id="price"
+              class="form-control" placeholder=$0.00 min=0.01></div>
+          </div>
+          <div class="form-group">
+            <div class="col-sm-6 col-md-6"><label for="title">Start Date</label></div>
+            <div class="col-sm-6 col-md-6"><label for="title">End Date</label></div>
+            <div class="col-sm-6 col-md-6"><input name="start-date" type="date" [(ngModel)]='newTrip.StartDate' id="date" class="form-control" placeholder="&nbsp;MM/DD/YYYY"></div>
+            <div class="col-sm-6 col-md-6"><input name="end-date" type="date" [(ngModel)]='newTrip.EndDate' id="date" class="form-control" placeholder="&nbsp;MM/DD/YYYY"></div>
+          </div>
+          <div class="form-group">
+            <label for="content">Description</label>
+            <textarea maxlength="500" name="content" [(ngModel)]='newTrip.Description' id="content" class="form-control" cols="30" rows="8" placeholder="">
+              </textarea>
+          </div>
+          <div class="sumbit">
+            <button type="submit" (click)='submit()' class="btn btn-primary">Add</button>
+          </div>
+        </fieldset>
+      </div>
+
+       <div class="col-sm-4 addForm">
+      <div class="box addFormBox" >
+        <fieldset>
+          <h1>MY TRIPS</h1>
+          <hr>
+          <div>
+            <ul *ngFor="let trip of trips ">
+            <span *ngIf='trip.Owner==id'>
+            <div class="col-sm-12 col-sm-7">
+              <img [src]="trip.ImageURL"/>
+            </div>
+            <div class="col-sm-5 col-sm-9">
+              <li><b>Name:</b>          {{trip.Name}}</li>
+              <li><b>Destination:</b>   {{trip.Destinations}}</li>
+              <li><b>Price:</b>         {{trip.Price|currency:'USD':true:'.2-2'}}</li>
+              <li><b>Start date:</b>    {{trip.StartDate|date: shortDate}}</li>
+              <li><b>End date:</b>      {{trip.EndDate|date: shortDate}}</li>
+            </div>
+            </span>
+          </ul>
+          </div>
+        </fieldset>
+      </div>
+    </div>
+    </div>
+
+    <!-- <div class="col-xs-4 col-sm-8">
+      <div class="box">
+        <fieldset>
+          <h1>OPPORTUNITIES TO TRAVEL</h1>
+          <hr>
+          <div>
+            <ul *ngFor="let trip of trips | async">
+              <div class="col-xs-6 col-sm-6">
+                <img [src]="trip.ImageURL" />
+              </div>
+              <div class="col-xs-6 col-sm-6">
+                <li><b>Name:</b> {{trip.Name}}</li>
+                <li><b>Destination:</b> {{trip.Destinations}}</li>
+                <li><b>Transportation:</b> {{trip.ModeOfTransit}}</li>
+                <li><b>Start date:</b> {{trip.StartDate|date: shortDate}}</li>
+                <li><b>End date:</b> {{trip.EndDate|date: shortDate}}</li>
+                <li><b>Price:</b> {{trip.Price|currency:'USD':true:'.2-2'}}</li>
+                <li><button (click)="onClickView(trip.$key)" class="btn btn-default">View</button></li><br>
+                <hr>
+              </div>
+            </ul>
+          </div>
+        </fieldset>
+      </div>
+    </div> -->
+
+    <!-- <div class="col-xs-12 col-sm-6 col-md-12">
+      <div class="box">
+        <fieldset>
+          <h1>MY TRIPS</h1>
+          <hr>
+          <div>
+            <ul *ngFor="let trip of trips | async ">
+              <span *ngIf="trip.Owner == id">
+			          <img [src]="trip.ImageURL"/>
+                <li><b>Name:</b>          {{trip.Name}}</li>
+                <li><b>Destination:</b>   {{trip.Destinations}}</li>
+                <li><b>Price:</b>         {{trip.Price|currency:'USD':true:'.2-2'}}</li>
+                <li><b>Start date:</b>    {{trip.StartDate|date: shortDate}}</li>
+                <li><b>End date:</b>      {{trip.EndDate|date: shortDate}}</li>
+                <li><button (click)="onClickView(trip.$key)" class="btn btn-default">View</button>&nbsp;<button (click)="onClickEdit(trip.$key)" class="btn btn-primary">Edit</button>&nbsp;<button (click)="onClickDelete(trip.$key)" class="btn btn-danger">Delete</button></li>
+                <hr>
+                </span>
+            </ul>
+          </div>
+        </fieldset>
+      </div>
+    </div> -->
+  </div>
+
+
+

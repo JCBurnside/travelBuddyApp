@@ -60,7 +60,9 @@ export class HomepageComponent implements OnInit {
       });
     });
   }
-
+  onClickProfile($key){
+    this.router.navigate(['/profile', $key]);
+  }
   onClickEdit($key) {
     this.router.navigate(['/trip-edit', $key]);
   }
