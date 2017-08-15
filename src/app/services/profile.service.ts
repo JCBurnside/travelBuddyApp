@@ -19,14 +19,13 @@ export class ProfileService {
     /*
     *@params id is the string of the user UID whose profile you are getting
     *@params cb is a void callback function that takes a Profile and Error or string as arguments 
-    *
     */
     getProfileByOwner(id: string, cb: (profile: Profile, err: Error | string) => void) {
         this.profiles.orderByChild("ownerID").equalTo(id).on("value", (snap, err) => {
             if (snap.val()) {
-                let key=Object.keys(snap.val())[0];
-                let profile= snap.val()[key];
-                let interests: Interests = Interests.convertToInterest(profile.Interest|| new Interests()) ;
+                let key                  = Object.keys(snap.val())[0];
+                let profile              = snap.val()[key];
+                let interests: Interests = Interests.convertToInterest(profile.Interest || new Interests());
                 console.log(snap.val());
                 cb({ ...profile, Interest: interests, $key: key }, null);
             } else
@@ -49,7 +48,7 @@ export class ProfileService {
     /*
     * cb is a callback function that takes a Profile[] as an argument
     */
-    getAllProfiles(cb: Function) {
+    getAllProfiles(cb: (profiles: Profile[], err: Error | String) => void) {
         console.log("SENDERING REQUEST");
         this.profiles.on("value", (snap, err) => {
             if (err) {
@@ -68,7 +67,7 @@ export class ProfileService {
     * profile is the Profile object to be saved/updated
     * cb is the callback of what to do arguments are (success,error)
     */
-    saveProfile(profile: Profile, cb: Function) {
+    saveProfile(profile: Profile, cb: (success: boolean, err?: Error | string) => void) {
         delete profile.Interest.toStringArray;
         if (profile.$key) {
             var id = profile.$key;
@@ -76,7 +75,7 @@ export class ProfileService {
             this.db.object('/profiles/' + id).update(profile).then(() => cb(true)).catch(err => cb(false, err));
         } else {
             delete profile.$key;
-            this.profiles.push(profile);
+            this.profiles.push(profile).then(() => cb(true)).catch(err => cb(false, err));
         }
     }
 }

@@ -35,7 +35,7 @@ export class TripEditComponent implements OnInit {
   }
   onSubmit() {
     if (!this.imgUp.nativeElement.files[0]) {
-      this.ts.saveTrip(this.tripedit, this.id, (success, err) => {
+      this.ts.saveTrip(this.tripedit,  (success, err) => {
         if (err) {
           console.log(err);
         }
@@ -48,7 +48,7 @@ export class TripEditComponent implements OnInit {
       this.is.uploadTrip(this.imgUp.nativeElement.files[0],this.tripedit.$key,(snap,err)=>{
         if(err)
           return console.log(err);
-        this.ts.saveTrip({...this.tripedit,ImageURL:snap.downloadURL},this.tripedit.$key,(success,err)=>{
+        this.ts.saveTrip({...this.tripedit,ImageURL:snap.downloadURL},(success,err)=>{
           console.log(success||err);
         })
       })
