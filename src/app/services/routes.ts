@@ -37,7 +37,7 @@ export const routes = [
     component: HomepageComponent
   },
   {
-    path      : 'trip-edit/:id',
-    component : TripEditComponent
+    path     : 'trip-edit/:id',
+    component: TripEditComponent
   }
 ]

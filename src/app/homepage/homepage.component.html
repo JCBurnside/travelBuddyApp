@@ -4,7 +4,7 @@
     <h1></h1>
   </div>
   <div class="trip-search">
-    <figure class="tripprofile" *ngFor="let trip of trips|async">
+    <figure class="tripprofile" *ngFor="let trip of trips">
       <div class="image"><img [src]="trip.ImageURL"/>
         <p>
           {{trip.Description}}
