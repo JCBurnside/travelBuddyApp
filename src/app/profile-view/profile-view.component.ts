@@ -18,7 +18,7 @@ export class ProfileViewComponent implements OnInit {
   private interests  : string[];
   constructor(private route: ActivatedRoute, private PS: ProfileService, private TS: TripsService) {
     this.route.params.subscribe(params => {
-      this.PS.getProfileById(params['id'], (profile: Profile) => {
+      this.PS.getProfileByOwner(params['id'], (profile: Profile) => {
         this.id          = params['id'];
         this.profileview = profile;
         this.interests=(this.profileview.Interest as Interests).toStringArray();
