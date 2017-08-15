@@ -1,5 +1,6 @@
 import { Injectable } from "@angular/core";
 import Profile from "../models/profile";
+import { Interests } from '../models/interests'
 
 import { AngularFireDatabase, FirebaseListObservable } from "angularfire2/database";
 import * as firebase from "firebase/app";
@@ -24,12 +25,15 @@ export class ProfileService {
     * id is a string of the id of the user profile you trying to get
     * cb is a subscribe function that takes a Profile as an argument
     */
-    getProfileById(id: string, cb: Function): void {
+    getProfileById(id: string, cb:(profile:Profile)=>void): void {
         this.db.object('/profiles/'+id).subscribe(profile=>{
             delete profile.$value;
-            cb(profile)
+            let interests:Interests=Interests.convertToInterest(profile.Interest);
+            console.log(profile.Interest);
+            cb({...profile,Interest:interests});
         });
     }
+
     /*
     * cb is a callback function that takes a Profile[] as an argument
     */
@@ -53,6 +57,7 @@ export class ProfileService {
     * cb is the callback of what to do arguments are (success,error)
     */
     saveProfile(profile:Profile,cb:Function){
+        delete profile.Interest.toStringArray;
         if(profile.$key){
             var id=profile.$key;
             delete profile.$key;
