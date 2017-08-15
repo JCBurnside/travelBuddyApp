@@ -16,20 +16,25 @@ export class ProfileService {
         this.profiles = db.database.ref('profiles');
 
     }
+    /*
+    *@params id is the string of the user UID whose profile you are getting
+    *@params cb is a void callback function that takes a Profile and Error or string as arguments 
+    *
+    */
     getProfileByOwner(id: string, cb: (profile: Profile, err: Error | string) => void) {
         this.profiles.orderByChild("ownerID").equalTo(id).on("value", (snap, err) => {
             if (snap.val()) {
-                
-                let interests: Interests = Interests.convertToInterest(snap.val().Interest|| new Interests()) ;
+                let key=Object.keys(snap.val())[0];
+                let profile= snap.val()[key];
+                let interests: Interests = Interests.convertToInterest(profile.Interest|| new Interests()) ;
                 console.log(snap.val());
-                let key= Object.keys(snap.val())[0];
-                cb({ ...snap.val()[key], Interest: interests, $key: key }, null);
+                cb({ ...profile, Interest: interests, $key: key }, null);
             } else
                 cb(new Profile(id, ""), err);
         });
     }
     /*
-    * id is a string of the id of the user profile you trying to get
+    * id is a string of the id of the profile you trying to get
     * cb is a subscribe function that takes a Profile as an argument
     */
     getProfileById(id: string, cb: (profile: Profile) => void): void {
