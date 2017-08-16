@@ -2,6 +2,10 @@
 @import url('https://fonts.googleapis.com/css?family=Lora');
 @import url('https://fonts.googleapis.com/css?family=Open+Sans');
 /*================================ HTML ==========================================*/
+body{
+  overflow: auto;
+}
+
 h1{
   color: #000;
 }
@@ -42,8 +46,8 @@ button{
   width: 100%;
   max-width: 100%;
   position: absolute;
-  top:40%;
-  left:60%;
+  top: 80%;
+  left: 60%;
   transform:translate(-50%,-50%);
   -webkit-transform:translate(-50%,-50%);
   -ms-transform:translate(-50%,-50%);
@@ -99,7 +103,7 @@ button{
    text-align: center;
    text-transform:uppercase;
    cursor: pointer;
-   font-size: 14px;
+   font-size: 12px;
    z-index: 3;
    transition: 300ms;
    -webkit-transition: 300ms;
@@ -130,6 +134,10 @@ textarea{
   resize: vertical;
   max-height: 100px;
 }
+
+#addtrip{
+  padding-top: 0;
+}
 /*================================= MY TRIPS ==========================================*/
 /* .mytrips{
   width: 100%;
@@ -138,7 +146,7 @@ textarea{
 
 li{
   list-style-type: none;
-  font-size: 20px;
+  font-size: 16px;
  }
 
 .btn-default{
@@ -160,11 +168,26 @@ li{
   font-size: 16px;
 }
 
- .box{
+.box{
   width:100%;
 }
 
- #triplist{
-  margin-left: 1%;
+.image{
+  width: 100%;
+  padding: 10% 10% 10% 0;
+}
+
+p{
+  padding: 3px;
 }
 /*====================================================================================*/
+
+
+/* body{
+  padding:20px;
+} */
+
+.btn{
+  width:20%;
+  margin:10px;
+}

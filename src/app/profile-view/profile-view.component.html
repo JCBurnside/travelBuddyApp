@@ -47,32 +47,33 @@
     </div>
   </div>
   <div class="col-sm-12 col-sm-12">
-
     <div class="box" style="text-align:left">
       <fieldset>
         <h2>TRIPS</h2>
         <hr><br>
         <div>
-          <ul *ngFor="let trip of trips | async">
+          <li *ngFor="let trip of trips | async">
             <span *ngIf='trip.Owner==id'>
-
             <div class="col-sm-12 col-sm-7">
               <img [src]="trip.ImageURL"/>
             </div>
             <div class="col-sm-5 col-sm-9">
-              <li><b>Name:</b>          {{trip.Name}}</li>
-              <li><b>Destination:</b>   {{trip.Destinations}}</li>
-              <li><b>Price:</b>         {{trip.Price|currency:'USD':true:'.2-2'}}</li>
-              <li><b>Start date:</b>    {{trip.StartDate|date: shortDate}}</li>
-              <li><b>End date:</b>      {{trip.EndDate|date: shortDate}}</li>
+              <p><b>Name:</b>          {{trip.Name}}</p>
+              <p><b>Destination:</b>   {{trip.Destinations}}</p>
+              <p><b>Price:</b>         {{trip.Price|currency:'USD':true:'.2-2'}}</p>
+              <p><b>Start date:</b>    {{trip.StartDate|date: shortDate}}</p>
+              <p><b>End date:</b>      {{trip.EndDate|date: shortDate}}</p>
             </div>
+            <hr/>
             </span>
-
-          </ul>
+            <hr>
+          </li>
         </div>
       </fieldset>
     </div>
   </div>
+
+
   <!--
    <div class="container">
   <div class="row">

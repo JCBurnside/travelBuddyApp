@@ -4,7 +4,7 @@ body{
   background-position: center center;
 	background-repeat:  no-repeat;
 	background-attachment: fixed;
-	background-size:  cover;
+  background-size:  cover;
 }
   .box img{
     width:250px;
@@ -24,3 +24,7 @@ body{
 /* .addFormBox[_ngcontent-c2] {
     padding: 20px;
 } */
+
+
+/* https://stackoverflow.com/questions/5697605/limit-the-size-of-an-file-upload-html-input */
+/* https://stackoverflow.com/questions/3717793/javascript-file-upload-size-validation */
