@@ -3,11 +3,13 @@
     <h3 *ngIf='!profileedit'>STILL LOADING</h3>
     <form (ngSubmit)="onSubmit()" *ngIf='profileedit'>
       <h1>EDIT PROFILE</h1>
-      <hr><br>
+      <hr>
       <div class="form-group">
-        <label for="imageupload">Upload Image</label>
-        <img *ngIf='profileedit.ImageURL' [src]='profileedit.ImageURL' />
-        <input #imgUp name="image-upload" type="file" id="image-upload">
+        <div class="file">
+          <label for="imageupload">Upload Image</label>
+          <img *ngIf='profileedit.ImageURL' [src]='profileedit.ImageURL' />
+          <input #imgUp name="image-upload" type="file" id="image-upload">
+        </div>
       </div>
       <div id="headline">
         <div class="form-group">
@@ -48,11 +50,11 @@
       </div>
       <div id="interests">
         <div class="form-group">
-          <label for="interests">Interests</label>
-            &nbsp;<p>Choose a number interests that best describe yourself.<p>
+          <label for="interests">Interests</label> &nbsp;
+          <label>Choose a number interests that best describe yourself.</label>
         </div>
       </div>
-<!-- INTERESTS -->
+      <!-- INTERESTS -->
       <div class="inputs">
         <div class="area">
           <div class="col-3">
@@ -197,16 +199,18 @@
     </form>
   </div>
 
-<!-- ADD A TRIP -->
+  <!-- ADD A TRIP -->
   <div id="addtrip" class="col-sm-7 addForm">
     <div class="box addFormBox">
       <fieldset>
         <h1>ADD A TRIP</h1>
         <hr>
         <div class="form-group" show-errors>
-          <label for="title">Upload Image</label>
-          <img *ngIf='img' [src]='img' />
-          <input #imgInput name="image-upload" type="file" accept="image/png, image/jpeg, image/jpg" id="image-upload">
+          <div class="file1">
+            <label for="title">Upload Image</label>
+            <img *ngIf='img' [src]='img' />
+            <input #imgInput name="image-upload" type="file" accept="image/png, image/jpeg, image/jpg" id="image-upload">
+          </div>
         </div>
         <div class="form-group">
           <div class="col-sm-6 col-md-6"><label for="title">Headline</label></div>
@@ -229,10 +233,18 @@
               id="price" class="form-control" placeholder=$0.00 min=0.01></div>
         </div>
         <div class="form-group">
-          <div class="col-sm-6 col-md-6"><label for="title">Start Date</label></div>
-          <div class="col-sm-6 col-md-6"><label for="title">End Date</label></div>
-          <div class="col-sm-6 col-md-6"><input name="start-date" type="date" [(ngModel)]='newTrip.StartDate' id="date" class="form-control" placeholder="&nbsp;MM/DD/YYYY"></div>
-          <div class="col-sm-6 col-md-6"><input name="end-date" type="date" [(ngModel)]='newTrip.EndDate' id="date" class="form-control" placeholder="&nbsp;MM/DD/YYYY"></div>
+          <div class="col-sm-6 col-md-6">
+            <label for="title">Start Date</label>
+          </div>
+          <div class="col-sm-6 col-md-6">
+            <label for="title">End Date</label>
+          </div>
+          <div class="col-sm-6 col-md-6">
+            <input name="start-date" type="date" [(ngModel)]='newTrip.StartDate' id="date" class="form-control" placeholder="&nbsp;MM/DD/YYYY">
+          </div>
+          <div class="col-sm-6 col-md-6">
+            <input name="end-date" type="date" [(ngModel)]='newTrip.EndDate' id="date" class="form-control" placeholder="&nbsp;MM/DD/YYYY">
+          </div>
         </div>
         <div class="form-group">
           <label for="content">Description</label>
@@ -245,36 +257,38 @@
         </div>
       </fieldset>
     </div>
-    </div>
-<!-- MY TRIPS -->
-    <!-- <div class="col-sm-4 addForm">
+  </div>
+  <!-- MY TRIPS -->
+  <!-- <div class="col-sm-4 addForm">
       <div class="box"> -->
-    <div class="col-sm-8 addForm" >
-      <div class="box addFormBox" >
-        <fieldset>
-          <div class="form-group">
+  <div class="col-sm-8 addForm">
+    <div class="box addFormBox">
+      <fieldset>
+        <div class="form-group">
           <h1>MY TRIPS</h1>
           <hr>
           <div>
-              <div class="col-sm-12"  *ngFor="let trip of trips ">
+            <div class="col-sm-12" *ngFor="let trip of trips ">
               <span *ngIf='trip.Owner==id'>
-            <div class="col-sm-4">
-              <img class="image" [src]="trip.ImageURL"/>
+            <div class=" col-sm-7">
+              <img class="image" style="height:auto" [src]="trip.ImageURL"/>
             </div>
-            <div class="col-sm-9">
-              <p><b>Name:</b>          {{trip.Name}}</p>
+            <div class="col-sm-5 tripPanel">
+              <p><b>Headline:</b>       {{trip.Name}}</p>
               <p><b>Destination:</b>   {{trip.Destinations}}</p>
               <p><b>Price:</b>         {{trip.Price|currency:'USD':true:'.2-2'}}</p>
               <p><b>Start date:</b>    {{trip.StartDate|date: shortDate}}</p>
               <p><b>End date:</b>      {{trip.EndDate|date: shortDate}}</p>
+              <p><b>Description:</b>    {{trip.Description}}</p>
               <p><button (click)="onClickEdit(trip.$key)" class="btn btn-primary">Edit</button>&nbsp;
                  <button (click)="onClickDelete(trip.$key)" class="btn btn-danger">Delete</button></p>
             </div>
-            </span><hr>
+            </span>
+              <hr>
+            </div>
           </div>
-          </div>
-          </div>
-        </fieldset>
-      </div>
+        </div>
+      </fieldset>
     </div>
   </div>
+</div>
