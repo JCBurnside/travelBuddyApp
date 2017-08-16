@@ -52,8 +52,7 @@
         <h2>TRIPS</h2>
         <hr><br>
         <div>
-          <li *ngFor="let trip of trips | async">
-            <span *ngIf='trip.Owner==id'>
+          <ul *ngFor="let trip of trips">
             <div class="col-sm-12 col-sm-7">
               <img [src]="trip.ImageURL"/>
             </div>
@@ -64,10 +63,7 @@
               <p><b>Start date:</b>    {{trip.StartDate|date: shortDate}}</p>
               <p><b>End date:</b>      {{trip.EndDate|date: shortDate}}</p>
             </div>
-            <hr/>
-            </span>
-            <hr>
-          </li>
+          </ul>
         </div>
       </fieldset>
     </div>

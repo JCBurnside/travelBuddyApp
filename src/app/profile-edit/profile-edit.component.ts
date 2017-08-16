@@ -3,6 +3,7 @@ import { trigger, state, animate, transition, style } from "@angular/animations"
 import { ActivatedRoute, Router } from '@angular/router';
 import Profile from '../models/profile';
 import Trip from '../models/trip';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { Interests } from "../models/interests";
 
@@ -31,7 +32,7 @@ export class ProfileEditComponent implements OnInit {
   private newTrip = new Trip(null, null);
   public trips: any;
   @ViewChild('imgInput') el: ElementRef;
-  id:string;
+  id: string;
   constructor(private route: ActivatedRoute,
     private PS: ProfileService,
     private AS: FirebaseService,
@@ -39,26 +40,30 @@ export class ProfileEditComponent implements OnInit {
     private router: Router,
     public ts: TripsService) {
     AS.getId(id => this.id = id);
-     this.ts.getTripsByOwner(this.id).subscribe(trips=>this.trips=trips);
-   }
+
+  }
 
   img: string;
   @ViewChild('imgUp') imgUp: ElementRef;
   email: string;
   PID: string; // profile ID
-  private sub: any;
   ngOnInit() {
-    this.sub = this.route.params.subscribe(params => {
+    this.route.params.subscribe(params => {
       this.PS.getProfileByOwner(params['id'], (profile: Profile) => {
         this.profileedit = profile;
 
         this.PID = params['id'];
         this.id = params['id'];
         console.log(profile);
-        if(!this.profileedit.Interest)
-          this.profileedit.Interest=new Interests();
+        if (!this.profileedit.Interest)
+          this.profileedit.Interest = new Interests();
         this.PID = params['id'];
         console.log(this.profileedit.Interest);
+        this.ts.getTripsByOwner(this.id, (trips, err) => {
+          if (err)
+            return console.log(err);
+          this.trips = trips;
+        });
 
         // if (this.profileedit.Gender == 'female') {
         //   this.genderSign = './img/female.png';
@@ -66,16 +71,9 @@ export class ProfileEditComponent implements OnInit {
       });
     });
   }
-  test(){
+  test() {
     this.profileedit.Interest.Yoga = !this.profileedit.Interest.Yoga;
   }
-showId(){
-  console.log(this.id);
-  console.log(this.trips);
-  this.trips.forEach(function(fuck){
-    console.log(fuck);
-  })
-}
 
   destChanged(test: any) {
     this.newTrip.Destinations = [test];
@@ -90,12 +88,12 @@ showId(){
       alert("You need a" + !this.newTrip.StartDate ? ' Start Date' : 'n End Date');
     else {
       this.newTrip.Owner = this.PID;
-      this.ts.addNewTrip(this.newTrip, (key) => {
+      this.ts.saveTrip(this.newTrip, (trip, err) => {
         if (this.el.nativeElement.files[0])
-          this.IS.uploadTrip(this.el.nativeElement.files[0], key, (snap, err) => {
+          this.IS.uploadTrip(this.el.nativeElement.files[0], trip.$key, (snap, err) => {
             if (err)
               return console.log(err);
-            this.ts.saveTrip({ ...this.newTrip, ImageURL: snap.downloadURL }, key, (s, e) => { })
+            this.ts.saveTrip({ ...this.newTrip, ImageURL: snap.downloadURL }, (s, e) => { })
           })
       });
     }
@@ -119,6 +117,7 @@ showId(){
 
   onSubmit() {
     console.log(this.profileedit.Interest)
+
     if (!this.imgUp.nativeElement.files[0]) {
       this.PS.saveProfile(this.profileedit, (profile, err) => {
         if (err) {

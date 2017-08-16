@@ -4,7 +4,7 @@
     <form (ngSubmit)="onSubmit()" *ngIf='profileedit'>
       <h1>EDIT PROFILE</h1>
       <hr><br>
-      <div class="form-group" show-errors>
+      <div class="form-group">
         <label for="imageupload">Upload Image</label>
         <img *ngIf='profileedit.ImageURL' [src]='profileedit.ImageURL' />
         <input #imgUp name="image-upload" type="file" id="image-upload">
