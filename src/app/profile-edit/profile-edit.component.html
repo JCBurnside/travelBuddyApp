@@ -62,7 +62,7 @@
           </div>
           <div class="col-3">
             <span class="input">
-                <label [@toggleState]='this.profileedit.Interest.Clubbing' for="dance clubs | raves">Dance Clubs | Raves</label>
+                <label [@toggleState]='this.profileedit.Interest.Clubbing' for="dance clubs | raves">Dancing | Raves</label>
                 <input [(ngModel)]='profileedit.Interest.Clubbing' type="checkbox" name="dance clubs | raves" id="dance clubs | raves">
               </span>
           </div>
@@ -185,7 +185,7 @@
   </div>
 
 <!-- ADD A TRIP -->
-  <div class="col-sm-7 addForm">
+  <div id="addtrip" class="col-sm-7 addForm">
     <div class="box addFormBox">
       <fieldset>
         <h1>ADD A TRIP</h1>
@@ -195,15 +195,6 @@
           <img *ngIf='img' [src]='img' />
           <input #imgInput name="image-upload" type="file" accept="image/png, image/jpeg, image/jpg" id="image-upload">
         </div>
-        <!-- <div class="form-group">
-             <label for="title">Name</label>
-            <input name="transportation" [(ngModel)]='newTrip.Name' type="text" id="name" class="form-control" placeholder="&nbsp;Enter a name">
-          </div>
-          <div class="form-group">
-            <label for="title">Destination</label>
-            <input name="destination" type="text" name="destination" [ngModel]='newTrip.Destinations' (ngModelChange)='destChanged($event)'
-              class="form-control" placeholder="&nbsp; City, State, Country">
-          </div> -->
         <div class="form-group">
           <div class="col-sm-6 col-md-6"><label for="title">Name</label></div>
           <div class="col-sm-5 col-md-6"><label for="title">Destination</label></div>
@@ -245,28 +236,31 @@
 <!-- MY TRIPS -->
     <!-- <div class="col-sm-4 addForm">
       <div class="box"> -->
-    <div class="col-sm-7 addForm" >
+    <div class="col-sm-8 addForm" >
       <div class="box addFormBox" >
         <fieldset>
           <div class="form-group">
           <h1>MY TRIPS</h1>
           <hr>
           <div>
-            <ul *ngFor="let trip of trips ">
+            <ul>
+              <li class="col-sm-12"  *ngFor="let trip of trips ">
               <span *ngIf='trip.Owner==id'>
             <div class="col-sm-4">
-              <img [src]="trip.ImageURL"/>
+              <img class="image" [src]="trip.ImageURL"/>
             </div>
-            <div class="col-sm-8" id="triplist">
-              <li><b>Name:</b>          {{trip.Name}}</li>
-              <li><b>Destination:</b>   {{trip.Destinations}}</li>
-              <li><b>Price:</b>         {{trip.Price|currency:'USD':true:'.2-2'}}</li>
-              <li><b>Start date:</b>    {{trip.StartDate|date: shortDate}}</li>
-              <li><b>End date:</b>      {{trip.EndDate|date: shortDate}}</li>
-              <li><button (click)="onClickView(trip.$key)" class="btn btn-default">View</button>&nbsp;<button (click)="onClickEdit(trip.$key)" class="btn btn-primary">Edit</button>&nbsp;<button (click)="onClickDelete(trip.$key)" class="btn btn-danger">Delete</button></li>
-
+            <div class="col-sm-9">
+              <p><b>Name:</b>          {{trip.Name}}</p>
+              <p><b>Destination:</b>   {{trip.Destinations}}</p>
+              <p><b>Price:</b>         {{trip.Price|currency:'USD':true:'.2-2'}}</p>
+              <p><b>Start date:</b>    {{trip.StartDate|date: shortDate}}</p>
+              <p><b>End date:</b>      {{trip.EndDate|date: shortDate}}</p>
+              <p><button (click)="onClickView(trip.$key)" class="btn btn-default">View</button>&nbsp;
+                 <button (click)="onClickEdit(trip.$key)" class="btn btn-primary">Edit</button>&nbsp;
+                 <button (click)="onClickDelete(trip.$key)" class="btn btn-danger">Delete</button></p>
             </div>
-            </span>
+            </span><hr>
+          </li>
             </ul>
           </div>
           </div>
