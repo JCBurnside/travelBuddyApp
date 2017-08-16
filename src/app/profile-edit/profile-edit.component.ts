@@ -40,20 +40,15 @@ export class ProfileEditComponent implements OnInit {
     private router: Router,
     public ts: TripsService) {
     AS.getId(id => this.id = id);
-    this.ts.getTripsByOwner(this.id, (trips, err) => {
-      if (err)
-        return console.log(err);
-      this.trips=trips;
-    });
+
   }
 
   img: string;
   @ViewChild('imgUp') imgUp: ElementRef;
   email: string;
   PID: string; // profile ID
-  private sub: any;
   ngOnInit() {
-    this.sub = this.route.params.subscribe(params => {
+    this.route.params.subscribe(params => {
       this.PS.getProfileByOwner(params['id'], (profile: Profile) => {
         this.profileedit = profile;
 
@@ -64,6 +59,11 @@ export class ProfileEditComponent implements OnInit {
           this.profileedit.Interest = new Interests();
         this.PID = params['id'];
         console.log(this.profileedit.Interest);
+        this.ts.getTripsByOwner(this.id, (trips, err) => {
+          if (err)
+            return console.log(err);
+          this.trips = trips;
+        });
 
         // if (this.profileedit.Gender == 'female') {
         //   this.genderSign = './img/female.png';
