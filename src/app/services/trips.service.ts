@@ -40,9 +40,9 @@ export class TripsService {
             if(err)
                 return cb(null,err);
             let out:Trip[]=[];
-            snap.forEach(trip=>{
-                out.push({...trip.exportVal(),$key:trip.key});
-                return true;
+            console.log(snap.val())
+            Object.keys(snap.val()||{}).forEach(key=>{
+                out.push({...snap.val()[key],$key:key})
             })
             cb(out,null);
         })
@@ -52,14 +52,15 @@ export class TripsService {
         let saved=trip;
         let id=trip.$key;
         delete trip.$key;
-        this.db.object('/trips/' + id).update(trip).then(() => cb(saved,null)).catch(err => cb(null, err));
+        this.db.object('/trips/' + id).update(trip).then(() =>{console.log("TRIP SAVED"); cb({...trip,$key:id},null)}).catch(err => cb(null, err));
     }else{
         delete trip.$key;
-        this.trips.push(trip).then(trip=>console.log(trip)).catch(err=>cb(null,err));
+        this.trips.push(trip).then(tripref=>cb({...trip,$key:tripref.key},null)).catch(err=>cb(null,err));
     }
   }
-  deleteTrip(trip: Trip, id: string, cb: Function) {
-    this.db.object('/trips/' + id).remove().then(success => cb(success, null)).catch(err => cb(false, err));
+  deleteTrip(trip: Trip, cb: Function) {
+      if(trip.$key)
+        this.db.object('/trips/' + trip.$key).remove().then(success => cb(true, null)).catch(err => cb(false, err));
   }
 }
 

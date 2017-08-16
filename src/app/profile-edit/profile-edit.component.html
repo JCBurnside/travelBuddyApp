@@ -21,18 +21,16 @@
           <input name="name" [(ngModel)]="profileedit.Name" type="text" id="name" class="form-control" placeholder="&nbsp; First & Last Name">
         </div>
       </div>
-      <div id="gender">
-        <div class="form-group">
-          <label for="gender">Gender</label>
-          <img *ngIf='genderSign' [src]='genderSign' />
-          <select name="gender" [(ngModel)]="profileedit.Gender" type="dropdown" id="gender" class="form-control">
-            <option value="">-- Select --</option>
-            <option value="Male">Male</option>
-            <option value="Female">Female</option>
-            <option value="Other">Other</option>
-            <option value="Unspecified">Unspecified</option>
-          </select>
-        </div>
+      <div class="form-group">
+        <label for="gender">Gender</label>
+        <img *ngIf='genderSign' [src]='genderSign' />
+        <select name="gender" [(ngModel)]="profileedit.Gender" type="dropdown" id="gender" class="form-control">
+        <option value="">-- Select --</option>
+        <option value="Male">Male</option>
+        <option value="Female">Female</option>
+        <option value="Other">Other</option>
+        <option value="Unspecified">Unspecified</option>
+      </select>
       </div>
       <div id="hometown">
         <div class="form-group">
@@ -52,7 +50,7 @@
             &nbsp;<p>Choose a number interests that best describe yourself.<p>
         </div>
       </div>
-<!-- INTERESTS -->
+      <!-- INTERESTS -->
       <div class="inputs">
         <div class="area">
           <div class="col-3">
@@ -197,7 +195,7 @@
     </form>
   </div>
 
-<!-- ADD A TRIP -->
+  <!-- ADD A TRIP -->
   <div id="addtrip" class="col-sm-7 addForm">
     <div class="box addFormBox">
       <fieldset>
@@ -225,8 +223,7 @@
               <option value="Land">Land</option>
               <option value="Sea">Sea</option>
             </select></div>
-          <div class="col-sm-6 col-md-6"><input name="price" type="number" [(ngModel)]='newTrip.Price' (ngModelChange)='newTrip.Price=min(0,newTrip.Price)'
-              id="price" class="form-control" placeholder=$0.00 min=0.01></div>
+          <div class="col-sm-6 col-md-6"><input name="price" type="number" [(ngModel)]='newTrip.Price' id="price" class="form-control" placeholder=$0.00 min=0 step=0.01/></div>
         </div>
         <div class="form-group">
           <div class="col-sm-6 col-md-6"><label for="title">Start Date</label></div>
@@ -245,36 +242,37 @@
         </div>
       </fieldset>
     </div>
-    </div>
-<!-- MY TRIPS -->
-    <!-- <div class="col-sm-4 addForm">
+  </div>
+  <!-- MY TRIPS -->
+  <!-- <div class="col-sm-4 addForm">
       <div class="box"> -->
-    <div class="col-sm-8 addForm" >
-      <div class="box addFormBox" >
-        <fieldset>
-          <div class="form-group">
+  <div class="col-sm-8 addForm">
+    <div class="box addFormBox">
+      <fieldset>
+        <div class="form-group">
           <h1>MY TRIPS</h1>
           <hr>
           <div>
-              <div class="col-sm-12"  *ngFor="let trip of trips ">
-              <span *ngIf='trip.Owner==id'>
-            <div class="col-sm-4">
-              <img class="image" [src]="trip.ImageURL"/>
-            </div>
-            <div class="col-sm-9">
-              <p><b>Name:</b>          {{trip.Name}}</p>
-              <p><b>Destination:</b>   {{trip.Destinations}}</p>
-              <p><b>Price:</b>         {{trip.Price|currency:'USD':true:'.2-2'}}</p>
-              <p><b>Start date:</b>    {{trip.StartDate|date: shortDate}}</p>
-              <p><b>End date:</b>      {{trip.EndDate|date: shortDate}}</p>
-              <p><button (click)="onClickEdit(trip.$key)" class="btn btn-primary">Edit</button>&nbsp;
-                 <button (click)="onClickDelete(trip.$key)" class="btn btn-danger">Delete</button></p>
-            </div>
-            </span><hr>
+            <ul *ngFor="let trip of trips">
+              <li class="col-sm-12" >
+                <div class="col-sm-4">
+                  <img class="image" [src]="trip.ImageURL" />
+                </div>
+                <div class="col-sm-9">
+                  <p><b>Name:</b> {{trip.Name}}</p>
+                  <p><b>Destination:</b> {{trip.Destinations}}</p>
+                  <p><b>Price:</b> {{trip.Price|currency:'USD':true:'.2-2'}}</p>
+                  <p><b>Start date:</b> {{trip.StartDate|date: shortDate}}</p>
+                  <p><b>End date:</b> {{trip.EndDate|date: shortDate}}</p>
+                  <p><button (click)="onClickView(trip.$key)" class="btn btn-default">View</button>&nbsp;
+                    <button (click)="onClickEdit(trip.$key)" class="btn btn-primary">Edit</button>&nbsp;
+                    <button (click)="onClickDelete(trip)" class="btn btn-danger">Delete</button></p>
+                </div>
+              </li>
+            </ul>
           </div>
-          </div>
-          </div>
-        </fieldset>
-      </div>
+        </div>
+      </fieldset>
     </div>
   </div>
+</div>
