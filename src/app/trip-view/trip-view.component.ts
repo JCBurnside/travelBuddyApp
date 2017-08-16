@@ -20,7 +20,7 @@ export class TripViewComponent implements OnInit {
     public ts: TripsService,
     public ps: ProfileService,
     public as: FirebaseService) { }
-  private _;
+  private name;
   private id;
   private sub: any;
   public tripview: Trip = new Trip("", "");
@@ -36,7 +36,7 @@ export class TripViewComponent implements OnInit {
       if (err) {
         console.log(err);
       } else {
-        this._ = profile.Name;
+        this.name = profile.Name;
       }
     });
   }

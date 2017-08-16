@@ -13,7 +13,7 @@ import { Interests } from "../models/interests";
 })
 export class ProfileViewComponent implements OnInit {
   private profileview: Profile;
-  private trips      : any;
+  private trips      : any[];
   private id         : string;
   private interests  : string[];
   constructor(private route: ActivatedRoute, private PS: ProfileService, private TS: TripsService) {
@@ -22,7 +22,13 @@ export class ProfileViewComponent implements OnInit {
         this.id          = params['id'];
         this.profileview = profile;
         this.interests=(this.profileview.Interest as Interests).toStringArray();
-        this.trips = this.TS.getTripsByOwner(this.id);
+        this.TS.getTripsByOwner(this.id,(trips,err)=>{
+          if(err){
+            console.error(err);
+          }else{
+            this.trips=trips;
+          }
+        });
       });
     });
     this.PS.getAllProfiles((a, err) => {
