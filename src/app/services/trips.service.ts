@@ -41,7 +41,7 @@ export class TripsService {
                 return cb(null,err);
             let out:Trip[]=[];
             snap.forEach(trip=>{
-                out.push(trip.exportVal());
+                out.push({...trip.exportVal(),$key:trip.key});
                 return true;
             })
             cb(out,null);

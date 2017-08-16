@@ -5,7 +5,7 @@
     <div class="col-sm-6 col-sm-5" id="profileimage">
       <div>
         <!-- <img [src]='profileImage' /> -->
-        <img [src]="profileview.ImgURL||'http://placehold.it/250x250'">
+        <img #imgTesting width="300px" [src]="profileview.ImgURL||'http://placehold.it/250x250'">
       </div>
     </div>
     <div class="col-sm-6 col-sm-6" id="profileimage">
@@ -52,16 +52,17 @@
         <h2>TRIPS</h2>
         <hr><br>
         <div>
-          <ul *ngFor="let trip of trips">
+          <ul *ngFor="let trip of trips;let i=index">
             <div class="col-sm-12 col-sm-7">
               <img [src]="trip.ImageURL"/>
             </div>
             <div class="col-sm-5 col-sm-9">
               <p><b>Name:</b>          {{trip.Name}}</p>
-              <p><b>Destination:</b>   {{trip.Destinations}}</p>
+              <p><b>Destination:</b>   {{dests[i].toString()}}</p>
               <p><b>Price:</b>         {{trip.Price|currency:'USD':true:'.2-2'}}</p>
               <p><b>Start date:</b>    {{trip.StartDate|date: shortDate}}</p>
               <p><b>End date:</b>      {{trip.EndDate|date: shortDate}}</p>
+              <p><b>Description</b>    {{trip.Description}}</p>
             </div>
           </ul>
         </div>

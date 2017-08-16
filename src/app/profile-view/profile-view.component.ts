@@ -5,6 +5,7 @@ import { TripsService } from "../services/trips.service";
 import { FirebaseService } from '../services/auth.service';
 import { Component, OnInit } from '@angular/core';
 import { Interests } from "../models/interests";
+import Trip from "../models/trip";
 
 @Component({
   selector   : 'app-profile-view',
@@ -16,6 +17,7 @@ export class ProfileViewComponent implements OnInit {
   private trips      : any[];
   private id         : string;
   private interests  : string[];
+  private dests:string[]=[];
   constructor(private route: ActivatedRoute, private PS: ProfileService, private TS: TripsService) {
     this.route.params.subscribe(params => {
       this.PS.getProfileByOwner(params['id'], (profile: Profile) => {
@@ -26,7 +28,19 @@ export class ProfileViewComponent implements OnInit {
           if(err){
             console.error(err);
           }else{
+            console.log(trips);
+            trips.forEach((trip:Trip,i,arr)=>{
+              var keys = Object.keys(trip.Destinations);
+              var dest = [];
+              keys.forEach(function(key){
+                console.log(key, trip.Destinations[key])
+                dest.push(trip.Destinations[key]);
+              });
+              this.dests.push(dest.join(", "));
+            })
+            console.log(this.dests);
             this.trips=trips;
+            
           }
         });
       });

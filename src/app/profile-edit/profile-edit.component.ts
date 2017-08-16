@@ -62,7 +62,7 @@ export class ProfileEditComponent implements OnInit {
         this.ts.getTripsByOwner(this.id, (trips, err) => {
           if (err)
             return console.log(err);
-          this.trips = trips;
+          this.trips = trips;trips.forEach(trip=>console.log(trip.$key))
         });
 
         // if (this.profileedit.Gender == 'female') {
@@ -102,6 +102,7 @@ export class ProfileEditComponent implements OnInit {
     this.router.navigate(['/profile', $key]);
   }
   onClickEdit($key) {
+    console.log($key)
     this.router.navigate(['/trip-edit', $key]);
   }
 
