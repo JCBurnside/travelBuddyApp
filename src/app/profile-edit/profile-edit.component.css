@@ -24,7 +24,6 @@ label{
   padding: 3% 3% 3% 3%;
   background: rgb(255,255,255);
   background: rgba(225,225,225,0.89);
-  font-size: 16px;
 }
 
 .form-group{
@@ -58,6 +57,7 @@ button{
   -ms-transform:translate(-50%,-50%);
 }
 
+/*================================ EDIT PROFILE ========================================*/
 
 #headline,
 #name,
@@ -65,6 +65,10 @@ button{
 #hometown,
 #occupation{
   width:75%;
+}
+
+.file{
+  padding: 2% 0% 0% 0%;
 }
 
 /*================================ INTERESTS ==========================================*/
@@ -145,6 +149,12 @@ button{
   color:white;
 } */
 
+.file{
+  padding: 1% 0% 0% 0%;
+}
+.file1{
+  padding: 2% 0% 0% 0%;
+}
 textarea{
   resize: vertical;
   max-height: 100px;
@@ -157,16 +167,24 @@ textarea{
 .addFormBox{
   padding:20px;
 }
+
+ #calendar{
+  width:75%;
+}
 /*================================= MY TRIPS ==========================================*/
-/* .mytrips{
-  width: 100%;
-  padding: 1% 1% 1% 1%;
-} */
+.tripPanel{
+  padding: 5% 0% 0% 1%;
+  font-size: 15px;
+}
 
 li{
   list-style-type: none;
   font-size: 16px;
  }
+
+.btn-default, .btn-primary, .btn-danger{
+  margin-top: 3%;
+}
 
 .btn-default{
   border: 2px solid #26a69a;
@@ -182,10 +200,6 @@ li{
   border-color: #089586;
 }
 
-.btn-default, .btn-primary, .btn-danger{
-  margin-top: 3%;
-}
-
 .box{
   width:100%;
 }
@@ -196,7 +210,7 @@ li{
 }
 
 p{
-  padding: 3px;
+  padding: 5%;
 }
 /*====================================================================================*/
 

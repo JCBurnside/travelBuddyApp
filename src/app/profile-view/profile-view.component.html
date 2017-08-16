@@ -38,9 +38,9 @@
       <div class="container-fluid">
         <div class="area" *ngFor='let interest of interests'>
           <div class="col-sm-3">
-            <span class="input">
+            <div class="input">
         <label>{{interest}}</label>
-      </span>
+      </div>
           </div>
         </div>
       </div>
@@ -57,12 +57,13 @@
               <img [src]="trip.ImageURL"/>
             </div>
             <div class="col-sm-5 col-sm-9">
-              <p><b>Name:</b>          {{trip.Name}}</p>
-              <p><b>Destination:</b>   {{dests[i].toString()}}</p>
-              <p><b>Price:</b>         {{trip.Price|currency:'USD':true:'.2-2'}}</p>
-              <p><b>Start date:</b>    {{trip.StartDate|date: shortDate}}</p>
-              <p><b>End date:</b>      {{trip.EndDate|date: shortDate}}</p>
-              <p><b>Description</b>    {{trip.Description}}</p>
+              <p><img src="/assets/img/headline.png" style="width:15%; height:15%">          {{trip.Name}}</p><br>
+              <p><img src="/assets/img/destination.png" style="width:15%; height:15%">       {{trip.Destinations}}</p><br>
+              <p><img src="/assets/img/price.png" style="width:15%; height:15%">             {{trip.Price|currency:'USD':true:'.2-2'}}</p><br>
+              <p><img src="/assets/img/calendar.png" style="width:15%; height:15%">          {{trip.StartDate|date: shortDate}}</p><br>
+              <p><img src="/assets/img/calendar.png" style="width:15%; height:15%">          {{trip.EndDate|date: shortDate}}</p><br>
+              <p><img src="/assets/img/description.png" style="width:15%; height:15%">       {{trip.Description}}</p>
+              <b>Description</b>    {{trip.Description}}</p>
             </div>
           </ul>
         </div>
