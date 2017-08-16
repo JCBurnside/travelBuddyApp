@@ -4,8 +4,10 @@
 	font-family: Open Sans;
 	background-color: #fff;
 	font-weight: 700;
-	color: #000; 
-	border: none;
+	color: #000;
+  border: none;
+  position: fixed;
+  width:100%;
 }
 .navbar a {
     color: #000;

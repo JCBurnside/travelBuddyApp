@@ -9,13 +9,17 @@
         <img *ngIf='profileedit.ImageURL' [src]='profileedit.ImageURL' />
         <input #imgUp name="image-upload" type="file" id="image-upload">
       </div>
-      <div class="form-group">
-        <label for="headline">Headline</label>
-        <input name="headline" [(ngModel)]="profileedit.Headline" type="text" id="headline" class="form-control" placeholder="&nbsp; Statement | Quote">
+      <div id="headline">
+        <div class="form-group">
+          <label for="headline">Headline</label>
+          <input name="headline" [(ngModel)]="profileedit.Headline" type="text" id="headline" class="form-control" placeholder="&nbsp; Statement about yourself.">
+        </div>
       </div>
-      <div class="form-group">
-        <label for="name">Name</label>
-        <input name="name" [(ngModel)]="profileedit.Name" type="text" id="name" class="form-control" placeholder="&nbsp; First & Last Name">
+      <div id="name">
+        <div class="form-group">
+          <label for="name">Name</label>
+          <input name="name" [(ngModel)]="profileedit.Name" type="text" id="name" class="form-control" placeholder="&nbsp; First & Last Name">
+        </div>
       </div>
       <div class="form-group">
         <label for="gender">Gender</label>
@@ -28,16 +32,23 @@
         <option value="Unspecified">Unspecified</option>
       </select>
       </div>
-      <div class="form-group">
-        <label for="hometown">Where are you from?</label>
-        <input name="hometown" [(ngModel)]="profileedit.Hometown" type="text" id="hometown" class="form-control" placeholder="&nbsp; City, State, Country">
+      <div id="hometown">
+        <div class="form-group">
+          <label for="hometown">Hometown</label>
+          <input name="hometown" [(ngModel)]="profileedit.Hometown" type="text" id="hometown" class="form-control" placeholder="&nbsp; City, State, Country">
+        </div>
       </div>
-      <div class="form-group">
-        <label for="occupation">Occupation</label>
-        <input name="occupation" [(ngModel)]="profileedit.Occupation" type="text" id="occupation" class="form-control" placeholder="&nbsp; Ex: Lawyer">
+      <div id="occupation">
+        <div class="form-group">
+          <label for="occupation">Occupation</label>
+          <input name="occupation" [(ngModel)]="profileedit.Occupation" type="text" id="occupation" class="form-control" placeholder="&nbsp; Ex: Lawyer">
+        </div>
       </div>
-      <div class="form-group">
-        <label for="interests">Interests</label>
+      <div id="interests">
+        <div class="form-group">
+          <label for="interests">Interests</label>
+            &nbsp;<p>Choose a number interests that best describe yourself.<p>
+        </div>
       </div>
       <!-- INTERESTS -->
       <div class="inputs">
@@ -196,9 +207,9 @@
           <input #imgInput name="image-upload" type="file" accept="image/png, image/jpeg, image/jpg" id="image-upload">
         </div>
         <div class="form-group">
-          <div class="col-sm-6 col-md-6"><label for="title">Name</label></div>
+          <div class="col-sm-6 col-md-6"><label for="title">Headline</label></div>
           <div class="col-sm-5 col-md-6"><label for="title">Destination</label></div>
-          <div class="col-sm-5 col-md-6"><input name="transportation" [(ngModel)]='newTrip.Name' type="text" id="name" class="form-control" placeholder="&nbsp;Enter a name"></div>
+          <div class="col-sm-5 col-md-6"><input name="transportation" [(ngModel)]='newTrip.Name' type="text" id="name" class="form-control" placeholder='&nbsp;"A Trip Around The World!"'></div>
           <div class="col-sm-5 col-md-6"><input name="destination" type="text" name="destination" [ngModel]='newTrip.Destinations' (ngModelChange)='destChanged($event)'
               class="form-control" placeholder="&nbsp; City, State, Country"></div>
         </div>
@@ -223,7 +234,7 @@
         <div class="form-group">
           <label for="content">Description</label>
           <textarea maxlength="500" name="content" [(ngModel)]='newTrip.Description' id="content" class="form-control" cols="30" rows="8"
-            placeholder="">
+            placeholder="A brief paragraph about your upcoming trip.">
               </textarea>
         </div>
         <div class="sumbit">
