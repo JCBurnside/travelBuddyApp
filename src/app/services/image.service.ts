@@ -40,11 +40,14 @@ export class ImageService {
   uploadTrip(img: any, t: String, cb?: (snapshot: firebase.storage.UploadTaskSnapshot, err?: Error) => null | void) {
     this.Storage.ref('/tripsImg/' + t).put(img).then((snap) => {//see above
       if (cb) {
+        console.log('image saved to storage')
         cb(snap, null);
       }
     }).catch(err => {
-      if (cb)
+      if (cb){
+        console.log('image was not saved to db');
         cb(null, err);
+      }
     });
   }
 

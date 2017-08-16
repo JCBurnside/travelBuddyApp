@@ -30,7 +30,7 @@ export class ProfileEditComponent implements OnInit {
   public profileedit: Profile;
   genderSign: string;
   private newTrip = new Trip(null, null);
-  public trips: any;
+  public trips: any[];
   @ViewChild('imgInput') el: ElementRef;
   id: string;
   constructor(private route: ActivatedRoute,
@@ -63,6 +63,7 @@ export class ProfileEditComponent implements OnInit {
           if (err)
             return console.log(err);
           this.trips = trips;
+              trips.forEach(trip=>console.log(trip.Price));
         });
 
         // if (this.profileedit.Gender == 'female') {
@@ -88,13 +89,28 @@ export class ProfileEditComponent implements OnInit {
       alert("You need a" + !this.newTrip.StartDate ? ' Start Date' : 'n End Date');
     else {
       this.newTrip.Owner = this.PID;
+      console.log(this.newTrip.Price);
+      this.newTrip.Price=Math.abs(this.newTrip.Price);
       this.ts.saveTrip(this.newTrip, (trip, err) => {
-        if (this.el.nativeElement.files[0])
+        if (this.el.nativeElement.files[0]) {
+          console.log('image begin upload');
           this.IS.uploadTrip(this.el.nativeElement.files[0], trip.$key, (snap, err) => {
             if (err)
-              return console.log(err);
-            this.ts.saveTrip({ ...this.newTrip, ImageURL: snap.downloadURL }, (s, e) => { })
+              return console.error(err);
+            this.ts.saveTrip({ ...trip, ImageURL: snap.downloadURL }, (s, e) => {
+              console.log(s || e);
+            });
+            this.ts.getTripsByOwner(this.id, (trips, err) => {
+              if (err)
+                return console.log(err);
+              this.trips = trips;
+              trips.forEach(trip=>console.log(trip.Price));
+              console.log(this.trips)
+            });
           })
+        } else {
+          console.log('no image to upload')
+        }
       });
     }
   }
@@ -102,6 +118,7 @@ export class ProfileEditComponent implements OnInit {
     this.router.navigate(['/profile', $key]);
   }
   onClickEdit($key) {
+    console.log($key)
     this.router.navigate(['/trip-edit', $key]);
   }
 
@@ -109,9 +126,12 @@ export class ProfileEditComponent implements OnInit {
     this.router.navigate(['/trip-view', $key]);
   }
   onClickDelete(trip) {
-    this.ts.deleteTrip(trip, trip.$key, (success, err) => {
+    this.ts.deleteTrip(trip, (success, err) => {
       console.log(success || err);
-      this.trips.remove(trip);
+      var i = this.trips.findIndex((_trip) => {
+        return trip.$key == _trip.$key
+      })
+      this.trips.slice(i, i)
     })
   }
 

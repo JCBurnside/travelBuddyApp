@@ -31,11 +31,11 @@ export class Interests{
         if(this.Camping)
             out.push("Camping");
         if(this.Clubbing)
-            out.push("Dance|Raves");
+            out.push("Dance | Raves");
         if(this.Food)
-            out.push("Food|Culture");
+            out.push("Food | Culture");
         if(this.Health)
-            out.push("Health|Fitness");
+            out.push("Health | Fitness");
         if(this.History)
             out.push("History");
         if(this.Hiking)

@@ -23,18 +23,16 @@
           <input name="name" [(ngModel)]="profileedit.Name" type="text" id="name" class="form-control" placeholder="&nbsp; First & Last Name">
         </div>
       </div>
-      <div id="gender">
-        <div class="form-group">
-          <label for="gender">Gender</label>
-          <img *ngIf='genderSign' [src]='genderSign' />
-          <select name="gender" [(ngModel)]="profileedit.Gender" type="dropdown" id="gender" class="form-control">
-            <option value="">-- Select --</option>
-            <option value="Male">Male</option>
-            <option value="Female">Female</option>
-            <option value="Other">Other</option>
-            <option value="Unspecified">Unspecified</option>
-          </select>
-        </div>
+      <div class="form-group">
+        <label for="gender">Gender</label>
+        <img *ngIf='genderSign' [src]='genderSign' />
+        <select name="gender" [(ngModel)]="profileedit.Gender" type="dropdown" id="gender" class="form-control">
+        <option value="">-- Select --</option>
+        <option value="Male">Male</option>
+        <option value="Female">Female</option>
+        <option value="Other">Other</option>
+        <option value="Unspecified">Unspecified</option>
+      </select>
       </div>
       <div id="hometown">
         <div class="form-group">
@@ -229,8 +227,7 @@
               <option value="Land">Land</option>
               <option value="Sea">Sea</option>
             </select></div>
-          <div class="col-sm-6 col-md-6"><input name="price" type="number" [(ngModel)]='newTrip.Price' (ngModelChange)='newTrip.Price=min(0,newTrip.Price)'
-              id="price" class="form-control" placeholder=$0.00 min=0.01></div>
+          <div class="col-sm-6 col-md-6"><input name="price" type="number" [(ngModel)]='newTrip.Price' id="price" class="form-control" placeholder=$0.00 min=0 step=0.01/></div>
         </div>
         <div class="form-group">
           <div class="col-sm-6 col-md-6">
@@ -269,7 +266,6 @@
           <hr>
           <div>
             <div class="col-sm-12" *ngFor="let trip of trips ">
-              <span *ngIf='trip.Owner==id'>
             <div class=" col-sm-7">
               <img class="image" style="height:auto" [src]="trip.ImageURL"/>
             </div>
@@ -283,7 +279,6 @@
               <p><button (click)="onClickEdit(trip.$key)" class="btn btn-primary">Edit</button>&nbsp;
                  <button (click)="onClickDelete(trip.$key)" class="btn btn-danger">Delete</button></p>
             </div>
-            </span>
               <hr>
             </div>
           </div>

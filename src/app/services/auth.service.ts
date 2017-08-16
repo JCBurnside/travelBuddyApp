@@ -8,16 +8,17 @@ import { AngularFireAuth } from 'angularfire2/auth';
 export class FirebaseService {
   authState;
   user;
-  getId(cb) {
+  getId(cb:(id:string)=>void) {
     this.canActivate().then(() => {
       cb(this.af.auth.currentUser.uid);
     });
   }
   signup(user: User) {
     this.af.auth.createUserWithEmailAndPassword(user.email, user.password)
-      .then(() => {
-        this.router.navigateByUrl('/');
-
+      .then((a) => {
+        this.getId((id)=>{
+          this.router.navigate(['/profile-edit',id]);
+        });
       })
       .catch((e) => {
         console.log(e);
