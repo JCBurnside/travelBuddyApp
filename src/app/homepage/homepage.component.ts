@@ -70,7 +70,9 @@ export class HomepageComponent implements OnInit {
   // onClickEdit($key) {
   //   this.router.navigate(['/trip-edit', $key]);
   // }
-
+  onClickProfile(id){
+    this.router.navigate(['/profile',id])
+  }
   onClickView($key) {
     this.router.navigate(['/trip-view', $key]);
   }
