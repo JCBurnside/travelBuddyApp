@@ -9,35 +9,48 @@
         <img *ngIf='profileedit.ImageURL' [src]='profileedit.ImageURL' />
         <input #imgUp name="image-upload" type="file" id="image-upload">
       </div>
-      <div class="form-group">
-        <label for="headline">Headline</label>
-        <input name="headline" [(ngModel)]="profileedit.Headline" type="text" id="headline" class="form-control" placeholder="&nbsp; Statement | Quote">
+      <div id="headline">
+        <div class="form-group">
+          <label for="headline">Headline</label>
+          <input name="headline" [(ngModel)]="profileedit.Headline" type="text" id="headline" class="form-control" placeholder="&nbsp; Statement about yourself.">
+        </div>
       </div>
-      <div class="form-group">
-        <label for="name">Name</label>
-        <input name="name" [(ngModel)]="profileedit.Name" type="text" id="name" class="form-control" placeholder="&nbsp; First & Last Name">
+      <div id="name">
+        <div class="form-group">
+          <label for="name">Name</label>
+          <input name="name" [(ngModel)]="profileedit.Name" type="text" id="name" class="form-control" placeholder="&nbsp; First & Last Name">
+        </div>
       </div>
-      <div class="form-group">
-        <label for="gender">Gender</label>
-        <img *ngIf='genderSign' [src]='genderSign' />
-      <select name="gender" [(ngModel)]="profileedit.Gender" type="dropdown" id="gender" class="form-control">
-        <option value="">-- Select --</option>
-        <option value="Male">Male</option>
-        <option value="Female">Female</option>
-        <option value="Other">Other</option>
-        <option value="Unspecified">Unspecified</option>
-      </select>
+      <div id="gender">
+        <div class="form-group">
+          <label for="gender">Gender</label>
+          <img *ngIf='genderSign' [src]='genderSign' />
+          <select name="gender" [(ngModel)]="profileedit.Gender" type="dropdown" id="gender" class="form-control">
+            <option value="">-- Select --</option>
+            <option value="Male">Male</option>
+            <option value="Female">Female</option>
+            <option value="Other">Other</option>
+            <option value="Unspecified">Unspecified</option>
+          </select>
+        </div>
       </div>
-      <div class="form-group">
-        <label for="hometown">Where are you from?</label>
-        <input name="hometown" [(ngModel)]="profileedit.Hometown" type="text" id="hometown" class="form-control" placeholder="&nbsp; City, State, Country">
+      <div id="hometown">
+        <div class="form-group">
+          <label for="hometown">Hometown</label>
+          <input name="hometown" [(ngModel)]="profileedit.Hometown" type="text" id="hometown" class="form-control" placeholder="&nbsp; City, State, Country">
+        </div>
       </div>
-      <div class="form-group">
-        <label for="occupation">Occupation</label>
-        <input name="occupation" [(ngModel)]="profileedit.Occupation" type="text" id="occupation" class="form-control" placeholder="&nbsp; Ex: Lawyer">
+      <div id="occupation">
+        <div class="form-group">
+          <label for="occupation">Occupation</label>
+          <input name="occupation" [(ngModel)]="profileedit.Occupation" type="text" id="occupation" class="form-control" placeholder="&nbsp; Ex: Lawyer">
+        </div>
       </div>
-      <div class="form-group">
-        <label for="interests">Interests</label>
+      <div id="interests">
+        <div class="form-group">
+          <label for="interests">Interests</label>
+            &nbsp;<p>Choose a number interests that best describe yourself.<p>
+        </div>
       </div>
 <!-- INTERESTS -->
       <div class="inputs">
@@ -196,9 +209,9 @@
           <input #imgInput name="image-upload" type="file" accept="image/png, image/jpeg, image/jpg" id="image-upload">
         </div>
         <div class="form-group">
-          <div class="col-sm-6 col-md-6"><label for="title">Name</label></div>
+          <div class="col-sm-6 col-md-6"><label for="title">Headline</label></div>
           <div class="col-sm-5 col-md-6"><label for="title">Destination</label></div>
-          <div class="col-sm-5 col-md-6"><input name="transportation" [(ngModel)]='newTrip.Name' type="text" id="name" class="form-control" placeholder="&nbsp;Enter a name"></div>
+          <div class="col-sm-5 col-md-6"><input name="transportation" [(ngModel)]='newTrip.Name' type="text" id="name" class="form-control" placeholder='&nbsp;"A Trip Around The World!"'></div>
           <div class="col-sm-5 col-md-6"><input name="destination" type="text" name="destination" [ngModel]='newTrip.Destinations' (ngModelChange)='destChanged($event)'
               class="form-control" placeholder="&nbsp; City, State, Country"></div>
         </div>
@@ -224,7 +237,7 @@
         <div class="form-group">
           <label for="content">Description</label>
           <textarea maxlength="500" name="content" [(ngModel)]='newTrip.Description' id="content" class="form-control" cols="30" rows="8"
-            placeholder="">
+            placeholder="A brief paragraph about your upcoming trip.">
               </textarea>
         </div>
         <div class="sumbit">
@@ -243,8 +256,7 @@
           <h1>MY TRIPS</h1>
           <hr>
           <div>
-            <ul>
-              <li class="col-sm-12"  *ngFor="let trip of trips ">
+              <div class="col-sm-12"  *ngFor="let trip of trips ">
               <span *ngIf='trip.Owner==id'>
             <div class="col-sm-4">
               <img class="image" [src]="trip.ImageURL"/>
@@ -255,13 +267,11 @@
               <p><b>Price:</b>         {{trip.Price|currency:'USD':true:'.2-2'}}</p>
               <p><b>Start date:</b>    {{trip.StartDate|date: shortDate}}</p>
               <p><b>End date:</b>      {{trip.EndDate|date: shortDate}}</p>
-              <p><button (click)="onClickView(trip.$key)" class="btn btn-default">View</button>&nbsp;
-                 <button (click)="onClickEdit(trip.$key)" class="btn btn-primary">Edit</button>&nbsp;
+              <p><button (click)="onClickEdit(trip.$key)" class="btn btn-primary">Edit</button>&nbsp;
                  <button (click)="onClickDelete(trip.$key)" class="btn btn-danger">Delete</button></p>
             </div>
             </span><hr>
-          </li>
-            </ul>
+          </div>
           </div>
           </div>
         </fieldset>
