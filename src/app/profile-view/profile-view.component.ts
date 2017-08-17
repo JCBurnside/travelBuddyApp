@@ -13,11 +13,11 @@ import Trip from '../models/trip';
   styleUrls: ['./profile-view.component.css']
 })
 export class ProfileViewComponent implements OnInit {
-  private profileview: Profile;
-  private trips: any[];
-  private id: string;
-  private interests: string[];
-  private dests: string[] = [];
+  public profileview: Profile;
+  public trips: any[];
+  public id: string;
+  public interests: string[];
+  public dests: string[] = [];
   public gender: string;
 
   constructor(private route: ActivatedRoute, private router: Router, private PS: ProfileService, private TS: TripsService) {

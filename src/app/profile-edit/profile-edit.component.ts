@@ -29,7 +29,7 @@ import { TripsService } from '../services/trips.service';
 export class ProfileEditComponent implements OnInit {
   public profileedit: Profile;
   genderSign: string;
-  private newTrip = new Trip(null, null);
+  public newTrip = new Trip(null, null);
   public trips: any[];
   @ViewChild('imgInput') el: ElementRef;
   id: string;
@@ -38,7 +38,7 @@ export class ProfileEditComponent implements OnInit {
     private AS: FirebaseService,
     private IS: ImageService,
     private router: Router,
-    public ts: TripsService) {
+    private ts: TripsService) {
     AS.getId(id => this.id = id);
 
   }
@@ -84,7 +84,7 @@ export class ProfileEditComponent implements OnInit {
   submit() {
     if (this.newTrip.Name == null)
       alert("The trip needs a name");
-    else if (!this.newTrip.Destinations || !/^(.{1,},){1,2}?( .{1,})[^(, |,|;)]$/.test(this.newTrip.Destinations))
+    else if (!this.newTrip.Destinations || !/^(.{1,},){2,2}?( .{1,})[^(, |,|;)]$/.test(this.newTrip.Destinations))
       alert("You need a destination");
     else if (!this.newTrip.StartDate || !this.newTrip.EndDate)
       alert("You need a" + !this.newTrip.StartDate ? ' Start Date' : 'n End Date');
