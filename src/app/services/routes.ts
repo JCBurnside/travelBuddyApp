@@ -30,15 +30,17 @@ export const routes = [
     component: TripViewComponent
   },
   {
-    path     : 'profile-edit/:id',
-    component: ProfileEditComponent
+    path       : 'profile-edit/:id',
+    component  : ProfileEditComponent,
+    canActivate: [FirebaseService]
   },
   {
     path     : 'homepage',
     component: HomepageComponent
   },
   {
-    path     : 'trip-edit/:id',
-    component: TripEditComponent
+    path       : 'trip-edit/:id',
+    component  : TripEditComponent,
+    canActivate: [FirebaseService]
   }
 ];

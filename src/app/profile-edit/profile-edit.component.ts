@@ -29,7 +29,7 @@ import { TripsService } from '../services/trips.service';
 export class ProfileEditComponent implements OnInit {
   public profileedit: Profile;
   genderSign: string;
-  private newTrip = new Trip(null, null);
+  public newTrip = new Trip(null, null);
   public trips: any[];
   @ViewChild('imgInput') el: ElementRef;
   id: string;
@@ -38,7 +38,7 @@ export class ProfileEditComponent implements OnInit {
     private AS: FirebaseService,
     private IS: ImageService,
     private router: Router,
-    public ts: TripsService) {
+    private ts: TripsService) {
     AS.getId(id => this.id = id);
 
   }
@@ -59,6 +59,7 @@ export class ProfileEditComponent implements OnInit {
           this.PID = params['id'];
           this.id = params['id'];
           console.log(profile);
+
           if (!this.profileedit.Interest) {
             this.profileedit.Interest = new Interests();
           }
@@ -75,10 +76,6 @@ export class ProfileEditComponent implements OnInit {
           //   this.genderSign = './img/female.png';
           // }
         });
-
-        // if (this.profileedit.Gender == 'female') {
-        //   this.genderSign = './img/female.png';
-        // }
       });
     });
     console.log(this.newTrip.ModeOfTransit)

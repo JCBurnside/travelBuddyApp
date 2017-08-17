@@ -60,4 +60,8 @@ import { ReversePipe } from './reverse.pipe';
   ],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {
+  constructor(public as:AngularFireAuth){
+
+  }
+ }

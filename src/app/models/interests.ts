@@ -1,3 +1,4 @@
+
 export class Interests {
   constructor(
     public Beaches: Boolean = false,

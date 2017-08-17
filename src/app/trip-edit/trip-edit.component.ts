@@ -29,18 +29,18 @@ export class TripEditComponent implements OnInit {
     this.sub = this.route.params.subscribe(params => {
       this.id = params['id'];
       this.ts.getTripById(this.id, (tripedit: Trip) => {
-        this.as.getId(id => {
-          if (tripedit.Owner != id) {
-            return this.router.navigate(['/trip-view', this.id]);
-          }
+        this.as.getId(id=>{
+          if(tripedit.Owner!=id)
+            return this.router.navigate(['/trip-view',this.id])
           this.tripedit = tripedit;
-        });
+        })
       });
-      this.id = params['id'];
     });
   }
   onSubmit() {
-    if (!this.imgUp.nativeElement.files[0]) {
+    if (!this.tripedit.Destinations || !/^(.{1,},){2,2}?( .{1,})[^(, |,|;)]$/.test(this.tripedit.Destinations))
+      alert("You need a destination");
+    else if (!this.imgUp.nativeElement.files[0]) {
       this.ts.saveTrip(this.tripedit, (success, err) => {
         if (err) {
           console.log(err);

@@ -5,6 +5,7 @@ import Trip from '../models/trip';
 import { TripsService } from '../services/trips.service';
 import { FirebaseService } from '../services/auth.service';
 import { ImageService } from '../services/image.service';
+import { ProfileService } from "../services/profile.service";
 import { Router } from '@angular/router';
 import { ReversePipe } from '../reverse.pipe';
 
@@ -19,7 +20,7 @@ export class HomepageComponent implements OnInit {
   private img: String;
   private id: string;
   @ViewChild('imgInput') el: ElementRef;
-  constructor(public router: Router, public ts: TripsService, public as: FirebaseService, private is: ImageService) {
+  constructor(public router: Router, public ts: TripsService, public as: FirebaseService, private is: ImageService, private ps:ProfileService) {
     as.getId(id => this.id = id);
     ts.getAllTrips((trips, err) => {
       if (err) {
@@ -28,9 +29,15 @@ export class HomepageComponent implements OnInit {
       trips.forEach(trip => {
         let s: string = trip.Destinations.toString();
         let dest = s.split(','), city = dest[0], state = dest[1], country = dest[2];
-        this.trips.push({ ...trip, city: city, state: state, country: country });
-      });
-    });
+        ps.getProfileByOwner(trip.Owner,(p,e)=>{
+          if(p){
+            this.trips.push({ ...trip, city: city, state: state, country: country, OwnerFB: p.Facebook});
+          } else {
+            this.trips.push({...trip, city: city, state: state, country: country, OwnerFB:undefined})
+          }
+        })
+      })
+    })
   }
   onChange() {
     console.log(this.newTrip.Destinations);

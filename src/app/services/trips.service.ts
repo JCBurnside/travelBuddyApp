@@ -18,16 +18,19 @@ export class TripsService {
     });
   }
 
-  getAllTrips(cb: (trips: Trip[], err: Error | string) => void) {
-    this.trips
-      .on('value', (snap, err) => {
-        if (err) {
-          return cb(null, err);
-        }
-        let out: Trip[] = [];
-        Object.keys(snap.val()).forEach(trip => {
-          out.push({ ...snap.val()[trip], $key: trip });
-          return true;
+ getAllTrips(cb: (trips: Trip[], err: Error|string) => void) {
+     this.trips
+        .orderByChild('Time')
+        .on('value', (snap, err) => {
+            if(err)
+                return cb(null,err);
+            let out: Trip[] = [];
+            Object.keys(snap.val()).forEach(trip => {
+                out.push({...snap.val()[trip], $key: trip});
+                return true;
+            });
+            out=out.reverse()
+            cb(out, null);
         });
         cb(out, null);
       });
@@ -49,18 +52,16 @@ export class TripsService {
         cb(out, null);
       });
   }
-  saveTrip(trip: Trip, cb: (tripSaved: Trip, err: Error | string) => void) {
+  saveTrip(trip: Trip, cb: (tripSaved: Trip, err: Error|string) => void) {
+    console.log(Date.now());
     if (trip.$key) {
-      let saved = trip;
-      let id = trip.$key;
-      delete trip.$key;
-      this.db.object('/trips/' + id).update(trip).then(() => {
-        console.log('TRIP SAVED');
-        cb({ ...trip, $key: id }, null);
-      }).catch(err => cb(null, err));
+        let saved = trip;
+        let id = trip.$key;
+        delete trip.$key;
+        this.db.object('/trips/' + id).update({...trip,Time: Date.now()}).then(() =>{console.log("TRIP SAVED"); cb({...trip,$key:id},null)}).catch(err => cb(null, err));
     } else {
-      delete trip.$key;
-      this.trips.push(trip).then(tripref => cb({ ...trip, $key: tripref.key }, null)).catch(err => cb(null, err));
+        delete trip.$key;
+        this.trips.push({...trip,Time:Date.now()}).then(tripref =>{ cb({...trip, $key: tripref.key}, null)}).catch(err => cb(null, err));
     }
   }
   deleteTrip(trip: Trip, cb: Function) {

@@ -13,7 +13,7 @@ export class NavbarComponent {
     this.as.getId(id => this.id = id);
   }
   goToPE() {
-    this.router.navigate(['/profile-edit', this.id]);
+    this.router.navigateByUrl(`/profile-edit/${this.id}`);
   }
   authed() {
     return this.as.isAuthed();
@@ -24,6 +24,6 @@ export class NavbarComponent {
   }
   userprofile() {
      this.as.getId(id => this.id = id);
-    this.router.navigate(['/profile', this.id]);
+    this.router.navigateByUrl(`/profile/${this.id}`);
   }
 }

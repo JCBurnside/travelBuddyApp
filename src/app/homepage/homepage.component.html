@@ -1,5 +1,5 @@
 
-<div class="container" style="align-content: center; margin-left:15%">
+<div class="container" style="align-content: center;width:100%">
   <div class="page-header">
     <h1></h1>
   </div>
@@ -12,8 +12,8 @@
       </div>
       <figcaption>
         <h3>{{trip.city+(trip.state?","+trip.state:"")}}&nbsp;</h3>
-        <h5><b><span *ngIf='trip.country'>{{trip.country}}</span></b></h5>
-        <div class="icons"><a (click)='onClickProfile(trip.Owner)'><i class="ion-android-person"></i></a><a (click)='onClickView(trip.$key)'><i class="ion-location"></i></a><a href="https://www.facebook.com/mackenzie.elaine" target="_blank"><i class="ion-social-facebook"></i></a></div>
+        <h3><b><span *ngIf='trip.country'>{{trip.country}}</span></b></h3>
+        <div class="icons"><a (click)='onClickProfile(trip.Owner)'><i class="ion-android-person"></i></a><a (click)='onClickView(trip.$key)'><i class="ion-location"></i></a><a [href]='trip.OwnerFB?trip.OwnerFB.startsWith("http://")?trip.OwerFB:"http://"+trip.OwnerFB:"http://www.facebook.com"' target="_blank"><i class="ion-social-facebook"></i></a></div>
       </figcaption>
     </figure>
   </div>

@@ -1,6 +1,5 @@
 import { Injectable } from '@angular/core';
 import { User } from '../models/user';
-
 import { Router, CanActivate } from '@angular/router';
 import { AngularFireAuth } from 'angularfire2/auth';
 
@@ -32,7 +31,7 @@ export class FirebaseService implements CanActivate {
 
       })
       .catch((e) => {
-        console.log(e);
+        cb(e);
       });
   }
   isAuthed() {
@@ -50,7 +49,7 @@ export class FirebaseService implements CanActivate {
     this.af.auth.signOut();
   }
   canActivate() {
-    return new Promise((resolve, reject) => {
+    return new Promise<boolean>((resolve, reject) => {
       this.af.authState.subscribe((authState) => {
         console.warn(!!authState);
         resolve(!!authState);

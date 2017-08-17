@@ -20,11 +20,12 @@ export class TripViewComponent implements OnInit {
     public ts: TripsService,
     public ps: ProfileService,
     public as: FirebaseService) { }
-  private name;
-  private id;
-  private sub: any;
-  public tripview: Trip = new Trip('', '');
-  private PID: string; // profile ID
+  public name;
+  public id;
+  public sub: any;
+  public tripview: Trip = new Trip("", "");
+  public PID:string;//profile ID
+
   ngOnInit() {
     this.sub = this.route.params.subscribe(params => {
       this.ts.getTripById(params['id'], (tripview: Trip) => {
@@ -55,5 +56,4 @@ export class TripViewComponent implements OnInit {
     case 'Train':
       return './assets/img/train.png';
   }
-}
 }
