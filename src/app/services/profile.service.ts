@@ -28,8 +28,9 @@ export class ProfileService {
         let interests: Interests = Interests.convertToInterest(profile.Interest || new Interests());
         console.log(snap.val());
         cb({ ...profile, Interest: interests, $key: key }, null);
-      } else
+      } else {
         cb(new Profile(id, ''), err);
+      }
     });
   }
   /*
