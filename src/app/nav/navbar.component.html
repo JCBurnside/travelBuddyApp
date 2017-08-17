@@ -13,7 +13,7 @@
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul *ngIf='!authed()' class="nav navbar-nav navbar-right">
         <li><a routerLink="/signup">Sign Up</a></li>
-        <li><a routerLink="/signin">Sign In</a></li>
+        <li><a routerLink="/signin">Log In</a></li>
       </ul>
       <ul *ngIf='authed()' class="nav navbar-nav navbar-right">
         <li><a (click)='userprofile()'>Profile</a></li>

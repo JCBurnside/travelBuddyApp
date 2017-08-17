@@ -8,7 +8,7 @@ import { AngularFireAuth } from 'angularfire2/auth';
 export class FirebaseService {
   authState;
   user;
-  getId(cb:(id:string)=>void) {
+  getId(cb: (id: string) => void) {
     this.canActivate().then(() => {
       cb(this.af.auth.currentUser.uid);
     });
@@ -16,13 +16,13 @@ export class FirebaseService {
   signup(user: User) {
     this.af.auth.createUserWithEmailAndPassword(user.email, user.password)
       .then((a) => {
-        this.getId((id)=>{
-          this.router.navigate(['/profile-edit',id]);
+        this.getId((id) => {
+          this.router.navigate(['/profile-edit', id]);
         });
       })
       .catch((e) => {
         console.log(e);
-      })
+      });
     console.log(this.isAuthed());
   }
   signin(user: User) {
@@ -33,7 +33,7 @@ export class FirebaseService {
       })
       .catch((e) => {
         console.log(e);
-      })
+      });
   }
   isAuthed() {
     return !!this.authState;
@@ -54,7 +54,7 @@ export class FirebaseService {
       this.af.authState.subscribe((authState) => {
         console.warn(!!authState);
         resolve(!!authState);
-      })
-    })
+      });
+    });
   }
 }

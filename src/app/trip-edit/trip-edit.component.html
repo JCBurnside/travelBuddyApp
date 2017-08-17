@@ -1,13 +1,13 @@
 <div>
   <form (ngSubmit)="onSubmit()" #tripsForm="ngForm">
     <h1>TRIP</h1>
-     <div class="form-group" show-errors>
-        <label for="imageupload">Upload Image</label>
-        <input #imgUp name="image-upload" type="file" id="image-upload">
-      </div>
+    <div class="form-group" show-errors>
+      <label for="imageupload">Upload Image</label>
+      <input #imgUp name="image-upload" type="file" id="image-upload">
+    </div>
     <div class="form-group">
       <label for="name">Name</label>
-      <input name="name" [(ngModel)]="tripedit.Name" type="text" id="name" class="form-control"  placeholder="First & Last Name">
+      <input name="name" [(ngModel)]="tripedit.Name" type="text" id="name" class="form-control" placeholder="First & Last Name">
     </div>
     <div class="form-group">
       <label for="destination">Destination</label>
@@ -15,7 +15,8 @@
     </div>
     <div class="form-group">
       <label for="transportation">Transportation</label>
-      <select name="transportation" [(ngModel)]="tripedit.ModeOfTransit" type="dropdown" id="transportation" class="form-control"  placeholder="Select">
+      <select name="transportation" [(ngModel)]="tripedit.ModeOfTransit" type="dropdown" id="transportation" class="form-control"
+        placeholder="Select">
             <option value="">-- Select --</option>
             <option value="air">Air</option>
             <option value="land">Land</option>
@@ -24,15 +25,21 @@
     </div>
     <div class="form-group">
       <label for="start-date">Start Date</label>
-      <input name="start-date"  [(ngModel)]="tripedit.StartDate" type="date" id="start-date" class="form-control">
+      <input name="start-date" [(ngModel)]="tripedit.StartDate" type="date" id="start-date" class="form-control">
     </div>
     <div class="form-group">
       <label for="end-date">End Date</label>
-      <input name="end-date" [(ngModel)]="tripedit.EndDate" type="date" id="end-date"  class="form-control">
+      <input name="end-date" [(ngModel)]="tripedit.EndDate" type="date" id="end-date" class="form-control">
     </div>
     <div class="form-group">
       <label for="name">Price</label>
       <input name="price" type="text" [(ngModel)]="tripedit.Price" id="price" class="form-control" placeholder="Average Cost">
+    </div>
+    <div class="form-group">
+      <label for="content">Description</label>
+      <textarea maxlength="500" name="content" [(ngModel)]='tripedit.Description' id="content" class="form-control" cols="30" rows="8"
+        placeholder="A brief paragraph about your upcoming trip.">
+      </textarea>
     </div>
     <button type="submit" class="btn btn-primary">Post</button>
   </form>

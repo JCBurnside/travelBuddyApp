@@ -1,67 +1,44 @@
+/* =========================== FONT IMPORT ============================= */
 @import url('https://fonts.googleapis.com/css?family=Lora');
 @import url('https://fonts.googleapis.com/css?family=Open+Sans');
-
+/* ===================================================================== */
+/* =============================== BODY ================================ */
+*,
+*:after,
+*::before {
+   -webkit-box-sizing : border-box;
+   -moz-box-sizing    : border-box;
+   box-sizing         : border-box;
+   margin             : 0;
+   padding            : 0;
+   text-decoration    : none;
+}
+/* ===================================================================== */
+/* ============================== PROFILE ============================== */
 #profile{
-  font-size: 20px;
+  background-color    : rgba(225,225,225,0.85);
+  padding             : 2% 2% 2% 2%;
+  margin-top          : 8%;
+  font-size           : 14px;
 }
 
-h1{
-  color: #000;
+.profile-inputs{
+  padding             : 1.5% 0% 0% 0%;
 }
-
-label{
-  color    : #000;
-  font-size: 12px;
-}
-
-*{
-  box-sizing: border-box;
-}
-
-form{
-  padding   : 5% 10% 20% 5%;
-  background: rgb(255,255,255);        /* for IE */
-  background: rgba(225,225,225,0.85);
-  font-size : 16px;
-  margin-top: 20%;
-}
-
-button{
-	background-color: #fff;
-	color           : #000;
-	border          : 1px solid #808080;
-	padding         : 4px 3px 4px 3px;
-}
-button:hover{
-	background-color: #26a69a;
-	color           : #fff;
-	border          : 2px solid #26a69a;
-}
-
-/*================================ INFO ==========================================*/
-.info{
-  margin-left: 200px
-}
-
-/*================================ INTERESTS ==========================================*/
-.text {
-   width     : 100%;
-   text-align: center;
-   margin-top: 20px;
-   height    : 70px;
-}
-
+/* ===================================================================== */
+/* ========================= INTERESTS [PROFILE] ======================== */
 .area {
-   width     : 100%;
-
-   margin-top: 15px;
+   width             : 100%;
+   padding           : 0% 5% 0% 0%;
+   margin-top        : 15px;
 }
 
 .area .input,
 .area .input label {
-   width   : 100%;
-   float   : left;
-   position: relative;
+   width             : 100%;
+   float             : left;
+   position          : relative;
+   margin            : inherit;
 }
 
 .area .input {
@@ -95,85 +72,37 @@ button:hover{
 }
 
 .area .input:hover{
-   box-shadow: 0 5px 11px 0 rgba(0, 0, 0, 0.18), 0 4px 15px 0 rgba(0, 0, 0, 0.15)
+   box-shadow        : 0 5px 11px 0 rgba(0, 0, 0, 0.18), 0 4px 15px 0 rgba(0, 0, 0, 0.15)
 }
+
 .area .input label:hover {
    letter-spacing: .8px;
-
 }
 
 .container {
-   width            : 100%;
-   max-width        : 800px;
-   position         : absolute;
-   top              : 50%;
-   left             : 50%;
-   transform        : translate(-50%,-50%);
-   -webkit-transform: translate(-50%,-50%);
-   -ms-transform    : translate(-50%,-50%);
-}
-/*===============================================================================*/
-
-/* .col-3 {
-   width  : 25%;
-   float  : left;
-   padding: 0 15px;
-} */
-
-/* .row {
-   margin: 0 -15px;
-} */
-
-@import url(https://fonts.googleapis.com/css?family=Roboto:400,300,700&subset=latin,latin-ext);
-*,
-*:after,
-*::before {
-   -webkit-box-sizing: border-box;
-   -moz-box-sizing   : border-box;
-   box-sizing        : border-box;
-   margin            : 0;
-   padding           : 0;
-   text-decoration   : none;
+  width              : 100%;
+  max-width          : 800px;
+  position           : absolute;
+  top                : 50%;
+  left               : 50%;
+  transform          : translate(-50%,-50%);
+  -webkit-transform  : translate(-50%,-50%);
+  -ms-transform      : translate(-50%,-50%);
 }
 
-#profile{
-  background-color: rgba(225,225,225,0.85);
-  padding         : 2% 2% 2% 2%;
-  margin-top      : 10%;
+div#interestblock {
+  margin              : 1px 0px 4px 0px;
+  padding             : 3.8px;
 }
-
-/*================================ INFO ==========================================*/
-
-label{
-  color: #fff !important;
-}
-
-#image-upload{
-  color: white;
-}
-
-body {
-  text-transform: uppercase;
-  padding       : 50px 0;
-}
-
+/* ===================================================================== */
+/* =============================== TRIPS ================================ */
 .box {
-  display   : flex;
-  margin    : 20px 0;
-  padding   : 20px;
-  width     : 100%;
-  min-height: 200px;
-  background: rgb(255,255,255); /* for IE */
-  background: rgba(225,225,225,0.89);
-
+  display             : flex;
+  margin              : 16% 5% 5% 10%;
+  padding             : 20px;
+  width               : 100%;
+  min-height          : 200px;
+  background          : rgb(255,255,255); /* for IE */
+  background          : rgba(225,225,225,0.89);
 }
-
-li{
-  list-style-type: none;
-  font-size      : 20px;
-}
-
-
-.image{
-  padding: 10px;
-}
+/* ===================================================================== */
