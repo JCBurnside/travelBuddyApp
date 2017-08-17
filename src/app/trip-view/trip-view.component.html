@@ -1,10 +1,10 @@
   <div class="container">
   <div class="row">
     <div>
-      <h1>{{name}}'s trip to {{tripview.Destinations}}</h1>
+      <h1><a (click)='goToProfile()'>{{name}}</a>'s trip to {{tripview.Destinations}}</h1>
       <hr>
       <div class="col-sm-3">
-        <img [src]="tripview.ImageURL" />
+        <img class='img-responsive' [src]="tripview.ImageURL" />
       </div>
       <div class="col-sm-5">
         <div class="mytrips">

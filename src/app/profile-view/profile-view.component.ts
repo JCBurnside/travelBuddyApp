@@ -19,6 +19,7 @@ export class ProfileViewComponent implements OnInit {
   private interests: string[];
   private dests: string[] = [];
   public gender: string;
+
   constructor(private route: ActivatedRoute, private router: Router, private PS: ProfileService, private TS: TripsService) {
     this.route.params.subscribe(params => {
       this.PS.getProfileByOwner(params['id'], (profile: Profile) => {
@@ -69,6 +70,9 @@ export class ProfileViewComponent implements OnInit {
         console.log('BAD' + err);
       }
     });
+  }
+  onClickView($key) {
+    this.router.navigate(['/trip-view', $key]);
   }
 goToProfileEdit() {
   this.router.navigate(['/profile-edit', this.id]);

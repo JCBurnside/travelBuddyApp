@@ -5,7 +5,7 @@
         <span class="btn-label"><i class="glyphicon glyphicon-pencil"></i></span></button></h2>
     <hr><br>
     <div class="col-sm-6">
-      <img #imgTesting width="250px" [src]= "profileview.ImgURL||'http://placehold.it/250x250'">
+      <img class='img-responsive' width="250px" [src]= "profileview.ImgURL||'http://placehold.it/250x250'">
     </div>
     <div class="col-sm-6">
       <p><img src="/assets/img/headline.png" style="width:10%; height:10%">
@@ -50,7 +50,7 @@
         <div>
           <div *ngFor="let trip of trips;let i=index">
             <div class="col-sm-6 img">
-              <img [src]="trip.ImageURL" />
+              <a  (click)='onClickView(trip.$key)' ><img class='img-responsive' [src]="trip.ImageURL" /></a>
                 <button (click)="onClickEdit(trip.$key)"type="button" class="btn btn-labeled btn-default pencil-btn edittrippro">
                 <span class="btn-label"><i class="glyphicon glyphicon-pencil"></i></span></button>&nbsp;
             </div>

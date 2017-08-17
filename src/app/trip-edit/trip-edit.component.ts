@@ -27,10 +27,14 @@ export class TripEditComponent implements OnInit {
   @ViewChild('imgUp') imgUp: ElementRef;
   ngOnInit() {
     this.sub = this.route.params.subscribe(params => {
-      this.ts.getTripById(params['id'], (tripedit: Trip) => {
-        this.tripedit = tripedit;
-      });
       this.id = params['id'];
+      this.ts.getTripById(this.id, (tripedit: Trip) => {
+        this.as.getId(id=>{
+          if(tripedit.Owner!=id)
+            return this.router.navigate(['/trip-view',this.id])
+          this.tripedit = tripedit;
+        })
+      });
     });
   }
   onSubmit() {

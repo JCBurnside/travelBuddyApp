@@ -25,13 +25,15 @@ export class Interests{
         return new this(Beaches,Camping,Culture,Clubbing,Food,Health,History,Hiking,Movies,Music,Nature,Photography,Politics,Reading,Religion,RoadTrips,Sports,WaterSports,Wine,Yoga);
     }
     toStringArray():string[]{
-        let out:string[]=[]
+        let out:string[]=[];
         if(this.Beaches)
             out.push("Beaches");
         if(this.Camping)
             out.push("Camping");
         if(this.Clubbing)
             out.push("Dance | Raves");
+        if(this.Culture)
+            out.push('Culture');
         if(this.Food)
             out.push("Food | Culture");
         if(this.Health)
@@ -52,6 +54,8 @@ export class Interests{
             out.push("Politics");
         if(this.Reading)
             out.push("Reading");
+        if(this.Religion)
+            out.push('Religion');
         if(this.RoadTrips)
             out.push("Road Trips");
         if(this.Sports)

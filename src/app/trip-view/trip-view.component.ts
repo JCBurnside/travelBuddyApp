@@ -24,7 +24,7 @@ export class TripViewComponent implements OnInit {
   private id;
   private sub: any;
   public tripview: Trip = new Trip("", "");
-
+  private PID:string;//profile ID
   ngOnInit() {
     this.sub = this.route.params.subscribe(params => {
       this.ts.getTripById(params['id'], (tripview: Trip) => {
@@ -37,8 +37,11 @@ export class TripViewComponent implements OnInit {
         console.log(err);
       } else {
         this.name = profile.Name;
+        this.PID  = profile.ownerID;
       }
     });
   }
-
+  goToProfile(){
+    this.router.navigate(['/profile',this.PID])
+  }
 }
