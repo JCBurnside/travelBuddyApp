@@ -23,20 +23,11 @@ export class ImageService {
         cb(snap, null);
       }
     }).catch(err => {
-      if (cb)
+      if (cb) {
         cb(null, err);
+      }
     });
   }
-  // uploadTrip(img:any,t:Trip,cb?:(snapshot:firebase.storage.UploadTaskSnapshot,err?:Error)=>null|void){
-  //   this.Storage.ref('/tripsImg/'+t.$key).put(img).then((snap)=>{//see above
-  //     if(cb){
-  //       cb(snap,null);
-  //     }
-  //   }).catch(err=>{
-  //     if(cb)
-  //       cb(null,err);
-  //   });
-  // }
   uploadTrip(img: any, t: String, cb?: (snapshot: firebase.storage.UploadTaskSnapshot, err?: Error) => null | void) {
     this.Storage.ref('/tripsImg/' + t).put(img).then((snap) => { // see above
       if (cb) {

@@ -27,8 +27,9 @@ export class ProfileService {
         let profile = snap.val()[key];
         let interests: Interests = Interests.convertToInterest(profile.Interest || new Interests());
         cb({ ...profile, Interest: interests, $key: key }, null);
-      } else
+      } else {
         cb(new Profile(id, ''), err);
+      }
     });
   }
   /*

@@ -25,6 +25,7 @@ export class TripViewComponent implements OnInit {
   public sub: any;
   public tripview: Trip = new Trip("", "");
   public PID:string;//profile ID
+
   ngOnInit() {
     this.sub = this.route.params.subscribe(params => {
       this.ts.getTripById(params['id'], (tripview: Trip) => {
@@ -41,7 +42,18 @@ export class TripViewComponent implements OnInit {
       }
     });
   }
-  goToProfile(){
-    this.router.navigate(['/profile',this.PID])
+  goToProfile() {
+    this.router.navigate(['/profile', this.PID]);
+  }
+  getTransImg(mode) {
+  switch (mode) {
+    case 'Boat':
+      return './assets/img/boat.png';
+    case 'Car':
+      return './assets/img/car.png';
+    case 'Plane':
+      return './assets/img/plane.png';
+    case 'Train':
+      return './assets/img/train.png';
   }
 }

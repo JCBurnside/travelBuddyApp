@@ -6,25 +6,25 @@ h1{
 }
 
 .box{
-  padding: 20px;
-  background: rgb(255,255,255); /* for IE */
+  padding   : 20px;
+  background: rgb(255,255,255);        /* for IE */
   background: rgba(225,225,225,0.89);
 }
 
 .signin{
-	margin-top: 10%;
-	font-size: 14px;
+	margin-top : 10%;
+	font-size  : 14px;
 	font-family: Open Sans;
 }
 
 .btn-default{
   background-color: #26a69a;
-  font-size: 14px;
-  color: #fff;
+  font-size       : 14px;
+  color           : #fff;
 }
 
 .btn-default:hover{
   opacity: 0.6;
-  filter: alpha(opacity=50); /* For IE8 and earlier */
+  filter : alpha(opacity=50);  /* For IE8 and earlier */
 }
 /* ===================================================================== */

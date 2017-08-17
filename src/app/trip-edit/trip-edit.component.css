@@ -1,57 +1,37 @@
+/* =========================== FONT IMPORT ============================= */
 @import url('https://fonts.googleapis.com/css?family=Lora');
 @import url('https://fonts.googleapis.com/css?family=Open+Sans');
-
+/* =============================== BOX ================================ */
 h1{
+  font-family: Open Sans;
   color: #000;
 }
 
-label{
-  color:#000;
-  font-size: 12px;
+p{
+  font-family: Lora;
+  color: #000;
+}
+.row{
+  background: rgb(255,255,255);
+  background: rgba(225,225,225,0.89);
+  font-size : 14px;
+}
+#tripedit{
+  margin-top: 95px;
 }
 
-*{
-  box-sizing: border-box;
-  }
+.mytrips{
+  width: 100%;
+  line-height: 1.7;
+}
 
 form{
-  padding: 20px;
-  background: rgb(255,255,255); /* for IE */
+  padding   : 4%;
+  background: rgb(255,255,255);
   background: rgba(225,225,225,0.89);
-  font-size: 16px;
+  font-size : 14px;
+  line-height: 0.5 !important;
+  /* margin: 100% 0% 0% 0%; */
+  align-content: center;
 }
-
-/* .trip-edit box{
-	margin-top: 2.5%;
-	font-size: 12px;
-	font-family: Open Sans;
-}
- button{
-	background-color: #fff;
-	color: #000;
-	border: 1px solid #000;
-}
-button:hover{
-	background-color: #000;
-	color: #fff;
-	border: 1px solid #000;
-}  */
-
-.btn-default{
-  border: 2px solid #26a69a;
-  background-color: #26a69a;
-  color: #fff;
-}
-
-.btn-default:hover,
-.btn-default:active,
-.btn-default:visited,
-.btn-default:focus {
-    background-color: #089586;
-    border-color: #089586;
-}
-
-.btn-default, .btn-primary, .btn-danger{
-  margin-top: 3%;
-  font-size: 16px;
-}
+/* ================================================================= */
