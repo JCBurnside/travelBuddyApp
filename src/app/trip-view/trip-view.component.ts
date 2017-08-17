@@ -20,11 +20,11 @@ export class TripViewComponent implements OnInit {
     public ts: TripsService,
     public ps: ProfileService,
     public as: FirebaseService) { }
-  private _;
+  private name;
   private id;
   private sub: any;
   public tripview: Trip = new Trip("", "");
-
+  private PID:string;//profile ID
   ngOnInit() {
     this.sub = this.route.params.subscribe(params => {
       this.ts.getTripById(params['id'], (tripview: Trip) => {
@@ -36,9 +36,12 @@ export class TripViewComponent implements OnInit {
       if (err) {
         console.log(err);
       } else {
-        this._ = profile.Name;
+        this.name = profile.Name;
+        this.PID  = profile.ownerID;
       }
     });
   }
-
+  goToProfile(){
+    this.router.navigate(['/profile',this.PID])
+  }
 }

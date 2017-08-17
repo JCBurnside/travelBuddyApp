@@ -1,38 +1,38 @@
 import { Injectable } from '@angular/core';
 import { User } from '../models/user';
-
-import { Router } from '@angular/router';
+import { Router, CanActivate } from '@angular/router';
 import { AngularFireAuth } from 'angularfire2/auth';
 
 @Injectable()
-export class FirebaseService {
+export class FirebaseService implements CanActivate{
   authState;
   user;
-  getId(cb) {
+  getId(cb: (id: string) => void) {
     this.canActivate().then(() => {
       cb(this.af.auth.currentUser.uid);
     });
   }
   signup(user: User) {
     this.af.auth.createUserWithEmailAndPassword(user.email, user.password)
-      .then(() => {
-        this.router.navigateByUrl('/homepage');
-
+      .then((a) => {
+        this.getId((id) => {
+          this.router.navigate(['/profile-edit', id]);
+        });
       })
       .catch((e) => {
         console.log(e);
-      })
+      });
     console.log(this.isAuthed());
   }
-  signin(user: User) {
+  signin(user: User,cb:(err?:any)=>void) {
     this.af.auth.signInWithEmailAndPassword(user.email, user.password)
       .then(() => {
-        this.router.navigateByUrl('/homepage');
+        this.router.navigateByUrl('/');
 
       })
       .catch((e) => {
-        console.log(e);
-      })
+        cb(e);
+      });
   }
   isAuthed() {
     return !!this.authState;
@@ -49,11 +49,11 @@ export class FirebaseService {
     this.af.auth.signOut();
   }
   canActivate() {
-    return new Promise((resolve, reject) => {
+    return new Promise<boolean>((resolve, reject) => {
       this.af.authState.subscribe((authState) => {
         console.warn(!!authState);
         resolve(!!authState);
-      })
-    })
+      });
+    });
   }
 }

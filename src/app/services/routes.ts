@@ -1,6 +1,7 @@
 import { SigninComponent } from '../signin/signin.component';
 import { SignupComponent } from '../signup/signup.component';
 import { ProfileViewComponent } from '../profile-view/profile-view.component';
+import { FirebaseService } from "../services/auth.service";
 import { SplashPageComponent } from '../splash/splash.component';
 import { TripViewComponent } from '../trip-view/trip-view.component';
 import { TripEditComponent } from '../trip-edit/trip-edit.component';
@@ -29,15 +30,17 @@ export const routes = [
     component: TripViewComponent
   },
   {
-    path     : 'profile-edit/:id',
-    component: ProfileEditComponent
+    path       : 'profile-edit/:id',
+    component  : ProfileEditComponent,
+    canActivate: [FirebaseService]
   },
   {
     path     : 'homepage',
     component: HomepageComponent
   },
   {
-    path      : 'trip-edit/:id',
-    component : TripEditComponent
+    path       : 'trip-edit/:id',
+    component  : TripEditComponent,
+    canActivate: [FirebaseService]
   }
-]
+];

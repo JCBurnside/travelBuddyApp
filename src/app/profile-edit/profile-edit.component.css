@@ -1,139 +1,192 @@
+/* ================================ GOOGLE FONT =================================== */
 @import url('https://fonts.googleapis.com/css?family=Lora');
 @import url('https://fonts.googleapis.com/css?family=Open+Sans');
+/* =================================== HTML ======================================= */
+body{
+  overflow                   : auto;
+}
 
 h1{
-  color: #000;
+  color                      : #000;
 }
 
 label{
-  color:#000;
-  font-size: 12px;
+  color                      :#000;
+  font-size                  : 14px;
 }
 
-*{
-  box-sizing: border-box;
+ form{
+  padding                    : 3% 3% 3% 3%;
+  background                 : rgb(255,255,255);
+  background                 : rgba(225,225,225,0.89);
 }
 
-form{
-  padding:15px 15px 15px 15px;
-  background: rgb(255,255,255); /* for IE */
-  background: rgba(225,225,225,0.85);
-  font-size: 16px;
+.form-group{
+    padding                  : 1% 0% 1% 0%;
 }
 
 button{
-	background-color: #fff;
-	color: #000;
-  border: 1px solid #808080;
-  padding: 4px 3px 4px 3px;
-}
-button:hover{
-	background-color: #26a69a;
-	color: #fff;
-	border: 2px solid #26a69a;
+  color                      : #fff;
 }
 
-/*------------------------INTERESTS--------------------------------------------------------------*/
-  .text {
-   width: 100%;
-   text-align: center;
-   margin-top: 20px;
-   height: 70px;
+*,
+*    :after,
+*    :before {
+  -webkit-box-sizing         : border-box;
+  -moz-box-sizing            : border-box;
+  box-sizing                 : border-box;
+  margin                     : 0;
+  padding                    : 0;
+  text-decoration            : none;
+}
+
+.container {
+  width                      : 100%;
+  max-width                  : 100%;
+  position                   : absolute;
+  top                        : 80%;
+  left                       : 60%;
+  transform                  : translate(-50%,-50%);
+  -webkit-transform          : translate(-50%,-50%);
+  -ms-transform              : translate(-50%,-50%);
+  margin-top                 :
+}
+/* ================================ EDIT PROFILE ======================================== */
+#headline,
+#name,
+#gender,
+#hometown,
+#occupation{
+  width                      :75%;
+}
+
+.file{
+  padding                    : 2% 0% 0% 0%;
+}
+/* ================================ INTERESTS ========================================== */
+.text {
+  width                      : 100%;
+  text-align                 : center;
+  margin-top                 : 20px;
+  height                     : 70px;
 }
 
 .area {
-   width: 100%;
-   float: left;
-   margin-top: 15px;
+   width                     : 100%;
+   float                     : left;
+   margin-top                : 15px;
+}
+  .addForm{
+    margin-left              : 20px;
+    padding                  : 10px;
+    width                    : 30%;
+  }
+
+.addFormBox{
+  padding                    :20px;
 }
 
 .area .input,
 .area .input label {
-   width: 100%;
-   float: left;
-   position: relative;
+  width                      : 100%;
+  float                      : left;
+  position                   : relative;
 }
 
 .area .input {
-   overflow: hidden;
-   border-radius: 2px;
-   color: #fff;
-   background-color: #26a69a;
-   box-shadow:0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12);
-   transition: 300ms;
-   -webkit-transition: 300ms;
-   -ms-transition: 300ms;
+  overflow                   : hidden;
+  border-radius              : 2px;
+  color                      : #fff;
+  background-color           : #26a69a;
+  box-shadow                 : 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12);
+  transition                 : 300ms;
+  -webkit-transition         : 300ms;
+  -ms-transition             : 300ms;
 }
 
 .area .input input {
-   display: none;
+  display                    : none;
 }
 
 .area .input label {
-   font-weight: 400;
-   color: #fff;
-   text-align: center;
-   text-transform:uppercase;
-   cursor: pointer;
-   font-size: 14px;
-   z-index: 3;
-   transition: 300ms;
-   -webkit-transition: 300ms;
-   -ms-transition: 300ms;
-   height: 45px;
-   line-height: 45px;
+  font-weight                : bold;
+  color                      : #fff;
+  text-align                 : center;
+  text-transform             :uppercase;
+  cursor                     : pointer;
+  font-size                  : 14px;
+  z-index                    : 3;
+  transition                 : 300ms;
+  -webkit-transition         : 300ms;
+  -ms-transition             : 300ms;
+  height                     : 45px;
+  line-height                : 45px;
 }
 
 .area .input:hover{
-   box-shadow:0 5px 11px 0 rgba(0, 0, 0, 0.18), 0 4px 15px 0 rgba(0, 0, 0, 0.15)
+  box-shadow                 :0 5px 11px 0 rgba(0, 0, 0, 0.18), 0 4px 15px 0 rgba(0, 0, 0, 0.15)
 }
+
 .area .input label:hover {
-   letter-spacing: .8px;
-
+  letter-spacing             : .8px;
 }
 
-.click-efect {
-   position: absolute;
-   top: 0;
-   left: 0;
-   background: rgba(0, 0, 0, 0.2);
-   border-radius: 50%;
+ .col-3 {
+  width                      : 25%;
+  float                      : left;
+  padding                    : 1% 1%;
+}
+/* ================================ ADD A TRIP ========================================== */
+.file{
+  padding                    : 1% 0% 0% 0%;
+}
+.file1{
+  padding                    : 2% 0% 0% 0%;
+}
+textarea{
+  resize                     : vertical;
+  max-height                 : 100px;
 }
 
-.container {
-   width: 100%;
-   max-width: 800px;
-    position: absolute;
-   top:50%;
-   left:50%;
-   transform:translate(-50%,-50%);
-   -webkit-transform:translate(-50%,-50%);
-   -ms-transform:translate(-50%,-50%);
-
+#addtrip{
+  padding-top                : 0;
 }
 
-.col-3 {
-   width: 25%;
-   float: left;
-   padding: 0 15px;
+.addFormBox{
+  padding                    :20px;
 }
 
-.row {
-   margin: 0 -15px;
+ #calendar{
+  width                      :75%;
+}
+/* ===================================== MY TRIPS ======================================= */
+.tripPanel{
+  padding                    : 0% 0% 0% 0% !important;
+  font-size                  : 14px;
 }
 
-@import url(https://fonts.googleapis.com/css?family=Roboto:400,300,700&subset=latin,latin-ext);
-*,
-*:after,
-*::before {
-   -webkit-box-sizing: border-box;
-   -moz-box-sizing: border-box;
-   box-sizing: border-box;
-   margin: 0;
-   padding: 0;
-   text-decoration: none;
+.btn-danger,
+.btn-warning,{
+  float                      : left;
+  margin-right               : 20%;
+  /* padding                    : 20px; */
+    padding             : 0% 2% 0% 2%;
 }
 
-body {
-   font-family: 'Roboto', sans-serif;
+ .btn-danger{
+  width                      : 20%;
 }
+
+.btn-warning{
+  width                      : 20%;
+}
+
+.image{
+  width                      : 100%;
+  padding                    : 10% 0% 10% 0;
+}
+
+p{
+  padding                    : 5%;
+}
+/*====================================================================================*/

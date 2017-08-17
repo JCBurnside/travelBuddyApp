@@ -1,200 +1,297 @@
-<!-- <form> -->
-<!-- <img *ngIf='img'[src]='img'/> -->
-<!-- <input type="file" (ngModelChange)='updateImg($event)' accept=".jpg,.jpeg,.png"/>
-  <input type="text" name="email" [(ngModel)]='email' />
-  <input type="password" name="currPass" [(ngModel)]='currentPass'/>
-  <input type="password" name="newPass" [(ngModel)]='newPassword'/>
-  <input type="password" name="confPass" [(ngModel)]='confirmPassword'/>
-  <button type="submit" class="btn">Update</button>
-</form> -->
 <div class="container">
-  <div class="col-sm-12 col-sm-12">
+  <div class="col-sm-5">
+    <h3 *ngIf='!profileedit'>STILL LOADING</h3>
     <form (ngSubmit)="onSubmit()" *ngIf='profileedit'>
       <h1>EDIT PROFILE</h1>
-        <hr><br>
-      <div class="form-group" show-errors>
-        <label for="imageupload">Upload Image</label>
-        <input #imgUp name="image-upload" type="file" id="image-upload">
+      <hr>
+      <div class="form-group">
+        <div class="file">
+          <label for="imageupload">Upload Image</label>
+          <img *ngIf='profileedit.ImageURL' [src]='profileedit.ImageURL' />
+          <input #imgUp name="image-upload" type="file" id="image-upload">
+        </div>
+      </div>
+      <div id="headline">
+        <div class="form-group">
+          <label for="headline">Headline</label>
+          <input name="headline" [(ngModel)]="profileedit.Headline" type="text" id="headline" class="form-control" placeholder="&nbsp; Statement about yourself.">
+        </div>
+      </div>
+      <div id="name">
+        <div class="form-group">
+          <label for="name">Name</label>
+          <input name="name" [(ngModel)]="profileedit.Name" type="text" id="name" class="form-control" placeholder="&nbsp; First & Last Name">
+        </div>
       </div>
       <div class="form-group">
-        <label for="headline">Headline</label>
-        <input name="headline" [(ngModel)]="profileedit.Headline" type="text" id="headline" class="form-control" placeholder="&nbsp; Statement | Quote">
-      </div>
-      <div class="form-group">
-        <label for="name">Name</label>
-        <input name="name" [(ngModel)]="profileedit.Name" type="text" id="name" class="form-control" placeholder="&nbsp; First & Last Name">
-      </div>
-      <div class="form-group">
-
         <label for="gender">Gender</label>
-        <img *ngIf='genderSign' [src]='genderSign'/>
-      <select name="gender" [(ngModel)]="profileedit.Gender" type="dropdown" id="gender" class="form-control">
+        <img *ngIf='genderSign' [src]='genderSign' />
+        <select name="gender" [(ngModel)]="profileedit.Gender" type="dropdown" id="gender" class="form-control">
         <option value="">-- Select --</option>
-        <option value="male">Male</option>
-        <option value="female">Female</option>
-        <option value="other">Other</option>
-        <option value="unspecified">Unspecified</option>
+        <option value="Male">Male</option>
+        <option value="Female">Female</option>
+        <option value="Other">Other</option>
+        <option value="Unspecified">Unspecified</option>
       </select>
       </div>
-      <div class="form-group">
-        <label for="hometown">Where are you from?</label>
-        <input name="hometown" [(ngModel)]="profileedit.Hometown" type="text" id="hometown" class="form-control" placeholder="&nbsp; City, State, Country">
+      <div id="hometown">
+        <div class="form-group">
+          <label for="hometown">Hometown</label>
+          <input name="hometown" [(ngModel)]="profileedit.Hometown" type="text" id="hometown" class="form-control" placeholder="&nbsp; City, State, Country">
+        </div>
       </div>
-      <div class="form-group">
-        <label for="occupation">Occupation</label>
-        <input name="occupation" [(ngModel)]="profileedit.Occupation" type="text" id="occupation" class="form-control" placeholder="&nbsp; Ex: Lawyer">
+      <div id="occupation">
+        <div class="form-group">
+          <label for="occupation">Occupation</label>
+          <input name="occupation" [(ngModel)]="profileedit.Occupation" type="text" id="occupation" class="form-control" placeholder="&nbsp; Ex: Lawyer">
+        </div>
       </div>
-      <div class="form-group">
-        <label for="interests">Interests</label>
+      <div id="fackbook">
+        <div class='form-group'>
+          <label for='facebook'>Facebook</label>
+          <input name='facebook' [(ngModel)]='profileedit.Facebook' type="text" class="form-control" placeholder="&nbsp;Input facebook profile link"/>
+        </div>
       </div>
-
-<!-- INTEREST BUTTONS -->
+      <div id="interests">
+        <div class="form-group">
+          <label for="interests">Interests</label> &nbsp;
+          <label>Choose a number of interests that best describe yourself.</label>
+        </div>
+      </div>
+<!-- INTERESTS -->
       <div class="inputs">
         <div class="area">
-          <div class="row">
-            <div class="col-3">
-              <span class="input">
-                <label for="beaches">Beaches</label>
-                <input type="checkbox" name="beaches" id="beaches">
+          <div class="col-3" id="interestblock">
+            <span class="input">
+                <label [@toggleState]='this.profileedit.Interest.Beaches' for="beaches">Beaches</label>
+                <input [(ngModel)]='profileedit.Interest.Beaches' type="checkbox" name="beaches" id="beaches">
               </span>
-            </div>
-            <div class="col-3">
-              <span class="input">
-                <label for="camping">Camping</label>
-                <input type="checkbox" name="camping" id="camping">
-              </span>
-            </div>
-            <div class="col-3">
-              <span class="input">
-                <label for="culture">Culture</label>
-                <input type="checkbox" name="culture" id="culture">
-              </span>
-            </div>
-            <div class="col-3">
-              <span class="input">
-                <label for="dance clubs | raves">Dance Clubs | Raves</label>
-                <input type="checkbox" name="dance clubs | raves" id="dance clubs | raves">
-              </span>
-            </div>
           </div>
-        </div>
-
-        <div class="area">
-          <div class="row">
-            <div class="col-3">
-              <span class="input">
-                <label for="food | culture">Food | Culture</label>
-                <input type="checkbox" name="food | culture" id="food | culture">
+          <div class="col-3">
+            <span class="input">
+                <label [@toggleState]='this.profileedit.Interest.Camping' for="camping">Camping</label>
+                <input [(ngModel)]='profileedit.Interest.Camping' type="checkbox" name="camping" id="camping">
               </span>
-            </div>
-            <div class="col-3">
-              <span class="input">
-                <label for="health | fitness">Health | Fitness</label>
-                <input type="checkbox" name="health | fitness" id="health | fitness">
-              </span>
-            </div>
-            <div class="col-3">
-              <span class="input">
-                <label for="history">History</label>
-                <input type="checkbox" name="history" id="history">
-              </span>
-            </div>
-            <div class="col-3">
-              <span class="input">
-                <label for="hiking">Hiking</label>
-                <input type="checkbox" name="hiking" id="hiking">
-              </span>
-            </div>
           </div>
-        </div>
-
-        <div class="area">
-          <div class="row">
-            <div class="col-3">
-              <span class="input">
-                <label for="movies">Movies</label>
-                <input type="checkbox" name="movies" id="movies">
+          <div class="col-3">
+            <span class="input">
+                <label [@toggleState]='this.profileedit.Interest.Culture' for="culture">Culture</label>
+                <input [(ngModel)]='profileedit.Interest.Culture' type="checkbox" name="culture" id="culture">
               </span>
-            </div>
-            <div class="col-3">
-              <span class="input">
-                <label for="music">Music</label>
-                <input type="checkbox" name="music" id="music">
-              </span>
-            </div>
-            <div class="col-3">
-              <span class="input">
-                <label for="nature">Nature</label>
-                <input type="checkbox" name="nature" id="nature">
-              </span>
-            </div>
-            <div class="col-3">
-              <span class="input">
-                <label for="photography">Photography</label>
-                <input type="checkbox" name="photography" id="photography">
-              </span>
-            </div>
           </div>
-        </div>
-
-        <div class="area">
-          <div class="row">
-            <div class="col-3">
-              <span class="input">
-                <label for="politics">Politics</label>
-                <input type="checkbox" name="politics" id="politics">
+          <div class="col-3">
+            <span class="input">
+                <label [@toggleState]='this.profileedit.Interest.Clubbing' for="dance clubs | raves">Dancing | Raves</label>
+                <input [(ngModel)]='profileedit.Interest.Clubbing' type="checkbox" name="dance clubs | raves" id="dance clubs | raves">
               </span>
-            </div>
-            <div class="col-3">
-              <span class="input">
-                <label for="reading">Reading</label>
-                <input type="checkbox" name="reading" id="reading">
-              </span>
-            </div>
-            <div class="col-3">
-              <span class="input">
-                <label for="religion">Religion</label>
-                <input type="checkbox" name="religion" id="religion">
-              </span>
-            </div>
-            <div class="col-3">
-              <span class="input">
-                <label for="road trips">Road Trips</label>
-                <input type="checkbox" name="road trips" id="road trips">
-              </span>
-            </div>
-          </div>
-        </div>
-
-        <div class="area">
-          <div class="row">
-            <div class="col-3">
-              <span class="input">
-                <label for="sports">Sports</label>
-                <input type="checkbox" name="sports" id="sports">
-              </span>
-            </div>
-            <div class="col-3">
-              <span class="input">
-                <label for="water sports">Water Sports</label>
-                <input type="checkbox" name="water sports" id="water sports">
-              </span>
-            </div>
-            <div class="col-3">
-              <span class="input">
-                <label for="wine connoisseur">Wine Connoisseur</label>
-                <input type="checkbox" name="wine connoisseur" id="wine connoisseur">
-              </span>
-            </div>
-            <div class="col-3">
-              <span class="input">
-                <label for="yoga">Yoga</label>
-                <input type="checkbox" name="yoga" id="yoga-4">
-              </span>
-            </div>
           </div>
         </div>
       </div>
-      <button type="submit" class="btn btn-secondary btn-lg" style="margin-top:2%">&nbsp; Submit &nbsp;</button>
+      <div class="area">
+        <div class="row">
+          <div class="col-3">
+            <span class="input">
+                <label [@toggleState]='this.profileedit.Interest.Food' for="food | culture">Food | Culture</label>
+                <input [(ngModel)]='profileedit.Interest.Food' type="checkbox" name="food | culture" id="food | culture">
+              </span>
+          </div>
+          <div class="col-3">
+            <span class="input">
+                <label [@toggleState]='this.profileedit.Interest.Health' for="health | fitness">Health | Fitness</label>
+                <input [(ngModel)]='profileedit.Interest.Health' type="checkbox" name="health | fitness" id="health | fitness">
+              </span>
+          </div>
+          <div class="col-3">
+            <span class="input">
+                <label [@toggleState]='this.profileedit.Interest.History' for="history">History</label>
+                <input [(ngModel)]='profileedit.Interest.History' type="checkbox" name="history" id="history">
+              </span>
+          </div>
+          <div class="col-3">
+            <span class="input">
+                <label [@toggleState]='this.profileedit.Interest.Hiking' for="hiking">Hiking</label>
+                <input [(ngModel)]='profileedit.Interest.Hiking' type="checkbox" name="hiking" id="hiking">
+              </span>
+          </div>
+        </div>
+      </div>
+      <div class="area">
+        <div class="row">
+          <div class="col-3">
+            <span class="input">
+                <label [@toggleState]='this.profileedit.Interest.Movies' for="movies">Movies</label>
+                <input [(ngModel)]='profileedit.Interest.Movies' type="checkbox" name="movies" id="movies">
+              </span>
+          </div>
+          <div class="col-3">
+            <span class="input">
+                <label [@toggleState]='this.profileedit.Interest.Music' for="music">Music</label>
+                <input [(ngModel)]='profileedit.Interest.Music' type="checkbox" name="music" id="music">
+              </span>
+          </div>
+          <div class="col-3">
+            <span class="input">
+                <label [@toggleState]='this.profileedit.Interest.Nature' for="nature">Nature</label>
+                <input [(ngModel)]='profileedit.Interest.Nature' type="checkbox" name="nature" id="nature">
+              </span>
+          </div>
+          <div class="col-3">
+            <span class="input">
+                <label [@toggleState]='this.profileedit.Interest.Photography' for="photography">Photography</label>
+                <input [(ngModel)]='profileedit.Interest.Photography' type="checkbox" name="photography" id="photography">
+              </span>
+          </div>
+        </div>
+      </div>
+      <div class="area">
+        <div class="row">
+          <div class="col-3">
+            <span class="input">
+                <label [@toggleState]='this.profileedit.Interest.Politics' for="politics">Politics</label>
+                <input [(ngModel)]='profileedit.Interest.Politics' type="checkbox" name="politics" id="politics">
+              </span>
+          </div>
+          <div class="col-3">
+            <span class="input">
+                <label [@toggleState]='this.profileedit.Interest.Reading' for="reading">Reading</label>
+                <input [(ngModel)]='profileedit.Interest.Reading' type="checkbox" name="reading" id="reading">
+              </span>
+          </div>
+          <div class="col-3">
+            <span class="input">
+                <label [@toggleState]='this.profileedit.Interest.Religion' for="religion">Religion</label>
+                <input [(ngModel)]='profileedit.Interest.Religion' type="checkbox" name="religion" id="religion">
+              </span>
+          </div>
+          <div class="col-3">
+            <span class="input">
+                <label [@toggleState]='this.profileedit.Interest.RoadTrips' for="road trips">Road Trips</label>
+                <input [(ngModel)]='profileedit.Interest.RoadTrips' type="checkbox" name="road trips" id="road trips">
+              </span>
+          </div>
+        </div>
+      </div>
+      <div class="area">
+        <div class="row">
+          <div class="col-3">
+            <span class="input">
+                <label [@toggleState]='this.profileedit.Interest.Sports' for="sports">Sports</label>
+                <input [(ngModel)]='profileedit.Interest.Sports' type="checkbox" name="sports" id="sports">
+              </span>
+          </div>
+          <div class="col-3">
+            <span class="input">
+                <label [@toggleState]='this.profileedit.Interest.WaterSports' for="water sports">Water Sports</label>
+                <input [(ngModel)]='profileedit.Interest.WaterSports' type="checkbox" name="water sports" id="water sports">
+              </span>
+          </div>
+          <div class="col-3">
+            <span class="input">
+                <label [@toggleState]='this.profileedit.Interest.Wine' for="wine connoisseur">Wine Connoisseur</label>
+                <input [(ngModel)]='profileedit.Interest.Wine' type="checkbox" name="wine connoisseur" id="wine connoisseur">
+              </span>
+          </div>
+          <div class="col-3">
+            <span class="input">
+                <label (click)="test()" [@toggleState]='this.profileedit.Interest.Yoga' for="Yoga">Yoga</label>
+                <input [(ngModel)]='profileedit.Interest.Yoga' type="checkbox" name="Yoga" id="yoga-4">
+              </span>
+          </div>
+        </div>
+      </div>
+      <button type="submit" class="btn btn-primary btn-lg" style="margin-top:2%">&nbsp; Submit &nbsp;</button>
     </form>
   </div>
+<!-- ADD A TRIP -->
+  <div id="addtrip" class="col-sm-7 addForm">
+    <div class="box addFormBox">
+      <fieldset>
+        <h1>ADD A TRIP</h1>
+        <hr>
+        <div class="form-group" show-errors>
+          <div class="file1">
+            <label for="title">Upload Image</label>
+            <img *ngIf='img' [src]='img' />
+            <input #imgInput name="image-upload" type="file" accept="image/png, image/jpeg, image/jpg" id="image-upload">
+          </div>
+        </div>
+        <div class="form-group">
+          <div class="col-sm-6 col-md-6"><label for="title">Headline</label></div>
+          <div class="col-sm-5 col-md-6"><label for="title">Destination</label></div>
+          <div class="col-sm-5 col-md-6"><input name="transportation" [(ngModel)]='newTrip.Name' type="text" id="Name" class="form-control" placeholder='&nbsp;"A Trip Around The World!"'></div>
+          <div class="col-sm-5 col-md-6"><input name="destination" type="text" name="destination" [(ngModel)]='newTrip.Destinations' class="form-control" placeholder="&nbsp; City, State, Country"></div>
+        </div>
+        <div class="form-group">
+          <div class="col-sm-6 col-md-6"><label for="title">Transportation</label></div>
+          <div class="col-sm-6 col-md-6"><label for="title">Estimated Cost</label></div>
+          <div class="col-sm-6 col-md-6"><select name="transportation" [(ngModel)]='newTrip.ModeOfTransit' type="dropdown" id="transportation" class="form-control">
+              <option [value]=undefined disabled="disabled">-- Select --</option>
+              <option value="Boat">Boat</option>
+              <option value="Car">Car</option>
+              <option value="Plane">Plane</option>
+              <option value="Train">Train</option>
+            </select>
+          </div>
+          <div class="col-sm-6 col-md-6"><input name="price" type="number" [(ngModel)]='newTrip.Price' id="price" class="form-control" placeholder=$0.00
+              min=0 step=0.01/></div>
+        </div>
+        <div class="form-group">
+          <div class="col-sm-6 col-md-6">
+            <label for="title">Start Date</label>
+          </div>
+          <div class="col-sm-6 col-md-6">
+            <label for="title">End Date</label>
+          </div>
+          <div class="col-sm-6 col-md-6">
+            <input name="start-date" type="date" [(ngModel)]='newTrip.StartDate' id="date" class="form-control" placeholder="&nbsp;MM/DD/YYYY">
+          </div>
+          <div class="col-sm-6 col-md-6">
+            <input name="end-date" type="date" [(ngModel)]='newTrip.EndDate' id="date" class="form-control" placeholder="&nbsp;MM/DD/YYYY">
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="content">Description</label>
+          <textarea maxlength="500" name="content" [(ngModel)]='newTrip.Description' id="content" class="form-control" cols="30" rows="8"
+            placeholder="A brief paragraph about your upcoming trip.">
+              </textarea>
+        </div>
+        <div class="sumbit">
+          <button type="submit" (click)='submit()' class="btn btn-primary btn-lg" style="margin-top:3%">Add</button>
+        </div>
+      </fieldset>
+    </div>
+  </div>
+<!-- MY TRIPS -->
+  <div class="col-sm-8 addForm">
+    <div class="box addFormBox">
+      <fieldset>
+        <div class="form-group">
+          <h1>MY TRIPS</h1>
+          <hr>
+          <div>
+            <div class="col-sm-12" *ngFor="let trip of trips ">
+            <div class=" col-sm-6">
+              <img class="image" style="height:auto" [src]="trip.ImageURL"/>
+              <p><button (click)="onClickEdit(trip.$key)"type="button" class="btn btn-labeled btn-warning pencil-btn">
+                  <span class="btn-label"><i class="glyphicon glyphicon-pencil"></i></span></button>&nbsp;
+                 <button (click)="onClickDelete(trip)" type="button" class="btn btn-labeled btn-danger btn-xl">
+                <span class="btn-label"><i class="glyphicon glyphicon-trash"></i></span></button>
+              </p>
+            </div>
+            <div class="col-sm-6 tripPanel">
+              <p><img src="/assets/img/headline.png" style="width:10%; height:10%">           {{trip.Name}}</p>
+              <p><img src="/assets/img/destination.png" style="width:10%; height:10%">        {{trip.Destinations}}</p>
+              <p><img [src]="getTransImg(trip.ModeOfTransit)" style="width:10%; height:10%">  {{trip.ModeOfTransit}}</p>
+              <p><img src="/assets/img/price.png" style="width:10%; height:10%">              {{trip.Price|currency:'USD':true:'.2-2'}}</p>
+              <p><img src="/assets/img/calendar.png" style="width:10%; height:10%">           {{trip.StartDate|date: shortDate}}</p>
+              <p><img src="/assets/img/calendar.png" style="width:10%; height:10%">           {{trip.EndDate|date: shortDate}}</p>
+              <p><img src="/assets/img/description.png" style="width:10%; height:10%">        {{trip.Description}}</p>
+            </div>
+          <hr class="col-sm-12">
+            </div>
+          </div>
+        </div>
+      </fieldset>
+    </div>
+  </div>
+</div>
