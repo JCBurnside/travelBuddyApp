@@ -32,8 +32,6 @@ export class TripsService {
             out=out.reverse()
             cb(out, null);
         });
-        cb(out, null);
-      });
   }
 
   getTripsByOwner(owner: string, cb: (trips: Trip[], err: Error | string) => void) {
