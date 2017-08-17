@@ -1,29 +1,29 @@
 import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
-import { ActivatedRoute } from "@angular/router";
-import { FirebaseListObservable } from "angularfire2/database";
+import { ActivatedRoute } from '@angular/router';
+import { FirebaseListObservable } from 'angularfire2/database';
 
-import Trip from "../models/trip";
-import { ImageService } from "../services/image.service";
-import { TripsService } from "../services/trips.service";
-import { FirebaseService } from "../services/auth.service";
+import Trip from '../models/trip';
+import { ImageService } from '../services/image.service';
+import { TripsService } from '../services/trips.service';
+import { FirebaseService } from '../services/auth.service';
 import { Router } from '@angular/router';
 
 @Component({
-  selector   : 'app-trip-edit',
+  selector: 'app-trip-edit',
   templateUrl: './trip-edit.component.html',
-  styleUrls  : ['./trip-edit.component.css']
+  styleUrls: ['./trip-edit.component.css']
 })
 export class TripEditComponent implements OnInit {
-  public tripedit: Trip = new Trip("", "");
+  public tripedit: Trip = new Trip('', '');
   constructor(
     private router: Router,
-    private route : ActivatedRoute,
-    public  ts    : TripsService,
-    public  as    : FirebaseService,
-    public  is    : ImageService
-  ) {}
+    private route: ActivatedRoute,
+    public ts: TripsService,
+    public as: FirebaseService,
+    public is: ImageService
+  ) { }
   private id;
-  private    sub           : any;
+  private sub: any;
   @ViewChild('imgUp') imgUp: ElementRef;
   ngOnInit() {
     this.sub = this.route.params.subscribe(params => {
@@ -35,23 +35,24 @@ export class TripEditComponent implements OnInit {
   }
   onSubmit() {
     if (!this.imgUp.nativeElement.files[0]) {
-      this.ts.saveTrip(this.tripedit,  (success, err) => {
+      this.ts.saveTrip(this.tripedit, (success, err) => {
         if (err) {
           console.log(err);
-        }
-        else {
+        } else {
           console.log(success);
-          this.router.navigateByUrl("/homepage");
+          this.router.navigate(['/profile', this.tripedit.Owner]);
         }
       });
     } else {
-      this.is.uploadTrip(this.imgUp.nativeElement.files[0],this.tripedit.$key,(snap,err)=>{
-        if(err)
+      this.is.uploadTrip(this.imgUp.nativeElement.files[0], this.tripedit.$key, (snap, err) => {
+        if (err) {
           return console.log(err);
-        this.ts.saveTrip({...this.tripedit,ImageURL:snap.downloadURL},(success,err)=>{
-          console.log(success||err);
-        })
-      })
+        }
+        this.ts.saveTrip({ ...this.tripedit, ImageURL: snap.downloadURL }, (success, err) => {
+          console.log(success || err);
+          this.router.navigate(['/profile', this.tripedit.Owner]);
+        });
+      });
     }
   }
 }
