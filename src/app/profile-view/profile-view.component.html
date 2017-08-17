@@ -1,20 +1,24 @@
 <!-- IMAGE & PROFILE INFO -->
 <div>
   <div id="profile" class="col-sm-6" *ngIf='profileview'>
-    <h2>PROFILE <button (click)="goToProfileEdit()"type="button" class="btn btn-labeled btn-warning pencil-btn col-sm-pull-1">
+    <h2>PROFILE <button (click)="goToProfileEdit()" type="button" class="btn btn-labeled btn-warning pencil-btn col-sm-pull-1">
         <span class="btn-label"><i class="glyphicon glyphicon-pencil"></i></span></button></h2>
     <hr><br>
     <div class="col-sm-6">
+<<<<<<< Updated upstream
       <img #imgTesting width="250px" [src]= "profileview.ImgURL||'http://placehold.it/250x250'">
+=======
+      <img class='img-responsive' width="250px" [src]="profileview.ImgURL||'http://placehold.it/250x250'">
+>>>>>>> Stashed changes
     </div>
     <div class="col-sm-6">
       <p><img src="/assets/img/headline.png" style="width:10%; height:10%">
-      <span class="feedback" name="headline" type="text" id="headline">{{profileview.Headline}}</span>
+        <span class="feedback" name="headline" type="text" id="headline">{{profileview.Headline}}</span>
       </p><br>
       <p><img src="/assets/img/name.png" style="width:10%; height:10%">
         <span class="feedback" name="name" type="text" id="name">{{profileview.Name}}</span>
       </p><br>
-      <p><img [src]= 'gender' style="width:10%; height:10%">
+      <p><img [src]='gender' style="width:10%; height:10%">
         <span class="feedback" name="gender" type="dropdown" id="gender">{{profileview.Gender}}</span>
       </p><br>
       <p><img src="/assets/img/hometown.png" style="width:10%; height:10%">
@@ -27,9 +31,9 @@
         <a [href]='profileview.Facebook'><span class="feedback" name="facebook" type="text" id="facebook">Click to view Facebook Page</span></a>
       </p><br>
     </div>
-<!-- INTEREST BUTTONS -->
+    <!-- INTEREST BUTTONS -->
     <div id="interests" class="col-sm-12">
-        <span class="feedback" name="interests" type="text" id="interests"><b><img src="/assets/img/interests.png" style="width:5%; height:5%">Interests</b></span>
+      <span class="feedback" name="interests" type="text" id="interests"><b><img src="/assets/img/interests.png" style="width:5%; height:5%">Interests</b></span>
       <div class="container-fluid">
         <div class="area" *ngFor='let interest of interests'>
           <div class="col-sm-4" id="interestblock">
@@ -41,7 +45,7 @@
       </div>
     </div>
   </div>
-<!-- TRIPS -->
+  <!-- TRIPS -->
   <div class="col-sm-6">
     <div class="box" style="text-align:left">
       <fieldset>
@@ -50,18 +54,23 @@
         <div>
           <div *ngFor="let trip of trips;let i=index">
             <div class="col-sm-6 img">
+<<<<<<< Updated upstream
               <img [src]="trip.ImageURL" />
                 <button (click)="onClickEdit(trip.$key)"type="button" class="btn btn-labeled btn-default pencil-btn edittrippro">
+=======
+              <a (click)='onClickView(trip.$key)'><img class='img-responsive' [src]="trip.ImageURL" /></a>
+              <button (click)="onClickEdit(trip.$key)" type="button" class="btn btn-labeled btn-default pencil-btn edittrippro">
+>>>>>>> Stashed changes
                 <span class="btn-label"><i class="glyphicon glyphicon-pencil"></i></span></button>&nbsp;
             </div>
-            <div class="col-sm-6 icons">
-              <p><img src="/assets/img/headline.png" style="width:10%; height:10%">           {{trip.Name}}</p><br>
-              <p><img src="/assets/img/destination.png" style="width:10%; height:10%">        {{trip.Destinations}}</p><br>
-              <p><img [src]="getTransImg(trip.ModeOfTransit)" style="width:10%; height:10%">  {{trip.ModeOfTransit}}</p><br>
-              <p><img src="/assets/img/price.png" style="width:10%; height:10%">              {{trip.Price|currency:'USD':true:'.2-2'}}</p><br>
-              <p><img src="/assets/img/calendar.png" style="width:10%; height:10%">           {{trip.StartDate|date: shortDate}}</p><br>
-              <p><img src="/assets/img/calendar.png" style="width:10%; height:10%">           {{trip.EndDate|date: shortDate}}</p><br>
-              <p><img src="/assets/img/description.png" style="width:10%; height:10%">        {{trip.Description}}</p>
+            <div    class = "col-sm-6 icons">
+            <p><img src   = "/assets/img/headline.png"        style = "width:10%; height:10%"> {{trip.Name}}</p><br>
+            <p><img src   = "/assets/img/destination.png"     style = "width:10%; height:10%"> {{trip.Destinations}}</p><br>
+            <p><img [src] = "getTransImg(trip.ModeOfTransit)" style = "width:10%; height:10%"> {{trip.ModeOfTransit}}</p><br>
+            <p><img src   = "/assets/img/price.png"           style = "width:10%; height:10%"> {{trip.Price|currency:'USD':true:'.2-2'}}</p><br>
+            <p><img src   = "/assets/img/calendar.png"        style = "width:10%; height:10%"> {{trip.StartDate|date: shortDate}}</p><br>
+            <p><img src   = "/assets/img/calendar.png"        style = "width:10%; height:10%"> {{trip.EndDate|date: shortDate}}</p><br>
+            <p><img src   = "/assets/img/description.png"     style = "width:10%; height:10%"> {{trip.Description}}</p>
             </div>
             <hr class="col-sm-12">
           </div>
@@ -70,4 +79,3 @@
     </div>
   </div>
 </div>
-

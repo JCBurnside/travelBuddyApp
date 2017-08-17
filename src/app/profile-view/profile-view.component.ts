@@ -46,17 +46,6 @@ export class ProfileViewComponent implements OnInit {
             console.log(trips);
             console.log(this.dests);
             this.trips = trips;
-            /*trips.forEach((trip: Trip, i, arr) => {
-              var keys = Object.keys(trip.Destinations);
-              var dest = [];
-              keys.forEach(function (key) {
-                console.log(key, trip.Destinations[key]);
-                dest.push(trip.Destinations[key]);
-              });
-              this.dests.push(dest.join(', '));
-            });
-            console.log(this.dests);
-            this.trips = trips;*/
           }
         });
       });
@@ -88,7 +77,7 @@ getTransImg(mode) {
   }
 }
   onClickEdit($key) {
-    console.log($key)
+    console.log($key);
     this.router.navigate(['/trip-edit', $key]);
   }
 }

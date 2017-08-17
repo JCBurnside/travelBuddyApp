@@ -1,4 +1,4 @@
-  <div class="container">
+<div class="container">
   <div class="row">
     <div>
       <h1>{{name}}'s trip to {{tripview.Destinations}}</h1>
@@ -8,13 +8,13 @@
       </div>
       <div class="col-sm-5">
         <div class="mytrips">
-          <p><img src="/assets/img/headline.png" style="width:4%; height:4%">         {{tripview.Name}}</p>
-          <p><img src="/assets/img/destination.png" style="width:4%; height:4%">      {{tripview.Destinations}}</p>
-          <p><img src="/assets/img/.png" style="width:4%; height:4%">                 {{tripview.ModeOfTransit}}</p>
-          <p><img src="/assets/img/calendar.png" style="width:4%; height:4%">         {{tripview.StartDate|date: shortDate}}</p>
-          <p><img src="/assets/img/calendar.png" style="width:4%; height:4%">         {{tripview.EndDate|date: shortDate}}</p>
-          <p><img src="/assets/img/price.png" style="width:4%; height:4%">            {{tripview.Price}}</p>
-          <p><img src="/assets/img/description.png" style="width:4%; height:4%">      {{tripview.Description}}</p>
+          <p><img src="/assets/img/headline.png" style="width:6%; height:6%"> {{tripview.Name}}</p>
+          <p><img src="/assets/img/destination.png" style="width:6%; height:6%"> {{tripview.Destinations}}</p>
+          <p><img [src] ="getTransImg(tripview.ModeOfTransit)" style = "width:6%; height:6%"> {{tripview.ModeOfTransit}}</p>
+          <p><img src="/assets/img/calendar.png" style="width:6%; height:6%"> {{tripview.StartDate|date: shortDate}}</p>
+          <p><img src="/assets/img/calendar.png" style="width:6%; height:6%"> {{tripview.EndDate|date: shortDate}}</p>
+          <p><img src="/assets/img/price.png" style="width:6%; height:6%"> {{tripview.Price|currency:'USD':true:'.2-2'}}</p>
+          <p><img src="/assets/img/description.png" style="width:6%; height:6%"> {{tripview.Description}}</p>
         </div>
       </div>
     </div>

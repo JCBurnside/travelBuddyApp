@@ -1,11 +1,11 @@
 import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
-import { trigger, state, animate, transition, style } from "@angular/animations";
+import { trigger, state, animate, transition, style } from '@angular/animations';
 import { ActivatedRoute, Router } from '@angular/router';
 import Profile from '../models/profile';
 import Trip from '../models/trip';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
-import { Interests } from "../models/interests";
+import { Interests } from '../models/interests';
 
 
 import { ImageService } from '../services/image.service';
@@ -19,7 +19,7 @@ import { TripsService } from '../services/trips.service';
   styleUrls: ['./profile-edit.component.css'],
   animations: [
     trigger('toggleState', [
-      state('false', style({ backgroundColor: "#26a69a" })),
+      state('false', style({ backgroundColor: '#26a69a' })),
       state('true', style({ background: 'rgba(0, 0, 0, 0.2)' })),
       transition('true=>false', animate('300ms ease-out')),
       transition('flase=>true', animate('300ms ease-in'))
@@ -50,6 +50,7 @@ export class ProfileEditComponent implements OnInit {
   ngOnInit() {
     this.route.params.subscribe(params => {
       this.PS.getProfileByOwner(params['id'], (profile: Profile) => {
+<<<<<<< Updated upstream
         this.profileedit = profile;
 
         this.PID = params['id'];
@@ -63,6 +64,32 @@ export class ProfileEditComponent implements OnInit {
           if (err)
             return console.log(err);
           this.trips = trips.reverse();
+=======
+        this.AS.getId(id => {
+          if (id != params['id']) {
+            return this.router.navigateByUrl(`/profile/${params['id']}`)
+          }
+          this.profileedit = profile;
+
+          this.PID = params['id'];
+          this.id = params['id'];
+          console.log(profile);
+          if (!this.profileedit.Interest) {
+            this.profileedit.Interest = new Interests();
+          }
+          this.PID = params['id'];
+          console.log(this.profileedit.Interest);
+          this.ts.getTripsByOwner(this.id, (trips, err) => {
+            if (err) {
+              return console.log(err);
+            }
+            this.trips = trips.reverse();
+          });
+
+          // if (this.profileedit.Gender == 'female') {
+          //   this.genderSign = './img/female.png';
+          // }
+>>>>>>> Stashed changes
         });
 
         // if (this.profileedit.Gender == 'female') {
@@ -76,15 +103,14 @@ export class ProfileEditComponent implements OnInit {
     this.profileedit.Interest.Yoga = !this.profileedit.Interest.Yoga;
   }
 
-  min = Math.min;
   submit() {
-    if (this.newTrip.Name == null)
-      alert("The trip needs a name");
-    else if (!this.newTrip.Destinations || !/^(.{1,},){1,2}?( .{1,})[^(, |,|;)]$/.test(this.newTrip.Destinations))
-      alert("You need a destination");
-    else if (!this.newTrip.StartDate || !this.newTrip.EndDate)
-      alert("You need a" + !this.newTrip.StartDate ? ' Start Date' : 'n End Date');
-    else {
+    if (this.newTrip.Name == null) {
+      alert('The trip needs a name');
+    } else if (!this.newTrip.Destinations || !/^(.{1,},){1,2}?( .{1,})[^(, |,|;)]$/.test(this.newTrip.Destinations)) {
+      alert('You need a destination');
+    } else if (!this.newTrip.StartDate || !this.newTrip.EndDate) {
+      alert('You need a' + !this.newTrip.StartDate ? ' Start Date' : 'n End Date');
+    } else {
       this.newTrip.Owner = this.PID;
       console.log(this.newTrip.Price);
       this.newTrip.Price = Math.abs(this.newTrip.Price);
@@ -92,21 +118,23 @@ export class ProfileEditComponent implements OnInit {
         if (this.el.nativeElement.files[0]) {
           console.log('image begin upload');
           this.IS.uploadTrip(this.el.nativeElement.files[0], trip.$key, (snap, err) => {
-            if (err)
+            if (err) {
               return console.error(err);
+            }
             this.ts.saveTrip({ ...trip, ImageURL: snap.downloadURL }, (s, e) => {
               console.log(s || e);
             });
             this.ts.getTripsByOwner(this.id, (trips, err) => {
-              if (err)
+              if (err) {
                 return console.log(err);
+              }
               this.trips = trips;
               trips.forEach(trip => console.log(trip.Price));
-              console.log(this.trips)
+              console.log(this.trips);
             });
-          })
+          });
         } else {
-          console.log('no image to upload')
+          console.log('no image to upload');
         }
       });
     }
@@ -115,7 +143,7 @@ export class ProfileEditComponent implements OnInit {
     this.router.navigate(['/profile', $key]);
   }
   onClickEdit($key) {
-    console.log($key)
+    console.log($key);
     this.router.navigate(['/trip-edit', $key]);
   }
 
@@ -126,17 +154,17 @@ export class ProfileEditComponent implements OnInit {
     this.ts.deleteTrip(trip, (success, err) => {
       console.log(success || err);
       var i = this.trips.findIndex((_trip) => {
-        return trip.$key == _trip.$key
-      })
-      this.trips.slice(i, i)
-    })
+        return trip.$key == _trip.$key;
+      });
+      this.trips.slice(i, i);
+    });
   }
 
   onSubmit() {
-    console.log(this.profileedit.Interest)
+    console.log(this.profileedit.Interest);
     if (!/^(http(|s):\/\/|)www\.facebook\.com\/.{1,}$/.test(this.profileedit.Facebook)) {
       this.profileedit.Facebook = '';
-      alert("that is not a valid facebook link");
+      alert('that is not a valid facebook link');
     }
     if (!this.imgUp.nativeElement.files[0]) {
       this.PS.saveProfile(this.profileedit, (profile, err) => {
