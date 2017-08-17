@@ -44,7 +44,7 @@ button{
   width                      : 100%;
   max-width                  : 100%;
   position                   : absolute;
-  top                        : 95%;
+  top                        : 80%;
   left                       : 60%;
   transform                  : translate(-50%,-50%);
   -webkit-transform          : translate(-50%,-50%);
@@ -169,15 +169,16 @@ textarea{
 .btn-warning,{
   float                      : left;
   margin-right               : 20%;
-  padding                    : 20px;
+  /* padding                    : 20px; */
+    padding             : 0% 2% 0% 2%;
 }
 
-.btn-danger{
-  width                      : 40%;
+ .btn-danger{
+  width                      : 20%;
 }
 
 .btn-warning{
-  width                      : 40%;
+  width                      : 20%;
 }
 
 .image{
