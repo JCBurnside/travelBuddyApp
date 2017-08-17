@@ -60,12 +60,4 @@ import { ReversePipe } from './reverse.pipe';
   ],
   bootstrap: [AppComponent]
 })
-<<<<<<< Updated upstream
 export class AppModule { }
-=======
-export class AppModule {
-  constructor(public as: AngularFireAuth) {
-
-  }
-}
->>>>>>> Stashed changes

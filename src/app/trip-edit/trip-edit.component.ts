@@ -27,10 +27,6 @@ export class TripEditComponent implements OnInit {
   @ViewChild('imgUp') imgUp: ElementRef;
   ngOnInit() {
     this.sub = this.route.params.subscribe(params => {
-<<<<<<< Updated upstream
-      this.ts.getTripById(params['id'], (tripedit: Trip) => {
-        this.tripedit = tripedit;
-=======
       this.id = params['id'];
       this.ts.getTripById(this.id, (tripedit: Trip) => {
         this.as.getId(id => {
@@ -39,7 +35,6 @@ export class TripEditComponent implements OnInit {
           }
           this.tripedit = tripedit;
         });
->>>>>>> Stashed changes
       });
       this.id = params['id'];
     });

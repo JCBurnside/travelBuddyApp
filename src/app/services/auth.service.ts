@@ -1,15 +1,11 @@
 import { Injectable } from '@angular/core';
 import { User } from '../models/user';
 
-import { Router } from '@angular/router';
+import { Router, CanActivate } from '@angular/router';
 import { AngularFireAuth } from 'angularfire2/auth';
 
 @Injectable()
-<<<<<<< Updated upstream
-export class FirebaseService {
-=======
 export class FirebaseService implements CanActivate {
->>>>>>> Stashed changes
   authState;
   user;
   getId(cb: (id: string) => void) {
@@ -29,11 +25,7 @@ export class FirebaseService implements CanActivate {
       });
     console.log(this.isAuthed());
   }
-<<<<<<< Updated upstream
-  signin(user: User) {
-=======
   signin(user: User, cb: (err?: any) => void) {
->>>>>>> Stashed changes
     this.af.auth.signInWithEmailAndPassword(user.email, user.password)
       .then(() => {
         this.router.navigateByUrl('/');

@@ -27,13 +27,6 @@ export class SigninComponent {
     return (this.errors.email || this.errors.pass); // Returns true if there are errors
   }
   onSubmit() {
-<<<<<<< Updated upstream
-  	if (this.validate()) { // If there are errors, do not submit the form
-  		return;
-  	}
-  	this.user = new User(this.model.email, this.model.pass);
-  	this.fbs.signin(this.user);
-=======
     if (this.validate()) { // If there are errors, do not submit the form
       return;
     }
@@ -42,7 +35,6 @@ export class SigninComponent {
       console.log(e);
       this.errors.email = e.message;
     });
->>>>>>> Stashed changes
   }
 
   constructor(private firebase: FirebaseService) {

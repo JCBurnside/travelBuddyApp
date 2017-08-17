@@ -50,21 +50,6 @@ export class ProfileEditComponent implements OnInit {
   ngOnInit() {
     this.route.params.subscribe(params => {
       this.PS.getProfileByOwner(params['id'], (profile: Profile) => {
-<<<<<<< Updated upstream
-        this.profileedit = profile;
-
-        this.PID = params['id'];
-        this.id = params['id'];
-        console.log(profile);
-        if (!this.profileedit.Interest)
-          this.profileedit.Interest = new Interests();
-        this.PID = params['id'];
-        console.log(this.profileedit.Interest);
-        this.ts.getTripsByOwner(this.id, (trips, err) => {
-          if (err)
-            return console.log(err);
-          this.trips = trips.reverse();
-=======
         this.AS.getId(id => {
           if (id != params['id']) {
             return this.router.navigateByUrl(`/profile/${params['id']}`)
@@ -89,7 +74,6 @@ export class ProfileEditComponent implements OnInit {
           // if (this.profileedit.Gender == 'female') {
           //   this.genderSign = './img/female.png';
           // }
->>>>>>> Stashed changes
         });
 
         // if (this.profileedit.Gender == 'female') {
