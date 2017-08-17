@@ -5,18 +5,17 @@
   </div>
   <div class="trip-search">
     <figure class="tripprofile" *ngFor="let trip of trips">
-      <div class="image"><img [src]="trip.ImageURL"/>
+      <div class="image"><img height="250px" [src]="trip.ImageURL"/>
         <p>
           {{trip.Description}}
         </p>
       </div>
       <figcaption>
-        <h3>City, State &nbsp;<span>Country</span></h3>
+        <h3>{{trip.city+(trip.state?","+trip.state:"")}}&nbsp;<span *ngIf='trip.country'>{{trip.country}}</span></h3>
         <h5></h5>
         <div class="icons"><a (click)='onClickProfile(trip.Owner)'><i class="ion-android-person"></i></a><a (click)='onClickView(trip.$key)'><i class="ion-location"></i></a><a href="https://www.facebook.com/mackenzie.elaine" target="_blank"><i class="ion-social-facebook"></i></a></div>
       </figcaption>
     </figure>
-
   </div>
 </div>
 

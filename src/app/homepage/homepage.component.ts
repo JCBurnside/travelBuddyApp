@@ -15,7 +15,7 @@ import { ReversePipe } from '../reverse.pipe';
 })
 export class HomepageComponent implements OnInit {
   private newTrip = new Trip(null, null);
-  public trips: Trip[];
+  public trips: any[]=[];
   private img: String;
   private id: string;
   @ViewChild('imgInput') el: ElementRef;
@@ -24,14 +24,15 @@ export class HomepageComponent implements OnInit {
     ts.getAllTrips((trips,err)=>{
       if(err)
         return console.log(err);
-      this.trips=trips;
+      trips.forEach(trip=>{
+        let s:string=trip.Destinations.toString();
+        let dest=s.split(','),city=dest[0],state=dest[1],country=dest[3];
+        this.trips.push({...trip,city:city,state:state,country:country});
+      })
     })
   }
   onChange() {
     console.log(this.newTrip.Destinations);
-  }
-  destChanged(test: any) {
-    this.newTrip.Destinations = [test];
   }
   min = Math.min;
   // submit() {
