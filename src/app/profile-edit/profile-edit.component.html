@@ -55,7 +55,7 @@
       <div id="interests">
         <div class="form-group">
           <label for="interests">Interests</label> &nbsp;
-          <label>Choose a number interests that best describe yourself.</label>
+          <label>Choose a number of interests that best describe yourself.</label>
         </div>
       </div>
 <!-- INTERESTS -->
@@ -226,10 +226,12 @@
           <div class="col-sm-6 col-md-6"><label for="title">Estimated Cost</label></div>
           <div class="col-sm-6 col-md-6"><select name="transportation" [(ngModel)]='newTrip.ModeOfTransit' type="dropdown" id="transportation" class="form-control">
               <option [value]=undefined disabled="disabled">-- Select --</option>
-              <option value="Air">Air</option>
-              <option value="Land">Land</option>
-              <option value="Sea">Sea</option>
-            </select></div>
+              <option value="Boat">Boat</option>
+              <option value="Car">Car</option>
+              <option value="Plane">Plane</option>
+              <option value="Train">Train</option>
+            </select>
+          </div>
           <div class="col-sm-6 col-md-6"><input name="price" type="number" [(ngModel)]='newTrip.Price' id="price" class="form-control" placeholder=$0.00
               min=0 step=0.01/></div>
         </div>
@@ -254,7 +256,7 @@
               </textarea>
         </div>
         <div class="sumbit">
-          <button type="submit" (click)='submit()' class="btn btn-primary">Add</button>
+          <button type="submit" (click)='submit()' class="btn btn-primary btn-lg" style="margin-top:3%">Add</button>
         </div>
       </fieldset>
     </div>
@@ -277,12 +279,13 @@
               </p>
             </div>
             <div class="col-sm-6 tripPanel">
-              <p><img src="/assets/img/headline.png" style="width:10%; height:10%">       {{trip.Name}}</p>
-              <p><img src="/assets/img/destination.png" style="width:10%; height:10%">    {{trip.Destinations}}</p>
-              <p><img src="/assets/img/price.png" style="width:10%; height:10%">          {{trip.Price|currency:'USD':true:'.2-2'}}</p>
-              <p><img src="/assets/img/calendar.png" style="width:10%; height:10%">       {{trip.StartDate|date: shortDate}}</p>
-              <p><img src="/assets/img/calendar.png" style="width:10%; height:10%">       {{trip.EndDate|date: shortDate}}</p>
-              <p><img src="/assets/img/description.png" style="width:10%; height:10%">    {{trip.Description}}</p>
+              <p><img src="/assets/img/headline.png" style="width:10%; height:10%">           {{trip.Name}}</p>
+              <p><img src="/assets/img/destination.png" style="width:10%; height:10%">        {{trip.Destinations}}</p>
+              <p><img [src]="getTransImg(trip.ModeOfTransit)" style="width:10%; height:10%">  {{trip.ModeOfTransit}}</p>
+              <p><img src="/assets/img/price.png" style="width:10%; height:10%">              {{trip.Price|currency:'USD':true:'.2-2'}}</p>
+              <p><img src="/assets/img/calendar.png" style="width:10%; height:10%">           {{trip.StartDate|date: shortDate}}</p>
+              <p><img src="/assets/img/calendar.png" style="width:10%; height:10%">           {{trip.EndDate|date: shortDate}}</p>
+              <p><img src="/assets/img/description.png" style="width:10%; height:10%">        {{trip.Description}}</p>
             </div>
           <hr class="col-sm-12">
             </div>

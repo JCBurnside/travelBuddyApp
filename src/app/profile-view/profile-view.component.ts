@@ -19,7 +19,8 @@ export class ProfileViewComponent implements OnInit {
   private interests: string[];
   private dests: string[] = [];
   public gender: string;
-  constructor(private route: ActivatedRoute, private router:Router, private PS: ProfileService, private TS: TripsService) {
+
+  constructor(private route: ActivatedRoute, private router: Router, private PS: ProfileService, private TS: TripsService) {
     this.route.params.subscribe(params => {
       this.PS.getProfileByOwner(params['id'], (profile: Profile) => {
         this.id = params['id'];
@@ -45,7 +46,7 @@ export class ProfileViewComponent implements OnInit {
           } else {
             console.log(trips);
             console.log(this.dests);
-            this.trips=trips;
+            this.trips = trips;
             /*trips.forEach((trip: Trip, i, arr) => {
               var keys = Object.keys(trip.Destinations);
               var dest = [];
@@ -73,7 +74,25 @@ export class ProfileViewComponent implements OnInit {
   onClickView($key) {
     this.router.navigate(['/trip-view', $key]);
   }
+goToProfileEdit() {
+  this.router.navigate(['/profile-edit', this.id]);
+}
   ngOnInit() {
   }
-
+getTransImg(mode) {
+  switch (mode) {
+    case 'Boat':
+      return './assets/img/boat.png';
+    case 'Car':
+      return './assets/img/car.png';
+    case 'Plane':
+      return './assets/img/plane.png';
+    case 'Train':
+      return './assets/img/train.png';
+  }
+}
+  onClickEdit($key) {
+    console.log($key)
+    this.router.navigate(['/trip-edit', $key]);
+  }
 }

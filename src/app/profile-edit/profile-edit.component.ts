@@ -164,5 +164,16 @@ export class ProfileEditComponent implements OnInit {
       });
     }
   }
-
+  getTransImg(mode) {
+    switch (mode) {
+      case 'Boat':
+        return './assets/img/boat.png';
+      case 'Car':
+        return './assets/img/car.png';
+      case 'Plane':
+        return './assets/img/plane.png';
+      case 'Train':
+        return './assets/img/train.png';
+    }
+  }
 }
