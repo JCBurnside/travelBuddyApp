@@ -25,14 +25,14 @@ export class FirebaseService {
       });
     console.log(this.isAuthed());
   }
-  signin(user: User) {
+  signin(user: User,cb:(err?:any)=>void) {
     this.af.auth.signInWithEmailAndPassword(user.email, user.password)
       .then(() => {
         this.router.navigateByUrl('/');
 
       })
       .catch((e) => {
-        console.log(e);
+        cb(e);
       });
   }
   isAuthed() {
