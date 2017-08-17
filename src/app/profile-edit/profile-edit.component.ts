@@ -80,7 +80,7 @@ export class ProfileEditComponent implements OnInit {
   submit() {
     if (this.newTrip.Name == null)
       alert("The trip needs a name");
-    else if (!this.newTrip.Destinations||!/^(.{1,},){1,2}?( .{1,})[^(, |,|;)]$/.test(this.newTrip.Destinations))
+    else if (!this.newTrip.Destinations || !/^(.{1,},){1,2}?( .{1,})[^(, |,|;)]$/.test(this.newTrip.Destinations))
       alert("You need a destination");
     else if (!this.newTrip.StartDate || !this.newTrip.EndDate)
       alert("You need a" + !this.newTrip.StartDate ? ' Start Date' : 'n End Date');
@@ -134,8 +134,8 @@ export class ProfileEditComponent implements OnInit {
 
   onSubmit() {
     console.log(this.profileedit.Interest)
-    if(!/^(http(|s):\/\/|)www\.facebook\.com\/.{1,}$/.test(this.profileedit.Facebook)){
-      this.profileedit.Facebook='';
+    if (!/^(http(|s):\/\/|)www\.facebook\.com\/.{1,}$/.test(this.profileedit.Facebook)) {
+      this.profileedit.Facebook = '';
       alert("that is not a valid facebook link");
     }
     if (!this.imgUp.nativeElement.files[0]) {
@@ -160,5 +160,16 @@ export class ProfileEditComponent implements OnInit {
       });
     }
   }
-
+  getTransImg(mode) {
+    switch (mode) {
+      case 'Boat':
+        return './assets/img/boat.png';
+      case 'Car':
+        return './assets/img/car.png';
+      case 'Plane':
+        return './assets/img/plane.png';
+      case 'Train':
+        return './assets/img/train.png';
+    }
+  }
 }

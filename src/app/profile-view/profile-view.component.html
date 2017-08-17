@@ -1,7 +1,8 @@
 <!-- IMAGE & PROFILE INFO -->
 <div>
   <div id="profile" class="col-sm-6" *ngIf='profileview'>
-    <h2>PROFILE</h2>
+    <h2>PROFILE <button (click)="goToProfileEdit()"type="button" class="btn btn-labeled btn-warning pencil-btn col-sm-pull-1">
+        <span class="btn-label"><i class="glyphicon glyphicon-pencil"></i></span></button></h2>
     <hr><br>
     <div class="col-sm-6">
       <img #imgTesting width="250px" [src]= "profileview.ImgURL||'http://placehold.it/250x250'">
@@ -23,7 +24,7 @@
         <span class="feedback" name="occupation" type="text" id="occupation">{{profileview.Occupation}}</span>
       </p><br>
       <p><img src="/assets/img/facebook.png" style="width:10%; height:10%">
-        <span class="feedback" name="facebook" type="text" id="facebook">{{profileview.Facebook}}</span>
+        <a [href]='profileview.Facebook'><span class="feedback" name="facebook" type="text" id="facebook">Click to view Facebook Page</span></a>
       </p><br>
     </div>
 <!-- INTEREST BUTTONS -->
@@ -50,14 +51,17 @@
           <div *ngFor="let trip of trips;let i=index">
             <div class="col-sm-6 img">
               <img [src]="trip.ImageURL" />
+                <button (click)="onClickEdit(trip.$key)"type="button" class="btn btn-labeled btn-default pencil-btn edittrippro">
+                <span class="btn-label"><i class="glyphicon glyphicon-pencil"></i></span></button>&nbsp;
             </div>
             <div class="col-sm-6 icons">
-              <p><img src="/assets/img/headline.png" style="width:10%; height:10%"> {{trip.Name}}</p><br>
-              <p><img src="/assets/img/destination.png" style="width:10%; height:10%"> {{trip.Destinations}}</p><br>
-              <p><img src="/assets/img/price.png" style="width:10%; height:10%"> {{trip.Price|currency:'USD':true:'.2-2'}}</p><br>
-              <p><img src="/assets/img/calendar.png" style="width:10%; height:10%"> {{trip.StartDate|date: shortDate}}</p><br>
-              <p><img src="/assets/img/calendar.png" style="width:10%; height:10%"> {{trip.EndDate|date: shortDate}}</p><br>
-              <p><img src="/assets/img/description.png" style="width:10%; height:10%"> {{trip.Description}}</p>
+              <p><img src="/assets/img/headline.png" style="width:10%; height:10%">           {{trip.Name}}</p><br>
+              <p><img src="/assets/img/destination.png" style="width:10%; height:10%">        {{trip.Destinations}}</p><br>
+              <p><img [src]="getTransImg(trip.ModeOfTransit)" style="width:10%; height:10%">  {{trip.ModeOfTransit}}</p><br>
+              <p><img src="/assets/img/price.png" style="width:10%; height:10%">              {{trip.Price|currency:'USD':true:'.2-2'}}</p><br>
+              <p><img src="/assets/img/calendar.png" style="width:10%; height:10%">           {{trip.StartDate|date: shortDate}}</p><br>
+              <p><img src="/assets/img/calendar.png" style="width:10%; height:10%">           {{trip.EndDate|date: shortDate}}</p><br>
+              <p><img src="/assets/img/description.png" style="width:10%; height:10%">        {{trip.Description}}</p>
             </div>
             <hr class="col-sm-12">
           </div>
@@ -66,3 +70,4 @@
     </div>
   </div>
 </div>
+

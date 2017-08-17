@@ -19,6 +19,13 @@
   margin-top          : 8%;
   font-size           : 14px;
 }
+
+.btn{
+  float               : right;
+  padding             : 0% 2% 0% 2%;
+  border              : 2px solid #fff;
+  background-color    : rgba(225,225,225,0.85) !important;
+}
 /* ========================= INTERESTS [PROFILE] ======================== */
 .area {
    width             : 100%;
@@ -104,5 +111,14 @@ div#interestblock {
 
 .col-sm-6 .img{
   padding             : 3% 0% 3% 0%;
+}
+
+.edittrippro{
+  float               : left;
+  color               : #fff;
+  border              : 2px solid #fff;
+  padding             : 0% 10% 0% 5%;
+  margin              : 10% 0% 0% 0%;
+  text-align: center;
 }
 /* ===================================================================== */
