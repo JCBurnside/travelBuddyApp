@@ -15,19 +15,19 @@ import { ReversePipe } from '../reverse.pipe';
 })
 export class HomepageComponent implements OnInit {
   private newTrip = new Trip(null, null);
-  public trips: any[]=[];
+  public trips: any[] = [];
   private img: String;
   private id: string;
   @ViewChild('imgInput') el: ElementRef;
   constructor(public router: Router, public ts: TripsService, public as: FirebaseService, private is: ImageService) {
     as.getId(id => this.id = id);
-    ts.getAllTrips((trips,err)=>{
-      if(err)
+    ts.getAllTrips((trips, err) => {
+      if (err)
         return console.log(err);
-      trips.forEach(trip=>{
-        let s:string=trip.Destinations.toString();
-        let dest=s.split(','),city=dest[0],state=dest[1],country=dest[3];
-        this.trips.push({...trip,city:city,state:state,country:country});
+      trips.forEach(trip => {
+        let s: string = trip.Destinations.toString();
+        let dest = s.split(','), city = dest[0], state = dest[1], country = dest[2];
+        this.trips.push({ ...trip, city: city, state: state, country: country });
       })
     })
   }
@@ -71,8 +71,8 @@ export class HomepageComponent implements OnInit {
   // onClickEdit($key) {
   //   this.router.navigate(['/trip-edit', $key]);
   // }
-  onClickProfile(id){
-    this.router.navigate(['/profile',id])
+  onClickProfile(id) {
+    this.router.navigate(['/profile', id])
   }
   onClickView($key) {
     this.router.navigate(['/trip-view', $key]);

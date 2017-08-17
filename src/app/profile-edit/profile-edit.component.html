@@ -52,7 +52,7 @@
           <label>Choose a number interests that best describe yourself.</label>
         </div>
       </div>
-      <!-- INTERESTS -->
+<!-- INTERESTS -->
       <div class="inputs">
         <div class="area">
           <div class="col-3" id="interestblock">
@@ -196,8 +196,7 @@
       <button type="submit" class="btn btn-primary btn-lg" style="margin-top:2%">&nbsp; Submit &nbsp;</button>
     </form>
   </div>
-
-  <!-- ADD A TRIP -->
+<!-- ADD A TRIP -->
   <div id="addtrip" class="col-sm-7 addForm">
     <div class="box addFormBox">
       <fieldset>
@@ -213,7 +212,7 @@
         <div class="form-group">
           <div class="col-sm-6 col-md-6"><label for="title">Headline</label></div>
           <div class="col-sm-5 col-md-6"><label for="title">Destination</label></div>
-          <div class="col-sm-5 col-md-6"><input name="transportation" [(ngModel)]='newTrip.Name' type="text" id="name" class="form-control" placeholder='&nbsp;"A Trip Around The World!"'></div>
+          <div class="col-sm-5 col-md-6"><input name="transportation" [(ngModel)]='newTrip.Name' type="text" id="Name" class="form-control" placeholder='&nbsp;"A Trip Around The World!"'></div>
           <div class="col-sm-5 col-md-6"><input name="destination" type="text" name="destination" [(ngModel)]='newTrip.Destinations' class="form-control" placeholder="&nbsp; City, State, Country"></div>
         </div>
         <div class="form-group">
@@ -254,9 +253,7 @@
       </fieldset>
     </div>
   </div>
-  <!-- MY TRIPS -->
-  <!-- <div class="col-sm-4 addForm">
-      <div class="box"> -->
+<!-- MY TRIPS -->
   <div class="col-sm-8 addForm">
     <div class="box addFormBox">
       <fieldset>
@@ -268,16 +265,11 @@
             <div class=" col-sm-6">
               <img class="image" style="height:auto" [src]="trip.ImageURL"/>
               <p><button (click)="onClickEdit(trip.$key)"type="button" class="btn btn-labeled btn-warning pencil-btn">
-                  <!-- <span style="color:#FFFFFF; font-size:20px; "class="glyphicon glyphicon-edit"></span> -->
                   <span class="btn-label"><i class="glyphicon glyphicon-pencil"></i></span></button>&nbsp;
                  <button (click)="onClickDelete(trip)" type="button" class="btn btn-labeled btn-danger btn-xl">
                 <span class="btn-label"><i class="glyphicon glyphicon-trash"></i></span></button>
-                   <!-- <span style="color:#FFFFFF; font-size:20px; "class="glyphicon glyphicon-trash"></span> -->
-                 <!-- </button> -->
               </p>
             </div>
-
-
             <div class="col-sm-6 tripPanel">
               <p><img src="/assets/img/headline.png" style="width:10%; height:10%">       {{trip.Name}}</p>
               <p><img src="/assets/img/destination.png" style="width:10%; height:10%">    {{trip.Destinations}}</p>
@@ -286,7 +278,7 @@
               <p><img src="/assets/img/calendar.png" style="width:10%; height:10%">       {{trip.EndDate|date: shortDate}}</p>
               <p><img src="/assets/img/description.png" style="width:10%; height:10%">    {{trip.Description}}</p>
             </div>
-              <hr>
+          <hr class="col-sm-12">
             </div>
           </div>
         </div>
@@ -294,11 +286,3 @@
     </div>
   </div>
 </div>
-            <!-- <button type="button" class="btn btn-labeled btn-danger">
-                <span class="btn-label"><i class="glyphicon glyphicon-trash"></i></span>Trash</button> -->
-              <!-- <p><img src="/assets/img/headline.png" style="width:10%; height:10%"> {{trip.Name}}</p><br>
-              <p><img src="/assets/img/destination.png" style="width:10%; height:10%"> {{trip.Destinations}}</p><br>
-              <p><img src="/assets/img/price.png" style="width:10%; height:10%"> {{trip.Price|currency:'USD':true:'.2-2'}}</p><br>
-              <p><img src="/assets/img/calendar.png" style="width:10%; height:10%"> {{trip.StartDate|date: shortDate}}</p><br>
-              <p><img src="/assets/img/calendar.png" style="width:10%; height:10%"> {{trip.EndDate|date: shortDate}}</p><br>
-              <p><img src="/assets/img/description.png" style="width:10%; height:10%"> {{trip.Description}}</p> -->
