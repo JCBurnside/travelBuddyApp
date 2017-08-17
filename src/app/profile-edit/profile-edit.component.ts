@@ -62,8 +62,7 @@ export class ProfileEditComponent implements OnInit {
         this.ts.getTripsByOwner(this.id, (trips, err) => {
           if (err)
             return console.log(err);
-          this.trips = trips;
-              trips.forEach(trip=>console.log(trip.Price));
+          this.trips = trips.reverse();
         });
 
         // if (this.profileedit.Gender == 'female') {
@@ -71,26 +70,24 @@ export class ProfileEditComponent implements OnInit {
         // }
       });
     });
+    console.log(this.newTrip.ModeOfTransit)
   }
   test() {
     this.profileedit.Interest.Yoga = !this.profileedit.Interest.Yoga;
   }
 
-  destChanged(test: any) {
-    this.newTrip.Destinations = [test];
-  }
   min = Math.min;
   submit() {
     if (this.newTrip.Name == null)
       alert("The trip needs a name");
-    else if (this.newTrip.Destinations.length == 0)
+    else if (!this.newTrip.Destinations||!/^(.{1,},){1,2}?( .{1,})[^(, |,|;)]$/.test(this.newTrip.Destinations))
       alert("You need a destination");
     else if (!this.newTrip.StartDate || !this.newTrip.EndDate)
       alert("You need a" + !this.newTrip.StartDate ? ' Start Date' : 'n End Date');
     else {
       this.newTrip.Owner = this.PID;
       console.log(this.newTrip.Price);
-      this.newTrip.Price=Math.abs(this.newTrip.Price);
+      this.newTrip.Price = Math.abs(this.newTrip.Price);
       this.ts.saveTrip(this.newTrip, (trip, err) => {
         if (this.el.nativeElement.files[0]) {
           console.log('image begin upload');
@@ -104,7 +101,7 @@ export class ProfileEditComponent implements OnInit {
               if (err)
                 return console.log(err);
               this.trips = trips;
-              trips.forEach(trip=>console.log(trip.Price));
+              trips.forEach(trip => console.log(trip.Price));
               console.log(this.trips)
             });
           })

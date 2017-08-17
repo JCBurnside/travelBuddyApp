@@ -29,18 +29,8 @@ export class ProfileViewComponent implements OnInit {
             console.error(err);
           }else{
             console.log(trips);
-            trips.forEach((trip:Trip,i,arr)=>{
-              var keys = Object.keys(trip.Destinations);
-              var dest = [];
-              keys.forEach(function(key){
-                console.log(key, trip.Destinations[key])
-                dest.push(trip.Destinations[key]);
-              });
-              this.dests.push(dest.join(", "));
-            })
             console.log(this.dests);
             this.trips=trips;
-            
           }
         });
       });
