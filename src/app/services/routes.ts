@@ -40,4 +40,4 @@ export const routes = [
     path     : 'trip-edit/:id',
     component: TripEditComponent
   }
-]
+];

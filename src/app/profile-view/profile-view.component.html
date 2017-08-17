@@ -1,71 +1,67 @@
-<div class="container">
-  <div id="profile" class="col-sm-12 col-sm-12" *ngIf='profileview'>
+<!-- IMAGE & PROFILE INFO -->
+<div>
+  <div id="profile" class="col-sm-6" *ngIf='profileview'>
     <h2>PROFILE</h2>
     <hr><br>
-    <div class="col-sm-6 col-sm-5" id="profileimage">
-      <div>
-        <!-- <img [src]='profileImage' /> -->
-        <img #imgTesting width="300px" [src]="profileview.ImgURL||'http://placehold.it/250x250'">
-      </div>
+    <div class="col-sm-6">
+      <img #imgTesting width="250px" [src]= "profileview.ImgURL||'http://placehold.it/250x250'">
     </div>
-    <div class="col-sm-6 col-sm-6" id="profileimage">
-      <div class="form-group">
-        <span class="feedback" name="headline" type="text" id="headline"><b>Headline:</b>  {{profileview.Headline}}</span>
-      </div><br>
-      <div class="form-group">
-        <span class="feedback" name="name" type="text" id="name"><b>Name:</b>  {{profileview.Name}}</span>
-      </div><br>
-      <div class="form-group">
-        <!--  <img [src] = 'genderSign' /> -->
-        <span class="feedback" name="gender" type="dropdown" id="gender"><b>Gender:</b> {{profileview.Gender}}</span>
-      </div><br>
-      <div class="form-group">
-        <!--  <img [src] = 'locationPin' /> -->
-        <span class="feedback" name="hometown" type="text" id="hometown"><b>Hometown:</b>  {{profileview.Hometown}}</span>
-      </div><br>
-      <div class="form-group">
-        <span class="feedback" name="occupation" type="text" id="occupation"><b>Occupation:</b>  {{profileview.Occupation}}</span>
-      </div>
+    <div class="col-sm-6 profile-inputs">
+      <p><img src="/assets/img/headline.png" style="width:10%; height:10%">
+      <span class="feedback" name="headline" type="text" id="headline">{{profileview.Headline}}</span>
+      </p><br>
+      <p><img src="/assets/img/name.png" style="width:10%; height:10%">
+        <span class="feedback" name="name" type="text" id="name">{{profileview.Name}}</span>
+      </p><br>
+      <p><img [src]= 'gender' style="width:10%; height:10%">
+        <span class="feedback" name="gender" type="dropdown" id="gender">{{profileview.Gender}}</span>
+      </p><br>
+      <p><img src="/assets/img/hometown.png" style="width:10%; height:10%">
+        <span class="feedback" name="hometown" type="text" id="hometown">{{profileview.Hometown}}</span>
+      </p><br>
+      <p><img src="/assets/img/occupation.png" style="width:10%; height:10%">
+        <span class="feedback" name="occupation" type="text" id="occupation">{{profileview.Occupation}}</span>
+      </p><br>
     </div>
-
-    <!-- INTEREST BUTTONS -->
-
-    <div id="interests" class="col-sm-12 col-sm-12">
+<!-- INTEREST BUTTONS -->
+    <div id="interests" class="col-sm-12">
       <div class="form-group">
-        <!--  <img [src] = 'interestsIcon' /> --><br>
-        <span class="feedback" name="interests" type="text" id="interests"><b>Interests</b></span>
+        <br>
+        <span class="feedback" name="interests" type="text" id="interests"><b><img src="/assets/img/interests.png" style="width:5%; height:5%">Interests</b></span>
       </div>
       <div class="container-fluid">
         <div class="area" *ngFor='let interest of interests'>
-          <div class="col-sm-3">
+          <div class="col-sm-4" id="interestblock">
             <div class="input">
-        <label>{{interest}}</label>
-      </div>
+              <label>{{interest}}</label>
+            </div>
           </div>
         </div>
       </div>
     </div>
   </div>
-  <div class="col-sm-12 col-sm-12">
+<!-- TRIPS -->
+  <div class="col-sm-6">
     <div class="box" style="text-align:left">
       <fieldset>
         <h2>TRIPS</h2>
         <hr><br>
         <div>
           <ul *ngFor="let trip of trips;let i=index">
-            <div class="col-sm-12 col-sm-7">
-              <img [src]="trip.ImageURL"/>
+            <div class="col-sm-6">
+              <img [src]="trip.ImageURL" />
             </div>
-            <div class="col-sm-5 col-sm-9">
-              <p><img src="/assets/img/headline.png" style="width:15%; height:15%">          {{trip.Name}}</p><br>
-              <p><img src="/assets/img/destination.png" style="width:15%; height:15%">       {{trip.Destinations}}</p><br>
-              <p><img src="/assets/img/price.png" style="width:15%; height:15%">             {{trip.Price|currency:'USD':true:'.2-2'}}</p><br>
-              <p><img src="/assets/img/calendar.png" style="width:15%; height:15%">          {{trip.StartDate|date: shortDate}}</p><br>
-              <p><img src="/assets/img/calendar.png" style="width:15%; height:15%">          {{trip.EndDate|date: shortDate}}</p><br>
-              <p><img src="/assets/img/description.png" style="width:15%; height:15%">       {{trip.Description}}</p>
+            <div class="col-sm-6 class=icons">
+              <p><img src="/assets/img/headline.png" style="width:10%; height:10%"> {{trip.Name}}</p><br>
+              <p><img src="/assets/img/destination.png" style="width:10%; height:10%"> {{trip.Destinations}}</p><br>
+              <p><img src="/assets/img/price.png" style="width:10%; height:10%"> {{trip.Price|currency:'USD':true:'.2-2'}}</p><br>
+              <p><img src="/assets/img/calendar.png" style="width:10%; height:10%"> {{trip.StartDate|date: shortDate}}</p><br>
+              <p><img src="/assets/img/calendar.png" style="width:10%; height:10%"> {{trip.EndDate|date: shortDate}}</p><br>
+              <p><img src="/assets/img/description.png" style="width:10%; height:10%"> {{trip.Description}}</p>
             </div>
           </ul>
         </div>
       </fieldset>
     </div>
   </div>
+</div>
