@@ -26,7 +26,6 @@ export class ProfileService {
         let key = Object.keys(snap.val())[0];
         let profile = snap.val()[key];
         let interests: Interests = Interests.convertToInterest(profile.Interest || new Interests());
-        console.log(snap.val());
         cb({ ...profile, Interest: interests, $key: key }, null);
       } else
         cb(new Profile(id, ''), err);

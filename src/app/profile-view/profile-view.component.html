@@ -59,8 +59,8 @@
               <p><img src="/assets/img/destination.png" style="width:10%; height:10%">        {{trip.Destinations}}</p><br>
               <p><img [src]="getTransImg(trip.ModeOfTransit)" style="width:10%; height:10%">  {{trip.ModeOfTransit}}</p><br>
               <p><img src="/assets/img/price.png" style="width:10%; height:10%">              {{trip.Price|currency:'USD':true:'.2-2'}}</p><br>
-              <p><img src="/assets/img/calendar.png" style="width:10%; height:10%">           {{trip.StartDate|date: shortDate}}</p><br>
-              <p><img src="/assets/img/calendar.png" style="width:10%; height:10%">           {{trip.EndDate|date: shortDate}}</p><br>
+              <p><img src="/assets/img/calendar.png" style="width:10%; height:10%">           {{trip.StartDate|date: 'shortDate'}}</p><br>
+              <p><img src="/assets/img/calendar.png" style="width:10%; height:10%">           {{trip.EndDate|date: 'shortDate'}}</p><br>
               <p><img src="/assets/img/description.png" style="width:10%; height:10%">        {{trip.Description}}</p>
             </div>
             <hr class="col-sm-12">

@@ -20,6 +20,7 @@ export class TripsService {
 
  getAllTrips(cb: (trips: Trip[], err: Error|string) => void) {
      this.trips
+        .orderByChild('Time')
         .on('value', (snap, err) => {
             if(err)
                 return cb(null,err);
@@ -28,6 +29,7 @@ export class TripsService {
                 out.push({...snap.val()[trip], $key: trip});
                 return true;
             });
+            out=out.reverse()
             cb(out, null);
         });
  }
@@ -48,14 +50,15 @@ export class TripsService {
         })
   }
   saveTrip(trip: Trip, cb: (tripSaved: Trip, err: Error|string) => void) {
+    console.log(Date.now());
     if (trip.$key) {
         let saved = trip;
         let id = trip.$key;
         delete trip.$key;
-        this.db.object('/trips/' + id).update(trip).then(() =>{console.log("TRIP SAVED"); cb({...trip,$key:id},null)}).catch(err => cb(null, err));
+        this.db.object('/trips/' + id).update({...trip,Time: Date.now()}).then(() =>{console.log("TRIP SAVED"); cb({...trip,$key:id},null)}).catch(err => cb(null, err));
     } else {
         delete trip.$key;
-        this.trips.push(trip).then(tripref => cb({...trip, $key: tripref.key}, null)).catch(err => cb(null, err));
+        this.trips.push({...trip,Time:Date.now()}).then(tripref =>{ cb({...trip, $key: tripref.key}, null)}).catch(err => cb(null, err));
     }
   }
   deleteTrip(trip: Trip, cb: Function) {

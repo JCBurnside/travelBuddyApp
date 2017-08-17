@@ -38,7 +38,9 @@ export class TripEditComponent implements OnInit {
     });
   }
   onSubmit() {
-    if (!this.imgUp.nativeElement.files[0]) {
+    if (!this.tripedit.Destinations || !/^(.{1,},){2,2}?( .{1,})[^(, |,|;)]$/.test(this.tripedit.Destinations))
+      alert("You need a destination");
+    else if (!this.imgUp.nativeElement.files[0]) {
       this.ts.saveTrip(this.tripedit, (success, err) => {
         if (err) {
           console.log(err);
