@@ -134,7 +134,10 @@ export class ProfileEditComponent implements OnInit {
 
   onSubmit() {
     console.log(this.profileedit.Interest)
-
+    if(!/^(http(|s):\/\/|)www\.facebook\.com\/.{1,}$/.test(this.profileedit.Facebook)){
+      this.profileedit.Facebook='';
+      alert("that is not a valid facebook link");
+    }
     if (!this.imgUp.nativeElement.files[0]) {
       this.PS.saveProfile(this.profileedit, (profile, err) => {
         if (err) {
