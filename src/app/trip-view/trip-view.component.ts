@@ -9,22 +9,22 @@ import { FirebaseService } from '../services/auth.service';
 import { Router } from '@angular/router';
 
 @Component({
-  selector: 'app-trip-view',
+  selector   : 'app-trip-view',
   templateUrl: './trip-view.component.html',
-  styleUrls: ['./trip-view.component.css']
+  styleUrls  : ['./trip-view.component.css']
 })
 export class TripViewComponent implements OnInit {
 
   constructor(private router: Router,
     private route: ActivatedRoute,
-    public ts: TripsService,
-    public ps: ProfileService,
-    public as: FirebaseService) { }
+    public  ts   : TripsService,
+    public  ps   : ProfileService,
+    public  as   : FirebaseService) { }
   public name;
   public id;
-  public sub: any;
+  public sub     : any;
   public tripview: Trip = new Trip("", "");
-  public PID:string;//profile ID
+  public PID     : string;                   //profile ID
 
   ngOnInit() {
     this.sub = this.route.params.subscribe(params => {
@@ -46,14 +46,15 @@ export class TripViewComponent implements OnInit {
     this.router.navigate(['/profile', this.PID]);
   }
   getTransImg(mode) {
-  switch (mode) {
-    case 'Boat':
-      return './assets/img/boat.png';
-    case 'Car':
-      return './assets/img/car.png';
-    case 'Plane':
-      return './assets/img/plane.png';
-    case 'Train':
-      return './assets/img/train.png';
+    switch (mode) {
+      case 'Boat': 
+        return './assets/img/boat.png';
+      case 'Car': 
+        return './assets/img/car.png';
+      case 'Plane': 
+        return './assets/img/plane.png';
+      case 'Train': 
+        return './assets/img/train.png';
+    }
   }
 }
