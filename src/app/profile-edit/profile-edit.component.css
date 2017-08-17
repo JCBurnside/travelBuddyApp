@@ -44,11 +44,12 @@ button{
   width                      : 100%;
   max-width                  : 100%;
   position                   : absolute;
-  top                        : 60%;
+  top                        : 95%;
   left                       : 60%;
-  transform                  :translate(-50%,-50%);
-  -webkit-transform          :translate(-50%,-50%);
-  -ms-transform              :translate(-50%,-50%);
+  transform                  : translate(-50%,-50%);
+  -webkit-transform          : translate(-50%,-50%);
+  -ms-transform              : translate(-50%,-50%);
+  margin-top                 :
 }
 /* ================================ EDIT PROFILE ======================================== */
 #headline,
@@ -78,7 +79,7 @@ button{
   .addForm{
     margin-left              : 20px;
     padding                  : 10px;
-    width                    :30%;
+    width                    : 30%;
   }
 
 .addFormBox{

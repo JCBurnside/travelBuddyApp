@@ -6,7 +6,7 @@
     <div class="col-sm-6">
       <img #imgTesting width="250px" [src]= "profileview.ImgURL||'http://placehold.it/250x250'">
     </div>
-    <div class="col-sm-6 profile-inputs">
+    <div class="col-sm-6">
       <p><img src="/assets/img/headline.png" style="width:10%; height:10%">
       <span class="feedback" name="headline" type="text" id="headline">{{profileview.Headline}}</span>
       </p><br>
@@ -22,13 +22,13 @@
       <p><img src="/assets/img/occupation.png" style="width:10%; height:10%">
         <span class="feedback" name="occupation" type="text" id="occupation">{{profileview.Occupation}}</span>
       </p><br>
+      <p><img src="/assets/img/facebook.png" style="width:10%; height:10%">
+        <span class="feedback" name="facebook" type="text" id="facebook">{{profileview.Facebook}}</span>
+      </p><br>
     </div>
 <!-- INTEREST BUTTONS -->
     <div id="interests" class="col-sm-12">
-      <div class="form-group">
-        <br>
         <span class="feedback" name="interests" type="text" id="interests"><b><img src="/assets/img/interests.png" style="width:5%; height:5%">Interests</b></span>
-      </div>
       <div class="container-fluid">
         <div class="area" *ngFor='let interest of interests'>
           <div class="col-sm-4" id="interestblock">
@@ -47,11 +47,11 @@
         <h2>TRIPS</h2>
         <hr><br>
         <div>
-          <ul *ngFor="let trip of trips;let i=index">
-            <div class="col-sm-6">
+          <div *ngFor="let trip of trips;let i=index">
+            <div class="col-sm-6 img">
               <img [src]="trip.ImageURL" />
             </div>
-            <div class="col-sm-6 class=icons">
+            <div class="col-sm-6 icons">
               <p><img src="/assets/img/headline.png" style="width:10%; height:10%"> {{trip.Name}}</p><br>
               <p><img src="/assets/img/destination.png" style="width:10%; height:10%"> {{trip.Destinations}}</p><br>
               <p><img src="/assets/img/price.png" style="width:10%; height:10%"> {{trip.Price|currency:'USD':true:'.2-2'}}</p><br>
@@ -59,7 +59,8 @@
               <p><img src="/assets/img/calendar.png" style="width:10%; height:10%"> {{trip.EndDate|date: shortDate}}</p><br>
               <p><img src="/assets/img/description.png" style="width:10%; height:10%"> {{trip.Description}}</p>
             </div>
-          </ul>
+            <hr class="col-sm-12">
+          </div>
         </div>
       </fieldset>
     </div>
