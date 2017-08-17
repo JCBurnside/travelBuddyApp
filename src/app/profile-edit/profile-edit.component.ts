@@ -50,24 +50,28 @@ export class ProfileEditComponent implements OnInit {
   ngOnInit() {
     this.route.params.subscribe(params => {
       this.PS.getProfileByOwner(params['id'], (profile: Profile) => {
-        this.profileedit = profile;
+        this.AS.getId(id => {
+          if(id!=params['id'])
+            return this.router.navigateByUrl(`/profile/${params['id']}`)
+          this.profileedit = profile;
 
-        this.PID = params['id'];
-        this.id = params['id'];
-        console.log(profile);
-        if (!this.profileedit.Interest)
-          this.profileedit.Interest = new Interests();
-        this.PID = params['id'];
-        console.log(this.profileedit.Interest);
-        this.ts.getTripsByOwner(this.id, (trips, err) => {
-          if (err)
-            return console.log(err);
-          this.trips = trips.reverse();
+          this.PID = params['id'];
+          this.id = params['id'];
+          console.log(profile);
+          if (!this.profileedit.Interest)
+            this.profileedit.Interest = new Interests();
+          this.PID = params['id'];
+          console.log(this.profileedit.Interest);
+          this.ts.getTripsByOwner(this.id, (trips, err) => {
+            if (err)
+              return console.log(err);
+            this.trips = trips.reverse();
+          });
+
+          // if (this.profileedit.Gender == 'female') {
+          //   this.genderSign = './img/female.png';
+          // }
         });
-
-        // if (this.profileedit.Gender == 'female') {
-        //   this.genderSign = './img/female.png';
-        // }
       });
     });
     console.log(this.newTrip.ModeOfTransit)
@@ -80,7 +84,7 @@ export class ProfileEditComponent implements OnInit {
   submit() {
     if (this.newTrip.Name == null)
       alert("The trip needs a name");
-    else if (!this.newTrip.Destinations||!/^(.{1,},){1,2}?( .{1,})[^(, |,|;)]$/.test(this.newTrip.Destinations))
+    else if (!this.newTrip.Destinations || !/^(.{1,},){1,2}?( .{1,})[^(, |,|;)]$/.test(this.newTrip.Destinations))
       alert("You need a destination");
     else if (!this.newTrip.StartDate || !this.newTrip.EndDate)
       alert("You need a" + !this.newTrip.StartDate ? ' Start Date' : 'n End Date');
@@ -134,8 +138,8 @@ export class ProfileEditComponent implements OnInit {
 
   onSubmit() {
     console.log(this.profileedit.Interest)
-    if(!/^(http(|s):\/\/|)www\.facebook\.com\/.{1,}$/.test(this.profileedit.Facebook)){
-      this.profileedit.Facebook='';
+    if (!/^(http(|s):\/\/|)www\.facebook\.com\/.{1,}$/.test(this.profileedit.Facebook)) {
+      this.profileedit.Facebook = '';
       alert("that is not a valid facebook link");
     }
     if (!this.imgUp.nativeElement.files[0]) {

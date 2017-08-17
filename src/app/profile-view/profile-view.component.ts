@@ -1,5 +1,5 @@
 import Profile from '../models/profile';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { ProfileService } from '../services/profile.service';
 import { TripsService } from '../services/trips.service';
 import { FirebaseService } from '../services/auth.service';
@@ -19,7 +19,7 @@ export class ProfileViewComponent implements OnInit {
   private interests: string[];
   private dests: string[] = [];
   public gender: string;
-  constructor(private route: ActivatedRoute, private PS: ProfileService, private TS: TripsService) {
+  constructor(private route: ActivatedRoute, private router:Router, private PS: ProfileService, private TS: TripsService) {
     this.route.params.subscribe(params => {
       this.PS.getProfileByOwner(params['id'], (profile: Profile) => {
         this.id = params['id'];
@@ -70,7 +70,9 @@ export class ProfileViewComponent implements OnInit {
       }
     });
   }
-
+  onClickView($key) {
+    this.router.navigate(['/trip-view', $key]);
+  }
   ngOnInit() {
   }
 

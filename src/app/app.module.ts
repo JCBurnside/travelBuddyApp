@@ -48,7 +48,7 @@ import { ReversePipe } from './reverse.pipe';
   imports: [
     BrowserAnimationsModule,
     BrowserModule,
-    RouterModule.forRoot(routes),
+    RouterModule.forRoot(routes, {useHash: true}),
     FormsModule,
     AngularFireModule.initializeApp(firebaseConfig),
   ],
@@ -62,4 +62,8 @@ import { ReversePipe } from './reverse.pipe';
   ],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {
+  constructor(public as:AngularFireAuth){
+
+  }
+ }
