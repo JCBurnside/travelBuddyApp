@@ -22,4 +22,9 @@ p{
   width: 100%;
   line-height: 1.7;
 }
+
+.start{
+  font-size: 12px;
+  font-variant: small caps;
+}
 /* ===================================================================== */

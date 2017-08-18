@@ -40,17 +40,32 @@ button{
   margin-top: 95px;
 }
 /* ================================ EDIT PROFILE ======================================== */
-#headline,
-#name,
-#gender,
-#hometown,
-#occupation,
-#facebook{
-  width: 50%;
-}
-
 .file{
   padding: 2% 0% 0% 0%;
+}
+
+#headline{
+  width: 100%;
+}
+
+#name{
+  width: 100%;
+}
+
+select#gender{
+  width: 100%;
+}
+
+#hometown{
+  width: 100%;
+}
+
+#occupation{
+  width: 100%;
+}
+
+#facebook{
+  width: 100%;
 }
 /* ================================ INTERESTS ========================================== */
 .text {
@@ -67,11 +82,6 @@ button{
 }
  .addForm{
   width: 42%;
-}
-
-/* PADDING FOR MY TRIPS */
-.addFormBox{
-  padding: 20px;
 }
 
 .area .input,
@@ -170,11 +180,16 @@ margin-bottom: 0px !important;
 p[_ngcontent-c4] {
   padding: none !important;
 }
+
+#content{
+ width: 95%;
+}
 /* ===================================== MY TRIPS ======================================= */
 .tripPanel{
   padding  : 0% 0% 0% 0% !important;
   font-size: 14px;
 }
+
 #mytrips{
   padding-top: 20px
 }
@@ -213,32 +228,6 @@ p[_ngcontent-c2]{
   padding:20% 0% 0% 0% !important;
 }
 /*====================================================================================*/
-
-#headline{
-  width: 100%;
-}
-
-
-#name{
-  width: 100%;
-}
-
-select#gender{
-  width: 100%;
-}
-
-#hometown{
-  width: 100%;
-}
-
-#occupation{
-  width: 100%;
-}
-
-#facebook{
-  width: 100%;
-}
-
 
 
 
