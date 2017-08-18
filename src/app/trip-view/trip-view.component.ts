@@ -43,7 +43,7 @@ export class TripViewComponent implements OnInit {
     });
   }
   goToProfile() {
-    this.router.navigate(['/profile', this.PID]);
+    this.router.navigateByUrl(`/profile/${this.PID}`);
   }
   getTransImg(mode) {
     switch (mode) {

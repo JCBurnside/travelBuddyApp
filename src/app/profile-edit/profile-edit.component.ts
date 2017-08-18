@@ -121,15 +121,15 @@ export class ProfileEditComponent implements OnInit {
     }
   }
   onClickProfile($key) {
-    this.router.navigate(['/profile', $key]);
+    this.router.navigateByUrl(`/profile/${$key}`);
   }
   onClickEdit($key) {
     console.log($key);
-    this.router.navigate(['/trip-edit', $key]);
+    this.router.navigateByUrl(`/trip-edit/${$key}`);
   }
 
   onClickView($key) {
-    this.router.navigate(['/trip-view', $key]);
+    this.router.navigateByUrl(`/trip-view/${$key}`);
   }
   onClickDelete(trip) {
     this.ts.deleteTrip(trip, (success, err) => {
@@ -154,7 +154,7 @@ export class ProfileEditComponent implements OnInit {
         } else {
           console.log(profile);
         }
-        this.router.navigate(['/profile/', this.PID])
+        this.router.navigateByUrl(`/profile/${this.PID}`)
       });
     } else {
       this.IS.uploadProfile(this.imgUp.nativeElement.files[0], this.profileedit, (snap, err) => {
@@ -164,7 +164,7 @@ export class ProfileEditComponent implements OnInit {
         this.profileedit.ImgURL = snap.downloadURL;
         this.PS.saveProfile(this.profileedit, (success, err) => {
           console.log(success || err);
-          this.router.navigate(['/profile/', this.PID]);
+          this.router.navigateByUrl(`/profile/${this.PID}`);
         });
       });
     }
