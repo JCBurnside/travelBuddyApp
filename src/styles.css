@@ -26,3 +26,12 @@ body{
   background: rgba(225, 225, 225, 0.89);
   /* border-radius: 11px; */
 }
+
+.form-control{
+  width: 90%;
+}
+
+
+.form-group{
+  width: 90%;
+}

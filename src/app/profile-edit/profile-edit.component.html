@@ -27,12 +27,12 @@
         <label for="gender">Gender</label>
         <img *ngIf='genderSign' [src]='genderSign' />
         <select name="gender" [(ngModel)]="profileedit.Gender" type="dropdown" id="gender" class="form-control">
-        <option value="">-- Select --</option>
-        <option value="Male">Male</option>
-        <option value="Female">Female</option>
-        <option value="Other">Other</option>
-        <option value="Unspecified">Unspecified</option>
-      </select>
+          <option value="">-- Select --</option>
+          <option value="Male">Male</option>
+          <option value="Female">Female</option>
+          <option value="Other">Other</option>
+          <option value="Unspecified">Unspecified</option>
+        </select>
       </div>
       <div id="hometown">
         <div class="form-group">
@@ -49,13 +49,13 @@
       <div id="facebook">
         <div class='form-group'>
           <label for='facebook'>Facebook</label>
-          <input name='facebook' [(ngModel)]='profileedit.Facebook' type="text" class="form-control" placeholder="&nbsp;Input facebook profile link"/>
+          <input name='facebook' [(ngModel)]='profileedit.Facebook' type="text"  id="facebook"  class="form-control" placeholder="&nbsp;Input facebook profile link"/>
         </div>
       </div>
       <div id="interests">
         <div class="form-group">
           <label for="interests">Interests</label> &nbsp;
-          <p>Choose a number of interests that best describe yourself.</p>
+          <p class="interests">Choose a number of interests that best describe yourself.</p>
         </div>
       </div>
 <!-- INTERESTS -->
@@ -81,7 +81,7 @@
           </div>
           <div class="col-3">
             <span class="input">
-                <label [@toggleState]='this.profileedit.Interest.Clubbing' for="dance clubs | raves">Dancing | Raves</label>
+                <label [@toggleState]='this.profileedit.Interest.Clubbing' for="dance clubs | raves">Dancing</label>
                 <input [(ngModel)]='profileedit.Interest.Clubbing' type="checkbox" name="dance clubs | raves" id="dance clubs | raves">
               </span>
           </div>
@@ -97,7 +97,7 @@
           </div>
           <div class="col-3">
             <span class="input">
-                <label [@toggleState]='this.profileedit.Interest.Health' for="health | fitness">Health | Fitness</label>
+                <label [@toggleState]='this.profileedit.Interest.Health' for="health | fitness">Fitness</label>
                 <input [(ngModel)]='profileedit.Interest.Health' type="checkbox" name="health | fitness" id="health | fitness">
               </span>
           </div>
@@ -137,7 +137,7 @@
           </div>
           <div class="col-3">
             <span class="input">
-                <label [@toggleState]='this.profileedit.Interest.Photography' for="photography">Photography</label>
+                <label [@toggleState]='this.profileedit.Interest.Photography' for="photography">Photos</label>
                 <input [(ngModel)]='profileedit.Interest.Photography' type="checkbox" name="photography" id="photography">
               </span>
           </div>
@@ -216,10 +216,10 @@
           </div>
         </div>
         <div class="form-group">
-          <div class="col-sm-6 col-md-6"><label for="title">Headline</label></div>
-          <div class="col-sm-5 col-md-6"><label for="title">Destination</label></div>
-          <div class="col-sm-5 col-md-6"><input name="transportation" [(ngModel)]='newTrip.Name' type="text" id="Name" class="form-control" placeholder='&nbsp;"A Trip Around The World!"'></div>
-          <div class="col-sm-5 col-md-6"><input name="destination" type="text" name="destination" [(ngModel)]='newTrip.Destinations' class="form-control" placeholder="&nbsp; City, State, Country"></div>
+          <div class="col-sm-6 "><label for="title">Headline</label></div>
+          <div class="col-sm-6 col-md-6"><label for="title">Destination</label></div>
+          <div class="col-sm-6 col-md-6"><input name="headline" [(ngModel)]='newTrip.Name' type="text" id="Name" class="form-control" placeholder='&nbsp;"A Trip Around The World!"'></div>
+          <div class="col-sm-6 col-md-6"><input name="destination" type="text" name="destination" [(ngModel)]='newTrip.Destinations' class="form-control" placeholder="&nbsp; City, State, Country"></div>
         </div>
         <div class="form-group">
           <div class="col-sm-6 col-md-6"><label for="title">Transportation</label></div>
@@ -276,7 +276,7 @@
                   <span class="btn-label"><i class="glyphicon glyphicon-pencil"></i></span></button>&nbsp;
                  <button (click)="onClickDelete(trip)" type="button" class="btn btn-labeled btn-danger btn-xl">
                 <span class="btn-label"><i class="glyphicon glyphicon-trash"></i></span></button>
-              </p>
+              </p><br>
             </div>
             <div class="col-sm-6 tripPanel">
               <p><img src="/assets/img/headline.png" style="width:10%; height:10%">           {{trip.Name}}</p>
