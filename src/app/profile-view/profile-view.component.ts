@@ -61,10 +61,10 @@ export class ProfileViewComponent implements OnInit {
     });
   }
   onClickView($key) {
-    this.router.navigate(['/trip-view', $key]);
+    this.router.navigateByUrl(`/trip-view/${$key}`);
   }
 goToProfileEdit() {
-  this.router.navigate(['/profile-edit', this.id]);
+  this.router.navigateByUrl(`/profile-edit/${this.id}`);
 }
   ngOnInit() {
   }
@@ -82,6 +82,6 @@ getTransImg(mode) {
 }
   onClickEdit($key) {
     console.log($key);
-    this.router.navigate(['/trip-edit', $key]);
+    this.router.navigateByUrl(`/trip-edit/${$key}`);
   }
 }
