@@ -70,7 +70,8 @@ figure.tripprofile .image p {
 
 figure.tripprofile figcaption {
   background-color: #ffffff;
-  padding         : 25px;
+  padding-top         : 5%;
+  min-height: 165px;
   
 }
 
@@ -139,7 +140,11 @@ figcaption span{
  ion-social-facebook{
   background-color: blue;
 }
-
+.icons{
+  position: absolute;
+  bottom:3% !important;
+  margin-left: 31%;
+}
 .container{
   width: 75%
 }

@@ -3,14 +3,14 @@
   <div class="page-header">
     <h1></h1>
   </div>
-  <div class="trip-search" #tripsCon >
-    <figure class="tripprofile" [style.height]="maxheight" *ngFor="let trip of trips">
+  <div class="trip-search" id='tripsCon' >
+    <figure class="tripprofile" *ngFor="let trip of trips">
       <div class="image"><img height="250px" [src]="trip.ImageURL"/>
         <p>
           {{trip.Description}}
         </p>
       </div>
-      <figcaption>
+      <figcaption [style.height]='maxHeight?maxHeight+"px":"initial"'>
         <h3>{{trip.city+','}}<br/>{{trip.state+','}}</h3>
         <h3><b><span *ngIf='trip.country'>{{trip.country}}</span></b></h3>
         <div class="icons"><a (click)='onClickProfile(trip.Owner)'><i class="ion-android-person"></i></a><a (click)='onClickView(trip.$key)'><i class="ion-location"></i></a><a [href]='trip.OwnerFB?trip.OwnerFB.startsWith("http://")?trip.OwerFB:"http://"+trip.OwnerFB:"http://www.facebook.com"' target="_blank"><i class="ion-social-facebook"></i></a></div>

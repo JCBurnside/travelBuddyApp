@@ -11,12 +11,15 @@
 	width           : 100%;
 }
 .navbar a {
+	text-decoration: none;
     color: #000;
 }
-
+.navbar a:visited{
+	color:#000;
+}
 .navbar a:hover {
     color          : #000;
-    text-decoration: underline;
+    text-decoration: none;
 }
 
 .navbar-right{
