@@ -16,7 +16,7 @@ label{
 }
 
 form{
-  padding   : 3% 3% 3% 3%;
+  padding   : 4% 4% 4% 4%;
   background: rgb(255,255,255);
   background: rgba(225,225,225,0.89);
 }
@@ -26,8 +26,8 @@ button{
 }
 
 *,
-*: after,
-*: before {
+*:after,
+*:before {
   -webkit-box-sizing: border-box;
   -moz-box-sizing   : border-box;
   box-sizing        : border-box;
@@ -46,7 +46,7 @@ button{
 #hometown,
 #occupation,
 #facebook{
-  width: 75%;
+  width: 100%;
 }
 
 .file{
@@ -130,6 +130,7 @@ button{
 .file1{
   padding: 2% 0% 0% 0%;
 }
+
 textarea{
   resize    : vertical;
   max-height: 100px;
@@ -139,12 +140,36 @@ textarea{
   padding: 20px;
 }
 
- #calendar{
+#calendar{
   width: 75%;
 }
 
 span label{
 margin-bottom: 0px !important;
+}
+
+
+.div.col-sm-5,.col-md-6{
+  padding-right: 5px !important;
+   padding-left : 20px !important;
+}
+
+.col-sm-5{
+  padding-right: 5px !important;
+   padding-left : 20px !important;
+}
+
+.col-sm-6{
+  padding-right: 5px !important;
+    padding-left: 5px !important;
+}
+.col-md-6{
+  padding-right: 0px !important;
+   padding-left: 0px !important;
+}
+
+p[_ngcontent-c4] {
+  padding: none !important;
 }
 /* ===================================== MY TRIPS ======================================= */
 .tripPanel{
@@ -159,16 +184,17 @@ margin-bottom: 0px !important;
 .btn-warning,{
   float       : left;
   margin-right: 20%;
-  /* padding                    : 20px; */
-    padding: 0% 2% 0% 2%;
+  padding: 0% 3% 0% 2%;
 }
 
- .btn-danger{
+.btn-danger{
   width: 20%;
+  padding: 2% 6% 0% 5%;
 }
 
 .btn-warning{
   width: 20%;
+  padding: 2% 6% 0% 5%;
 }
 
 .image{
@@ -178,5 +204,9 @@ margin-bottom: 0px !important;
 
 p{
   padding: 5%;
+}
+
+p[_ngcontent-c2]{
+  padding: 0px !important;
 }
 /*====================================================================================*/
