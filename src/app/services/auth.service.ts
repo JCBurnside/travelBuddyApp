@@ -5,8 +5,8 @@ import { AngularFireAuth } from 'angularfire2/auth';
 
 @Injectable()
 export class FirebaseService implements CanActivate {
-  authState;
-  user;
+  private authState;
+  private user;
   getId(cb: (id: string) => void) {
     this.canActivate().then(() => {
       cb(this.af.auth.currentUser.uid);

@@ -1,7 +1,7 @@
 <!-- IMAGE & PROFILE INFO -->
 <div>
   <div id="profile" class="col-sm-6" *ngIf='profileview'>
-    <h2>PROFILE <button (click)="goToProfileEdit()" type="button" class="btn btn-labeled btn-warning pencil-btn col-sm-pull-1">
+    <h2>PROFILE <button *ngIf='own' (click)="goToProfileEdit()" type="button" class="btn btn-labeled btn-warning pencil-btn col-sm-pull-1">
         <span class="btn-label"><i class="glyphicon glyphicon-pencil"></i></span></button></h2>
     <hr><br>
     <div class="col-sm-6">
@@ -51,7 +51,7 @@
           <div *ngFor="let trip of trips;let i=index">
             <div class="col-sm-6 img">
               <a (click)='onClickView(trip.$key)'><img class='img-responsive' [src]="trip.ImageURL" /></a>
-              <button (click)="onClickEdit(trip.$key)" type="button" class="btn btn-labeled btn-default pencil-btn edittrippro">
+              <button *ngIf='own' (click)="onClickEdit(trip.$key)" type="button" class="btn btn-labeled btn-default pencil-btn edittrippro">
                 <span class="btn-label"><i class="glyphicon glyphicon-pencil"></i></span></button>&nbsp;
             </div>
             <div    class = "col-sm-6 icons">

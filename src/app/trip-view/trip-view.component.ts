@@ -15,16 +15,17 @@ import { Router } from '@angular/router';
 })
 export class TripViewComponent implements OnInit {
 
-  constructor(private router: Router,
-    private route: ActivatedRoute,
-    public  ts   : TripsService,
-    public  ps   : ProfileService,
-    public  as   : FirebaseService) { }
   public name;
   public id;
   public sub     : any;
   public tripview: Trip = new Trip("", "");
   public PID     : string;                   //profile ID
+  constructor(
+    private router: Router,
+    private route : ActivatedRoute,
+    public  ts    : TripsService,
+    public  ps    : ProfileService,
+    public  as    : FirebaseService) { }
 
   ngOnInit() {
     this.sub = this.route.params.subscribe(params => {

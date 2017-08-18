@@ -29,7 +29,7 @@ export class TripsService {
                 out.push({...snap.val()[trip], $key: trip});
                 return true;
             });
-            out=out.reverse()
+            out = out.reverse()
             cb(out, null);
         });
   }
@@ -54,7 +54,7 @@ export class TripsService {
     console.log(Date.now());
     if (trip.$key) {
         let saved = trip;
-        let id = trip.$key;
+        let id    = trip.$key;
         delete trip.$key;
         this.db.object('/trips/' + id).update({...trip,Time: Date.now()}).then(() =>{console.log("TRIP SAVED"); cb({...trip,$key:id},null)}).catch(err => cb(null, err));
     } else {

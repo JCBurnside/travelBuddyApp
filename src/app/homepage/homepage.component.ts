@@ -10,18 +10,17 @@ import { Router } from '@angular/router';
 import { ReversePipe } from '../reverse.pipe';
 
 @Component({
-  selector: 'app-homepage',
+  selector   : 'app-homepage',
   templateUrl: './homepage.component.html',
-  styleUrls: ['./homepage.component.css']
+  styleUrls  : ['./homepage.component.css']
 })
-export class HomepageComponent implements OnInit,OnDestroy {
-  public trips: any[] = [];
-  private img: String;
-  private id: string;
-  public maxHeight:number;
-  private sub:Subscription;
+export class HomepageComponent implements OnInit, OnDestroy {
+  public     trips         : any[] = [];
+  private    id            : string;
+  public     maxHeight     : number;
+  private    sub           : Subscription;
   @ViewChild('imgInput') el: ElementRef;
-  constructor(public router: Router, public ts: TripsService, public as: FirebaseService, private is: ImageService, private ps:ProfileService) {
+  constructor(public router: Router, public ts: TripsService, public as: FirebaseService, private is: ImageService, private ps: ProfileService) {
     as.getId(id => this.id = id);
     ts.getAllTrips((trips, err) => {
       if (err) {
@@ -29,16 +28,16 @@ export class HomepageComponent implements OnInit,OnDestroy {
       }
       trips.forEach(trip => {
         let s: string = trip.Destinations.toString();
-        let dest = s.split(','), city = dest[0], state = dest[1], country = dest[2];
-        ps.getProfileByOwner(trip.Owner,(p,e)=>{
-          if(p){
-            this.trips.push({ ...trip, city: city, state: state, country: country, OwnerFB: p.Facebook});
+        let dest      = s.split(','), city = dest[0], state = dest[1], country = dest[2];
+        ps.getProfileByOwner(trip.Owner, (p, e) => {
+          if (p) {
+            this.trips.push({ ...trip, city: city, state: state, country: country, OwnerFB: p.Facebook });
           } else {
-            this.trips.push({...trip, city: city, state: state, country: country, OwnerFB:undefined})
+            this.trips.push({ ...trip, city: city, state: state, country: country, OwnerFB: undefined });
           }
-        })
-      })
-    })
+        });
+      });
+    });
   }
   onClickProfile(id) {
     this.router.navigateByUrl(`/profile/${id}`);
@@ -47,14 +46,14 @@ export class HomepageComponent implements OnInit,OnDestroy {
     this.router.navigateByUrl(`/trip-view/${$key}`);
   }
   ngOnInit() {
-    this.sub=Observable.timer(0,0).subscribe(()=>{
-      let tripsList=document.getElementById('tripsCon').querySelectorAll("figcaption");
-      for(let ctr=0;ctr<tripsList.length;ctr++){
-        this.maxHeight=Math.max(this.maxHeight||0,tripsList[ctr].clientHeight);
+    this.sub = Observable.timer(0, 0).subscribe(() => {
+      let tripsList = document.getElementById('tripsCon').querySelectorAll("figcaption");
+      for (let ctr = 0; ctr < tripsList.length; ctr++) {
+        this.maxHeight = Math.max(this.maxHeight || 0, tripsList[ctr].clientHeight);
       }
     });
   }
-  ngOnDestroy(){
+  ngOnDestroy() {
     this.sub.unsubscribe();
   }
 }
