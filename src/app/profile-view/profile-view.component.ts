@@ -19,11 +19,12 @@ export class ProfileViewComponent implements OnInit {
   public interests: string[];
   public dests: string[] = [];
   public gender: string;
-
-  constructor(private route: ActivatedRoute, private router: Router, private PS: ProfileService, private TS: TripsService) {
+  public own:boolean=false;
+  constructor(private route: ActivatedRoute, private router: Router, private PS: ProfileService, private TS: TripsService, private AS:FirebaseService) {
     this.route.params.subscribe(params => {
       this.PS.getProfileByOwner(params['id'], (profile: Profile) => {
         this.id = params['id'];
+        this.AS.getId(id=>this.own=this.id==id)
         this.profileview = profile;
         switch (profile.Gender) {
           case 'Female':
@@ -46,7 +47,7 @@ export class ProfileViewComponent implements OnInit {
           } else {
             console.log(trips);
             console.log(this.dests);
-            this.trips = trips;
+            this.trips = trips.reverse();
           }
         });
       });
