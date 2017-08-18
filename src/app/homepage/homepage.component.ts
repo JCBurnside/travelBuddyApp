@@ -15,11 +15,12 @@ import { ReversePipe } from '../reverse.pipe';
   styleUrls: ['./homepage.component.css']
 })
 export class HomepageComponent implements OnInit {
-  private newTrip = new Trip(null, null);
   public trips: any[] = [];
   private img: String;
   private id: string;
+  public maxHeight:number=100;
   @ViewChild('imgInput') el: ElementRef;
+  @ViewChild('tripsCon') tripCon: ElementRef;
   constructor(public router: Router, public ts: TripsService, public as: FirebaseService, private is: ImageService, private ps:ProfileService) {
     as.getId(id => this.id = id);
     ts.getAllTrips((trips, err) => {
@@ -39,22 +40,21 @@ export class HomepageComponent implements OnInit {
       })
     })
   }
-  onChange() {
-    console.log(this.newTrip.Destinations);
-  }
   onClickProfile(id) {
-    this.router.navigate(['/profile', id]);
+    this.router.navigateByUrl(`/profile/${id}`);
   }
   onClickView($key) {
-    this.router.navigate(['/trip-view', $key]);
+    this.router.navigateByUrl(`/trip-view/${$key}`);
   }
-  // onClickDelete(trip) {
-  //   this.ts.deleteTrip(trip, trip.$key, (success, err) => {
-  //     console.log(success || err);
-  //     this.trips.remove(trip);
-  //   })
-  // }
   ngOnInit() {
+    setTimeout(()=>{
+      let tripsList=this.tripCon.nativeElement;
+      console.log(Object.keys(tripsList))
+      // for(let ctr=0;ctr<tripsList.length;ctr++){
+      //   console.log(this.maxHeight+'\n'+tripsList[ctr].clientHeight);
+      //   this.maxHeight=Math.max(this.maxHeight,tripsList[ctr].clientHeight);
+      // }
+    },0)
   }
 
 }

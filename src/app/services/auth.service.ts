@@ -16,7 +16,7 @@ export class FirebaseService implements CanActivate {
     this.af.auth.createUserWithEmailAndPassword(user.email, user.password)
       .then((a) => {
         this.getId((id) => {
-          this.router.navigate(['/profile-edit', id]);
+          this.router.navigateByUrl(`/profile-edit/${id}`);
         });
       })
       .catch((e) => {

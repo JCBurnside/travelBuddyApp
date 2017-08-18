@@ -31,7 +31,7 @@ export class TripEditComponent implements OnInit {
       this.ts.getTripById(this.id, (tripedit: Trip) => {
         this.as.getId(id=>{
           if(tripedit.Owner!=id)
-            return this.router.navigate(['/trip-view',this.id])
+            return this.router.navigateByUrl(`/trip-view/${this.id}`);
           this.tripedit = tripedit;
         })
       });
@@ -46,7 +46,7 @@ export class TripEditComponent implements OnInit {
           console.log(err);
         } else {
           console.log(success);
-          this.router.navigate(['/profile', this.tripedit.Owner]);
+          this.router.navigateByUrl(`/profile/${this.tripedit.Owner}`);
         }
       });
     } else {
@@ -56,7 +56,7 @@ export class TripEditComponent implements OnInit {
         }
         this.ts.saveTrip({ ...this.tripedit, ImageURL: snap.downloadURL }, (success, err) => {
           console.log(success || err);
-          this.router.navigate(['/profile', this.tripedit.Owner]);
+          this.router.navigateByUrl(`/profile/${this.tripedit.Owner}`);
         });
       });
     }
