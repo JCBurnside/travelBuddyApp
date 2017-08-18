@@ -5,17 +5,15 @@ import { User } from '../models/user';
 
 
 @Component({
-  selector: 'signin',
+  selector   : 'signin',
   templateUrl: './signin.component.html',
-  styleUrls: ['./signin.component.css']
+  styleUrls  : ['./signin.component.css']
 })
 export class SigninComponent {
 
-  public errors = { email: '', pass: '' }; // This one is public so that angular can access it
-  model = { email: '', pass: '' }; // Model that angular will store data in
-  user: User; // User that we will send to the database
-  fbs: FirebaseService;
-
+  public errors = { email: '', pass: '' };  // This one is public so that angular can access it
+         model  = { email: '', pass: '' };  // Model that angular will store data in
+  private user: User;             // User that we will send to the database
   validate() {
     this.errors = { email: '', pass: '' };
     if (!this.model.email) {
@@ -37,8 +35,7 @@ export class SigninComponent {
     });
   }
 
-  constructor(private firebase: FirebaseService) {
-    this.fbs = firebase;
+  constructor(private fbs: FirebaseService) {
   }
 
 }

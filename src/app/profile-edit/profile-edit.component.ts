@@ -14,10 +14,10 @@ import { FirebaseService } from '../services/auth.service';
 import { TripsService } from '../services/trips.service';
 
 @Component({
-  selector: 'app-profile-edit',
+  selector   : 'app-profile-edit',
   templateUrl: './profile-edit.component.html',
-  styleUrls: ['./profile-edit.component.css'],
-  animations: [
+  styleUrls  : ['./profile-edit.component.css'],
+  animations : [
     trigger('toggleState', [
       state('false', style({ backgroundColor: '#26a69a' })),
       state('true', style({ background: 'rgba(0, 0, 0, 0.2)' })),
@@ -27,26 +27,26 @@ import { TripsService } from '../services/trips.service';
   ]
 })
 export class ProfileEditComponent implements OnInit {
-  public profileedit: Profile;
-  genderSign: string;
-  public newTrip = new Trip(null, null);
-  public trips: any[];
+  public     profileedit   : Profile;
+  public     genderSign    : string;
+  public     newTrip       : Trip = new Trip(null, null);
+  public     trips         : any[];
   @ViewChild('imgInput') el: ElementRef;
-  id: string;
-  constructor(private route: ActivatedRoute,
-    private PS: ProfileService,
-    private AS: FirebaseService,
-    private IS: ImageService,
+  @ViewChild('imgUp') imgUp: ElementRef;
+  private    id            : string;
+             img           : string;
+             email         : string;
+             PID           : string;                       // profile ID
+  constructor(
+    private route : ActivatedRoute,
+    private PS    : ProfileService,
+    private AS    : FirebaseService,
+    private IS    : ImageService,
     private router: Router,
-    private ts: TripsService) {
+    private ts    : TripsService) {
     AS.getId(id => this.id = id);
 
   }
-
-  img: string;
-  @ViewChild('imgUp') imgUp: ElementRef;
-  email: string;
-  PID: string; // profile ID
   ngOnInit() {
     this.route.params.subscribe(params => {
       this.PS.getProfileByOwner(params['id'], (profile: Profile) => {
@@ -57,7 +57,7 @@ export class ProfileEditComponent implements OnInit {
           this.profileedit = profile;
 
           this.PID = params['id'];
-          this.id = params['id'];
+          this.id  = params['id'];
           console.log(profile);
 
           if (!this.profileedit.Interest) {
@@ -171,13 +171,13 @@ export class ProfileEditComponent implements OnInit {
   }
   getTransImg(mode) {
     switch (mode) {
-      case 'Boat':
+      case 'Boat': 
         return './assets/img/boat.png';
-      case 'Car':
+      case 'Car': 
         return './assets/img/car.png';
-      case 'Plane':
+      case 'Plane': 
         return './assets/img/plane.png';
-      case 'Train':
+      case 'Train': 
         return './assets/img/train.png';
     }
   }

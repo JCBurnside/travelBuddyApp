@@ -9,12 +9,12 @@ import 'firebase/storage';
 @Injectable()
 export class ImageService {
   private ProfileImages: firebase.storage.Reference;
-  private TripImages: firebase.storage.Reference;
-  private Storage: firebase.storage.Storage;
+  private TripImages   : firebase.storage.Reference;
+  private Storage      : firebase.storage.Storage;
   constructor(private db: FirebaseApp, private test: AngularFireModule) {
-    this.Storage = db.storage();
+    this.Storage       = db.storage();
     this.ProfileImages = db.storage().ref('/profileImg/');  // reference to the profile images
-    this.TripImages = db.storage().ref('/tripImg/');        // reference to the trips images
+    this.TripImages    = db.storage().ref('/tripImg/');     // reference to the trips images
   }
   uploadProfile(img: any, p: Profile, cb?: (snapshot: firebase.storage.UploadTaskSnapshot, err?: Error) => null | void) {
 

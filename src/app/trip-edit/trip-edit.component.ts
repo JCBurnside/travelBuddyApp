@@ -9,22 +9,22 @@ import { FirebaseService } from '../services/auth.service';
 import { Router } from '@angular/router';
 
 @Component({
-  selector: 'app-trip-edit',
+  selector   : 'app-trip-edit',
   templateUrl: './trip-edit.component.html',
-  styleUrls: ['./trip-edit.component.css']
+  styleUrls  : ['./trip-edit.component.css']
 })
 export class TripEditComponent implements OnInit {
-  public tripedit: Trip = new Trip('', '');
+  public              tripedit : Trip = new Trip('', '');
+  private             id;
+  private             sub      : any;
+  @ViewChild('imgUp') imgUp    : ElementRef;
   constructor(
     private router: Router,
-    private route: ActivatedRoute,
-    public ts: TripsService,
-    public as: FirebaseService,
-    public is: ImageService
+    private route : ActivatedRoute,
+    public  ts    : TripsService,
+    public  as    : FirebaseService,
+    public  is    : ImageService
   ) { }
-  private id;
-  private sub: any;
-  @ViewChild('imgUp') imgUp: ElementRef;
   ngOnInit() {
     this.sub = this.route.params.subscribe(params => {
       this.id = params['id'];

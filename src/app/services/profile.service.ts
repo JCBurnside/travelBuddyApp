@@ -23,8 +23,8 @@ export class ProfileService {
   getProfileByOwner(id: string, cb: (profile: Profile, err: Error | string) => void) {
     this.profiles.orderByChild('ownerID').equalTo(id).on('value', (snap, err) => {
       if (snap.val()) {
-        let key = Object.keys(snap.val())[0];
-        let profile = snap.val()[key];
+        let key                  = Object.keys(snap.val())[0];
+        let profile              = snap.val()[key];
         let interests: Interests = Interests.convertToInterest(profile.Interest || new Interests());
         cb({ ...profile, Interest: interests, $key: key }, null);
       } else {

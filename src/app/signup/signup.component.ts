@@ -13,9 +13,8 @@ import { User } from '../models/user';
 // TODO: Add the firebase rejections to validate
 export class SignupComponent {
   public errors = { email: '', pass: '', confpass: '' };  // This one is public so that angular can access it
-  model = { email: '', pass: '', confpass: '' };          // Model that angular will store data in
-  user: User;                                             // User that we will send to the database
-  fbs: FirebaseService;
+  private model = { email: '', pass: '', confpass: '' };          // Model that angular will store data in
+  public user: User;             // User that we will send to the database
 
   validate() {
     this.errors = { email: '', pass: '', confpass: '' };
@@ -44,8 +43,7 @@ export class SignupComponent {
     console.log(this.fbs.isAuthed());
   }
 
-  constructor(private firebase: FirebaseService) {
-    this.fbs = firebase;
-    console.log(this.fbs.isAuthed());
+  constructor(private fbs: FirebaseService) {
+    console.log(fbs.isAuthed());
   }
 }
