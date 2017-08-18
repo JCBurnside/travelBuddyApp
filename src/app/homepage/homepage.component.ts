@@ -1,6 +1,6 @@
-import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
+import { Component, OnInit, ViewChild, ElementRef, OnDestroy } from '@angular/core';
 import { FirebaseListObservable } from 'angularfire2/database';
-
+import { Observable, Subscription } from 'rxjs/Rx';
 import Trip from '../models/trip';
 import { TripsService } from '../services/trips.service';
 import { FirebaseService } from '../services/auth.service';
@@ -14,13 +14,13 @@ import { ReversePipe } from '../reverse.pipe';
   templateUrl: './homepage.component.html',
   styleUrls: ['./homepage.component.css']
 })
-export class HomepageComponent implements OnInit {
+export class HomepageComponent implements OnInit,OnDestroy {
   public trips: any[] = [];
   private img: String;
   private id: string;
-  public maxHeight:number=100;
+  public maxHeight:number;
+  private sub:Subscription;
   @ViewChild('imgInput') el: ElementRef;
-  @ViewChild('tripsCon') tripCon: ElementRef;
   constructor(public router: Router, public ts: TripsService, public as: FirebaseService, private is: ImageService, private ps:ProfileService) {
     as.getId(id => this.id = id);
     ts.getAllTrips((trips, err) => {
@@ -47,14 +47,14 @@ export class HomepageComponent implements OnInit {
     this.router.navigateByUrl(`/trip-view/${$key}`);
   }
   ngOnInit() {
-    // setTimeout(()=>{
-    //   let tripsList=this.tripCon.nativeElement;
-    //   console.log(tripsList)
-    //   // for(let ctr=0;ctr<tripsList.length;ctr++){
-    //   //   console.log(this.maxHeight+'\n'+tripsList[ctr].clientHeight);
-    //   //   this.maxHeight=Math.max(this.maxHeight,tripsList[ctr].clientHeight);
-    //   // }
-    // },0)
+    this.sub=Observable.timer(0,0).subscribe(()=>{
+      let tripsList=document.getElementById('tripsCon').querySelectorAll("figcaption");
+      for(let ctr=0;ctr<tripsList.length;ctr++){
+        this.maxHeight=Math.max(this.maxHeight||0,tripsList[ctr].clientHeight);
+      }
+    });
   }
-
+  ngOnDestroy(){
+    this.sub.unsubscribe();
+  }
 }
