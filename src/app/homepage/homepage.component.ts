@@ -47,14 +47,14 @@ export class HomepageComponent implements OnInit {
     this.router.navigateByUrl(`/trip-view/${$key}`);
   }
   ngOnInit() {
-    setTimeout(()=>{
-      let tripsList=this.tripCon.nativeElement;
-      console.log(Object.keys(tripsList))
-      // for(let ctr=0;ctr<tripsList.length;ctr++){
-      //   console.log(this.maxHeight+'\n'+tripsList[ctr].clientHeight);
-      //   this.maxHeight=Math.max(this.maxHeight,tripsList[ctr].clientHeight);
-      // }
-    },0)
+    // setTimeout(()=>{
+    //   let tripsList=this.tripCon.nativeElement;
+    //   console.log(tripsList)
+    //   // for(let ctr=0;ctr<tripsList.length;ctr++){
+    //   //   console.log(this.maxHeight+'\n'+tripsList[ctr].clientHeight);
+    //   //   this.maxHeight=Math.max(this.maxHeight,tripsList[ctr].clientHeight);
+    //   // }
+    // },0)
   }
 
 }
