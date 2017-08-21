@@ -11,7 +11,7 @@
         </p>
       </div>
       <figcaption [style.height]='maxHeight?maxHeight+"px":"initial"'>
-        <h3>{{trip.city+','}}<br/>{{trip.state+','}}</h3>
+        <h3>{{trip.city+','}}<br/>{{trip.state?trip.state+',':''}}</h3>
         <h3><b><span *ngIf='trip.country'>{{trip.country}}</span></b></h3>
         <div class="icons"><a (click)='onClickProfile(trip.Owner)'><i class="ion-android-person"></i></a><a (click)='onClickView(trip.$key)'><i class="ion-location"></i></a><a [href]='trip.OwnerFB?trip.OwnerFB.startsWith("http://")?trip.OwerFB:"http://"+trip.OwnerFB:"http://www.facebook.com"' target="_blank"><i class="ion-social-facebook"></i></a></div>
       </figcaption>
