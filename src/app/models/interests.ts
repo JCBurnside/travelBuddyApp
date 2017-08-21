@@ -127,9 +127,6 @@ export class Interests {
     if (this.Yoga) {
       out.push('Yoga');
     }
-    if (out.length == 0) {
-      out.push('They are very Boring');
-    }
     return out;
   }
 }
