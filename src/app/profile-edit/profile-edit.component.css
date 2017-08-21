@@ -15,7 +15,7 @@ label{
   font-size: 14px;
 }
 
-form{
+ form{
   padding   : 4% 4% 4% 4%;
   background: rgb(255,255,255);
   background: rgba(225,225,225,0.89);
@@ -40,9 +40,6 @@ button{
   margin-top: 95px;
 }
 /* ================================ EDIT PROFILE ======================================== */
-.file{
-  padding: 2% 0% 0% 0%;
-}
 
 #headline{
   width: 100%;
@@ -134,8 +131,13 @@ select#gender{
   float  : left;
   padding: 1% 1%;
 }
+div.form-group{
+  padding: 1% 0% 1% 0%;
+}
 /* ================================ ADD A TRIP ========================================== */
-
+.btn primary{
+  padding: 0% 5% 0% 5%;
+}
 
 .file{
   padding: 1% 0% 0% 0%;
@@ -151,21 +153,21 @@ textarea{
 }
 
 .addFormBox{
-  padding: 20px;
+  padding: 20px 0px 20px 20px;
 }
 
-span label{
+/* span label{
 margin-bottom: 0px !important;
-}
+} */
 
 .div.col-sm-5,.col-md-6{
   padding-right: 5px !important;
-   padding-left : 20px !important;
+  padding-left : 20px !important;
 }
 
 .col-sm-5{
-  padding-right: 5px !important;
-   padding-left : 20px !important;
+  padding-right: 20px !important;
+  padding-left : 20px !important;
 }
 
 .col-sm-6{
@@ -184,9 +186,10 @@ p[_ngcontent-c4] {
 #content{
  width: 95%;
 }
+
 /* ===================================== MY TRIPS ======================================= */
 .tripPanel{
-  padding  : 0% 0% 0% 0% !important;
+  padding  : 4% 0% 5% 2% !important;
   font-size: 14px;
 }
 
@@ -220,14 +223,11 @@ p{
   padding: 5%;
 }
 
-p[_ngcontent-c2]{
-  padding: 0px !important;
+  p[_ngcontent-c2]{
+  padding: none !important;
 }
 
 .img.ng-tns-c2-0{
   padding:20% 0% 0% 0% !important;
 }
 /*====================================================================================*/
-
-
-

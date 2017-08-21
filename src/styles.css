@@ -16,22 +16,17 @@ body{
   height: 250px;
 }
 
-/*
-.containter img{
-    width:250px;
-    height:250px;
-} */
-
 .box{
   background: rgba(225, 225, 225, 0.89);
-  /* border-radius: 11px; */
+   /* border-radius: 11px; */
 }
 
 .form-control{
   width: 90%;
 }
 
-
-.form-group{
-  width: 90%;
+*[_ngcontent-c2],
+*[_ngcontent-c2]:after,
+*[_ngcontent-c2]:before{
+  padding: none !important;
 }
