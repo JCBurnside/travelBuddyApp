@@ -23,7 +23,7 @@
       <p><img src="/assets/img/occupation.png" style="width:10%; height:10%">
         <span class="feedback" name="occupation" type="text" id="occupation">{{profileview.Occupation}}</span>
       </p><br>
-      <p><img src="/assets/img/facebook.png" style="width:10%; height:10%">
+      <p *ngIf='profileview.Facebook.length!=0'><img src="/assets/img/facebook.png" style="width:10%; height:10%">
         <a [href]='profileview.Facebook'><span class="feedback" name="facebook" type="text" id="facebook">Click to view Facebook Page</span></a>
       </p><br>
     </div>

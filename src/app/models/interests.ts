@@ -80,7 +80,7 @@ export class Interests {
       out.push('Culture');
     }
     if (this.Food) {
-      out.push('Food | Culture');
+      out.push('Food');
     }
     if (this.Health) {
       out.push('Health | Fitness');
