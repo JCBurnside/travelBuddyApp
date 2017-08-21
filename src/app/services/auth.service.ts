@@ -4,9 +4,9 @@ import { Router, CanActivate } from '@angular/router';
 import { AngularFireAuth } from 'angularfire2/auth';
 
 @Injectable()
-export class FirebaseService implements CanActivate{
-  authState;
-  user;
+export class FirebaseService implements CanActivate {
+  private authState;
+  private user;
   getId(cb: (id: string) => void) {
     this.canActivate().then(() => {
       cb(this.af.auth.currentUser.uid);
@@ -16,7 +16,7 @@ export class FirebaseService implements CanActivate{
     this.af.auth.createUserWithEmailAndPassword(user.email, user.password)
       .then((a) => {
         this.getId((id) => {
-          this.router.navigate(['/profile-edit', id]);
+          this.router.navigateByUrl(`/profile-edit/${id}`);
         });
       })
       .catch((e) => {
@@ -24,7 +24,7 @@ export class FirebaseService implements CanActivate{
       });
     console.log(this.isAuthed());
   }
-  signin(user: User,cb:(err?:any)=>void) {
+  signin(user: User, cb: (err?: any) => void) {
     this.af.auth.signInWithEmailAndPassword(user.email, user.password)
       .then(() => {
         this.router.navigateByUrl('/');

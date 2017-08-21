@@ -11,15 +11,20 @@ p{
   color: #000;
 }
 .row{
-  padding: 20px;
+  padding   : 20px;
   background: rgb(255,255,255);
   background: rgba(225,225,225,0.89);
-  font-size: 16px;
+  font-size : 16px;
   margin-top: 10%;
 }
 
 .mytrips{
   width: 100%;
   line-height: 1.7;
+}
+
+.start{
+  font-size: 12px;
+  font-variant: small caps;
 }
 /* ===================================================================== */

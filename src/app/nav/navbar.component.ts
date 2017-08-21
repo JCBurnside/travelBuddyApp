@@ -3,9 +3,9 @@ import { FirebaseService } from '../services/auth.service';
 import { Router } from '@angular/router';
 
 @Component({
-  selector: 'ct-navbar',
+  selector   : 'ct-navbar',
   templateUrl: './navbar.component.html',
-  styleUrls: ['./navbar.component.css']
+  styleUrls  : ['./navbar.component.css']
 })
 export class NavbarComponent {
   id: string;
@@ -23,7 +23,7 @@ export class NavbarComponent {
     this.router.navigateByUrl('/');
   }
   userprofile() {
-     this.as.getId(id => this.id = id);
+    this.as.getId(id => this.id = id);
     this.router.navigateByUrl(`/profile/${this.id}`);
   }
 }

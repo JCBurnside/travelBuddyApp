@@ -8,7 +8,7 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="/">TRAVEL BUDDY APP</a>
+      <a class="navbar-brand" style="display:inline-block" href="/"><span><img src='favicon.ico'/>TRAVEL BUDDY APP</span></a>
     </div>
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul *ngIf='!authed()' class="nav navbar-nav navbar-right">
@@ -17,8 +17,8 @@
       </ul>
       <ul *ngIf='authed()' class="nav navbar-nav navbar-right">
         <li><a (click)='userprofile()'>Profile</a></li>
-        <li><a (click)='goToPE()'>Modify</a></li>
-        <li><a routerLink="/homepage">Travels</a></li>
+        <li><a (click)='goToPE()'>Add | Edit</a></li>
+        <li><a routerLink="/homepage">View Trips</a></li>
         <li><a (click)='signOut()'>Sign Out</a></li>
       </ul>
     </div>

@@ -1,89 +1,59 @@
-import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
+import { Component, OnInit, ViewChild, ElementRef, OnDestroy } from '@angular/core';
 import { FirebaseListObservable } from 'angularfire2/database';
-
+import { Observable, Subscription } from 'rxjs/Rx';
 import Trip from '../models/trip';
 import { TripsService } from '../services/trips.service';
 import { FirebaseService } from '../services/auth.service';
 import { ImageService } from '../services/image.service';
+import { ProfileService } from "../services/profile.service";
 import { Router } from '@angular/router';
 import { ReversePipe } from '../reverse.pipe';
 
 @Component({
-  selector: 'app-homepage',
+  selector   : 'app-homepage',
   templateUrl: './homepage.component.html',
-  styleUrls: ['./homepage.component.css']
+  styleUrls  : ['./homepage.component.css']
 })
-export class HomepageComponent implements OnInit {
-  private newTrip = new Trip(null, null);
-  public trips: any[] = [];
-  private img: String;
-  private id: string;
+export class HomepageComponent implements OnInit, OnDestroy {
+  public     trips         : any[] = [];
+  private    id            : string;
+  public     maxHeight     : number;
+  private    sub           : Subscription;
   @ViewChild('imgInput') el: ElementRef;
-  constructor(public router: Router, public ts: TripsService, public as: FirebaseService, private is: ImageService) {
+  constructor(public router: Router, public ts: TripsService, public as: FirebaseService, private is: ImageService, private ps: ProfileService) {
     as.getId(id => this.id = id);
     ts.getAllTrips((trips, err) => {
-      if (err)
+      if (err) {
         return console.log(err);
+      }
       trips.forEach(trip => {
         let s: string = trip.Destinations.toString();
-        let dest = s.split(','), city = dest[0], state = dest[1], country = dest[2];
-        this.trips.push({ ...trip, city: city, state: state, country: country });
-      })
-    })
+        let dest      = s.split(','), city = dest[0], state = dest[1], country = dest[2];
+        ps.getProfileByOwner(trip.Owner, (p, e) => {
+          if (p) {
+            this.trips.push({ ...trip, city: city, state: state, country: country, OwnerFB: p.Facebook });
+          } else {
+            this.trips.push({ ...trip, city: city, state: state, country: country, OwnerFB: undefined });
+          }
+        });
+      });
+    });
   }
-  onChange() {
-    console.log(this.newTrip.Destinations);
-  }
-  min = Math.min;
-  // submit() {
-  //   if (this.newTrip.Name == null)
-  //     alert("The trip needs a name");
-  //   else if (this.newTrip.Destinations.length == 0)
-  //     alert("You need a destination");
-  //   else if (!this.newTrip.StartDate || !this.newTrip.EndDate)
-  //     alert("You need a" + !this.newTrip.StartDate ? ' Start Date' : 'n End Date');
-  //   else {
-  //     this.newTrip.Owner = this.id;
-  //     this.ts.addNewTrip(this.newTrip, (key) => {
-  //       if (this.el.nativeElement.files[0])
-  //         this.is.uploadTrip(this.el.nativeElement.files[0], key, (snap, err) => {
-  //           if (err)
-  //             return console.log(err);
-  //           this.ts.saveTrip({ ...this.newTrip, ImageURL: snap.downloadURL }, key, (s, e) => { })
-  //         })
-  //     });
-  //   }
-  // }
-
-
-  // updateTrips() {
-  //   this.trips.subscribe(trips => {
-  //     trips.forEach(trip => {
-  //       if (trip.ownerID == this.id) {
-  //         console.log(trip);
-  //       }
-  //     });
-  //   });
-  // }
-  // onClickProfile($key){
-  //   this.router.navigate(['/profile', $key]);
-  // }
-  // onClickEdit($key) {
-  //   this.router.navigate(['/trip-edit', $key]);
-  // }
   onClickProfile(id) {
-    this.router.navigate(['/profile', id])
+    this.router.navigateByUrl(`/profile/${id}`);
   }
   onClickView($key) {
-    this.router.navigate(['/trip-view', $key]);
+    this.router.navigateByUrl(`/trip-view/${$key}`);
   }
-  // onClickDelete(trip) {
-  //   this.ts.deleteTrip(trip, trip.$key, (success, err) => {
-  //     console.log(success || err);
-  //     this.trips.remove(trip);
-  //   })
-  // }
   ngOnInit() {
+    this.sub = Observable.timer(0, 0).subscribe(() => {
+      let tripsList = document.getElementById('tripsCon').querySelectorAll("figcaption");
+      for (let ctr = 0; ctr < tripsList.length; ctr++) {
+        this.maxHeight = Math.max(this.maxHeight || 0, tripsList[ctr].clientHeight);
+      }
+    });
   }
-
+  ngOnDestroy() {
+    this.sub.unsubscribe();
+  }
 }

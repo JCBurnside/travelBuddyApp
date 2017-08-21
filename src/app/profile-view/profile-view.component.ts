@@ -13,17 +13,18 @@ import Trip from '../models/trip';
   styleUrls: ['./profile-view.component.css']
 })
 export class ProfileViewComponent implements OnInit {
-  private profileview: Profile;
-  private trips: any[];
-  private id: string;
-  private interests: string[];
-  private dests: string[] = [];
-  public gender: string;
-
-  constructor(private route: ActivatedRoute, private router: Router, private PS: ProfileService, private TS: TripsService) {
+  public profileview: Profile;
+  public trips      : any[];
+  public id         : string;
+  public interests  : string[];
+  public dests      : string[] = [];
+  public gender     : string;
+  public own        : boolean=false;
+  constructor(private route: ActivatedRoute, private router: Router, private PS: ProfileService, private TS: TripsService, private AS:FirebaseService) {
     this.route.params.subscribe(params => {
       this.PS.getProfileByOwner(params['id'], (profile: Profile) => {
         this.id = params['id'];
+        this.AS.getId(id=>this.own=this.id==id)
         this.profileview = profile;
         switch (profile.Gender) {
           case 'Female':
@@ -46,18 +47,7 @@ export class ProfileViewComponent implements OnInit {
           } else {
             console.log(trips);
             console.log(this.dests);
-            this.trips = trips;
-            /*trips.forEach((trip: Trip, i, arr) => {
-              var keys = Object.keys(trip.Destinations);
-              var dest = [];
-              keys.forEach(function (key) {
-                console.log(key, trip.Destinations[key]);
-                dest.push(trip.Destinations[key]);
-              });
-              this.dests.push(dest.join(', '));
-            });
-            console.log(this.dests);
-            this.trips = trips;*/
+            this.trips = trips.reverse();
           }
         });
       });
@@ -72,27 +62,27 @@ export class ProfileViewComponent implements OnInit {
     });
   }
   onClickView($key) {
-    this.router.navigate(['/trip-view', $key]);
+    this.router.navigateByUrl(`/trip-view/${$key}`);
   }
-goToProfileEdit() {
-  this.router.navigate(['/profile-edit', this.id]);
-}
+  goToProfileEdit() {
+    this.router.navigateByUrl(`/profile-edit/${this.id}`);
+  }
   ngOnInit() {
   }
-getTransImg(mode) {
-  switch (mode) {
-    case 'Boat':
-      return './assets/img/boat.png';
-    case 'Car':
-      return './assets/img/car.png';
-    case 'Plane':
-      return './assets/img/plane.png';
-    case 'Train':
-      return './assets/img/train.png';
+  getTransImg(mode) {
+    switch (mode) {
+      case 'Boat':
+        return './assets/img/boat.png';
+      case 'Car':
+        return './assets/img/car.png';
+      case 'Plane':
+        return './assets/img/plane.png';
+      case 'Train':
+        return './assets/img/train.png';
+    }
   }
-}
   onClickEdit($key) {
-    console.log($key)
-    this.router.navigate(['/trip-edit', $key]);
+    console.log($key);
+    this.router.navigateByUrl(`/trip-edit/${$key}`);
   }
 }

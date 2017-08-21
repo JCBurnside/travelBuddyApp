@@ -5,7 +5,6 @@ import { HomepageComponent } from './homepage.component';
 describe('HomepageComponent', () => {
   let component: HomepageComponent;
   let fixture: ComponentFixture<HomepageComponent>;
-  
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       declarations: [ HomepageComponent ]

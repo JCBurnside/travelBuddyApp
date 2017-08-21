@@ -2,33 +2,33 @@
 @import url('https://fonts.googleapis.com/css?family=Open+Sans');
 /* ============================= SIGN UP =============================== */
 h1{
-  padding               : 0% 0% 3% 0%;
+  padding: 0% 0% 3% 0%;
 }
 
 .container{
-  padding-left          : 15px;
+  padding-left: 15px;
 }
 
 .box{
-  padding               : 20px;
-  background            : rgb(255,255,255); /* for IE */
-  background            : rgba(225,225,225,0.89);
+  padding   : 20px 0px 20px 20px;
+  background: rgb(255,255,255);        /* for IE */
+  background: rgba(225,225,225,0.89);
 }
 
 .signup{
-  margin-top            : 10%;
-	font-size             : 14px;
-	font-family           : Open Sans;
+  margin-top : 10%;
+  font-size  : 14px;
+  font-family: Open Sans;
 }
 
 .btn-default{
-  background-color      : #26a69a;
-  font-size             : 14px;
-  color                 : #fff;
+  background-color: #26a69a;
+  font-size       : 14px;
+  color           : #fff;
 }
 
 .btn-default:hover{
-  opacity               : 0.6;
-  filter                : alpha(opacity=50); /* For IE8 and earlier */
+  opacity: 0.6;
+  filter : alpha(opacity=50);  /* For IE8 and earlier */
 }
 /* ===================================================================== */
