@@ -55,13 +55,13 @@
                 <span class="btn-label"><i class="glyphicon glyphicon-pencil"></i></span></button>&nbsp;
             </div>
             <div    class = "col-sm-6 icons">
-            <p><img src   = "/assets/img/headline.png"        style = "width:10%; height:10%"> {{trip.Name}}</p><br>
-            <p><img src   = "/assets/img/destination.png"     style = "width:10%; height:10%"> {{trip.Destinations}}</p><br>
-            <p><img [src] = "getTransImg(trip.ModeOfTransit)" style = "width:10%; height:10%"> {{trip.ModeOfTransit}}</p><br>
-            <p><img src   = "/assets/img/price.png"           style = "width:10%; height:10%"> {{trip.Price|currency:'USD':true:'.2-2'}}</p><br>
-            <p><img src   = "/assets/img/calendar.png"        style = "width:10%; height:10%"> {{trip.StartDate|date: shortDate}}</p><br>
-            <p><img src   = "/assets/img/calendar.png"        style = "width:10%; height:10%"> {{trip.EndDate|date: shortDate}}</p><br>
-            <p><img src   = "/assets/img/description.png"     style = "width:10%; height:10%"> {{trip.Description}}</p>
+            <p><img src   = "/assets/img/headline.png"        style = "width:10%; height:10%">                                                      {{trip.Name}}</p><br>
+            <p><img src   = "/assets/img/destination.png"     style = "width:10%; height:10%">                                                      {{trip.Destinations}}</p><br>
+            <p><img [src] = "getTransImg(trip.ModeOfTransit)" style = "width:10%; height:10%">                                                      {{trip.ModeOfTransit}}</p><br>
+            <p><img src   = "/assets/img/price.png"           style = "width:10%; height:10%">                                                      {{trip.Price|currency:'USD':true:'.2-2'}}</p><br>
+            <p><img src   = "/assets/img/calendar.png"        style = "width:10%; height:10%"><span class="start">&nbsp;[Start Date]</span>         {{trip.StartDate|date: shortDate}}</p><br>
+            <p><img src   = "/assets/img/calendar.png"        style = "width:10%; height:10%"><span class="start">&nbsp;[End Date]</span>           {{trip.EndDate|date: shortDate}}</p><br>
+            <p><img src   = "/assets/img/description.png"     style = "width:10%; height:10%">                                                      {{trip.Description}}</p>
             </div>
             <hr class="col-sm-12">
           </div>

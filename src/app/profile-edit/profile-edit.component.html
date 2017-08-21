@@ -51,7 +51,7 @@
           <label for='facebook'>Facebook</label>
           <input name='facebook' [(ngModel)]='profileedit.Facebook' type="text"  id="facebook"  class="form-control" placeholder="&nbsp;Input facebook profile link"/>
         </div>
-      </div>
+      </div><br>
       <div id="interests">
         <div class="form-group">
           <label for="interests">Interests</label> &nbsp;
@@ -209,7 +209,7 @@
         <h1>ADD A TRIP</h1>
         <hr>
         <div class="form-group" show-errors>
-          <div class="file1">
+          <div class="file1" style="padding: 0% !important">
             <label for="title">Upload Image</label>
             <img *ngIf='img' [src]='img' />
             <input #imgInput name="image-upload" type="file" accept="image/png, image/jpeg, image/jpg" id="image-upload">
@@ -255,8 +255,8 @@
             placeholder="A brief paragraph about your upcoming trip.">
               </textarea>
         </div>
-        <div class="sumbit">
-          <button type="submit" (click)='submit()' class="btn btn-primary btn-lg" style="margin-top:3%">Add</button>
+        <div class="sumbit" padd>
+          <button type="submit" (click)='submit()' class="btn btn-primary btn-lg" style="margin-top:3%; padding: 0% 2% 0% 2%">Add</button>
         </div>
       </fieldset>
     </div>
@@ -279,13 +279,13 @@
               </p><br>
             </div>
             <div class="col-sm-6 tripPanel">
-              <p><img src="/assets/img/headline.png" style="width:10%; height:10%">           {{trip.Name}}</p>
-              <p><img src="/assets/img/destination.png" style="width:10%; height:10%">        {{trip.Destinations}}</p>
-              <p><img [src]="getTransImg(trip.ModeOfTransit)" style="width:10%; height:10%">  {{trip.ModeOfTransit}}</p>
-              <p><img src="/assets/img/price.png" style="width:10%; height:10%">              {{trip.Price|currency:'USD':true:'.2-2'}}</p>
-              <p><img src="/assets/img/calendar.png" style="width:10%; height:10%">           {{trip.StartDate|date: 'shortDate'}}</p>
-              <p><img src="/assets/img/calendar.png" style="width:10%; height:10%">           {{trip.EndDate|date: 'shortDate'}}</p>
-              <p><img src="/assets/img/description.png" style="width:10%; height:10%">        {{trip.Description}}</p>
+              <p><img src="/assets/img/headline.png" style="width:10%; height:10%">                                                     {{trip.Name}}</p>
+              <p><img src="/assets/img/destination.png" style="width:10%; height:10%">                                                  {{trip.Destinations}}</p>
+              <p><img [src]="getTransImg(trip.ModeOfTransit)" style="width:10%; height:10%">                                            {{trip.ModeOfTransit}}</p>
+              <p><img src="/assets/img/price.png" style="width:10%; height:10%">                                                        {{trip.Price|currency:'USD':true:'.2-2'}}</p>
+              <p><img src="/assets/img/calendar.png" style="width:10%; height:10%"><span class="start">&nbsp;[Start Date]</span>        {{trip.StartDate|date: 'shortDate'}}</p>
+              <p><img src="/assets/img/calendar.png" style="width:10%; height:10%"><span class="start">&nbsp;[End Date]</span>          {{trip.EndDate|date: 'shortDate'}}</p>
+              <p><img src="/assets/img/description.png" style="width:10%; height:10%">                                                  {{trip.Description}}</p>
             </div>
           <hr class="col-sm-12">
             </div>
