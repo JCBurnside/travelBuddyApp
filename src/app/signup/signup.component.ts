@@ -13,7 +13,12 @@ import { User } from '../models/user';
 // TODO: Add the firebase rejections to validate
 export class SignupComponent {
   public errors = { email: '', pass: '', confpass: '' };  // This one is public so that angular can access it
-  private model = { email: '', pass: '', confpass: '' };          // Model that angular will store data in
+  /**
+   * name
+   */
+  public name() {
+    
+  } model = { email: '', pass: '', confpass: '' };          // Model that angular will store data in
   public user: User;             // User that we will send to the database
 
   validate() {

@@ -28,7 +28,7 @@
       </p><br>
     </div>
     <!-- INTEREST BUTTONS -->
-    <div id="interests" class="col-sm-12">
+    <div *ngIf='interests.length!=0' id="interests" class="col-sm-12">
       <span class="feedback" name="interests" type="text" id="interests"><b><img src="/assets/img/interests.png" style="width:5%; height:5%">Interests</b></span>
       <div class="container-fluid">
         <div class="area" *ngFor='let interest of interests'>
