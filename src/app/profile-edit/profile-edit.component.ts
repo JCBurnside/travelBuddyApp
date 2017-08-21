@@ -143,7 +143,7 @@ export class ProfileEditComponent implements OnInit {
 
   onSubmit() {
     console.log(this.profileedit.Interest);
-    if (!/^(http(|s):\/\/|)www\.facebook\.com\/.{1,}$/.test(this.profileedit.Facebook)) {
+    if (this.profileedit.Facebook.length!=0&&!/^(http(|s):\/\/|)www\.facebook\.com\/.{1,}$/.test(this.profileedit.Facebook)) {
       this.profileedit.Facebook = '';
       alert('that is not a valid facebook link');
     }
