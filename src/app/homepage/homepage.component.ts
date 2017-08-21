@@ -29,6 +29,11 @@ export class HomepageComponent implements OnInit, OnDestroy {
       trips.forEach(trip => {
         let s: string = trip.Destinations.toString();
         let dest      = s.split(','), city = dest[0], state = dest[1], country = dest[2];
+        console.log(country);
+        if(!country||/^ [^a-zA-Z]$/.test(country)){
+          country=state;
+          state=undefined;
+        }
         ps.getProfileByOwner(trip.Owner, (p, e) => {
           if (p) {
             this.trips.push({ ...trip, city: city, state: state, country: country, OwnerFB: p.Facebook });
