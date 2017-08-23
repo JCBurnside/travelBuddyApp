@@ -31,12 +31,15 @@ export class TripViewComponent implements OnInit {
     this.sub = this.route.params.subscribe(params => {
       this.ts.getTripById(params['id'], (tripview: Trip) => {
         this.tripview = tripview;
+        if(!tripview)
+          this.router.navigateByUrl('/homepage')
       });
       this.id = params['id'];
     });
     this.ps.getProfileByOwner(this.tripview.Owner, (profile, err) => {
       if (err) {
         console.log(err);
+        this.as.getId(id=>this.router.navigateByUrl(`/profile/${id}`))
       } else {
         this.name = profile.Name;
         this.PID  = profile.ownerID;

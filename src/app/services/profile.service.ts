@@ -21,6 +21,7 @@ export class ProfileService {
   *@params cb is a void callback function that takes a Profile and Error or string as arguments
   */
   getProfileByOwner(id: string, cb: (profile: Profile, err: Error | string) => void) {
+    if(!id) return cb(null, "No profile id");
     this.profiles.orderByChild('ownerID').equalTo(id).on('value', (snap, err) => {
       if (snap.val()) {
         let key                  = Object.keys(snap.val())[0];

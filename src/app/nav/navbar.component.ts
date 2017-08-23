@@ -3,9 +3,9 @@ import { FirebaseService } from '../services/auth.service';
 import { Router } from '@angular/router';
 
 @Component({
-  selector   : 'ct-navbar',
+  selector: 'ct-navbar',
   templateUrl: './navbar.component.html',
-  styleUrls  : ['./navbar.component.css']
+  styleUrls: ['./navbar.component.css']
 })
 export class NavbarComponent {
   id: string;
@@ -13,7 +13,14 @@ export class NavbarComponent {
     this.as.getId(id => this.id = id);
   }
   goToPE() {
-    this.router.navigateByUrl(`/profile-edit/${this.id}`);
+    console.log(this.id);
+    if (!this.id)
+      this.as.getId(id => {
+        this.id = id;
+        this.router.navigateByUrl(`/profile-edit/${this.id}`);
+      });
+    else
+      this.router.navigateByUrl(`/profile-edit/${this.id}`);
   }
   authed() {
     return this.as.isAuthed();
@@ -23,7 +30,14 @@ export class NavbarComponent {
     this.router.navigateByUrl('/');
   }
   userprofile() {
-    this.as.getId(id => this.id = id);
-    this.router.navigateByUrl(`/profile/${this.id}`);
+    
+    console.log(this.id);
+    if (!this.id)
+      this.as.getId(id => {
+        this.id = id;
+        this.router.navigateByUrl(`/profile/${this.id}`);
+      });
+    else
+      this.router.navigateByUrl(`/profile/${this.id}`);
   }
 }
